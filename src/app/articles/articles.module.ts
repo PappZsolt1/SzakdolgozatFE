@@ -6,6 +6,8 @@ import { ArticlesRoutingModule } from './articles-routing.module';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { ArticleComponent } from './article/article.component';
 import { NewArticleComponent } from './new-article/new-article.component';
+import { CommentListComponent } from './comment-list/comment-list.component';
+import { NewCommentComponent } from './new-comment/new-comment.component';
 
 @NgModule({
   imports: [
@@ -16,7 +18,9 @@ import { NewArticleComponent } from './new-article/new-article.component';
   declarations: [
     ArticleListComponent,
     ArticleComponent,
-    NewArticleComponent
+    NewArticleComponent,
+    CommentListComponent,
+    NewCommentComponent
   ]
 })
 export class ArticlesModule { }

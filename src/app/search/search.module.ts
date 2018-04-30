@@ -7,12 +7,13 @@ import { ResultsComponent } from './results/results.component';
 import { SearchRoutingModule } from './search-routing.module';
 import { NewCommentComponent } from './new-comment/new-comment.component';
 import { CommentListComponent } from './comment-list/comment-list.component';
+import { EditComponent } from './edit/edit.component';
 
 @NgModule({
   imports: [
     CommonModule,
     SearchRoutingModule
   ],
-  declarations: [SearchComponent, ResultComponent, ResultsComponent, NewCommentComponent, CommentListComponent]
+  declarations: [SearchComponent, ResultComponent, ResultsComponent, NewCommentComponent, CommentListComponent, EditComponent]
 })
 export class SearchModule { }
