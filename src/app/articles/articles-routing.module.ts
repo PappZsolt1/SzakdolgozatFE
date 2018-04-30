@@ -7,7 +7,7 @@ import { NewArticleComponent } from './new-article/new-article.component';
 
 const articlesRoutes: Routes = [
   { path: 'articles', component: ArticleListComponent },
-  { path: 'articles:id', component: ArticleComponent },
+  { path: 'article:id', component: ArticleComponent },
   { path: 'new-article', component: NewArticleComponent }
 ];
 

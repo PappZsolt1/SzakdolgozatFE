@@ -10,13 +10,15 @@ import { ArticlesModule } from './articles/articles.module';
 import { LoginComponent } from './login/login.component';
 import { ErrorReportComponent } from './error-report/error-report.component';
 import { UserService } from './user.service';
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
     LoginComponent,
-    ErrorReportComponent
+    ErrorReportComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
