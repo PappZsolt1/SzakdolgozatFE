@@ -1,2 +1,16 @@
 <div *ngIf=true>Hiba leírása:</div>
-<div *ngIf=true>Bejelentett hibák:</div>
+<div *ngIf=true>
+    <label>Bejelentett hibák:</label>
+    <div>
+        for lista
+        <div *ngIf=true>
+            <label>Hiba nincs megoldva</label>
+        </div>
+        <div *ngIf=true>
+            <label>Hiba megoldva</label>
+        </div>
+        <div *ngIf=true>
+            <button>Megoldva</button>
+        </div>
+    </div>
+</div>
