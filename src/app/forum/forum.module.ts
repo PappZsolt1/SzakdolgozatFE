@@ -13,6 +13,12 @@ import { NewCommentComponent } from './new-comment/new-comment.component';
     CommonModule,
     ForumRoutingModule
   ],
-  declarations: [TopicListComponent, TopicComponent, NewTopicComponent, CommentListComponent, NewCommentComponent]
+  declarations: [
+    TopicListComponent,
+    TopicComponent,
+    NewTopicComponent,
+    CommentListComponent,
+    NewCommentComponent
+  ]
 })
 export class ForumModule { }

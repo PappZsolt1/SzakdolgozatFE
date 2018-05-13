@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ErrorReportComponent } from './error-report.component';
+import { ErrorReportShellComponent } from './error-report-shell.component';
 
 describe('ErrorReportComponent', () => {
-  let component: ErrorReportComponent;
-  let fixture: ComponentFixture<ErrorReportComponent>;
+  let component: ErrorReportShellComponent;
+  let fixture: ComponentFixture<ErrorReportShellComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ErrorReportComponent ]
+      declarations: [ ErrorReportShellComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ErrorReportComponent);
+    fixture = TestBed.createComponent(ErrorReportShellComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

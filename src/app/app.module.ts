@@ -8,7 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ArticlesModule } from './articles/articles.module';
 import { LoginComponent } from './login/login.component';
-import { ErrorReportComponent } from './error-report/error-report.component';
 import { UserService } from './user.service';
 import { RegistrationComponent } from './registration/registration.component';
 
@@ -17,7 +16,6 @@ import { RegistrationComponent } from './registration/registration.component';
     AppComponent,
     PageNotFoundComponent,
     LoginComponent,
-    ErrorReportComponent,
     RegistrationComponent
   ],
   imports: [
