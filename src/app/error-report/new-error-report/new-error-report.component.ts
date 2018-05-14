@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ErrorReport } from '../../model/error-report';
+import { ErrorReportService } from '../error-report.service';
+
 @Component({
   selector: 'app-new-error-report',
   templateUrl: './new-error-report.component.html',
@@ -7,7 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewErrorReportComponent implements OnInit {
 
-  constructor() { }
+  errorReport: ErrorReport;
+
+  constructor(private errorReportService: ErrorReportService) { }
 
   ngOnInit() {
   }
