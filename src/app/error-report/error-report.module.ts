@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { ErrorReportRoutingModule } from './error-report-routing.module';
 import { NewErrorReportComponent } from './new-error-report/new-error-report.component';
@@ -10,6 +11,7 @@ import { ErrorReportService } from './error-report.service';
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     ErrorReportRoutingModule
   ],
   declarations: [

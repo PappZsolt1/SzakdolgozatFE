@@ -1,7 +1,13 @@
 <div *ngIf=true>
-  <form>
-    <label for="content">Hiba leírása:</label><br/>
-    <input type="text" id="content" required>
-    <button type="submit">Elküld</button>
-  </form>
+  <div *ngIf="!sent">
+    <form (ngSubmit)="addErrorReport(content.value)" #newErrorForm="ngForm">
+      <label for="content">Hiba leírása:</label><br/>
+      <input type="text" id="content" name="content" required ngModel #content>
+      <button type="submit" [disabled]="!newErrorForm.form.valid">Elküld</button>
+    </form>
+  </div>
+  <div *ngIf="sent">
+    <label>Elküldve!</label><br/>
+    <button (click)="startNew()" >Új hibabejelentés írása</button>
+  </div>
 </div>

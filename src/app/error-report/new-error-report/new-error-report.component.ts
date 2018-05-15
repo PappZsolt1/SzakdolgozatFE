@@ -12,9 +12,20 @@ export class NewErrorReportComponent implements OnInit {
 
   errorReport: ErrorReport;
 
+  sent = false;
+
   constructor(private errorReportService: ErrorReportService) { }
 
   ngOnInit() {
   }
+  
+  addErrorReport(content: string): void {
+    this.sent = true;
+    //this.errorReport.content = content;    
+    this.errorReportService.addErrorReport(content);//.subscribe();    
+  }
 
+  startNew() {
+    this.sent = false;
+  }
 }
