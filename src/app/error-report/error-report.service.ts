@@ -11,26 +11,29 @@ const httpOptions = {
 @Injectable()
 export class ErrorReportService {
 
-  errorReportUrl = 'localhost:8080/errorreport';
+  errorReportUrl = 'http://localhost:8080/errorreport';
   
   constructor(private http: HttpClient) { }
 
-  addErrorReport(content: string): void {
-    this.http.post<ErrorReport>(this.errorReportUrl, content, httpOptions);
+  addErrorReport(content: string): Observable<ErrorReport> {
+    console.log(content);
+    console.log(this.errorReportUrl);
+    console.log(httpOptions);
+    return this.http.post<ErrorReport>(this.errorReportUrl, content, httpOptions);
   }
 
   getAllErrorReports(): Observable<ErrorReport[]> {
-    return this.http.get<ErrorReport[]>(this.errorReportUrl + 'all');
+    return this.http.get<ErrorReport[]>(this.errorReportUrl + '/all');
   }
 
   getResolvedErrorReports(): Observable<ErrorReport[]> {
-    return this.http.get<ErrorReport[]>(this.errorReportUrl + 'resolved');
+    return this.http.get<ErrorReport[]>(this.errorReportUrl + '/resolved');
   }
   getNotResolvedErrorReports(): Observable<ErrorReport[]> {
-    return this.http.get<ErrorReport[]>(this.errorReportUrl + 'notresolved');
+    return this.http.get<ErrorReport[]>(this.errorReportUrl + '/notresolved');
   }
 
   makeResolved(id: number): Observable<{}> {
-    return this.http.put(this.errorReportUrl, id);
+    return this.http.put(this.errorReportUrl + id, null);
   }
 }

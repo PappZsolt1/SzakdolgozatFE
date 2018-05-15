@@ -17,4 +17,19 @@ export class ErrorReportListComponent implements OnInit {
   ngOnInit() {
   }
 
+  getAllErrorReports(): void {
+    this.errorReportService.getAllErrorReports().subscribe(r => this.errorReports = r);
+  }
+
+  getResolvedErrorReports(): void {
+    this.errorReportService.getAllErrorReports().subscribe(r => this.errorReports = r);
+  }
+
+  getNotResolvedErrorReports(): void {
+    this.errorReportService.getAllErrorReports().subscribe(r => this.errorReports = r);
+  }
+
+  makeResolved(id: number): void {
+    this.errorReportService.makeResolved(id).subscribe();
+  }
 }

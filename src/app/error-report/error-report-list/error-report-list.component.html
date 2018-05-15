@@ -1,9 +1,15 @@
 <div *ngIf=true>
-    <button type="button">Összes hibabejelentés lekérése</button>
+    <button type="button" (click)="getAllErrorReports()">Összes hibabejelentés lekérése</button>
     <button type="button">Megoldott hibabejelentések lekérése</button>
     <button type="button">Megoldatlan hibabejelentések lekérése</button>
     <div>
-        for lista
+        
+        <ul>
+            <li *ngFor="let e of errorReports">
+                <span>{{e.content}}</span>
+            </li>
+        </ul>
+
         <div *ngIf=true>
             <label>Hiba nincs megoldva</label>
         </div>

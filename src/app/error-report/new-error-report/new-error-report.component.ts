@@ -22,7 +22,7 @@ export class NewErrorReportComponent implements OnInit {
   addErrorReport(content: string): void {
     this.sent = true;
     //this.errorReport.content = content;    
-    this.errorReportService.addErrorReport(content);//.subscribe();    
+    this.errorReportService.addErrorReport(content).subscribe();    
   }
 
   startNew() {
