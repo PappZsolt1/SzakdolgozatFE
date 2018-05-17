@@ -16,9 +16,6 @@ export class ErrorReportService {
   constructor(private http: HttpClient) { }
 
   addErrorReport(content: string): Observable<ErrorReport> {
-    console.log(content);
-    console.log(this.errorReportUrl);
-    console.log(httpOptions);
     return this.http.post<ErrorReport>(this.errorReportUrl, content, httpOptions);
   }
 
@@ -34,6 +31,6 @@ export class ErrorReportService {
   }
 
   makeResolved(id: number): Observable<{}> {
-    return this.http.put(this.errorReportUrl + id, null);
+    return this.http.put(this.errorReportUrl + "/" + id, null);
   }
 }

@@ -1,23 +1,21 @@
 <div *ngIf=true>
     <button type="button" (click)="getAllErrorReports()">Összes hibabejelentés lekérése</button>
-    <button type="button">Megoldott hibabejelentések lekérése</button>
-    <button type="button">Megoldatlan hibabejelentések lekérése</button>
+    <button type="button" (click)="getResolvedErrorReports()">Megoldott hibabejelentések lekérése</button>
+    <button type="button" (click)="getNotResolvedErrorReports()">Megoldatlan hibabejelentések lekérése</button>
     <div>
-        
         <ul>
             <li *ngFor="let e of errorReports">
-                <span>{{e.content}}</span>
+                <span>{{e.content}} {{e.id}} {{e.sendingDate}} {{e.resolved}}</span>
+                <div *ngIf="e.resolved == false">
+                    <label>Hiba nincs megoldva</label>
+                </div>
+                <div *ngIf="e.resolved == true">
+                    <label>Hiba megoldva</label>
+                </div>
+                <div *ngIf="e.resolved == false">
+                    <button (click)="makeResolved(e.id)">Megoldva</button>
+                </div>
             </li>
         </ul>
-
-        <div *ngIf=true>
-            <label>Hiba nincs megoldva</label>
-        </div>
-        <div *ngIf=true>
-            <label>Hiba megoldva</label>
-        </div>
-        <div *ngIf=true>
-            <button>Megoldva</button>
-        </div>
     </div>
 </div>

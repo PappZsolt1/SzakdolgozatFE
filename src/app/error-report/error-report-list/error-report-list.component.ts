@@ -11,6 +11,7 @@ import { ErrorReportService } from '../error-report.service';
 export class ErrorReportListComponent implements OnInit {
 
   errorReports: ErrorReport[];
+  listType: string;
 
   constructor(private errorReportService: ErrorReportService) { }
 
@@ -18,18 +19,27 @@ export class ErrorReportListComponent implements OnInit {
   }
 
   getAllErrorReports(): void {
+    this.listType = "all";
     this.errorReportService.getAllErrorReports().subscribe(r => this.errorReports = r);
   }
 
   getResolvedErrorReports(): void {
-    this.errorReportService.getAllErrorReports().subscribe(r => this.errorReports = r);
+    this.listType = "resolved";
+    this.errorReportService.getResolvedErrorReports().subscribe(r => this.errorReports = r);
   }
 
   getNotResolvedErrorReports(): void {
-    this.errorReportService.getAllErrorReports().subscribe(r => this.errorReports = r);
+    this.listType = "notResolved";
+    this.errorReportService.getNotResolvedErrorReports().subscribe(r => this.errorReports = r);
   }
 
   makeResolved(id: number): void {
-    this.errorReportService.makeResolved(id).subscribe();
+    this.errorReportService.makeResolved(id).subscribe(() => {
+      if (this.listType == "all") {
+        this.getAllErrorReports();
+      } else {
+        this.getNotResolvedErrorReports();
+      }
+    });    
   }
 }

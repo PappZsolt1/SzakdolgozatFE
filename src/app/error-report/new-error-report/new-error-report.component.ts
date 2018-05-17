@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ErrorReport } from '../../model/error-report';
 import { ErrorReportService } from '../error-report.service';
 
 @Component({
@@ -9,8 +8,6 @@ import { ErrorReportService } from '../error-report.service';
   styleUrls: ['./new-error-report.component.css']
 })
 export class NewErrorReportComponent implements OnInit {
-
-  errorReport: ErrorReport;
 
   sent = false;
 
@@ -21,7 +18,6 @@ export class NewErrorReportComponent implements OnInit {
   
   addErrorReport(content: string): void {
     this.sent = true;
-    //this.errorReport.content = content;    
     this.errorReportService.addErrorReport(content).subscribe();    
   }
 
