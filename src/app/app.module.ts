@@ -10,13 +10,16 @@ import { ArticlesModule } from './articles/articles.module';
 import { LoginComponent } from './login/login.component';
 import { UserService } from './user.service';
 import { RegistrationComponent } from './registration/registration.component';
+import { ActorComponent } from './actor/actor.component';
+import { ActorService } from './actor/actor.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    ActorComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,7 @@ import { RegistrationComponent } from './registration/registration.component';
     ArticlesModule,
     AppRoutingModule
   ],
-  providers: [UserService],
+  providers: [UserService, ActorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

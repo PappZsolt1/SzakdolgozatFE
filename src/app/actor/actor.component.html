@@ -1,0 +1,14 @@
+<form>
+
+</form>
+Színész id alapján:
+<input type="text" #id>
+<button (click)="getActor(id.value)">Lekérés</button>
+<div *ngIf="actor != null">
+id: {{actor.id}}<br/>
+Név: {{actor.name}}<br/>
+Születés dátuma: {{actor.birthDate}}<br/>
+Születés helye: {{actor.birthPlace}}<br/>
+Élettörténet: {{actor.bio}}<br/>
+Nem: {{actor.gender}}<br/>
+</div>
