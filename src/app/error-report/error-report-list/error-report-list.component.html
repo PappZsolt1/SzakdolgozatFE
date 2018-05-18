@@ -8,13 +8,11 @@
                 <span>{{e.content}} {{e.id}} {{e.sendingDate}} {{e.resolved}}</span>
                 <div *ngIf="e.resolved == false">
                     <label>Hiba nincs megoldva</label>
+                    <button (click)="makeResolved(e.id)">Megoldva</button>
                 </div>
                 <div *ngIf="e.resolved == true">
                     <label>Hiba megoldva</label>
-                </div>
-                <div *ngIf="e.resolved == false">
-                    <button (click)="makeResolved(e.id)">Megoldva</button>
-                </div>
+                </div>                
             </li>
         </ul>
     </div>
