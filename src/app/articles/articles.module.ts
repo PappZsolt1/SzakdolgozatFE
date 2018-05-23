@@ -8,6 +8,7 @@ import { ArticleComponent } from './article/article.component';
 import { NewArticleComponent } from './new-article/new-article.component';
 import { CommentListComponent } from './comment-list/comment-list.component';
 import { NewCommentComponent } from './new-comment/new-comment.component';
+import { ArticlesShellComponent } from './articles-shell/articles-shell.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { NewCommentComponent } from './new-comment/new-comment.component';
     ArticleComponent,
     NewArticleComponent,
     CommentListComponent,
-    NewCommentComponent
+    NewCommentComponent,
+    ArticlesShellComponent
   ]
 })
 export class ArticlesModule { }

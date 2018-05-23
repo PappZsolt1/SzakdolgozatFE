@@ -7,6 +7,7 @@ import { NewTopicComponent } from './new-topic/new-topic.component';
 import { ForumRoutingModule } from './forum-routing.module';
 import { CommentListComponent } from './comment-list/comment-list.component';
 import { NewCommentComponent } from './new-comment/new-comment.component';
+import { ForumShellComponent } from './forum-shell/forum-shell.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { NewCommentComponent } from './new-comment/new-comment.component';
     TopicComponent,
     NewTopicComponent,
     CommentListComponent,
-    NewCommentComponent
+    NewCommentComponent,
+    ForumShellComponent
   ]
 })
 export class ForumModule { }

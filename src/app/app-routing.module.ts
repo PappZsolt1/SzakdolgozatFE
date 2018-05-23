@@ -4,15 +4,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
-import { ActorComponent } from './actor/actor.component';
 
 const appRoutes: Routes = [
   { path: 'forum', loadChildren: 'app/forum/forum.module#ForumModule' },
   { path: 'search', loadChildren: 'app/search/search.module#SearchModule' },
   { path: 'error-report', loadChildren: 'app/error-report/error-report.module#ErrorReportModule' },
+  { path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule' },
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
-  { path: 'actor', component: ActorComponent },
   { path: '',   redirectTo: '/articles', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ]

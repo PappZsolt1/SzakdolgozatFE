@@ -4,9 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { TopicListComponent } from './topic-list/topic-list.component';
 import { TopicComponent } from './topic/topic.component';
 import { NewTopicComponent } from './new-topic/new-topic.component';
+import { ForumShellComponent } from './forum-shell/forum-shell.component';
 
 const forumRoutes: Routes = [
-  { path: '', component: TopicListComponent },
+  { path: '', component: ForumShellComponent },
+  { path: 'topic-list', component: TopicListComponent },
   { path: 'topic/:id', component: TopicComponent },
   { path: 'new-topic', component: NewTopicComponent }
 ];

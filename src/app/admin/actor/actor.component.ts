@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ActorService } from './actor.service';
-import { Actor } from '../model/actor';
+import { Actor } from '../../model/actor';
 
 
 @Component({
   selector: 'app-actor',
   templateUrl: './actor.component.html',
-  styleUrls: ['./actor.component.css']
+  styleUrls: ['./actor.component.css'],
+  providers: [ActorService]
 })
 export class ActorComponent implements OnInit {
 
