@@ -6,5 +6,5 @@ export class Actor {
     birthDate: Date;
     birthPlace: string;
     bio: string;
-    gender: Gender;
+    //gender: Gender;
 }

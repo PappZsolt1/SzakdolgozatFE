@@ -12,15 +12,16 @@ import { Actor } from '../../model/actor';
 })
 export class ActorComponent implements OnInit {
 
-  actor: Actor;
+  actor: Actor = { id: null, name: null, birthDate: null, birthPlace: null, bio: null, /*gender: null*/ };
 
   constructor(private actorService: ActorService) { }
 
   ngOnInit() {
   }
 
-  addActor(actor: Actor): void {
-    this.actorService.addActor(actor).subscribe();
+  addActor(): void {
+    console.log(JSON.stringify(this.actor));
+    this.actorService.addActor(this.actor).subscribe();
   }
 
   getActor(id: number): void {

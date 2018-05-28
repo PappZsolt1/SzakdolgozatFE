@@ -1,4 +1,4 @@
-export enum Gender {
-    MALE,
-    FEMALE
+export class Gender {
+    id: number;
+    name: string;
 }

@@ -1,5 +1,9 @@
 <form>
-
+    Név:<input type="text" name="name" [(ngModel)]="actor.name"><br/>
+    Hely:<input type="text" name="birthPlace" [(ngModel)]="actor.birthPlace"><br/>
+    Idő:<input type="text" name="birthDate" [(ngModel)]="actor.birthDate"><br/>
+    bio:<input type="text" name="bio" [(ngModel)]="actor.bio"><br/>
+    <button (click)="addActor()">Küldés</button>
 </form>
 Színész id alapján:
 <input type="text" #id>
