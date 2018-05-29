@@ -1,8 +1,4 @@
-export enum Genre {
-    ACTION,
-    SCIFI,
-    DRAMA,
-    HORROR,
-    THRILLER,
-    COMEDY
+export class Genre {
+    id: number;
+    name: string;
 }

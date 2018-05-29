@@ -12,7 +12,7 @@ import { Actor } from '../../model/actor';
 })
 export class ActorComponent implements OnInit {
 
-  actor: Actor = { id: null, name: null, birthDate: null, birthPlace: null, bio: null, /*gender: null*/ };
+  actor: Actor = { id: null, name: null, birthDate: null, birthPlace: null, bio: null, gender: null, comments: null };
 
   constructor(private actorService: ActorService) { }
 
@@ -20,7 +20,6 @@ export class ActorComponent implements OnInit {
   }
 
   addActor(): void {
-    console.log(JSON.stringify(this.actor));
     this.actorService.addActor(this.actor).subscribe();
   }
 

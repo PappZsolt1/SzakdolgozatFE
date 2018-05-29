@@ -1,5 +1,4 @@
-export enum AgeClassification {
-    TWELVEPLUS,
-    SIXTEENPLUS,
-    EIGHTEENPLUS
+export class AgeClassification {
+    id: number;
+    name: string;
 }
