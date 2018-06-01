@@ -1,9 +1,11 @@
-<form>
-    <label for="username">Felhasználónév:</label>
-    <input type="text" id="username" required><br/>
-    <label for="password1">Jelszó:</label>
-    <input type="password" id="password1" required><br/>
-    <label for="password2">Jelszó megerősítése:</label>
-    <input type="password" id="password2" required><br/>
-    <button type="submit">Bejelentkezés</button>
-</form>
+<div *ngIf=true>
+    <form (ngSubmit)="onSubmit()" #registrationForm="ngForm">
+        <label for="username">Felhasználónév:</label>
+        <input type="text" id="username" name="username" required ngModel><br/>
+        <label for="password1">Jelszó:</label>
+        <input type="password" id="password1" name="password1" required ngModel><br/>
+        <label for="password2">Jelszó megerősítése:</label>
+        <input type="password" id="password2" name="password2" required ngModel><br/>
+        <button type="submit" [disabled]="!registrationForm.form.valid">Regisztráció</button>
+    </form>
+</div>

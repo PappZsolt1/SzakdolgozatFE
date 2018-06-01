@@ -1,13 +1,12 @@
 <div *ngIf=true>
     <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
         <label for="username">Felhasználónév:</label>
-        <input type="text" id="username" required><br/>
+        <input type="text" id="username" name="username" required ngModel><br/>
         <label for="password">Jelszó:</label>
-        <input type="password" id="password" required><br/>
+        <input type="password" id="password" name="password" required ngModel><br/>
         <button type="submit" [disabled]="!loginForm.form.valid">Bejelentkezés</button>
     </form>
 </div>
-form validálást megcsinálni!
 
 <div *ngIf=true>
     <button type="button">Kijelentkezés</button>
