@@ -10,6 +10,7 @@ const appRoutes: Routes = [
   { path: 'search', loadChildren: 'app/search/search.module#SearchModule' },
   { path: 'error-report', loadChildren: 'app/error-report/error-report.module#ErrorReportModule' },
   { path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule' },
+  { path: 'private-messages', loadChildren: 'app/private-messages/private-messages.module#PrivateMessagesModule' },
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: '',   redirectTo: '/articles', pathMatch: 'full' },
