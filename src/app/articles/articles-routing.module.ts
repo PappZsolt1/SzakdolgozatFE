@@ -9,7 +9,7 @@ import { ArticlesShellComponent } from './articles-shell/articles-shell.componen
 const articlesRoutes: Routes = [
   { path: 'articles', component: ArticlesShellComponent },
   { path: 'article-list', component: ArticleListComponent },
-  { path: 'article:id', component: ArticleComponent },
+  { path: 'article/:id', component: ArticleComponent },
   { path: 'new-article', component: NewArticleComponent }
 ];
 
