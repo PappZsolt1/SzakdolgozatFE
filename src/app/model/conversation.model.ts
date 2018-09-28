@@ -1,6 +1,6 @@
-import { PrivateMessage } from "./private-message";
+import { PrivateMessage } from "./private-message.model";
 
-export class Conversation {
+export interface Conversation {
     id: number;
     usernameA: string;
     usernameB: string;

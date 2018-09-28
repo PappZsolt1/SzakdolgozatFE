@@ -1,4 +1,4 @@
-export class ErrorReport {
+export interface ErrorReport {
     id: number;
     content: string;
     username: string;

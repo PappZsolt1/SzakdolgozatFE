@@ -1,6 +1,6 @@
-import { Comment } from "./comment";
+import { Comment } from "./comment.model";
 
-export class Article {
+export interface Article {
     id: number;
     title: string;
     content: string;

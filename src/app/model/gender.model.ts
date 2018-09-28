@@ -1,4 +1,4 @@
-export class AgeClassification {
+export interface Gender {
     id: number;
     name: string;
 }

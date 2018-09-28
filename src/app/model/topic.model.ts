@@ -1,6 +1,6 @@
 import { Comment } from "@angular/compiler";
 
-export class Topic {
+export interface Topic {
     id: number;
     title: string;
     description: string;

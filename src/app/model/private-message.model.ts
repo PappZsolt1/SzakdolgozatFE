@@ -1,4 +1,4 @@
-export class PrivateMessage {
+export interface PrivateMessage {
     id: number;
     content: string;
     unread: boolean;

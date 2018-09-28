@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { Movie } from '../model/movie';
+import { Movie } from '../model/movie.model';
 
 @Injectable()
 export class MovieService {

@@ -1,9 +1,9 @@
-import { Genre } from './genre';
-import { AgeClassification } from './age-classification';
-import { Actor } from './actor';
-import { Comment } from './comment';
+import { Genre } from './genre.model';
+import { AgeClassification } from './age-classification.model';
+import { Actor } from './actor.model';
+import { Comment } from './comment.model';
 
-export class Movie {
+export interface Movie {
     id: number;
     title: string;
     numberOfRatings: number;

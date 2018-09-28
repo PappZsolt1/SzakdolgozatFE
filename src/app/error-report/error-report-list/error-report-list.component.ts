@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ErrorReport } from '../../model/error-report';
+import { ErrorReport } from '../../model/error-report.model';
 import { ErrorReportService } from '../error-report.service';
 
 @Component({

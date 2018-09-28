@@ -1,7 +1,7 @@
-import { Actor } from "./actor";
-import { Comment } from "./comment";
+import { Actor } from "./actor.model";
+import { Comment } from "./comment.model";
 
-export class Episode {
+export interface Episode {
     id: number;
     title: string;
     numberOfRatings: number;

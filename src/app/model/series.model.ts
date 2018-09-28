@@ -1,8 +1,8 @@
-import { AgeClassification } from "./age-classification";
-import { Genre } from "./genre";
-import { Season } from "./season";
+import { AgeClassification } from "./age-classification.model";
+import { Genre } from "./genre.model";
+import { Season } from "./season.model";
 
-export class Series {
+export interface Series {
     id: number;
     title: string;
     rating: number;
