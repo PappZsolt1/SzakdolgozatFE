@@ -5,27 +5,22 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ArticlesModule } from './articles/articles.module';
-import { LoginComponent } from './login/login.component';
-import { UserService } from './user.service';
-import { RegistrationComponent } from './registration/registration.component';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    PageNotFoundComponent,
-    LoginComponent,
-    RegistrationComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     ArticlesModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CoreModule
   ],
-  providers: [UserService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

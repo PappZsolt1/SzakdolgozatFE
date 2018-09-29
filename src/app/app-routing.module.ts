@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { LoginComponent } from './login/login.component';
-import { RegistrationComponent } from './registration/registration.component';
+import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
+import { LoginComponent } from './core/login/login.component';
+import { RegistrationComponent } from './core/registration/registration.component';
 
 const appRoutes: Routes = [
   { path: 'forum', loadChildren: 'app/forum/forum.module#ForumModule' },

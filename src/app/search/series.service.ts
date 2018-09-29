@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { Series } from '../model/series.model';
+import { Series } from '../models/series.model';
 
 @Injectable()
 export class SeriesService {
