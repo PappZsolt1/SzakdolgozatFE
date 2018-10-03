@@ -12,6 +12,14 @@ import { EpisodeComponent } from './episode/episode.component';
 import { GenderComponent } from './gender/gender.component';
 import { GenreComponent } from './genre/genre.component';
 import { SeasonComponent } from './season/season.component';
+import { ActorService } from '../shared/services/actor.service';
+import { MovieService } from '../shared/services/movie.service';
+import { SeriesService } from '../shared/services/series.service';
+import { AgeClassificationService } from '../shared/services/age-classification.service';
+import { EpisodeService } from '../shared/services/episode.service';
+import { GenderService } from '../shared/services/gender.service';
+import { GenreService } from '../shared/services/genre.service';
+import { SeasonService } from '../shared/services/season.service';
 
 @NgModule({
   imports: [
@@ -29,6 +37,16 @@ import { SeasonComponent } from './season/season.component';
     GenderComponent,
     GenreComponent,
     SeasonComponent
+  ],
+  providers: [
+    ActorService,
+    MovieService,
+    SeriesService,
+    AgeClassificationService,
+    EpisodeService,
+    GenderService,
+    GenreService,
+    SeasonService
   ]
 })
 export class AdminModule { }

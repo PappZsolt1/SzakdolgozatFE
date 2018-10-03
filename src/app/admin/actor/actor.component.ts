@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ActorService } from './actor.service';
+import { ActorService } from '../../shared/services/actor.service';
 import { Actor } from '../../shared/models/actor.model';
 
 

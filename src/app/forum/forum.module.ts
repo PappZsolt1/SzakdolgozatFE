@@ -8,6 +8,8 @@ import { ForumRoutingModule } from './forum-routing.module';
 import { CommentListComponent } from './comment-list/comment-list.component';
 import { NewCommentComponent } from './new-comment/new-comment.component';
 import { ForumShellComponent } from './forum-shell/forum-shell.component';
+import { TopicService } from './topic.service';
+import { CommentService } from '../shared/services/comment.service';
 
 @NgModule({
   imports: [
@@ -21,6 +23,10 @@ import { ForumShellComponent } from './forum-shell/forum-shell.component';
     CommentListComponent,
     NewCommentComponent,
     ForumShellComponent
+  ],
+  providers: [
+    TopicService,
+    CommentService
   ]
 })
 export class ForumModule { }

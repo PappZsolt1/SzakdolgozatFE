@@ -7,14 +7,13 @@ import { ResultsComponent } from './results/results.component';
 import { SearchRoutingModule } from './search-routing.module';
 import { NewCommentComponent } from './new-comment/new-comment.component';
 import { CommentListComponent } from './comment-list/comment-list.component';
-import { EditComponent } from './edit/edit.component';
 import { SearchShellComponent } from './search-shell/search-shell.component';
 import { ActorComponent } from './actor/actor.component';
 import { MovieComponent } from './movie/movie.component';
 import { SeriesComponent } from './series/series.component';
-import { ActorService } from './actor.service';
-import { MovieService } from './movie.service';
-import { SeriesService } from './series.service';
+import { ActorService } from '../shared/services/actor.service';
+import { MovieService } from '../shared/services/movie.service';
+import { SeriesService } from '../shared/services/series.service';
 
 @NgModule({
   imports: [
@@ -27,7 +26,6 @@ import { SeriesService } from './series.service';
     ResultsComponent,
     NewCommentComponent,
     CommentListComponent,
-    EditComponent,
     SearchShellComponent,
     ActorComponent,
     MovieComponent,

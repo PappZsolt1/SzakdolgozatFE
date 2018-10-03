@@ -9,6 +9,8 @@ import { NewArticleComponent } from './new-article/new-article.component';
 import { CommentListComponent } from './comment-list/comment-list.component';
 import { NewCommentComponent } from './new-comment/new-comment.component';
 import { ArticlesShellComponent } from './articles-shell/articles-shell.component';
+import { ArticleService } from './article.service';
+import { CommentService } from '../shared/services/comment.service';
 
 @NgModule({
   imports: [
@@ -23,6 +25,10 @@ import { ArticlesShellComponent } from './articles-shell/articles-shell.componen
     CommentListComponent,
     NewCommentComponent,
     ArticlesShellComponent
+  ],
+  providers: [
+    ArticleService,
+    CommentService
   ]
 })
 export class ArticlesModule { }

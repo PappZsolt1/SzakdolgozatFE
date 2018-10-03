@@ -1,6 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { PrivateMessagesService } from './private-messages.service';
+import { PrivateMessagesService } from './private-message.service';
 
 describe('PrivateMessagesService', () => {
   beforeEach(() => {
