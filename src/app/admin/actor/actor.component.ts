@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ActorService } from './actor.service';
-import { Actor } from '../../models/actor.model';
+import { Actor } from '../../shared/models/actor.model';
 
 
 @Component({
