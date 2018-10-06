@@ -14,4 +14,20 @@ export class SeriesService {
   getSeries(id: number): Observable<Series> {
     return this.http.get<Series>(this.seriesUrl + '/' + id);
   }
+
+  getAllSeries(): Observable<Series[]> {
+    return this.http.get<Series[]>(this.seriesUrl);
+  }
+
+  addSeries(series: Series): Observable<Series> {
+    return this.http.post<Series>(this.seriesUrl, series);
+  }
+
+  modifySeries(id: number, series: Series): Observable<Series> {
+    return this.http.put<Series>(this.seriesUrl + "/" + id, series);
+  }
+
+  deleteSeries(id: number): Observable<Series> {
+    return this.http.delete<Series>(this.seriesUrl + "/" + id);
+  }
 }
