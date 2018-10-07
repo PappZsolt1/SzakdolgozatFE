@@ -10,6 +10,7 @@ import { NewCommentComponent } from './new-comment/new-comment.component';
 import { ForumShellComponent } from './forum-shell/forum-shell.component';
 import { TopicService } from './topic.service';
 import { CommentService } from '../shared/services/comment.service';
+import { RulesService } from './rules.service';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { CommentService } from '../shared/services/comment.service';
   ],
   providers: [
     TopicService,
-    CommentService
+    CommentService,
+    RulesService
   ]
 })
 export class ForumModule { }

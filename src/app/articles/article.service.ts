@@ -25,7 +25,7 @@ export class ArticleService {
 
   publishNewArticle(title: String, content: String): Observable<Article> {
     return this.http.post<Article>(this.articleUrl, { title, content }, httpOptions);
-  }//same?
+  }
 
   publishSavedArticle(id: number, title: String, content: String): Observable<Article> {
     return this.http.put<Article>(this.articleUrl + "/" + id, name);//body
@@ -37,7 +37,7 @@ export class ArticleService {
 
   getPublishedArticles(): Observable<Article[]> {
     return this.http.get<Article[]>(this.articleUrl);
-  }//same?
+  }
 
   deleteArticle(id: number): Observable<Article> {
     return this.http.delete<Article>(this.articleUrl + "/" + id);
