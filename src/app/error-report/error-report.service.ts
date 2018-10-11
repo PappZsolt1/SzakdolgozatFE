@@ -23,17 +23,21 @@ export class ErrorReportService {
   }
 
   getAllErrorReports(): Observable<ErrorReport[]> {
-    return this.http.get<ErrorReport[]>(this.errorReportUrl + '/all');
+    return this.http.get<ErrorReport[]>(this.errorReportUrl + '/all')
+    .pipe(catchError(errorHandler));
   }
 
   getResolvedErrorReports(): Observable<ErrorReport[]> {
-    return this.http.get<ErrorReport[]>(this.errorReportUrl + '/resolved');
+    return this.http.get<ErrorReport[]>(this.errorReportUrl + '/resolved')
+    .pipe(catchError(errorHandler));
   }
   getNotResolvedErrorReports(): Observable<ErrorReport[]> {
-    return this.http.get<ErrorReport[]>(this.errorReportUrl + '/notresolved');
+    return this.http.get<ErrorReport[]>(this.errorReportUrl + '/notresolved')
+    .pipe(catchError(errorHandler));
   }
 
   makeResolved(id: number): Observable<{}> {
-    return this.http.put(this.errorReportUrl + "/" + id, null);
+    return this.http.put(this.errorReportUrl + "/" + id, null)
+    .pipe(catchError(errorHandler));
   }
 }

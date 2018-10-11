@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 import { Actor } from '../models/actor.model';
+import { errorHandler } from '../http-error-handler';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -16,10 +18,24 @@ export class ActorService {
   constructor(private http: HttpClient) { }
 
   addActor(actor: Actor): Observable<Actor> {
-    return this.http.post<Actor>(this.actorUrl, actor, httpOptions);
+    return this.http.post<Actor>(this.actorUrl, actor, httpOptions)
+    .pipe(catchError(errorHandler));
   }
 
   getActor(id: number): Observable<Actor> {
-    return this.http.get<Actor>(this.actorUrl + "/" + id);
+    return this.http.get<Actor>(this.actorUrl + "/" + id)
+    .pipe(catchError(errorHandler));
   }
+
+  modifyActor(id: number, actor: Actor): Observable<Actor> {
+    return this.http.put<Actor>(this.actorUrl + "/" + id, actor)
+    .pipe(catchError(errorHandler));
+  }
+
+  deleteActor(id: number): Observable<Actor> {
+    return this.http.delete<Actor>(this.actorUrl + "/" + id)
+    .pipe(catchError(errorHandler));
+  }
+
+  //...
 }

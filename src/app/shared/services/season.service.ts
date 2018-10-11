@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 import { Season } from '../models/season.model';
+import { errorHandler } from '../http-error-handler';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -16,22 +18,27 @@ export class SeasonService {
   constructor(private http: HttpClient) { }
 
   getSeason(id: number): Observable<Season> {
-    return this.http.get<Season>(this.seasonUrl + "/" + id);
+    return this.http.get<Season>(this.seasonUrl + "/" + id)
+    .pipe(catchError(errorHandler));
   }
 
   getSeriesSeasons(seriesId: number): Observable<Season[]> {
-    return this.http.get<Season[]>(this.seasonUrl);//seriesid
+    return this.http.get<Season[]>(this.seasonUrl + '/season' + seriesId)
+    .pipe(catchError(errorHandler));
   }
 
   addSeason(season: Season): Observable<Season> {
-    return this.http.post<Season>(this.seasonUrl, season, httpOptions);
+    return this.http.post<Season>(this.seasonUrl, season, httpOptions)
+    .pipe(catchError(errorHandler));
   }
 
   modifySeason(id: number, season: Season): Observable<Season> {
-    return this.http.put<Season>(this.seasonUrl + "/" + id, season);
+    return this.http.put<Season>(this.seasonUrl + "/" + id, season)
+    .pipe(catchError(errorHandler));
   }
 
   deleteSeason(id: number): Observable<Season> {
-    return this.http.delete<Season>(this.seasonUrl + "/" + id);
+    return this.http.delete<Season>(this.seasonUrl + "/" + id)
+    .pipe(catchError(errorHandler));
   }
 }
