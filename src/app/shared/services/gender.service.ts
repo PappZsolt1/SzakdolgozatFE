@@ -23,11 +23,11 @@ export class GenderService {
     return this.http.get<Gender[]>(this.genderUrl);
   }
 
-  addGender(name: String): Observable<Gender> {
+  addGender(name: string): Observable<Gender> {
     return this.http.post<Gender>(this.genderUrl, name, httpOptions);
   }
 
-  modifyGender(id: number, name: String): Observable<Gender> {
+  modifyGender(id: number, name: string): Observable<Gender> {
     return this.http.put<Gender>(this.genderUrl + "/" + id, name);
   }
 

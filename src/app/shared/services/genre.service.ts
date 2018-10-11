@@ -23,11 +23,11 @@ export class GenreService {
     return this.http.get<Genre[]>(this.genreUrl);
   }
 
-  addGenre(name: String): Observable<Genre> {
+  addGenre(name: string): Observable<Genre> {
     return this.http.post<Genre>(this.genreUrl, name, httpOptions);
   }
 
-  modifyGenre(id: number, name: String): Observable<Genre> {
+  modifyGenre(id: number, name: string): Observable<Genre> {
     return this.http.put<Genre>(this.genreUrl + "/" + id, name);
   }
 

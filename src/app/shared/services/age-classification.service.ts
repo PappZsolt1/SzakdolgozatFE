@@ -23,11 +23,11 @@ export class AgeClassificationService {
     return this.http.get<AgeClassification[]>(this.ageClassificationUrl);
   }
 
-  addAgeClassification(name: String): Observable<AgeClassification> {
+  addAgeClassification(name: string): Observable<AgeClassification> {
     return this.http.post<AgeClassification>(this.ageClassificationUrl, name, httpOptions);
   }
 
-  modifyAgeClassification(id: number, name: String): Observable<AgeClassification> {
+  modifyAgeClassification(id: number, name: string): Observable<AgeClassification> {
     return this.http.put<AgeClassification>(this.ageClassificationUrl + "/" + id, name);
   }
 

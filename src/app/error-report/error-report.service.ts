@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 import { ErrorReport } from './error-report.model';
+import { errorHandler } from '../shared/http-error-handler';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -16,7 +18,8 @@ export class ErrorReportService {
   constructor(private http: HttpClient) { }
 
   addErrorReport(content: string): Observable<ErrorReport> {
-    return this.http.post<ErrorReport>(this.errorReportUrl, content, httpOptions);
+    return this.http.post<ErrorReport>(this.errorReportUrl, content, httpOptions)
+    .pipe(catchError(errorHandler));
   }
 
   getAllErrorReports(): Observable<ErrorReport[]> {

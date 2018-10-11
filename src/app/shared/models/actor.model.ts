@@ -4,7 +4,7 @@ import { Comment } from "./comment.model";
 export interface Actor {
     id: number;
     name: string;
-    birthDate: String;
+    birthDate: string;
     birthPlace: string;
     bio: string;    
     gender: Gender;
