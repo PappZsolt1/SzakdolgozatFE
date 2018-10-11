@@ -8,9 +8,9 @@ import { ForumRoutingModule } from './forum-routing.module';
 import { CommentListComponent } from './comment-list/comment-list.component';
 import { NewCommentComponent } from './new-comment/new-comment.component';
 import { ForumShellComponent } from './forum-shell/forum-shell.component';
-import { TopicService } from './topic.service';
+import { TopicService } from './shared/topic.service';
 import { CommentService } from '../shared/services/comment.service';
-import { RulesService } from './rules.service';
+import { RulesService } from './shared/rules.service';
 
 @NgModule({
   imports: [

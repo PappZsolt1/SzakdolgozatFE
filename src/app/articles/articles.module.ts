@@ -9,8 +9,9 @@ import { NewArticleComponent } from './new-article/new-article.component';
 import { CommentListComponent } from './comment-list/comment-list.component';
 import { NewCommentComponent } from './new-comment/new-comment.component';
 import { ArticlesShellComponent } from './articles-shell/articles-shell.component';
-import { ArticleService } from './article.service';
+import { ArticleService } from './shared/article.service';
 import { CommentService } from '../shared/services/comment.service';
+import { SavedArticleListComponent } from './saved-article-list/saved-article-list.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { CommentService } from '../shared/services/comment.service';
     NewArticleComponent,
     CommentListComponent,
     NewCommentComponent,
-    ArticlesShellComponent
+    ArticlesShellComponent,
+    SavedArticleListComponent
   ],
   providers: [
     ArticleService,

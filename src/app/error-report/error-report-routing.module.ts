@@ -6,9 +6,13 @@ import { ErrorReportListComponent } from './error-report-list/error-report-list.
 import { ErrorReportShellComponent } from './error-report-shell/error-report-shell.component';
 
 const errorReportRoutes: Routes = [
-  { path: '', component: ErrorReportShellComponent },
-  { path: 'new', component: NewErrorReportComponent },
-  { path: 'admin', component: ErrorReportListComponent }
+  {
+    path: '', component: ErrorReportShellComponent,
+    children: [
+      { path: 'new', component: NewErrorReportComponent },
+      { path: 'admin', component: ErrorReportListComponent }
+    ]
+  }
 ];
 
 @NgModule({

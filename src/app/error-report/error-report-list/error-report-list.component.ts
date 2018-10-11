@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ErrorReport } from '../error-report.model';
-import { ErrorReportService } from '../error-report.service';
+import { ErrorReport } from '../shared/error-report.model';
+import { ErrorReportService } from '../shared/error-report.service';
 
 @Component({
   selector: 'app-error-report-list',

@@ -1,4 +1,4 @@
-import { Comment } from "../shared/models/comment.model";
+import { Comment } from "../../shared/models/comment.model";
 
 export interface Topic {
     id: number;

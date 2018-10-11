@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { Topic } from './topic.model';
-import { errorHandler } from '../shared/http-error-handler';
+import { errorHandler } from '../../shared/http-error-handler';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
