@@ -12,7 +12,7 @@ const articlesRoutes: Routes = [
     path: 'articles', component: ArticlesShellComponent,
     children: [
       { path: '', component: ArticleListComponent },
-      { path: 'article/:id', component: ArticleComponent },
+      { path: ':id', component: ArticleComponent },
       { path: 'new-article', component: NewArticleComponent },
       { path: 'saved-article-list', component: SavedArticleListComponent }
     ]
