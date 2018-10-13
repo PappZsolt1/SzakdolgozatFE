@@ -7,10 +7,14 @@ import { NewTopicComponent } from './new-topic/new-topic.component';
 import { ForumShellComponent } from './forum-shell/forum-shell.component';
 
 const forumRoutes: Routes = [
-  { path: '', component: ForumShellComponent },
-  { path: 'topic-list', component: TopicListComponent },
-  { path: 'topic/:id', component: TopicComponent },
-  { path: 'new-topic', component: NewTopicComponent }
+  {
+    path: '', component: ForumShellComponent,
+    children: [
+      { path: 'topic-list', component: TopicListComponent },
+      { path: 'topic/:id', component: TopicComponent },
+      { path: 'new-topic', component: NewTopicComponent }
+    ]
+  }
 ];
 
 @NgModule({

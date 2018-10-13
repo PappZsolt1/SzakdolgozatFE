@@ -6,9 +6,13 @@ import { ResultComponent } from './result/result.component';
 import { SearchShellComponent } from './search-shell/search-shell.component';
 
 const searchRoutes: Routes = [
-  { path: '', component: SearchShellComponent },
-  { path: 'filter', component: SearchComponent },
-  { path: 'result/:id', component: ResultComponent }
+  {
+    path: '', component: SearchShellComponent,
+    children: [
+      { path: 'filter', component: SearchComponent },
+      { path: 'result/:id', component: ResultComponent }
+    ]
+  }
 ];
 
 @NgModule({

@@ -6,9 +6,13 @@ import { ConversationComponent } from './conversation/conversation.component';
 import { ConversationListComponent } from './conversation-list/conversation-list.component';
 
 const privateMessagesRoutes: Routes = [
-  { path: '', component: PrivateMessagesShellComponent },
-  { path: 'conversation-list', component: ConversationListComponent },
-  { path: 'conversation/:id', component: ConversationComponent }
+  {
+    path: '', component: PrivateMessagesShellComponent,
+    children: [
+      { path: 'conversation-list', component: ConversationListComponent },
+      { path: 'conversation/:id', component: ConversationComponent }
+    ]
+  }
 ];
 
 @NgModule({
