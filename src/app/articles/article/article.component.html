@@ -1,10 +1,12 @@
-<div>
-    <span>{{article.title}}</span>
-</div>
-<div>
-    <span>{{article.content}}</span>
-</div>
-<div>
-    <span>{{article.publishDate}}</span>
+<div *ngIf="article">
+    <div>
+        <span>{{article.title}}</span>
+    </div>
+    <div>
+        <span>{{article.content}}</span>
+    </div>
+    <div>
+        <span>{{article.publishDate}}</span>
+    </div>
 </div>
 <button (click)="goBack()">Vissza</button>
