@@ -31,6 +31,7 @@ export class ErrorReportService {
     return this.http.get<ErrorReport[]>(this.errorReportUrl + '/resolved')
     .pipe(catchError(errorHandler));
   }
+  
   getNotResolvedErrorReports(): Observable<ErrorReport[]> {
     return this.http.get<ErrorReport[]>(this.errorReportUrl + '/notresolved')
     .pipe(catchError(errorHandler));

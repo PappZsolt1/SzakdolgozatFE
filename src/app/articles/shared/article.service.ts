@@ -22,8 +22,8 @@ export class ArticleService {
     .pipe(catchError(errorHandler));
   }
 
-  saveArticle(title: String, content: String): Observable<Article> {
-    return this.http.post<Article>(this.articleUrl + '/save', { title, content }, httpOptions)
+  saveArticle(article: Article): Observable<Article> {
+    return this.http.post<Article>(this.articleUrl + '/save', article, httpOptions)
     .pipe(catchError(errorHandler));
   }
 

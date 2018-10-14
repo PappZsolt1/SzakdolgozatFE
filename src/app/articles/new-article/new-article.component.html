@@ -1,2 +1,8 @@
-<label>Cím:</label>
-<label>Tartalom:</label>
+<form (ngSubmit)="publishNewArticle(title.value, content.value)" #newArticleForm="ngForm">
+    <label for="title">Cím:</label><br/>
+    <input type="text" id="title" name="title" required [(ngModel)]="article.title" #title="ngModel"><br/>
+    <label for="content">Tartalom:</label><br/>
+    <input type="text" id="content" name="content" required [(ngModel)]="article.content" #content="ngModel"><br/>
+    <button type="button" (click)="saveArticle()">Mentés</button>
+    <button type="submit" [disabled]="!newArticleForm.form.valid">Publikálás</button>
+</form>
