@@ -10,7 +10,7 @@ import { Article } from '../shared/article.model';
 })
 export class NewArticleComponent implements OnInit {
 
-  article: Article = { id: null, title: null, content: null, saved: null, published: null, publishDate: null, username: null, comments: null };
+  article: Article = { id: null, title: null, content: null, saved: null, published: null, publishDate: null, /*username: null,*/ comments: null };
 
   constructor(private articleService: ArticleService) { }
 
