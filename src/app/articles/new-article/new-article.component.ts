@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { ArticleService } from '../shared/article.service';
 import { Article } from '../shared/article.model';
@@ -15,10 +15,21 @@ export class NewArticleComponent implements OnInit {
 
   saved = false;
   published = false;
+  edit = false;
+  deleted = false;
 
-  constructor(private articleService: ArticleService, private router: Router) { }
+  constructor(
+    private articleService: ArticleService,
+    private router: Router,
+    private route: ActivatedRoute
+    ) { }
 
   ngOnInit() {
+    let id = +this.route.snapshot.paramMap.get("id");
+    if (id) {
+      this.articleService.getArticle(id).subscribe(r => this.article = r);
+      this.edit = true;
+    }    
   }
 
   saveArticle(): void {
@@ -26,9 +37,30 @@ export class NewArticleComponent implements OnInit {
     this.articleService.saveArticle(this.article).subscribe();
   }
 
+  publishArticle(): void {
+    if (!this.edit) {
+      this.publishNewArticle();
+    } else {
+      this.publishSavedArticle();
+    }
+  }
+
   publishNewArticle(): void {
     this.published = true;
     this.articleService.publishNewArticle(this.article).subscribe();
+  }
+
+  publishSavedArticle(): void {
+    this.published = true;
+    this.articleService.publishSavedArticle(this.article.id, this.article).subscribe();
+  }
+
+  deleteArticle(): void {
+    let answer = confirm("Biztosan törli?");
+    if (answer) {
+      this.deleted = true;
+    this.articleService.deleteArticle(this.article.id).subscribe();
+    }    
   }
 
   goBack() {
