@@ -17,13 +17,13 @@ export class RulesService {
 
   constructor(private http: HttpClient) { }
 
-  getRules(id: number): Observable<Rules> {
-    return this.http.get<Rules>(this.rulesUrl + "/" + id)
+  getRules(): Observable<Rules> {
+    return this.http.get<Rules>(this.rulesUrl)
     .pipe(catchError(errorHandler));
   }
 
-  modifyRules(id: number, content: String): Observable<Rules> {
-    return this.http.put<Rules>(this.rulesUrl + "/" + id, content)
+  modifyRules( content: string): Observable<Rules> {
+    return this.http.put<Rules>(this.rulesUrl, content)
     .pipe(catchError(errorHandler));
   }
 }

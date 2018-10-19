@@ -27,8 +27,8 @@ export class TopicService {
     .pipe(catchError(errorHandler));
   }
 
-  addTopic(title: String, description: String): Observable<Topic> {
-    return this.http.post<Topic>(this.topicUrl, { title, description }, httpOptions)
+  addTopic(topic: Topic): Observable<Topic> {
+    return this.http.post<Topic>(this.topicUrl, topic, httpOptions)
     .pipe(catchError(errorHandler));
   }
 

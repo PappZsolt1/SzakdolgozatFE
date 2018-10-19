@@ -1,3 +1,15 @@
-for lista hozzászólásokkal
-<div *ngIf=true>Új hozzászólás írása</div>
-<div *ngIf=true>Hozzászólás törlése</div>
+<div *ngIf="topic && !deleted">
+    <div>
+        <span>{{topic.title}}</span><span>{{topic.createDate}}</span>
+    </div>
+    <div>
+        <span>{{topic.description}}</span>
+    </div>
+    <div *ngIf=true>
+        <button (click)="deleteTopic()">Téma törlése</button>
+    </div>
+</div>
+<div *ngIf="deleted">
+    <label>Törölve!</label><br />
+    <button (click)="goBack()">Vissza</button>
+</div>

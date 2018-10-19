@@ -10,9 +10,9 @@ const forumRoutes: Routes = [
   {
     path: '', component: ForumShellComponent,
     children: [
-      { path: 'topic-list', component: TopicListComponent },
-      { path: 'topic/:id', component: TopicComponent },
-      { path: 'new-topic', component: NewTopicComponent }
+      { path: '', component: TopicListComponent },
+      { path: 'new-topic', component: NewTopicComponent },
+      { path: ':id', component: TopicComponent }
     ]
   }
 ];

@@ -1,2 +1,14 @@
-<label>Cím:</label>
-<label>Leírás:</label>
+<div *ngIf="!created">
+    <form (ngSubmit)="addTopic()" #newTopicForm="ngForm">
+        <label for="title">Cím:</label><br />
+        <input type="text" id="title" name="title" required [(ngModel)]="topic.title" #title="ngModel"><br />
+        <label for="description">Leírás:</label><br />
+        <input type="text" id="description" name="description" required [(ngModel)]="topic.description" #title="ngModel"><br />
+        <button type="submit" [disabled]="!newTopicForm.form.valid">Létrehozás</button>
+    </form>
+</div>
+
+<div *ngIf="created">
+    <label>Létrehozva!</label><br />
+    <button (click)="goBack()">Vissza</button>
+</div>

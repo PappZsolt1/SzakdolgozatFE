@@ -1,3 +1,19 @@
-for lista témák címével
-<div *ngIf=true>Új téma létrehozása</div>
-<div *ngIf=true>Téma törlése</div>
+<div *ngIf="rules">
+    <div *ngIf="!showRules">
+        <button (click)="toggleRules()">Szabályzat mutatása</button>
+    </div>
+    <div *ngIf="showRules">
+        <span>{{rules.content}}</span><br/>
+        <button (click)="toggleRules()">Szabályzat elrejtése</button>
+    </div>    
+</div>
+<div>
+    <ul>
+        <li *ngFor="let t of topics">
+            <a [routerLink]="[t.id]"><span>{{t.title}}</span></a>
+        </li>
+    </ul>
+</div>
+<div *ngIf=true>
+    <button routerLink="new-topic">Új téma létrehozása</button>    
+</div>

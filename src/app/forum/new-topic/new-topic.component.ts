@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { TopicService } from '../shared/topic.service';
+import { Topic } from '../shared/topic.model';
 
 @Component({
   selector: 'app-new-topic',
@@ -7,9 +11,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewTopicComponent implements OnInit {
 
-  constructor() { }
+  topic: Topic = { id: null, title: null, description: null, createDate: null, comments: null};
+
+  created = false;
+
+  constructor(private topicService: TopicService, private router: Router) { }
 
   ngOnInit() {
   }
 
+  addTopic(): void {
+    this.created = true;
+    this.topicService.addTopic(this.topic).subscribe();
+  }
+
+  goBack() {
+    this.router.navigate(['/forum']);
+  }
 }
