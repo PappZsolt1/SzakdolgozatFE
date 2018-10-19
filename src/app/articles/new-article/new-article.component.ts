@@ -15,8 +15,8 @@ export class NewArticleComponent implements OnInit {
 
   saved = false;
   published = false;
-  edit = false;
   deleted = false;
+  edit = false;
 
   constructor(
     private articleService: ArticleService,
@@ -38,28 +38,15 @@ export class NewArticleComponent implements OnInit {
   }
 
   publishArticle(): void {
-    if (!this.edit) {
-      this.publishNewArticle();
-    } else {
-      this.publishSavedArticle();
-    }
-  }
-
-  publishNewArticle(): void {
     this.published = true;
-    this.articleService.publishNewArticle(this.article).subscribe();
-  }
-
-  publishSavedArticle(): void {
-    this.published = true;
-    this.articleService.publishSavedArticle(this.article.id, this.article).subscribe();
+    this.articleService.publishArticle(this.article).subscribe();
   }
 
   deleteArticle(): void {
     let answer = confirm("Biztosan törli?");
     if (answer) {
       this.deleted = true;
-    this.articleService.deleteArticle(this.article.id).subscribe();
+      this.articleService.deleteArticle(this.article.id).subscribe();
     }    
   }
 

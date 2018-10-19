@@ -27,16 +27,11 @@ export class ArticleService {
     .pipe(catchError(errorHandler));
   }
 
-  publishNewArticle(article: Article): Observable<Article> {
+  publishArticle(article: Article): Observable<Article> {
     return this.http.post<Article>(this.articleUrl, article, httpOptions)
     .pipe(catchError(errorHandler));
   }
-
-  publishSavedArticle(id: number, article: Article): Observable<Article> {
-    return this.http.put<Article>(this.articleUrl + "/" + id, article)
-    .pipe(catchError(errorHandler));
-  }
-
+  
   getSavedArticles(): Observable<Article[]> {
     return this.http.get<Article[]>(this.articleUrl + '/save')
     .pipe(catchError(errorHandler));
