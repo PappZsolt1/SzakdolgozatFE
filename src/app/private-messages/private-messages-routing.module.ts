@@ -9,8 +9,8 @@ const privateMessagesRoutes: Routes = [
   {
     path: '', component: PrivateMessagesShellComponent,
     children: [
-      { path: 'conversation-list', component: ConversationListComponent },
-      { path: 'conversation/:id', component: ConversationComponent }
+      { path: '', component: ConversationListComponent },
+      { path: ':id', component: ConversationComponent }
     ]
   }
 ];
