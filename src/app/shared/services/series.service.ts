@@ -28,8 +28,8 @@ export class SeriesService {
     .pipe(catchError(errorHandler));
   }
 
-  modifySeries(id: number, series: Series): Observable<Series> {
-    return this.http.put<Series>(this.seriesUrl + "/" + id, series)
+  modifySeries(series: Series): Observable<Series> {
+    return this.http.put<Series>(this.seriesUrl, series)
     .pipe(catchError(errorHandler));
   }
 

@@ -51,6 +51,6 @@ export class NewArticleComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['../']);
+    this.router.navigate(['/articles']);
   }
 }

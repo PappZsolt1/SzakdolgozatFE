@@ -27,8 +27,8 @@ export class EpisodeService {
     .pipe(catchError(errorHandler));
   }
 
-  modifyEpisode(id: number, episode: Episode): Observable<Episode> {
-    return this.http.put<Episode>(this.episodeUrl + "/" + id, episode)
+  modifyEpisode(episode: Episode): Observable<Episode> {
+    return this.http.put<Episode>(this.episodeUrl, episode)
     .pipe(catchError(errorHandler));
   }
 

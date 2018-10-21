@@ -28,8 +28,8 @@ export class MovieService {
     .pipe(catchError(errorHandler));
   }
 
-  modifyMovie(id: number, movie: Movie): Observable<Movie> {
-    return this.http.put<Movie>(this.movieUrl + "/" + id, movie)
+  modifyMovie(movie: Movie): Observable<Movie> {
+    return this.http.put<Movie>(this.movieUrl, movie)
     .pipe(catchError(errorHandler));
   }
 

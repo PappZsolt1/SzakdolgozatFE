@@ -25,6 +25,6 @@ export class ArticleComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['../']);
+    this.router.navigate(['/articles']);
   }
 }

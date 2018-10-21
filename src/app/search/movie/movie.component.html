@@ -1,22 +1,24 @@
-<div *ngIf=true>
-  <label>ID:</label>
-  <label></label>
-</div><br/>
-<label>Cím:</label>
-<label></label><br/>
-kép
-<br/>
-<label>Értékelés:</label>
-<label></label><br/>
-<label>Megjelenés éve:</label>
-<label></label><br/>
-<label>Műfaj:</label>
-<label></label><br/>
-<label>Hossz:</label>
-<label></label><br/>
-<label>Korbesorolás:</label>
-<label></label><br/>
-<label>Költségvetés:</label>
-<label></label><br/>
-<label>Színészek:</label>
-<label>lista</label>
+<div *ngIf="movie">
+  <div *ngIf=true>
+    <label>ID:</label>
+    <label>{{movie.id}}</label>
+  </div><br/>
+  <label>Cím:</label>
+  <label>{{movie.title}}</label><br/>
+  kép
+  <br/>
+  <label>Értékelés:</label>
+  <label>{{movie.rating}}</label><br/>
+  <label>Megjelenés éve:</label>
+  <label>{{movie.releaseYear}}</label><br/>
+  <label>Műfaj:</label>
+  <label>{{movie.genre}}</label><br/>
+  <label>Hossz:</label>
+  <label>{{movie.length}}</label><br/>
+  <label>Korbesorolás:</label>
+  <label>{{movie.ageClassification}}</label><br/>
+  <label>Költségvetés:</label>
+  <label>{{movie.budget}}</label><br/>
+  <label>Színészek:</label>
+  <label>lista</label>
+</div>

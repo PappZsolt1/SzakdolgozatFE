@@ -22,7 +22,7 @@ export class RulesService {
     .pipe(catchError(errorHandler));
   }
 
-  modifyRules( content: string): Observable<Rules> {
+  modifyRules(content: string): Observable<Rules> {
     return this.http.put<Rules>(this.rulesUrl, content)
     .pipe(catchError(errorHandler));
   }

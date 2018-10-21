@@ -27,8 +27,8 @@ export class ActorService {
     .pipe(catchError(errorHandler));
   }
 
-  modifyActor(id: number, actor: Actor): Observable<Actor> {
-    return this.http.put<Actor>(this.actorUrl + "/" + id, actor)
+  modifyActor( actor: Actor): Observable<Actor> {
+    return this.http.put<Actor>(this.actorUrl, actor)
     .pipe(catchError(errorHandler));
   }
 

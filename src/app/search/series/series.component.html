@@ -1,16 +1,20 @@
 <div *ngIf=true>
-  <label>ID:</label>
-  <label></label>
-</div><br/>
-<label>Cím:</label>
-<label></label><br/>
-kép
-<br/>
-<label>Értékelés</label>
-<label></label><br/>
-<label>Megjelenés éve:</label>
-<label></label><br/>
-<label>Műfaj:</label>
-<label></label><br/>
-<label>Évadok:</label>
-<label>lista</label>
+  <div *ngIf=true>
+    <label>ID:</label>
+    <label>{{series.id}}</label>
+  </div><br />
+  <label>Cím:</label>
+  <label>{{series.title}}</label><br />
+  kép
+  <br />
+  <label>Értékelés</label>
+  <label>{{series.rating}}</label><br />
+  <label>Megjelenés éve:</label>
+  <label>{{series.releaseYear}}</label><br />
+  <label>Műfaj:</label>
+  <label>{{series.genre}}</label><br />
+  <label>Korbesorolás:</label>
+  <label>{{series.ageClassification}}</label><br/>
+  <label>Évadok:</label>
+  <label>lista</label>
+</div>

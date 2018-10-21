@@ -1,10 +1,19 @@
-<form>
-    Név:<input type="text" name="name" [(ngModel)]="actor.name"><br/>
-    Hely:<input type="text" name="birthPlace" [(ngModel)]="actor.birthPlace"><br/>
-    Idő:<input type="text" name="birthDate" [(ngModel)]="actor.birthDate"><br/>
-    bio:<input type="text" name="bio" [(ngModel)]="actor.bio"><br/>
-    <button (click)="addActor()">Küldés</button>
+<form (ngSubmit)="addActor()" #newActorForm="ngForm">
+    <label for="name">Név:</label>
+    <input type="text" id="name" name="name" required [(ngModel)]="actor.name" #name="ngModel"><br/>
+    <label for="genders">Nem:</label>
+    <select name="genders" id="genders" required [(ngModel)]="actor.gender" #genders="ngModel">
+        <option *ngFor="let g of genders" [ngValue]="g">{{g.name}}</option>
+    </select><br/>
+    <label for="birthPlace">Születési hely:</label>
+    <input type="text" id="birthPlace" name="birthPlace" required [(ngModel)]="actor.birthPlace" #birthPlace="ngModel"><br/>
+    <label for="birthDate">Születési idő:</label>
+    <input type="text" id="birthDate" name="birthDate" required [(ngModel)]="actor.birthDate" #birthDate="ngModel"><br/>
+    <label for="bio">Élettörténet:</label>
+    <input type="text" id="bio" name="bio" required [(ngModel)]="actor.bio" #bio="ngModel"><br/>
+    <button type="submit" [disabled]="!newActorForm.form.valid">Küldés</button>
 </form>
+
 Színész id alapján:
 <input type="text" #id>
 <button (click)="getActor(id.value)">Lekérés</button>
