@@ -9,13 +9,14 @@ import { Gender } from '../../shared/models/gender.model';
   selector: 'app-actor',
   templateUrl: './actor.component.html',
   styleUrls: ['./actor.component.css'],
-  providers: [ActorService]
+  providers: [ActorService, GenderService]
 })
 export class ActorComponent implements OnInit {
 
   actor: Actor = { id: null, name: null, birthDate: null, birthPlace: null, bio: null, gender: null, comments: null };
 
   genders: Gender[];
+  myDate = new Date();
 
   constructor(private actorService: ActorService, private genderService: GenderService) { }
 
@@ -37,6 +38,5 @@ export class ActorComponent implements OnInit {
 
   getAllGenders(): void {
     this.genderService.getAllGenders().subscribe(r => this.genders = r);
-  }
-
+  }  
 }

@@ -1,27 +1,16 @@
 <form (ngSubmit)="addActor()" #newActorForm="ngForm">
     <label for="name">Név:</label>
     <input type="text" id="name" name="name" required [(ngModel)]="actor.name" #name="ngModel"><br/>
-    <label for="genders">Nem:</label>
-    <select name="genders" id="genders" required [(ngModel)]="actor.gender" #genders="ngModel">
+    <label for="genderlist">Nem:</label>
+    <select name="genderlist" id="genderlist" required [(ngModel)]="actor.gender" #genderlist="ngModel">
         <option *ngFor="let g of genders" [ngValue]="g">{{g.name}}</option>
     </select><br/>
     <label for="birthPlace">Születési hely:</label>
     <input type="text" id="birthPlace" name="birthPlace" required [(ngModel)]="actor.birthPlace" #birthPlace="ngModel"><br/>
     <label for="birthDate">Születési idő:</label>
-    <input type="text" id="birthDate" name="birthDate" required [(ngModel)]="actor.birthDate" #birthDate="ngModel"><br/>
+    <input type="date" id="birthDate" name="birthDate" required [(ngModel)]="myDate" #birthDate="ngModel"><br/>
     <label for="bio">Élettörténet:</label>
     <input type="text" id="bio" name="bio" required [(ngModel)]="actor.bio" #bio="ngModel"><br/>
     <button type="submit" [disabled]="!newActorForm.form.valid">Küldés</button>
 </form>
-
-Színész id alapján:
-<input type="text" #id>
-<button (click)="getActor(id.value)">Lekérés</button>
-<div *ngIf="actor != null">
-id: {{actor.id}}<br/>
-Név: {{actor.name}}<br/>
-Születés dátuma: {{actor.birthDate}}<br/>
-Születés helye: {{actor.birthPlace}}<br/>
-Élettörténet: {{actor.bio}}<br/>
-Nem: {{actor.gender}}<br/>
-</div>
+<div *ngIf="myDate">{{myDate.toString()}}</div>
