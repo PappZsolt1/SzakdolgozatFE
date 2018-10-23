@@ -16,7 +16,7 @@ export class ActorComponent implements OnInit {
   actor: Actor = { id: null, name: null, birthDate: null, birthPlace: null, bio: null, gender: null, comments: null };
 
   genders: Gender[];
-  myDate = new Date();
+  myDate: string;
 
   constructor(private actorService: ActorService, private genderService: GenderService) { }
 
@@ -24,7 +24,12 @@ export class ActorComponent implements OnInit {
     this.getAllGenders();
   }
 
+  formatter(myDate: string): string {
+    return myDate.substr(0, 4) + ". " + myDate.substr(5, 2) + ". " + myDate.substr(8, 2) + ".";
+  }
+
   addActor(): void {
+    this.actor.birthDate = this.formatter(this.myDate);
     this.actorService.addActor(this.actor).subscribe();
   }
 

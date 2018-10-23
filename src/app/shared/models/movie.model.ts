@@ -14,7 +14,7 @@ export interface Movie {
     releaseYear: number;
     ageClassification: AgeClassification;
     genre: Genre;
-    image: HTMLImageElement;
+    coverPicture: HTMLImageElement;
     actors: Actor[];
     comments: Comment[];
 }
