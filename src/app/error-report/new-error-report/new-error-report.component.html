@@ -2,7 +2,7 @@
   <div *ngIf="!sent">
     <form (ngSubmit)="addErrorReport(content.value)" #newErrorForm="ngForm">
       <label for="content">Hiba leírása:</label><br/>
-      <input type="text" id="content" name="content" required ngModel #content>
+      <input type="text" id="content" name="content" required pattern=".*\S.*" ngModel #content>
       <button type="submit" [disabled]="!newErrorForm.form.valid">Elküld</button>
     </form>
   </div>

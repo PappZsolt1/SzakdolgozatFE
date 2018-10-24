@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { ArticlesRoutingModule } from './articles-routing.module';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { ArticleComponent } from './article/article.component';
-import { NewArticleComponent } from './new-article/new-article.component';
+import { EditArticleComponent } from './edit-article/edit-article.component';
 import { ArticlesShellComponent } from './articles-shell/articles-shell.component';
 import { ArticleService } from './shared/article.service';
 import { CommentService } from '../shared/services/comment.service';
@@ -22,7 +22,7 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     ArticleListComponent,
     ArticleComponent,
-    NewArticleComponent,
+    EditArticleComponent,
     ArticlesShellComponent,
     SavedArticleListComponent
   ],

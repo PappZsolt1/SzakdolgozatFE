@@ -1,0 +1,25 @@
+<div *ngIf="!saved && !published && !deleted">
+    <form (ngSubmit)="publishArticle()" #editArticleForm="ngForm">
+        <label for="title">Cím:</label><br />
+        <input type="text" id="title" name="title" required pattern=".*\S.*" [(ngModel)]="article.title" #title="ngModel"><br />
+        <label for="content">Tartalom:</label><br />
+        <input type="text" id="content" name="content" required pattern=".*\S.*" [(ngModel)]="article.content" #content="ngModel"><br />
+        <button type="button" [disabled]="!editArticleForm.form.valid" (click)="saveArticle()">Mentés</button>
+        <button type="submit" [disabled]="!editArticleForm.form.valid">Publikálás</button>
+        <div *ngIf="edit">
+            <button type="button" (click)="deleteArticle()">Törlés</button>
+        </div>
+    </form>
+</div>
+<div *ngIf="saved">
+    <label>Elmentve!</label><br />
+    <button (click)="goBack()">Vissza</button>
+</div>
+<div *ngIf="published">
+    <label>Publikálva!</label><br />
+    <button (click)="goBack()">Vissza</button>
+</div>
+<div *ngIf="deleted">
+    <label>Törölve!</label><br />
+    <button (click)="goBack()">Vissza</button>
+</div>

@@ -1,7 +1,7 @@
 <div>
     <ul>
         <li *ngFor="let a of articles">
-            <a [routerLink]="['../new-article', {id: a.id}]"><span>{{a.title}}</span></a>
+            <a [routerLink]="['../edit-article', {id: a.id}]"><span>{{a.title}}</span></a>
         </li>
     </ul>
 </div>

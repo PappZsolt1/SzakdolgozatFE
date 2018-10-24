@@ -8,7 +8,7 @@ export interface Episode {
     sumOfRatings: number;
     rating: number;
     releaseDate: string;
-    length: number;
+    eLength: string;
     actors: Actor[];
     comments: Comment[];
 }

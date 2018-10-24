@@ -9,6 +9,6 @@ export interface Series {
     releaseYear: number;
     ageClassification: AgeClassification;
     genre: Genre;
-    image: HTMLImageElement;
+    coverPicture: HTMLImageElement;
     seasons: Season[];
 }

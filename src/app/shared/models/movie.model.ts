@@ -10,7 +10,7 @@ export interface Movie {
     sumOfRatings: number;
     rating: number;
     budget: number;
-    length: number;
+    mLength: string;
     releaseYear: number;
     ageClassification: AgeClassification;
     genre: Genre;

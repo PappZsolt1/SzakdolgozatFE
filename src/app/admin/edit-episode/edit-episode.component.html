@@ -1,0 +1,12 @@
+<form (ngSubmit)="addEpisode()" #editEpisodeForm="ngForm">
+  <label for="title">Cím:</label>
+  <input type="text" id="title" name="title" required pattern=".*\S.*" [(ngModel)]="episode.title" #title="ngModel"/><br/>
+  <label for="releaseDate">Megjelenés dátuma:</label>
+  <input type="date" id="releaseDate" name="releaseDate" required [(ngModel)]="bDate" #releaseDate="ngModel"><br/>
+  <label for="length">Hossz:</label>
+  <input type="number" id="hour" name="hour" required onKeyPress="if (this.value.length == 2) return false;" [(ngModel)]="hours" #hour="ngModel"/><span>óra</span>
+  <input type="number" id="minute" name="minute" required onKeyPress="if (this.value.length == 2) return false;" [(ngModel)]="minutes" #minute="ngModel"/><span>perc</span>
+  <input type="number" id="second" name="second" required onKeyPress="if (this.value.length == 2) return false;" [(ngModel)]="seconds" #second="ngModel"/><span>másodperc</span><br/>
+  <button type="submit" [disabled]="!editEpisodeForm.form.valid">Mentés</button>
+</form>
+színészek...
