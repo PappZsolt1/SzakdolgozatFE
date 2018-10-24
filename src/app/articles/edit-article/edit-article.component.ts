@@ -16,7 +16,7 @@ export class EditArticleComponent implements OnInit {
   saved = false;
   published = false;
   deleted = false;
-  edit = false;
+  modify = false;
 
   constructor(
     private articleService: ArticleService,
@@ -28,7 +28,7 @@ export class EditArticleComponent implements OnInit {
     let id = +this.route.snapshot.paramMap.get("id");
     if (id) {
       this.articleService.getArticle(id).subscribe(r => this.article = r);
-      this.edit = true;
+      this.modify = true;
     }    
   }
 

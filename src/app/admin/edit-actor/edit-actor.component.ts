@@ -4,6 +4,7 @@ import { ActorService } from '../../shared/services/actor.service';
 import { Actor } from '../../shared/models/actor.model';
 import { GenderService } from '../../shared/services/gender.service';
 import { Gender } from '../../shared/models/gender.model';
+import { dateFormatter } from '../shared/date-formatter';
 
 @Component({
   selector: 'app-actor',
@@ -24,13 +25,8 @@ export class EditActorComponent implements OnInit {
     this.getAllGenders();
   }
 
-  dateFormatter(bDate: string): string {
-    let slash = bDate.indexOf("-");
-    return bDate.substring(0, slash) + ". " + bDate.substr(slash + 1, 2) + ". " + bDate.substr(slash + 4, 2) + ".";
-  }
-
   addActor(): void {
-    this.actor.birthDate = this.dateFormatter(this.bDate);
+    this.actor.birthDate = dateFormatter(this.bDate);
     this.actorService.addActor(this.actor).subscribe();
   }
 

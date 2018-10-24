@@ -6,6 +6,7 @@ import { AgeClassificationService } from '../../shared/services/age-classificati
 import { AgeClassification } from '../../shared/models/age-classification.model';
 import { GenreService } from '../../shared/services/genre.service';
 import { Genre } from '../../shared/models/genre.model';
+import { lengthFormatter } from '../shared/length-formatter';
 
 @Component({
   selector: 'app-movie',
@@ -33,12 +34,8 @@ export class EditMovieComponent implements OnInit {
     this.getAllGenres();
   }
 
-  timeFormatter(hours: number, minutes: number, seconds: number): string {
-    return hours.toString() + " óra " + minutes.toString() + " perc " + seconds.toString() + " másodperc";
-  }
-
   addMovie(): void {
-    this.movie.mLength = this.timeFormatter(this.hours, this.minutes, this.seconds);
+    this.movie.mLength = lengthFormatter(this.hours, this.minutes, this.seconds);
     this.movieService.addMovie(this.movie).subscribe();
   }
 

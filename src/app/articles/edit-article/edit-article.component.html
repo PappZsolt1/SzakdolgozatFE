@@ -6,7 +6,7 @@
         <input type="text" id="content" name="content" required pattern=".*\S.*" [(ngModel)]="article.content" #content="ngModel"><br />
         <button type="button" [disabled]="!editArticleForm.form.valid" (click)="saveArticle()">Mentés</button>
         <button type="submit" [disabled]="!editArticleForm.form.valid">Publikálás</button>
-        <div *ngIf="edit">
+        <div *ngIf="modify">
             <button type="button" (click)="deleteArticle()">Törlés</button>
         </div>
     </form>
