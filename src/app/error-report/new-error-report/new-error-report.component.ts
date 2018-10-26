@@ -17,8 +17,7 @@ export class NewErrorReportComponent implements OnInit {
   }
   
   addErrorReport(content: string): void {
-    this.sent = true;
-    this.errorReportService.addErrorReport(content).subscribe();    
+    this.errorReportService.addErrorReport(content).subscribe(() => this.sent = true);    
   }
 
   startNew() {

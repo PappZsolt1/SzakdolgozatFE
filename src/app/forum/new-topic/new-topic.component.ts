@@ -21,8 +21,7 @@ export class NewTopicComponent implements OnInit {
   }
 
   addTopic(): void {
-    this.created = true;
-    this.topicService.addTopic(this.topic).subscribe();
+    this.topicService.addTopic(this.topic).subscribe(() => this.created = true);
   }
 
   goBack() {

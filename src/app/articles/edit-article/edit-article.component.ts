@@ -27,27 +27,23 @@ export class EditArticleComponent implements OnInit {
   ngOnInit() {
     let id = +this.route.snapshot.paramMap.get("id");
     if (id) {
-      this.articleService.getArticle(id).subscribe(r => this.article = r);
-      this.modify = true;
+      this.articleService.getArticle(id).subscribe(r => { this.article = r; this.modify = true; });
     }    
   }
 
   saveArticle(): void {
-    this.saved = true;
-    this.articleService.saveArticle(this.article).subscribe();
+    this.articleService.saveArticle(this.article).subscribe(() => this.saved = true);
   }
 
   publishArticle(): void {
-    this.published = true;
-    this.articleService.publishArticle(this.article).subscribe();
+    this.articleService.publishArticle(this.article).subscribe(() => this.published = true);
   }
 
   deleteArticle(): void {
     let answer = confirm("Biztosan törli?");
     if (answer) {
-      this.deleted = true;
-      this.articleService.deleteArticle(this.article.id).subscribe();
-    }    
+      this.articleService.deleteArticle(this.article.id).subscribe(() => this.deleted = true);
+    }
   }
 
   goBack() {
