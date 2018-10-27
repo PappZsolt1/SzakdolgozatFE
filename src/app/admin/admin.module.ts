@@ -21,6 +21,7 @@ import { GenderService } from '../shared/services/gender.service';
 import { GenreService } from '../shared/services/genre.service';
 import { SeasonService } from '../shared/services/season.service';
 import { ToolsComponent } from './tools/tools.component';
+import { CustomMinDirective } from './shared/custom-min.directive';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { ToolsComponent } from './tools/tools.component';
     EditGenderComponent,
     EditGenreComponent,
     EditSeasonComponent,
-    ToolsComponent
+    ToolsComponent,
+    CustomMinDirective
   ],
   providers: [
     ActorService,
