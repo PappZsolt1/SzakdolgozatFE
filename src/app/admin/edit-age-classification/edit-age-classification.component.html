@@ -1,1 +1,19 @@
-lista átírható nevekkel?
+<div>
+    <ul>
+        <li *ngFor="let a of ageClassifications">
+            <span>{{a.id}} </span><span>{{a.name}}</span>
+            <button type="button" (click)="editExisting()">Szerkesztés</button>
+            <button type="button" (click)="deleteAgeClassification(a.id)">Törlés</button>
+        </li>
+    </ul>
+</div>
+<div *ngIf="!create">
+    <button type="button" (click)="createNew()">Létrehozás</button>
+</div>
+<div *ngIf="create">
+    <form (ngSubmit)="addAgeClassification(name.value)" #newAgeClassificationForm="ngForm">
+        <label for="name">Név:</label>
+        <input type="text" id="name" name="name" required pattern=".*\S.*" #name ngModel><br />
+        <button type="submit" [disabled]="!newAgeClassificationForm.form.valid">Hozzáadás</button>
+    </form>
+</div>

@@ -1,4 +1,4 @@
-import { Directive, Input } from '@angular/core';
+/*import { Directive, Input } from '@angular/core';
 import { Validator, NG_VALIDATORS, AbstractControl } from '@angular/forms';
 
 @Directive({
@@ -15,4 +15,4 @@ export class CustomMinDirective implements Validator {
     let v = control.value;
     
   }
-}
+}*/
