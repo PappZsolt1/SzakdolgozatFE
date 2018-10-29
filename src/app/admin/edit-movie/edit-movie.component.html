@@ -1,3 +1,4 @@
+<h2>Film létrehozása</h2>
 <form (ngSubmit)="addMovie()" #editMovieForm="ngForm">
   <label for="title">Cím:</label>
   <input type="text" id="title" name="title" required pattern=".*\S.*" [(ngModel)]="movie.title" #title="ngModel"/><br/>
@@ -21,3 +22,4 @@
   <button type="submit" [disabled]="!editMovieForm.form.valid">Mentés</button>
 </form>
 színészek hozzáadása
+<button type="button" (click)="goBack()">Vissza</button>

@@ -1,3 +1,4 @@
+<h2>Színész létrehozása</h2>
 <form (ngSubmit)="addActor()" #editActorForm="ngForm">
     <label for="name">Név:</label>
     <input type="text" id="name" name="name" required pattern=".*\S.*" [(ngModel)]="actor.name" #name="ngModel"><br/>
@@ -14,3 +15,4 @@
     <button type="submit" [disabled]="!editActorForm.form.valid">Mentés</button>
 </form>
 filmek, epizódok megadása...
+<button type="button" (click)="goBack()">Vissza</button>

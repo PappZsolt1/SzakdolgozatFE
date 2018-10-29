@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { EpisodeService } from '../../shared/services/episode.service';
 import { Episode } from '../../shared/models/episode.model';
@@ -19,7 +20,7 @@ export class EditEpisodeComponent implements OnInit {
   minutes: number;
   seconds: number;
 
-  constructor(private episodeService: EpisodeService) { }
+  constructor(private router: Router, private episodeService: EpisodeService) { }
 
   ngOnInit() {
   }
@@ -28,5 +29,9 @@ export class EditEpisodeComponent implements OnInit {
     this.episode.releaseDate = dateFormatter(this.bDate);
     this.episode.eLength = lengthFormatter(this.hours, this.minutes, this.seconds);
     this.episodeService.addEpisode(this.episode).subscribe();
+  }
+
+  goBack() {
+    this.router.navigate(['/admin']);
   }
 }

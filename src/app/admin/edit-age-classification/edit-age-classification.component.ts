@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AgeClassificationService } from '../../shared/services/age-classification.service';
 import { AgeClassification } from '../../shared/models/age-classification.model';
@@ -11,10 +12,11 @@ import { AgeClassification } from '../../shared/models/age-classification.model'
 export class EditAgeClassificationComponent implements OnInit {
 
   ageClassifications: AgeClassification[];
+  ageClassification: AgeClassification = { id: null, name: null };
   create = false;
   edit = false;
 
-  constructor(private ageClassificationService: AgeClassificationService) { }
+  constructor(private router: Router, private ageClassificationService: AgeClassificationService) { }
 
   ngOnInit() {
     this.getAllAgeClassifications();
@@ -24,8 +26,18 @@ export class EditAgeClassificationComponent implements OnInit {
     this.create = true;
   }
 
-  editExisting() {
+  editExisting(id: number, name: string) {
     this.edit = true;
+    this.ageClassification.id = id;
+    this.ageClassification.name = name;
+  }
+
+  cancelCreate() {
+    this.create = false;
+  }
+
+  cancelEdit() {
+    this.edit = false;
   }
 
   getAllAgeClassifications(): void {
@@ -36,8 +48,9 @@ export class EditAgeClassificationComponent implements OnInit {
     this.ageClassificationService.addAgeClassification(name).subscribe(() => { this.getAllAgeClassifications(); this.create = false; });
   }
 
-  modifyAgeClassification(id: number, name: string): void {
-    this.ageClassificationService.modifyAgeClassification(id, name).subscribe(() => this.edit = false);
+  modifyAgeClassification(): void {
+    this.ageClassificationService.modifyAgeClassification(this.ageClassification.id, this.ageClassification.name)
+    .subscribe(() => { this.edit = false; this.getAllAgeClassifications(); });
   }
 
   deleteAgeClassification(id: number): void {
@@ -45,5 +58,9 @@ export class EditAgeClassificationComponent implements OnInit {
     if (answer) {
       this.ageClassificationService.deleteAgeClassification(id).subscribe(() => this.getAllAgeClassifications());
     }
+  }
+
+  goBack() {
+    this.router.navigate(['/admin']);
   }
 }

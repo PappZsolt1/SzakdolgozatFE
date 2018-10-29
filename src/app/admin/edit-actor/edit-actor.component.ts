@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { ActorService } from '../../shared/services/actor.service';
 import { Actor } from '../../shared/models/actor.model';
@@ -19,7 +20,11 @@ export class EditActorComponent implements OnInit {
   genders: Gender[];
   bDate: string;
 
-  constructor(private actorService: ActorService, private genderService: GenderService) { }
+  constructor(
+    private router: Router,
+    private actorService: ActorService,
+    private genderService: GenderService
+    ) { }
 
   ngOnInit() {
     this.getAllGenders();
@@ -40,5 +45,9 @@ export class EditActorComponent implements OnInit {
 
   getAllGenders(): void {
     this.genderService.getAllGenders().subscribe(r => this.genders = r);
-  }  
+  }
+
+  goBack() {
+    this.router.navigate(['/admin']);
+  }
 }

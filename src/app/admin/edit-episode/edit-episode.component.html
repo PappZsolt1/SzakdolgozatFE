@@ -1,3 +1,4 @@
+<h2>Epizód létrehozása</h2>
 <form (ngSubmit)="addEpisode()" #editEpisodeForm="ngForm">
   <label for="title">Cím:</label>
   <input type="text" id="title" name="title" required pattern=".*\S.*" [(ngModel)]="episode.title" #title="ngModel"/><br/>
@@ -10,3 +11,4 @@
   <button type="submit" [disabled]="!editEpisodeForm.form.valid">Mentés</button>
 </form>
 színészek...
+<button type="button" (click)="goBack()">Vissza</button>

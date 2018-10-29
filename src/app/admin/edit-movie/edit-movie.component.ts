@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { MovieService } from '../../shared/services/movie.service';
 import { Movie } from '../../shared/models/movie.model';
@@ -24,6 +25,7 @@ export class EditMovieComponent implements OnInit {
   seconds: number;
   
   constructor(
+    private router: Router,
     private movieService: MovieService,
     private ageClassificationService: AgeClassificationService,
     private genreService: GenreService
@@ -45,5 +47,9 @@ export class EditMovieComponent implements OnInit {
 
   getAllGenres(): void {
     this.genreService.getAllGenres().subscribe(r => this.genres = r);
+  }
+
+  goBack() {
+    this.router.navigate(['/admin']);
   }
 }

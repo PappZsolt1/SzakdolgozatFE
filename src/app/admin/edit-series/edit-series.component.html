@@ -1,3 +1,4 @@
+<h2>Sorozat létrehozása</h2>
 <form (ngSubmit)="addSeries()" #editSeriesForm="ngForm">
   <label for="title">Cím:</label>
   <input type="text" id="title" name="title" required pattern=".*\S.*" [(ngModel)]="series.title" #title="ngModel"/><br/>
@@ -15,3 +16,4 @@
   <button type="submit" [disabled]="!editSeriesForm.form.valid">Mentés</button>
 </form>
 évadok...
+<button type="button" (click)="goBack()">Vissza</button>

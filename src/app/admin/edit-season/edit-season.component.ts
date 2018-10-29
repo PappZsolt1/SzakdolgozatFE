@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { SeasonService } from '../../shared/services/season.service';
 import { Season } from '../../shared/models/season.model';
@@ -12,12 +13,16 @@ export class EditSeasonComponent implements OnInit {
 
   season: Season = { id: null, number: null, episodes: null }
 
-  constructor(private seasonService: SeasonService) { }
+  constructor(private router: Router, private seasonService: SeasonService) { }
 
   ngOnInit() {
   }
 
   addSeason(): void {
     this.seasonService.addSeason(this.season).subscribe();
+  }
+
+  goBack() {
+    this.router.navigate(['/admin']);
   }
 }
