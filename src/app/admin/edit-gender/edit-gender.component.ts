@@ -56,7 +56,8 @@ export class EditGenderComponent implements OnInit {
   deleteGender(id: number): void {
     let answer = confirm("Biztosan törli?");
     if (answer) {
-      this.genderService.deleteGender(id).subscribe(() => this.getAllGenders());
+      this.genderService.deleteGender(id)
+      .subscribe(() => { this.getAllGenders(); if(this.gender.id == id) this.edit = false; });
     }
   }
 

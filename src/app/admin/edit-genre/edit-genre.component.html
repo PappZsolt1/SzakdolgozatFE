@@ -4,7 +4,7 @@
         <li *ngFor="let g of genres">
             <label>ID: </label><label>{{g.id}} </label><label>Megnevezés: </label><label>{{g.name}}</label>
             <button type="button" (click)="editExisting(g.id, g.name)">Szerkesztés</button>
-            <button type="button" [disabled]="edit" (click)="deleteGenre(g.id)">Törlés</button>
+            <button type="button" (click)="deleteGenre(g.id)">Törlés</button>
         </li>
     </ul>
 </div>

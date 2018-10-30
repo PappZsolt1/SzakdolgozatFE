@@ -1,3 +1,4 @@
+<h2>Új téma létrehozása</h2>
 <div *ngIf="!created">
     <form (ngSubmit)="addTopic()" #newTopicForm="ngForm">
         <label for="title">Cím:</label><br />
@@ -5,9 +6,9 @@
         <label for="description">Leírás:</label><br />
         <input type="text" id="description" name="description" required pattern=".*\S.*" [(ngModel)]="topic.description" #title="ngModel"><br />
         <button type="submit" [disabled]="!newTopicForm.form.valid">Létrehozás</button>
+        <button type="button" (click)="goBack()">Vissza</button>
     </form>
 </div>
-
 <div *ngIf="created">
     <label>Létrehozva!</label><br />
     <button (click)="goBack()">Vissza</button>

@@ -4,7 +4,7 @@
         <li *ngFor="let g of genders">
             <label>ID: </label><label>{{g.id}} </label><label>Megnevezés: </label><label>{{g.name}}</label>
             <button type="button" (click)="editExisting(g.id, g.name)">Szerkesztés</button>
-            <button type="button" [disabled]="edit" (click)="deleteGender(g.id)">Törlés</button>
+            <button type="button" (click)="deleteGender(g.id)">Törlés</button>
         </li>
     </ul>
 </div>

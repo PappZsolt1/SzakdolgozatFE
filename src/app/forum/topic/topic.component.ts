@@ -27,8 +27,10 @@ export class TopicComponent implements OnInit {
   }
 
   deleteTopic(): void {
-    this.deleted = true;
-    this.topicService.deleteTopic(this.topic.id).subscribe();
+    let answer = confirm("Biztosan törli?");
+    if (answer) {
+      this.topicService.deleteTopic(this.topic.id).subscribe(() => this.deleted = true);
+    }
   }
 
   goBack() {

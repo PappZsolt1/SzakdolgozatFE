@@ -4,7 +4,7 @@
         <li *ngFor="let a of ageClassifications">
             <label>ID: </label><label>{{a.id}} </label><label>Megnevezés: </label><label>{{a.name}}</label>
             <button type="button" (click)="editExisting(a.id, a.name)">Szerkesztés</button>
-            <button type="button" [disabled]="edit" (click)="deleteAgeClassification(a.id)">Törlés</button>
+            <button type="button" (click)="deleteAgeClassification(a.id)">Törlés</button>
         </li>
     </ul>
 </div>

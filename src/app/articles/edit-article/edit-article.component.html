@@ -1,3 +1,9 @@
+<div *ngIf="!modify">
+    <h2>Új cikk írása</h2>
+</div>
+<div *ngIf="modify">
+    <h2>Cikk módosítása</h2>
+</div>
 <div *ngIf="!saved && !published && !deleted">
     <form (ngSubmit)="publishArticle()" #editArticleForm="ngForm">
         <label for="title">Cím:</label><br />
@@ -9,17 +15,18 @@
         <div *ngIf="modify">
             <button type="button" (click)="deleteArticle()">Törlés</button>
         </div>
+        <button type="button" (click)="goBack()">Vissza</button>
     </form>
 </div>
 <div *ngIf="saved">
     <label>Elmentve!</label><br />
-    <button (click)="goBack()">Vissza</button>
+    <button type="button" (click)="goBack()">Vissza</button>
 </div>
 <div *ngIf="published">
     <label>Publikálva!</label><br />
-    <button (click)="goBack()">Vissza</button>
+    <button type="button" (click)="goBack()">Vissza</button>
 </div>
 <div *ngIf="deleted">
     <label>Törölve!</label><br />
-    <button (click)="goBack()">Vissza</button>
-</div>
+    <button type="button" (click)="goBack()">Vissza</button>
+</div>    

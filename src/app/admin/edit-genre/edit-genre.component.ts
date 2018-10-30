@@ -56,7 +56,8 @@ export class EditGenreComponent implements OnInit {
   deleteGenre(id: number): void {
     let answer = confirm("Biztosan törli?");
     if (answer) {
-      this.genreService.deleteGenre(id).subscribe(() => this.getAllGenres());
+      this.genreService.deleteGenre(id)
+      .subscribe(() => { this.getAllGenres(); if(this.genre.id == id) this.edit = false; });
     }
   }
 
