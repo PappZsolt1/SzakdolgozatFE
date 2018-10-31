@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { GenreService } from '../../shared/services/genre.service';
 import { Genre } from '../../shared/models/genre.model';
@@ -16,7 +16,7 @@ export class EditGenreComponent implements OnInit {
   create = false;
   edit = false;
 
-  constructor(private router: Router, private genreService: GenreService) { }
+  constructor(private location: Location, private genreService: GenreService) { }
 
   ngOnInit() {
     this.getAllGenres();
@@ -62,6 +62,6 @@ export class EditGenreComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['/admin']);
+    this.location.back();
   }
 }

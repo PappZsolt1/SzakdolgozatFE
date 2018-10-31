@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { SeriesService } from '../../shared/services/series.service';
 import { Series } from '../../shared/models/series.model';
@@ -20,7 +20,7 @@ export class EditSeriesComponent implements OnInit {
   genres: Genre[];
 
   constructor(
-    private router: Router,
+    private location: Location,
     private seriesService: SeriesService,
     private ageClassificationService: AgeClassificationService,
     private genreService: GenreService
@@ -44,6 +44,6 @@ export class EditSeriesComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['/admin']);
+    this.location.back();
   }
 }

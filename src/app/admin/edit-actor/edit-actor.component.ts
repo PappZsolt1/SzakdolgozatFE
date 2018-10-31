@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { ActorService } from '../../shared/services/actor.service';
 import { Actor } from '../../shared/models/actor.model';
@@ -21,7 +21,7 @@ export class EditActorComponent implements OnInit {
   bDate: string;
 
   constructor(
-    private router: Router,
+    private location: Location,
     private actorService: ActorService,
     private genderService: GenderService
     ) { }
@@ -48,6 +48,6 @@ export class EditActorComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['/admin']);
+    this.location.back();
   }
 }

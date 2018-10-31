@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { AgeClassificationService } from '../../shared/services/age-classification.service';
 import { AgeClassification } from '../../shared/models/age-classification.model';
@@ -16,7 +16,7 @@ export class EditAgeClassificationComponent implements OnInit {
   create = false;
   edit = false;
 
-  constructor(private router: Router, private ageClassificationService: AgeClassificationService) { }
+  constructor(private location: Location, private ageClassificationService: AgeClassificationService) { }
 
   ngOnInit() {
     this.getAllAgeClassifications();
@@ -62,6 +62,6 @@ export class EditAgeClassificationComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['/admin']);
+    this.location.back();
   }
 }

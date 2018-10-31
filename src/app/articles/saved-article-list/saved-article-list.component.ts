@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { ArticleService } from '../shared/article.service';
 import { Article } from '../shared/article.model';
@@ -13,7 +13,7 @@ export class SavedArticleListComponent implements OnInit {
 
   articles: Article[];
 
-  constructor(private router: Router, private articleService: ArticleService) { }
+  constructor(private location: Location, private articleService: ArticleService) { }
 
   ngOnInit() {
     this.getSavedArticles();
@@ -24,6 +24,6 @@ export class SavedArticleListComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['/articles']);
+    this.location.back();
   }
 }

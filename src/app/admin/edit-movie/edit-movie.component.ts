@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { MovieService } from '../../shared/services/movie.service';
 import { Movie } from '../../shared/models/movie.model';
@@ -25,7 +25,7 @@ export class EditMovieComponent implements OnInit {
   seconds: number;
   
   constructor(
-    private router: Router,
+    private location: Location,
     private movieService: MovieService,
     private ageClassificationService: AgeClassificationService,
     private genreService: GenreService
@@ -50,6 +50,6 @@ export class EditMovieComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['/admin']);
+    this.location.back();
   }
 }

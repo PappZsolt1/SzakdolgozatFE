@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { SeasonService } from '../../shared/services/season.service';
 import { Season } from '../../shared/models/season.model';
@@ -13,7 +13,7 @@ export class EditSeasonComponent implements OnInit {
 
   season: Season = { id: null, number: null, episodes: null }
 
-  constructor(private router: Router, private seasonService: SeasonService) { }
+  constructor(private location: Location, private seasonService: SeasonService) { }
 
   ngOnInit() {
   }
@@ -23,6 +23,6 @@ export class EditSeasonComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['/admin']);
+    this.location.back();
   }
 }

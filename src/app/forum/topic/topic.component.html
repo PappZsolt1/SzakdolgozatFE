@@ -8,8 +8,9 @@
     <div *ngIf=true>
         <button (click)="deleteTopic()">Téma törlése</button>
     </div>
+    <button type="button" (click)="goBack()">Vissza</button>
 </div>
 <div *ngIf="deleted">
     <label>Törölve!</label><br />
-    <button (click)="goBack()">Vissza</button>
+    <button type="button" (click)="goBack()">Vissza</button>
 </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { GenderService } from '../../shared/services/gender.service';
 import { Gender } from '../../shared/models/gender.model';
@@ -16,7 +16,7 @@ export class EditGenderComponent implements OnInit {
   create = false;
   edit = false;
 
-  constructor(private router: Router, private genderService: GenderService) { }
+  constructor(private location: Location, private genderService: GenderService) { }
 
   ngOnInit() {
     this.getAllGenders();
@@ -62,6 +62,6 @@ export class EditGenderComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['/admin']);
+    this.location.back();
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { TopicService } from '../shared/topic.service';
 import { Topic } from '../shared/topic.model';
@@ -18,7 +19,7 @@ export class TopicComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private topicService: TopicService,
-    private router: Router
+    private location: Location
     ) { }
 
   ngOnInit() {
@@ -34,6 +35,6 @@ export class TopicComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['/forum']);
+    this.location.back();
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { EpisodeService } from '../../shared/services/episode.service';
 import { Episode } from '../../shared/models/episode.model';
@@ -20,7 +20,7 @@ export class EditEpisodeComponent implements OnInit {
   minutes: number;
   seconds: number;
 
-  constructor(private router: Router, private episodeService: EpisodeService) { }
+  constructor(private location: Location, private episodeService: EpisodeService) { }
 
   ngOnInit() {
   }
@@ -32,6 +32,6 @@ export class EditEpisodeComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['/admin']);
+    this.location.back();
   }
 }
