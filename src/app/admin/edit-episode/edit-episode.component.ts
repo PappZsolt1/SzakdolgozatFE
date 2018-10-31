@@ -14,7 +14,7 @@ import { lengthFormatter } from '../shared/length-formatter';
 export class EditEpisodeComponent implements OnInit {
 
   episode: Episode = { id: null, eLength: null, title: null, rating: null, numberOfRatings: null, releaseDate: null, sumOfRatings: null, actors: null, comments: null }
-  bDate: string;
+  rDate: string;
 
   hours: number;
   minutes: number;
@@ -26,7 +26,7 @@ export class EditEpisodeComponent implements OnInit {
   }
 
   addEpisode(): void {
-    this.episode.releaseDate = dateFormatter(this.bDate);
+    this.episode.releaseDate = dateFormatter(this.rDate);
     this.episode.eLength = lengthFormatter(this.hours, this.minutes, this.seconds);
     this.episodeService.addEpisode(this.episode).subscribe();
   }

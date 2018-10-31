@@ -1,5 +1,5 @@
-/*import { Directive, Input } from '@angular/core';
-import { Validator, NG_VALIDATORS, AbstractControl } from '@angular/forms';
+import { Directive, Input } from '@angular/core';
+import { Validator, NG_VALIDATORS, AbstractControl, ValidatorFn } from '@angular/forms';
 
 @Directive({
   selector: '[appCustomMin]',
@@ -7,12 +7,22 @@ import { Validator, NG_VALIDATORS, AbstractControl } from '@angular/forms';
 })
 export class CustomMinDirective implements Validator {
 
-  @Input() customMin: number;
+  @Input('appCustomMin') customMin: number;
 
   constructor() { }
 
   validate(control: AbstractControl): {[key: string]: any} | null {
-    let v = control.value;
-    
+    return this.customMin ? this.customMinValidator(this.customMin)(control) : null;
   }
-}*/
+
+  customMinValidator(min: number): ValidatorFn {
+    return (control: AbstractControl): {[key: string]: any} | null => {
+      let v = control.value;
+      if (isNaN(v) || v < min || !Number.isInteger(v)) {
+        return {'customMin': { valid: false }};
+      } else {
+        return null;
+      }
+    }
+  }
+}

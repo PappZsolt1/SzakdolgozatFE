@@ -1,7 +1,7 @@
 <h2>Évad létrehozása</h2>
 <form (ngSubmit)="addSeason()" #editSeasonForm="ngForm">
   <label for="number">Szám:</label>
-  <input type="number" id="number" name="number" required [(ngModel)]="season.number" #number="ngModel"/><br/>
+  <input type="number" id="number" name="number" required appCustomMin="1" appCustomMax="100" [(ngModel)]="season.number" #number="ngModel"/><br/>
   <button type="submit" [disabled]="!editSeasonForm.form.valid">Mentés</button>
 </form>
 epizódok...
