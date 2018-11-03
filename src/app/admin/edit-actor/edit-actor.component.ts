@@ -15,7 +15,7 @@ import { dateFormatter } from '../shared/date-formatter';
 })
 export class EditActorComponent implements OnInit {
 
-  actor: Actor = { id: null, name: null, birthDate: null, birthPlace: null, bio: null, gender: null, comments: null };
+  actor: Actor = { id: null, name: null, photo: null, birthDate: null, birthPlace: null, bio: null, gender: null, comments: null };
 
   genders: Gender[];
   bDate: string;

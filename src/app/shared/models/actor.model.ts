@@ -6,6 +6,7 @@ export interface Actor {
     name: string;
     birthDate: string;
     birthPlace: string;
+    photo: HTMLImageElement;
     bio: string;    
     gender: Gender;
     comments: Comment[];
