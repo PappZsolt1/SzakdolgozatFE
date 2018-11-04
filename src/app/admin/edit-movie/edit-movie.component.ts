@@ -22,7 +22,6 @@ export class EditMovieComponent implements OnInit {
 
   hours: number;
   minutes: number;
-  seconds: number;
   
   constructor(
     private location: Location,
@@ -37,7 +36,7 @@ export class EditMovieComponent implements OnInit {
   }
 
   addMovie(): void {
-    this.movie.mLength = lengthFormatter(this.hours, this.minutes, this.seconds);
+    this.movie.mLength = lengthFormatter(this.hours, this.minutes);
     this.movieService.addMovie(this.movie).subscribe();
   }
 

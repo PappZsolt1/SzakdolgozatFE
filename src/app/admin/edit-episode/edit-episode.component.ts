@@ -18,7 +18,6 @@ export class EditEpisodeComponent implements OnInit {
 
   hours: number;
   minutes: number;
-  seconds: number;
 
   constructor(private location: Location, private episodeService: EpisodeService) { }
 
@@ -27,7 +26,7 @@ export class EditEpisodeComponent implements OnInit {
 
   addEpisode(): void {
     this.episode.releaseDate = dateFormatter(this.rDate);
-    this.episode.eLength = lengthFormatter(this.hours, this.minutes, this.seconds);
+    this.episode.eLength = lengthFormatter(this.hours, this.minutes);
     this.episodeService.addEpisode(this.episode).subscribe();
   }
 
