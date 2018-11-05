@@ -23,6 +23,7 @@ import { SeasonService } from '../shared/services/season.service';
 import { ToolsComponent } from './tools/tools.component';
 import { CustomMinDirective } from './shared/custom-min.directive';
 import { CustomMaxDirective } from './shared/custom-max.directive';
+import { CustomDateDirective } from './shared/custom-date.directive';
 
 @NgModule({
   imports: [
@@ -42,7 +43,8 @@ import { CustomMaxDirective } from './shared/custom-max.directive';
     EditSeasonComponent,
     ToolsComponent,
     CustomMinDirective,
-    CustomMaxDirective
+    CustomMaxDirective,
+    CustomDateDirective
   ],
   providers: [
     ActorService,
