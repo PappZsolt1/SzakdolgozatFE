@@ -13,10 +13,10 @@ export class CustomDateDirective implements Validator {
   constructor() { }
 
   validate(control: AbstractControl): {[key: string]: any} | null {
-    return this.range ? this.customMinValidator(this.range)(control) : null;
+    return this.range ? this.customDateValidator(this.range)(control) : null;
   }
 
-  customMinValidator(range: string): ValidatorFn {
+  customDateValidator(range: string): ValidatorFn {
     return (control: AbstractControl): {[key: string]: any} | null => {
       let v = control.value;
       let array = range.split(",");
