@@ -13,7 +13,7 @@
 </div>
 <div *ngIf="create">
     <form (ngSubmit)="addAgeClassification(name.value)" #newAgeClassificationForm="ngForm">
-        <label for="name">Név:</label>
+        <label for="name">Megnevezés:</label>
         <input type="text" id="name" name="name" required pattern=".*\S.*" #name ngModel><br/>
         <button type="button" (click)="cancelCreate()">Mégse</button>
         <button type="submit" [disabled]="!newAgeClassificationForm.form.valid">Hozzáadás</button>

@@ -2,12 +2,12 @@
   <div *ngIf="!sent">
     <form (ngSubmit)="addErrorReport(content.value)" #newErrorForm="ngForm">
       <label for="content">Hiba leírása:</label><br/>
-      <input type="text" id="content" name="content" required pattern=".*\S.*" ngModel #content>
+      <textarea rows="8" cols="70" id="content" name="content" required pattern=".*\S.*" ngModel #content></textarea>
       <button type="submit" [disabled]="!newErrorForm.form.valid">Elküld</button>
     </form>
   </div>
   <div *ngIf="sent">
     <label>Elküldve!</label><br/>
-    <button (click)="startNew()" >Új hibabejelentés írása</button>
+    <button (click)="startNew()">Új hibabejelentés írása</button>
   </div>
 </div>
