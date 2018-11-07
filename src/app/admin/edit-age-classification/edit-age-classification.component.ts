@@ -15,6 +15,7 @@ export class EditAgeClassificationComponent implements OnInit {
   ageClassification: AgeClassification = { id: null, name: null };
   create = false;
   edit = false;
+  removable = false;
 
   constructor(private location: Location, private ageClassificationService: AgeClassificationService) { }
 
@@ -30,6 +31,7 @@ export class EditAgeClassificationComponent implements OnInit {
     this.edit = true;
     this.ageClassification.id = id;
     this.ageClassification.name = name;
+    this.canBeDeleted();
   }
 
   cancelCreate() {
@@ -38,6 +40,7 @@ export class EditAgeClassificationComponent implements OnInit {
 
   cancelEdit() {
     this.edit = false;
+    this.removable = false;
   }
 
   getAllAgeClassifications(): void {
@@ -59,6 +62,10 @@ export class EditAgeClassificationComponent implements OnInit {
       this.ageClassificationService.deleteAgeClassification(id)
       .subscribe(() => {this.getAllAgeClassifications(); if(this.ageClassification.id == id) this.edit = false; });
     }
+  }
+
+  canBeDeleted(): void {
+    this.ageClassificationService.canBeDeleted(this.ageClassification.id).subscribe(r => this.removable = r);
   }
 
   goBack() {

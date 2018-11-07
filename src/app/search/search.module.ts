@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { SearchComponent } from './search/search.component';
-import { ResultComponent } from './result/result.component';
-import { ResultsComponent } from './results/results.component';
+import { SearchCriteriaComponent } from './search-criteria/search-criteria.component';
 import { SearchRoutingModule } from './search-routing.module';
 import { SearchShellComponent } from './search-shell/search-shell.component';
 import { ActorComponent } from './actor/actor.component';
@@ -21,9 +19,7 @@ import { SharedModule } from '../shared/shared.module';
     SearchRoutingModule
   ],
   declarations: [
-    SearchComponent,
-    ResultComponent,
-    ResultsComponent,
+    SearchCriteriaComponent,
     SearchShellComponent,
     ActorComponent,
     MovieComponent,

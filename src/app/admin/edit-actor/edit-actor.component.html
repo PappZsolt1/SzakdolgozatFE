@@ -10,8 +10,8 @@
     <input type="text" id="birthPlace" name="birthPlace" required pattern=".*\S.*" [(ngModel)]="actor.birthPlace" #birthPlace="ngModel"><br/>
     <label for="birthDate">Születési idő:</label>
     <input type="date" id="birthDate" name="birthDate" required appCustomDate="1800,2100" [(ngModel)]="bDate" #birthDate="ngModel"><br/>
-    <label for="bio">Élettörténet:</label>
-    <input type="text" id="bio" name="bio" required pattern=".*\S.*" [(ngModel)]="actor.bio" #bio="ngModel"><br/>
+    <label for="bio">Élettörténet:</label><br/>
+    <textarea rows="10" cols="70" id="bio" name="bio" required maxlength="10000" pattern="(.|\s)*\S(.|\s)*" [(ngModel)]="actor.bio" #bio="ngModel"></textarea><br/>
     <button type="submit" [disabled]="!editActorForm.form.valid">Mentés</button>
 </form>
 filmek, epizódok megadása.....

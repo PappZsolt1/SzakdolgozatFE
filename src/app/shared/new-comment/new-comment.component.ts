@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+
+import { CommentService } from '../services/comment.service';
+import { Comment } from '../models/comment.model';
 
 @Component({
   selector: 'app-new-comment',
@@ -7,9 +11,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewCommentComponent implements OnInit {
 
-  constructor() { }
+  comment: Comment = { id: null, content: null, postDate: null, topic: null, actor: null, article: null, episode: null, movie: null };
+
+  constructor(private location: Location, private commentService: CommentService) { }
 
   ngOnInit() {
   }
 
+  addComment(): void {
+    this.commentService.addComment(this.comment).subscribe();
+  }
+
+  goBack() {
+    this.location.back();
+  }
 }

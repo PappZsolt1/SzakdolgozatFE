@@ -2,9 +2,7 @@
     <div>
         <span>{{topic.title}}</span><span>{{topic.createDate}}</span>
     </div>
-    <div>
-        <span>{{topic.description}}</span>
-    </div>
+    <div class="multiline">{{topic.description}}</div>
     <div *ngIf=true>
         <button (click)="deleteTopic()">Téma törlése</button>
     </div>

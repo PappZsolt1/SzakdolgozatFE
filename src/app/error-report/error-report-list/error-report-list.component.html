@@ -5,7 +5,8 @@
     <div>
         <ul>
             <li *ngFor="let e of errorReports">
-                <span>{{e.content}} {{e.id}} {{e.sendingDate}} {{e.resolved}}</span>
+                <span>{{e.id}} {{e.sendingDate}} {{e.resolved}}</span>
+                <div class="multiline">{{e.content}}</div>
                 <div *ngIf="e.resolved == false">
                     <label>Hiba nincs megoldva</label>
                     <button (click)="makeResolved(e.id)">Megoldva</button>

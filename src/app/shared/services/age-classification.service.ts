@@ -41,4 +41,9 @@ export class AgeClassificationService {
     return this.http.delete<AgeClassification>(this.ageClassificationUrl + "/" + id)
     .pipe(catchError(errorHandler));
   }
+
+  canBeDeleted(id: number): Observable<boolean> {
+    return this.http.get<boolean>(this.ageClassificationUrl + "/delete/" + id)
+    .pipe(catchError(errorHandler));
+  }
 }

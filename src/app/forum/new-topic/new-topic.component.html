@@ -4,7 +4,7 @@
         <label for="title">Cím:</label><br />
         <input type="text" id="title" name="title" required pattern=".*\S.*" [(ngModel)]="topic.title" #title="ngModel"><br />
         <label for="description">Leírás:</label><br />
-        <input type="text" id="description" name="description" required pattern=".*\S.*" [(ngModel)]="topic.description" #title="ngModel"><br />
+        <textarea rows="5" cols="70" id="description" name="description" required maxlength="10000" pattern="(.|\s)*\S(.|\s)*" [(ngModel)]="topic.description" #description="ngModel"></textarea><br />
         <button type="submit" [disabled]="!newTopicForm.form.valid">Létrehozás</button>
         <button type="button" (click)="goBack()">Vissza</button>
     </form>

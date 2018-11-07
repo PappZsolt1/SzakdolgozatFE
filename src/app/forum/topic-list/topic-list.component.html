@@ -3,7 +3,7 @@
         <button (click)="toggleRules()">Szabályzat mutatása</button>
     </div>
     <div *ngIf="showRules">
-        <span>{{rules.content}}</span><br/>
+        <div class="multiline">{{rules.content}}</div><br/>
         <button (click)="toggleRules()">Szabályzat elrejtése</button>
     </div>    
 </div>

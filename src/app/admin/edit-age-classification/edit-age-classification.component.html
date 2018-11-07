@@ -27,6 +27,7 @@
         <input type="text" id="name" name="name" required pattern=".*\S.*" #name [(ngModel)]="ageClassification.name"><br/>
         <button type="button" (click)="cancelEdit()">Mégse</button>
         <button type="submit" [disabled]="!modifyAgeClassificationForm.form.valid">Mentés</button>
+        {{removable}}
     </form>
 </div>
 <button type="button" (click)="goBack()">Vissza</button>

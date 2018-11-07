@@ -1,1 +1,6 @@
-tartalom
+<form (ngSubmit)="addComment()" #newCommentForm="ngForm">
+    <label for="content">Hozzászólás:</label><br/>
+    <textarea rows="5" cols="70" id="content" name="content" required maxlength="10000" pattern="(.|\s)*\S(.|\s)*" [(ngModel)]="comment.content" #content="ngModel"></textarea><br/>
+    <button type="submit" [disabled]="!newCommentForm.form.valid">Küldés</button>
+</form>
+<button type="button" (click)="goBack()">Vissza</button>
