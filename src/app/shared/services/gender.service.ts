@@ -13,7 +13,7 @@ const httpOptions = {
 @Injectable()
 export class GenderService {
 
-  genderUrl = "http://localhost:8080/gender";
+  genderUrl = "http://localhost:8080/gender1";
 
   constructor(private http: HttpClient) { }
 

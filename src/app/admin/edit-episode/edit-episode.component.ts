@@ -15,6 +15,7 @@ export class EditEpisodeComponent implements OnInit {
 
   episode: Episode = { id: null, eLength: null, title: null, rating: null, numberOfRatings: null, releaseDate: null, sumOfRatings: null, actors: null, comments: null }
   rDate: string;
+  saved = false;
 
   hours: number;
   minutes: number;
@@ -27,7 +28,7 @@ export class EditEpisodeComponent implements OnInit {
   addEpisode(): void {
     this.episode.releaseDate = dateFormatter(this.rDate);
     this.episode.eLength = lengthFormatter(this.hours, this.minutes);
-    this.episodeService.addEpisode(this.episode).subscribe();
+    this.episodeService.addEpisode(this.episode).subscribe(() => this.saved = true);
   }
 
   goBack() {

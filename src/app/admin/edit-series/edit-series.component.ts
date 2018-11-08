@@ -18,6 +18,7 @@ export class EditSeriesComponent implements OnInit {
   series: Series = { id: null, rating: null, title: null, releaseYear: null, coverPicture: null, ageClassification: null, genre: null, seasons: null }
   ageClassifications: AgeClassification[];
   genres: Genre[];
+  saved = false;
 
   constructor(
     private location: Location,
@@ -32,7 +33,7 @@ export class EditSeriesComponent implements OnInit {
   }
 
   addSeries(): void {
-    this.seriesService.addSeries(this.series).subscribe();
+    this.seriesService.addSeries(this.series).subscribe(() => this.saved = true);
   }
 
   getAllAgeClassifications(): void {

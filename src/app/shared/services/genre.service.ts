@@ -13,7 +13,7 @@ const httpOptions = {
 @Injectable()
 export class GenreService {
 
-  genreUrl = "http://localhost:8080/genre";
+  genreUrl = "http://localhost:8080/genr";
 
   constructor(private http: HttpClient) { }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 import { GenderService } from '../../shared/services/gender.service';
 import { Gender } from '../../shared/models/gender.model';
@@ -16,7 +17,11 @@ export class EditGenderComponent implements OnInit {
   create = false;
   edit = false;
 
-  constructor(private location: Location, private genderService: GenderService) { }
+  constructor(
+    private router: Router,
+    private location: Location,
+    private genderService: GenderService
+    ) { }
 
   ngOnInit() {
     this.getAllGenders();
@@ -41,7 +46,7 @@ export class EditGenderComponent implements OnInit {
   }
 
   getAllGenders(): void {
-    this.genderService.getAllGenders().subscribe(r => this.genders = r);
+    this.genderService.getAllGenders().subscribe(r => this.genders = r, e => this.router.navigate([{ outlets: { error: ['error-page', e] } }]));
   }
 
   addGender(name: string): void {

@@ -60,7 +60,7 @@ export class EditAgeClassificationComponent implements OnInit {
     let answer = confirm("Biztosan törli?");
     if (answer) {
       this.ageClassificationService.deleteAgeClassification(id)
-      .subscribe(() => {this.getAllAgeClassifications(); if(this.ageClassification.id == id) this.edit = false; });
+      .subscribe(() => { this.getAllAgeClassifications(); if(this.ageClassification.id == id) this.edit = false; });
     }
   }
 

@@ -19,6 +19,7 @@ export class EditMovieComponent implements OnInit {
   movie: Movie = { id: null, title: null, ageClassification: null, budget: null, genre: null, coverPicture: null, mLength: null, releaseYear: null, numberOfRatings: null, sumOfRatings: null, rating: null, actors: null, comments: null }
   ageClassifications: AgeClassification[];
   genres: Genre[];
+  saved = false;
 
   hours: number;
   minutes: number;
@@ -37,7 +38,7 @@ export class EditMovieComponent implements OnInit {
 
   addMovie(): void {
     this.movie.mLength = lengthFormatter(this.hours, this.minutes);
-    this.movieService.addMovie(this.movie).subscribe();
+    this.movieService.addMovie(this.movie).subscribe(() => this.saved = true);
   }
 
   getAllAgeClassifications(): void {

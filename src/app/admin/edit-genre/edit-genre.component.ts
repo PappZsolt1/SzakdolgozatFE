@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 import { GenreService } from '../../shared/services/genre.service';
 import { Genre } from '../../shared/models/genre.model';
@@ -16,7 +17,11 @@ export class EditGenreComponent implements OnInit {
   create = false;
   edit = false;
 
-  constructor(private location: Location, private genreService: GenreService) { }
+  constructor(
+    private router: Router,
+    private location: Location,
+    private genreService: GenreService
+    ) { }
 
   ngOnInit() {
     this.getAllGenres();
@@ -41,7 +46,7 @@ export class EditGenreComponent implements OnInit {
   }
 
   getAllGenres(): void {
-    this.genreService.getAllGenres().subscribe(r => this.genres = r);
+    this.genreService.getAllGenres().subscribe(r => this.genres = r, e => this.router.navigate([{ outlets: { error: ['error-page', e] } }]));
   }
 
   addGenre(name: string): void {

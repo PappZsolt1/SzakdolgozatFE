@@ -19,6 +19,7 @@ export class EditActorComponent implements OnInit {
 
   genders: Gender[];
   bDate: string;
+  saved = false;
 
   constructor(
     private location: Location,
@@ -32,7 +33,7 @@ export class EditActorComponent implements OnInit {
 
   addActor(): void {
     this.actor.birthDate = dateFormatter(this.bDate);
-    this.actorService.addActor(this.actor).subscribe();
+    this.actorService.addActor(this.actor).subscribe(() => this.saved = true);
   }
 
   modifyActor(): void {

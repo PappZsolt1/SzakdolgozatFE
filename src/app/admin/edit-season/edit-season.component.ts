@@ -12,6 +12,7 @@ import { Season } from '../../shared/models/season.model';
 export class EditSeasonComponent implements OnInit {
 
   season: Season = { id: null, number: null, episodes: null }
+  saved = false;
 
   constructor(private location: Location, private seasonService: SeasonService) { }
 
@@ -19,7 +20,7 @@ export class EditSeasonComponent implements OnInit {
   }
 
   addSeason(): void {
-    this.seasonService.addSeason(this.season).subscribe();
+    this.seasonService.addSeason(this.season).subscribe(() => this.saved = true);
   }
 
   goBack() {

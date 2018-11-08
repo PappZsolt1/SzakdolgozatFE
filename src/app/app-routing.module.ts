@@ -4,8 +4,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
 import { LoginComponent } from './core/login/login.component';
 import { RegistrationComponent } from './core/registration/registration.component';
+import { ErrorPageComponent } from './core/error-page/error-page.component';
 
 const appRoutes: Routes = [
+  { path: 'error-page', component: ErrorPageComponent, outlet: 'error' },
   { path: 'forum', loadChildren: 'app/forum/forum.module#ForumModule' },
   { path: 'search', loadChildren: 'app/search/search.module#SearchModule' },
   { path: 'error-report', loadChildren: 'app/error-report/error-report.module#ErrorReportModule' },

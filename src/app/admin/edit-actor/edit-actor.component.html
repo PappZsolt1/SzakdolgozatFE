@@ -1,18 +1,23 @@
 <h2>Színész létrehozása</h2>
-<form (ngSubmit)="addActor()" #editActorForm="ngForm">
-    <label for="name">Név:</label>
-    <input type="text" id="name" name="name" required pattern=".*\S.*" [(ngModel)]="actor.name" #name="ngModel"><br/>
-    <label for="gender">Nem:</label>
-    <select name="gender" id="gender" required [(ngModel)]="actor.gender" #gender="ngModel">
-        <option *ngFor="let g of genders" [ngValue]="g">{{g.name}}</option>
-    </select><br/>
-    <label for="birthPlace">Születési hely:</label>
-    <input type="text" id="birthPlace" name="birthPlace" required pattern=".*\S.*" [(ngModel)]="actor.birthPlace" #birthPlace="ngModel"><br/>
-    <label for="birthDate">Születési idő:</label>
-    <input type="date" id="birthDate" name="birthDate" required appCustomDate="1800,2100" [(ngModel)]="bDate" #birthDate="ngModel"><br/>
-    <label for="bio">Élettörténet:</label><br/>
-    <textarea rows="10" cols="70" id="bio" name="bio" required maxlength="10000" pattern="(.|\s)*\S(.|\s)*" [(ngModel)]="actor.bio" #bio="ngModel"></textarea><br/>
-    <button type="submit" [disabled]="!editActorForm.form.valid">Mentés</button>
-</form>
-filmek, epizódok megadása.....
+<div *ngIf="!saved">
+    <form (ngSubmit)="addActor()" #editActorForm="ngForm">
+        <label for="name">Név:</label>
+        <input type="text" id="name" name="name" required pattern=".*\S.*" [(ngModel)]="actor.name" #name="ngModel"><br/>
+        <label for="gender">Nem:</label>
+        <select name="gender" id="gender" required [(ngModel)]="actor.gender" #gender="ngModel">
+            <option *ngFor="let g of genders" [ngValue]="g">{{g.name}}</option>
+        </select><br/>
+        <label for="birthPlace">Születési hely:</label>
+        <input type="text" id="birthPlace" name="birthPlace" required pattern=".*\S.*" [(ngModel)]="actor.birthPlace" #birthPlace="ngModel"><br/>
+        <label for="birthDate">Születési idő:</label>
+        <input type="date" id="birthDate" name="birthDate" required appCustomDate="1800,2100" [(ngModel)]="bDate" #birthDate="ngModel"><br/>
+        <label for="bio">Élettörténet:</label><br/>
+        <textarea rows="10" cols="70" id="bio" name="bio" required maxlength="10000" pattern="(.|\s)*\S(.|\s)*" [(ngModel)]="actor.bio" #bio="ngModel"></textarea><br/>
+        <button type="submit" [disabled]="!editActorForm.form.valid">Mentés</button>
+        filmek, epizódok megadása.....
+    </form>
+</div>
+<div *ngIf="saved">
+    <label>Elmentve!</label>
+</div>
 <button type="button" (click)="goBack()">Vissza</button>
