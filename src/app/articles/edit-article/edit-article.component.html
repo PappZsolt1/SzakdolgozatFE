@@ -7,9 +7,9 @@
 <div *ngIf="!saved && !published && !deleted">
     <form (ngSubmit)="publishArticle()" #editArticleForm="ngForm">
         <label for="title">Cím:</label><br />
-        <input type="text" id="title" name="title" required pattern=".*\S.*" [(ngModel)]="article.title" #title="ngModel"><br />
+        <input type="text" id="title" name="title" required pattern="^\S.*\S$|^\S$" [(ngModel)]="article.title" #title="ngModel"><br />
         <label for="content">Tartalom:</label><br />
-        <textarea rows="20" cols="70" id="content" name="content" required maxlength="30000" pattern="(.|\s)*\S(.|\s)*" [(ngModel)]="article.content" #content="ngModel"></textarea><br/>
+        <textarea rows="20" cols="70" id="content" name="content" required maxlength="30000" pattern="^\S(.|\s)*\S$|^\S$" [(ngModel)]="article.content" #content="ngModel"></textarea><br/>
         <button type="button" [disabled]="!editArticleForm.form.valid" (click)="saveArticle()">Mentés</button>
         <button type="submit" [disabled]="!editArticleForm.form.valid">Publikálás</button>
         <div *ngIf="modify">

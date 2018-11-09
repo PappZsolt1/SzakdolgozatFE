@@ -51,11 +51,11 @@ export class EditGenderComponent implements OnInit {
   }
 
   addGender(name: string): void {
-    this.genderService.addGender(name.trim()).subscribe(() => { this.getAllGenders(); this.create = false; });
+    this.genderService.addGender(name).subscribe(() => { this.getAllGenders(); this.create = false; });
   }
 
   modifyGender(): void {
-    this.genderService.modifyGender(this.gender.id, this.gender.name.trim())
+    this.genderService.modifyGender(this.gender.id, this.gender.name)
     .subscribe(() => { this.edit = false; this.getAllGenders(); });
   }
 

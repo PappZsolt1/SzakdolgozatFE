@@ -9,7 +9,6 @@ import { ErrorReportService } from '../shared/error-report.service';
 })
 export class NewErrorReportComponent implements OnInit {
 
-  ERcontent: string;
   sent = false;
 
   constructor(private errorReportService: ErrorReportService) { }
@@ -17,12 +16,11 @@ export class NewErrorReportComponent implements OnInit {
   ngOnInit() {
   }
   
-  addErrorReport(): void {
-    this.errorReportService.addErrorReport(this.ERcontent.trim()).subscribe(() => this.sent = true);    
+  addErrorReport(content: string): void {
+    this.errorReportService.addErrorReport(content).subscribe(() => this.sent = true);    
   }
 
   startNew() {
     this.sent = false;
-    this.ERcontent = "";
   }
 }

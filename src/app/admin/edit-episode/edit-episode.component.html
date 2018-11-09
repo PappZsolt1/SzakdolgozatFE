@@ -2,7 +2,7 @@
 <div *ngIf="!saved">
     <form (ngSubmit)="addEpisode()" #editEpisodeForm="ngForm">
         <label for="title">Cím:</label>
-        <input type="text" id="title" name="title" required pattern=".*\S.*" [(ngModel)]="episode.title" #title="ngModel"/><br/>
+        <input type="text" id="title" name="title" required pattern="^\S.*\S$|^\S$" [(ngModel)]="episode.title" #title="ngModel"/><br/>
         <label for="releaseDate">Megjelenés dátuma:</label>
         <input type="date" id="releaseDate" name="releaseDate" required appCustomDate="1900,2100" [(ngModel)]="rDate" #releaseDate="ngModel"><br/>
         <label for="length">Hossz:</label>

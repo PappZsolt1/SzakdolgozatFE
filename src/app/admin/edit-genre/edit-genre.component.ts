@@ -51,11 +51,11 @@ export class EditGenreComponent implements OnInit {
   }
 
   addGenre(name: string): void {
-    this.genreService.addGenre(name.trim()).subscribe(() => { this.getAllGenres(); this.create = false; });
+    this.genreService.addGenre(name).subscribe(() => { this.getAllGenres(); this.create = false; });
   }
 
   modifyGenre(): void {
-    this.genreService.modifyGenre(this.genre.id, this.genre.name.trim())
+    this.genreService.modifyGenre(this.genre.id, this.genre.name)
     .subscribe(() => { this.edit = false; this.getAllGenres(); });
   }
 

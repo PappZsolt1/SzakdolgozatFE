@@ -46,11 +46,11 @@ export class EditAgeClassificationComponent implements OnInit {
   }
 
   addAgeClassification(name: string): void {
-    this.ageClassificationService.addAgeClassification(name.trim()).subscribe(() => { this.getAllAgeClassifications(); this.create = false; });
+    this.ageClassificationService.addAgeClassification(name).subscribe(() => { this.getAllAgeClassifications(); this.create = false; });
   }
 
   modifyAgeClassification(): void {
-    this.ageClassificationService.modifyAgeClassification(this.ageClassification.id, this.ageClassification.name.trim())
+    this.ageClassificationService.modifyAgeClassification(this.ageClassification.id, this.ageClassification.name)
       .subscribe(() => { this.edit = false; this.getAllAgeClassifications(); });
   }
 
