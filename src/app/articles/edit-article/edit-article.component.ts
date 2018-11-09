@@ -33,10 +33,14 @@ export class EditArticleComponent implements OnInit {
   }
 
   saveArticle(): void {
+    this.article.title = this.article.title.trim();
+    this.article.content = this.article.content.trim();
     this.articleService.saveArticle(this.article).subscribe(() => this.saved = true);
   }
 
   publishArticle(): void {
+    this.article.title = this.article.title.trim();
+    this.article.content = this.article.content.trim();
     this.articleService.publishArticle(this.article).subscribe(() => this.published = true);
   }
 

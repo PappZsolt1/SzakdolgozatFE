@@ -12,7 +12,7 @@
         </select><br/>
         <label>Hossz:</label>
         <input type="number" id="hour" name="hour" required appCustomMin="0" appCustomMax="100" [(ngModel)]="hours" #hour="ngModel"/><span>óra</span>
-        <input type="number" id="minute" name="minute" required appCustomMin="0" appCustomMax="60" [(ngModel)]="minutes" #minute="ngModel"/><span>perc</span>
+        <input type="number" id="minute" name="minute" required appCustomMin="0" appCustomMax="60" [(ngModel)]="minutes" #minute="ngModel"/><span>perc</span><br/>
         <label for="ageClassification">Korbesorolás:</label>
         <select name="ageClassification" id="ageClassification" required [(ngModel)]="movie.ageClassification" #ageClassification="ngModel">
           <option *ngFor="let a of ageClassifications" [ngValue]="a">{{a.name}}</option>

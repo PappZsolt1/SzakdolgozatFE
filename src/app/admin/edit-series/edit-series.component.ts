@@ -33,6 +33,7 @@ export class EditSeriesComponent implements OnInit {
   }
 
   addSeries(): void {
+    this.series.title = this.series.title.trim();
     this.seriesService.addSeries(this.series).subscribe(() => this.saved = true);
   }
 

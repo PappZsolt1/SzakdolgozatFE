@@ -1,8 +1,8 @@
 <div *ngIf=true>
   <div *ngIf="!sent">
-    <form (ngSubmit)="addErrorReport(content.value)" #newErrorForm="ngForm">
+    <form (ngSubmit)="addErrorReport()" #newErrorForm="ngForm">
       <label for="content">Hiba leírása:</label><br/>
-      <textarea rows="8" cols="70" id="content" name="content" required maxlength="20000" pattern="(.|\s)*\S(.|\s)*" ngModel #content></textarea><br/>
+      <textarea rows="8" cols="70" id="content" name="content" required maxlength="20000" pattern="(.|\s)*\S(.|\s)*" [(ngModel)]="ERcontent" #content></textarea><br/>
       <button type="submit" [disabled]="!newErrorForm.form.valid">Elküld</button>
     </form>
   </div>

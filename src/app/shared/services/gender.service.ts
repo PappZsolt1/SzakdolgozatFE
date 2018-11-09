@@ -13,7 +13,7 @@ const httpOptions = {
 @Injectable()
 export class GenderService {
 
-  genderUrl = "http://localhost:8080/gender1";
+  genderUrl = "http://localhost:8080/gender";
 
   constructor(private http: HttpClient) { }
 
@@ -39,6 +39,11 @@ export class GenderService {
 
   deleteGender(id: number): Observable<Gender> {
     return this.http.delete<Gender>(this.genderUrl + "/" + id)
+    .pipe(catchError(errorHandler));
+  }
+
+  canBeDeleted(id: number): Observable<boolean> {
+    return this.http.get<boolean>(this.genderUrl + "/delete/" + id)
     .pipe(catchError(errorHandler));
   }
 }

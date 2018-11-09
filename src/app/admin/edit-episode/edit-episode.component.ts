@@ -28,6 +28,7 @@ export class EditEpisodeComponent implements OnInit {
   addEpisode(): void {
     this.episode.releaseDate = dateFormatter(this.rDate);
     this.episode.eLength = lengthFormatter(this.hours, this.minutes);
+    this.episode.title = this.episode.title.trim();
     this.episodeService.addEpisode(this.episode).subscribe(() => this.saved = true);
   }
 

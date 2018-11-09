@@ -11,7 +11,7 @@ import { Topic } from '../shared/topic.model';
 })
 export class NewTopicComponent implements OnInit {
 
-  topic: Topic = { id: null, title: null, description: null, createDate: null, comments: null};
+  topic: Topic = { id: null, title: null, description: null, createDate: null, comments: null };
 
   created = false;
 
@@ -21,6 +21,8 @@ export class NewTopicComponent implements OnInit {
   }
 
   addTopic(): void {
+    this.topic.title = this.topic.title.trim();
+    this.topic.description = this.topic.description.trim();
     this.topicService.addTopic(this.topic).subscribe(() => this.created = true);
   }
 

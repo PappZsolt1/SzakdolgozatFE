@@ -16,6 +16,7 @@ export class EditGenderComponent implements OnInit {
   gender: Gender = { id: null, name: null };
   create = false;
   edit = false;
+  error = false;
 
   constructor(
     private router: Router,
@@ -50,20 +51,29 @@ export class EditGenderComponent implements OnInit {
   }
 
   addGender(name: string): void {
-    this.genderService.addGender(name).subscribe(() => { this.getAllGenders(); this.create = false; });
+    this.genderService.addGender(name.trim()).subscribe(() => { this.getAllGenders(); this.create = false; });
   }
 
   modifyGender(): void {
-    this.genderService.modifyGender(this.gender.id, this.gender.name)
+    this.genderService.modifyGender(this.gender.id, this.gender.name.trim())
     .subscribe(() => { this.edit = false; this.getAllGenders(); });
   }
 
   deleteGender(id: number): void {
-    let answer = confirm("Biztosan törli?");
-    if (answer) {
-      this.genderService.deleteGender(id)
-      .subscribe(() => { this.getAllGenders(); if(this.gender.id == id) this.edit = false; });
-    }
+    let removable = false;
+    this.genderService.canBeDeleted(id).subscribe(r => {
+      removable = r;
+      if (removable) {
+        let answer = confirm("Biztosan törli?");
+        if (answer) {
+          this.genderService.deleteGender(id)
+            .subscribe(() => { this.getAllGenders(); if (this.gender.id == id) this.edit = false; });
+        }
+      } else {
+        this.error = true;
+        setTimeout(() => { this.error = false; }, 5000);
+      }
+    });
   }
 
   goBack() {

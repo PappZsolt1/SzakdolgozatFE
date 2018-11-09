@@ -10,8 +10,7 @@ import { dateFormatter } from '../shared/date-formatter';
 @Component({
   selector: 'app-actor',
   templateUrl: './edit-actor.component.html',
-  styleUrls: ['./edit-actor.component.css'],
-  providers: [ActorService, GenderService]
+  styleUrls: ['./edit-actor.component.css']
 })
 export class EditActorComponent implements OnInit {
 
@@ -33,10 +32,16 @@ export class EditActorComponent implements OnInit {
 
   addActor(): void {
     this.actor.birthDate = dateFormatter(this.bDate);
+    this.actor.name = this.actor.name.trim();
+    this.actor.birthPlace = this.actor.birthPlace.trim();
+    this.actor.bio = this.actor.bio.trim();
     this.actorService.addActor(this.actor).subscribe(() => this.saved = true);
   }
 
   modifyActor(): void {
+    this.actor.name = this.actor.name.trim();
+    this.actor.birthPlace = this.actor.birthPlace.trim();
+    this.actor.bio = this.actor.bio.trim();
     this.actorService.modifyActor(this.actor).subscribe();
   }
 

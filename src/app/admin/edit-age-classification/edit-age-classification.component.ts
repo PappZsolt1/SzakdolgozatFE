@@ -15,7 +15,7 @@ export class EditAgeClassificationComponent implements OnInit {
   ageClassification: AgeClassification = { id: null, name: null };
   create = false;
   edit = false;
-  removable = false;
+  error = false;
 
   constructor(private location: Location, private ageClassificationService: AgeClassificationService) { }
 
@@ -31,7 +31,6 @@ export class EditAgeClassificationComponent implements OnInit {
     this.edit = true;
     this.ageClassification.id = id;
     this.ageClassification.name = name;
-    this.canBeDeleted();
   }
 
   cancelCreate() {
@@ -40,7 +39,6 @@ export class EditAgeClassificationComponent implements OnInit {
 
   cancelEdit() {
     this.edit = false;
-    this.removable = false;
   }
 
   getAllAgeClassifications(): void {
@@ -48,24 +46,29 @@ export class EditAgeClassificationComponent implements OnInit {
   }
 
   addAgeClassification(name: string): void {
-    this.ageClassificationService.addAgeClassification(name).subscribe(() => { this.getAllAgeClassifications(); this.create = false; });
+    this.ageClassificationService.addAgeClassification(name.trim()).subscribe(() => { this.getAllAgeClassifications(); this.create = false; });
   }
 
   modifyAgeClassification(): void {
-    this.ageClassificationService.modifyAgeClassification(this.ageClassification.id, this.ageClassification.name)
-    .subscribe(() => { this.edit = false; this.getAllAgeClassifications(); });
+    this.ageClassificationService.modifyAgeClassification(this.ageClassification.id, this.ageClassification.name.trim())
+      .subscribe(() => { this.edit = false; this.getAllAgeClassifications(); });
   }
 
   deleteAgeClassification(id: number): void {
-    let answer = confirm("Biztosan törli?");
-    if (answer) {
-      this.ageClassificationService.deleteAgeClassification(id)
-      .subscribe(() => { this.getAllAgeClassifications(); if(this.ageClassification.id == id) this.edit = false; });
-    }
-  }
-
-  canBeDeleted(): void {
-    this.ageClassificationService.canBeDeleted(this.ageClassification.id).subscribe(r => this.removable = r);
+    let removable = false;
+    this.ageClassificationService.canBeDeleted(id).subscribe(r => {
+      removable = r;
+      if (removable) {
+        let answer = confirm("Biztosan törli?");
+        if (answer) {
+          this.ageClassificationService.deleteAgeClassification(id)
+            .subscribe(() => { this.getAllAgeClassifications(); if (this.ageClassification.id == id) this.edit = false; });
+        }
+      } else {
+        this.error = true;
+        setTimeout(() => { this.error = false; }, 5000);
+      }
+    });
   }
 
   goBack() {

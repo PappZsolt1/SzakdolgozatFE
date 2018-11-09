@@ -17,6 +17,6 @@ export class ErrorPageComponent implements OnInit {
   }
 
   close(): void {
-    this.router.navigate([{ outlets: { error: null }}]);
+    this.router.navigate([{ outlets: { error: null }}], { replaceUrl: true });
   }
 }

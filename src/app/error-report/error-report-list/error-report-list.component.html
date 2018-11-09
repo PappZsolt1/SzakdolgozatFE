@@ -5,7 +5,7 @@
     <div>
         <ul>
             <li *ngFor="let e of errorReports">
-                <span>{{e.id}} {{e.sendingDate}} {{e.resolved}}</span>
+                <span>{{e.id}} </span><span>{{e.sendingDate}}</span>
                 <div class="multiline">{{e.content}}</div>
                 <div *ngIf="e.resolved == false">
                     <label>Hiba nincs megoldva</label>

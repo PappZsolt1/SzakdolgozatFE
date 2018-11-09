@@ -38,6 +38,7 @@ export class EditMovieComponent implements OnInit {
 
   addMovie(): void {
     this.movie.mLength = lengthFormatter(this.hours, this.minutes);
+    this.movie.title = this.movie.title.trim();
     this.movieService.addMovie(this.movie).subscribe(() => this.saved = true);
   }
 

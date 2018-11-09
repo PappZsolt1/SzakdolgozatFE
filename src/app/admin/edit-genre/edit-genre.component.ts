@@ -16,6 +16,7 @@ export class EditGenreComponent implements OnInit {
   genre: Genre = { id: null, name: null };
   create = false;
   edit = false;
+  error = false;
 
   constructor(
     private router: Router,
@@ -50,20 +51,29 @@ export class EditGenreComponent implements OnInit {
   }
 
   addGenre(name: string): void {
-    this.genreService.addGenre(name).subscribe(() => { this.getAllGenres(); this.create = false; });
+    this.genreService.addGenre(name.trim()).subscribe(() => { this.getAllGenres(); this.create = false; });
   }
 
   modifyGenre(): void {
-    this.genreService.modifyGenre(this.genre.id, this.genre.name)
+    this.genreService.modifyGenre(this.genre.id, this.genre.name.trim())
     .subscribe(() => { this.edit = false; this.getAllGenres(); });
   }
 
   deleteGenre(id: number): void {
-    let answer = confirm("Biztosan törli?");
-    if (answer) {
-      this.genreService.deleteGenre(id)
-      .subscribe(() => { this.getAllGenres(); if(this.genre.id == id) this.edit = false; });
-    }
+    let removable = false;
+    this.genreService.canBeDeleted(id).subscribe(r => {
+      removable = r;
+      if (removable) {
+        let answer = confirm("Biztosan törli?");
+        if (answer) {
+          this.genreService.deleteGenre(id)
+            .subscribe(() => { this.getAllGenres(); if (this.genre.id == id) this.edit = false; });
+        }
+      } else {
+        this.error = true;
+        setTimeout(() => { this.error = false; }, 5000);
+      }
+    });
   }
 
   goBack() {

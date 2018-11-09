@@ -13,7 +13,7 @@ const httpOptions = {
 @Injectable()
 export class GenreService {
 
-  genreUrl = "http://localhost:8080/genr";
+  genreUrl = "http://localhost:8080/genre";
 
   constructor(private http: HttpClient) { }
 
@@ -39,6 +39,11 @@ export class GenreService {
 
   deleteGenre(id: number): Observable<Genre> {
     return this.http.delete<Genre>(this.genreUrl + "/" + id)
+    .pipe(catchError(errorHandler));
+  }
+
+  canBeDeleted(id: number): Observable<boolean> {
+    return this.http.get<boolean>(this.genreUrl + "/delete/" + id)
     .pipe(catchError(errorHandler));
   }
 }
