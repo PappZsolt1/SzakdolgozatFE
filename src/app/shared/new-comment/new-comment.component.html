@@ -1,6 +1,6 @@
 <form (ngSubmit)="addComment()" #newCommentForm="ngForm">
     <label for="content">Hozzászólás:</label><br/>
-    <textarea rows="5" cols="70" id="content" name="content" required maxlength="10000" pattern="^\S(.|\s)*\S$|^\S$" [(ngModel)]="comment.content" #content="ngModel"></textarea><br/>
+    <textarea rows="5" cols="70" id="content" name="content" required maxlength="60000" pattern="^\S(.|\s)*\S$|^\S$" [(ngModel)]="comment.content" #content="ngModel"></textarea><br/>
     <button type="submit" [disabled]="!newCommentForm.form.valid">Küldés</button>
 </form>
 <button type="button" (click)="goBack()">Vissza</button>

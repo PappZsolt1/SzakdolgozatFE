@@ -2,10 +2,10 @@
 <div *ngIf="!saved">
     <form (ngSubmit)="addMovie()" #editMovieForm="ngForm">
         <label for="title">Cím:</label>
-        <input type="text" id="title" name="title" required pattern="^\S.*\S$|^\S$" [(ngModel)]="movie.title" #title="ngModel"/><br/>
+        <input type="text" id="title" name="title" required maxlength="200" pattern="^\S.*\S$|^\S$" [(ngModel)]="movie.title" #title="ngModel"/><br/>
         kép
         <label for="releaseYear">Megjelenés éve:</label>
-        <input type="number" id="releaseYear" name="releaseYear" required appCustomMin="1900" appCustomMax="2100" [(ngModel)]="movie.releaseYear" #releaseYear="ngModel"/><br/>
+        <input type="number" id="releaseYear" name="releaseYear" required appCustomMin="1850" appCustomMax="2100" [(ngModel)]="movie.releaseYear" #releaseYear="ngModel"/><br/>
         <label for="genre">Műfaj:</label>
         <select name="genre" id="genre" required [(ngModel)]="movie.genre" #genre="ngModel">
           <option *ngFor="let g of genres" [ngValue]="g">{{g.name}}</option>
@@ -18,7 +18,7 @@
           <option *ngFor="let a of ageClassifications" [ngValue]="a">{{a.name}}</option>
         </select><br/>
         <label for="budget">Költségvetés:</label>
-        <input type="number" id="budget" name="budget" required appCustomMin="0" [(ngModel)]="movie.budget" #budget="ngModel"/><span>$</span><br/>
+        <input type="number" id="budget" name="budget" required appCustomMin="0" appCustomMax="1000000000" [(ngModel)]="movie.budget" #budget="ngModel"/><span>$</span><br/>
         <button type="submit" [disabled]="!editMovieForm.form.valid">Mentés</button>
         színészek hozzáadása
       </form>

@@ -2,7 +2,7 @@
   <div *ngIf="!sent">
     <form (ngSubmit)="addErrorReport(content.value)" #newErrorForm="ngForm">
       <label for="content">Hiba leírása:</label><br/>
-      <textarea rows="8" cols="70" id="content" name="content" required maxlength="20000" pattern="^\S(.|\s)*\S$|^\S$" ngModel #content></textarea><br/>
+      <textarea rows="8" cols="70" id="content" name="content" required maxlength="60000" pattern="^\S(.|\s)*\S$|^\S$" ngModel #content></textarea><br/>
       <button type="submit" [disabled]="!newErrorForm.form.valid">Elküld</button>
     </form>
   </div>
