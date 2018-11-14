@@ -2,7 +2,7 @@
 <div  *ngIf="!saved && rules">
   <form (ngSubmit)="modifyRules()" #editRulesForm="ngForm">
     <label for="content">Szabályzat:</label><br/>
-      <textarea rows="10" cols="80" id="content" name="content" required maxlength="60000" pattern="^\S(?=(.|\s)*\S$)|^\S$" [(ngModel)]="rules.content" #content="ngModel"></textarea><br/>
+      <textarea rows="10" cols="70" id="content" name="content" required maxlength="60000" appCustomText [(ngModel)]="rules.content" #content="ngModel"></textarea><br/>
       <button type="submit" [disabled]="!editRulesForm.form.valid">Mentés</button>
   </form>
 </div>
@@ -10,6 +10,3 @@
   <label>Elmentve!</label>
 </div>
 <button type="button" (click)="goBack()">Vissza</button>
-{{reg.test(rules.content)}}
-{{reg2.test(rules.content)}}
-{{rules.content.length}}

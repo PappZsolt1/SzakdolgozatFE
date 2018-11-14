@@ -26,12 +26,14 @@ import { CustomMaxDirective } from './shared/custom-max.directive';
 import { CustomDateDirective } from './shared/custom-date.directive';
 import { EditRulesComponent } from './edit-rules/edit-rules.component';
 import { RulesService } from '../shared/services/rules.service';
+import { SharedDirectiveModule } from '../shared/shared-directive.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    SharedDirectiveModule
   ],
   declarations: [
     AdminShellComponent,

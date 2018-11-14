@@ -13,8 +13,6 @@ export class EditRulesComponent implements OnInit {
 
   rules: Rules;
   saved = false;
-  reg = /^\S/;
-  reg2 = /\S$/;
 
   constructor(private location: Location, private rulesService: RulesService) { }
 

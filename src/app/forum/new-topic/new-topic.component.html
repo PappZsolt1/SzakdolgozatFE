@@ -2,9 +2,9 @@
 <div *ngIf="!created">
     <form (ngSubmit)="addTopic()" #newTopicForm="ngForm">
         <label for="title">Cím:</label><br />
-        <input type="text" id="title" name="title" required maxlength="200" pattern="^\S.*\S$|^\S$" [(ngModel)]="topic.title" #title="ngModel"><br />
+        <input type="text" id="title" name="title" required maxlength="200" appCustomText [(ngModel)]="topic.title" #title="ngModel"><br />
         <label for="description">Leírás:</label><br />
-        <textarea rows="5" cols="70" id="description" name="description" required maxlength="60000" pattern="^\S(.|\s)*\S$|^\S$" [(ngModel)]="topic.description" #description="ngModel"></textarea><br />
+        <textarea rows="5" cols="70" id="description" name="description" required maxlength="60000" appCustomText [(ngModel)]="topic.description" #description="ngModel"></textarea><br />
         <button type="submit" [disabled]="!newTopicForm.form.valid">Létrehozás</button>
         <button type="button" (click)="goBack()">Vissza</button>
     </form>

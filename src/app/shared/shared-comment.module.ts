@@ -21,4 +21,4 @@ import { NewCommentComponent } from './new-comment/new-comment.component';
     NewCommentComponent
   ]
 })
-export class SharedModule { }
+export class SharedCommentModule { }

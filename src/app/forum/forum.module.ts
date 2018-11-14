@@ -9,13 +9,15 @@ import { ForumShellComponent } from './forum-shell/forum-shell.component';
 import { TopicService } from './shared/topic.service';
 import { CommentService } from '../shared/services/comment.service';
 import { RulesService } from '../shared/services/rules.service';
-import { SharedModule } from '../shared/shared.module';
+import { SharedCommentModule } from '../shared/shared-comment.module';
+import { SharedDirectiveModule } from '../shared/shared-directive.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    SharedModule,
-    ForumRoutingModule
+    SharedCommentModule,
+    ForumRoutingModule,
+    SharedDirectiveModule
   ],
   declarations: [
     TopicListComponent,

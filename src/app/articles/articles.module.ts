@@ -10,14 +10,16 @@ import { ArticlesShellComponent } from './articles-shell/articles-shell.componen
 import { ArticleService } from './shared/article.service';
 import { CommentService } from '../shared/services/comment.service';
 import { SavedArticleListComponent } from './saved-article-list/saved-article-list.component';
-import { SharedModule } from '../shared/shared.module';
+import { SharedCommentModule } from '../shared/shared-comment.module';
+import { SharedDirectiveModule } from '../shared/shared-directive.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    SharedModule,
-    ArticlesRoutingModule
+    SharedCommentModule,
+    ArticlesRoutingModule,
+    SharedDirectiveModule
   ],
   declarations: [
     ArticleListComponent,

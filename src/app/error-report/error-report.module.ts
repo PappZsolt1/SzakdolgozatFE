@@ -7,12 +7,14 @@ import { NewErrorReportComponent } from './new-error-report/new-error-report.com
 import { ErrorReportListComponent } from './error-report-list/error-report-list.component';
 import { ErrorReportShellComponent } from './error-report-shell/error-report-shell.component';
 import { ErrorReportService } from './shared/error-report.service';
+import { SharedDirectiveModule } from '../shared/shared-directive.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    ErrorReportRoutingModule
+    ErrorReportRoutingModule,
+    SharedDirectiveModule
   ],
   declarations: [
     NewErrorReportComponent,

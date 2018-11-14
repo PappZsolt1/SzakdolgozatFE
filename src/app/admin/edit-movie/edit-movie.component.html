@@ -2,7 +2,7 @@
 <div *ngIf="!saved">
     <form (ngSubmit)="addMovie()" #editMovieForm="ngForm">
         <label for="title">Cím:</label>
-        <input type="text" id="title" name="title" required maxlength="200" pattern="^\S.*\S$|^\S$" [(ngModel)]="movie.title" #title="ngModel"/><br/>
+        <input type="text" id="title" name="title" required maxlength="200" appCustomText [(ngModel)]="movie.title" #title="ngModel"/><br/>
         kép
         <label for="releaseYear">Megjelenés éve:</label>
         <input type="number" id="releaseYear" name="releaseYear" required appCustomMin="1850" appCustomMax="2100" [(ngModel)]="movie.releaseYear" #releaseYear="ngModel"/><br/>

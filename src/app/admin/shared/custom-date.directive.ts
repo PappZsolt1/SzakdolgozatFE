@@ -4,7 +4,6 @@ import { NG_VALIDATORS, Validator, AbstractControl, ValidatorFn } from '@angular
 @Directive({
   selector: '[appCustomDate]',
   providers: [{provide: NG_VALIDATORS, useExisting: CustomDateDirective, multi: true}]
-
 })
 export class CustomDateDirective implements Validator {
 

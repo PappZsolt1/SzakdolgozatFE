@@ -10,12 +10,12 @@ import { SeriesComponent } from './series/series.component';
 import { ActorService } from '../shared/services/actor.service';
 import { MovieService } from '../shared/services/movie.service';
 import { SeriesService } from '../shared/services/series.service';
-import { SharedModule } from '../shared/shared.module';
+import { SharedCommentModule } from '../shared/shared-comment.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    SharedModule,
+    SharedCommentModule,
     SearchRoutingModule
   ],
   declarations: [
