@@ -3,8 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { Rules } from './rules.model';
-import { errorHandler } from '../../shared/http-error-handler';
+import { Rules } from '../models/rules.model';
+import { errorHandler } from '../http-error-handler';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })

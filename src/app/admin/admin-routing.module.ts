@@ -11,6 +11,7 @@ import { EditMovieComponent } from './edit-movie/edit-movie.component';
 import { EditSeasonComponent } from './edit-season/edit-season.component';
 import { EditSeriesComponent } from './edit-series/edit-series.component';
 import { ToolsComponent } from './tools/tools.component';
+import { EditRulesComponent } from './edit-rules/edit-rules.component';
 
 const adminRoutes: Routes = [
   {
@@ -24,7 +25,8 @@ const adminRoutes: Routes = [
       { path: 'edit-genre', component: EditGenreComponent },
       { path: 'edit-movie', component: EditMovieComponent },
       { path: 'edit-season', component: EditSeasonComponent },
-      { path: 'edit-series', component: EditSeriesComponent }
+      { path: 'edit-series', component: EditSeriesComponent },
+      { path: 'edit-rules', component: EditRulesComponent }
     ]
   }
 ];

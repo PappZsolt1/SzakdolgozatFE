@@ -24,6 +24,8 @@ import { ToolsComponent } from './tools/tools.component';
 import { CustomMinDirective } from './shared/custom-min.directive';
 import { CustomMaxDirective } from './shared/custom-max.directive';
 import { CustomDateDirective } from './shared/custom-date.directive';
+import { EditRulesComponent } from './edit-rules/edit-rules.component';
+import { RulesService } from '../shared/services/rules.service';
 
 @NgModule({
   imports: [
@@ -44,7 +46,8 @@ import { CustomDateDirective } from './shared/custom-date.directive';
     ToolsComponent,
     CustomMinDirective,
     CustomMaxDirective,
-    CustomDateDirective
+    CustomDateDirective,
+    EditRulesComponent
   ],
   providers: [
     ActorService,
@@ -54,7 +57,8 @@ import { CustomDateDirective } from './shared/custom-date.directive';
     EpisodeService,
     GenderService,
     GenreService,
-    SeasonService
+    SeasonService,
+    RulesService
   ]
 })
 export class AdminModule { }

@@ -8,7 +8,7 @@ import { ForumRoutingModule } from './forum-routing.module';
 import { ForumShellComponent } from './forum-shell/forum-shell.component';
 import { TopicService } from './shared/topic.service';
 import { CommentService } from '../shared/services/comment.service';
-import { RulesService } from './shared/rules.service';
+import { RulesService } from '../shared/services/rules.service';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
