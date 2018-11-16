@@ -23,6 +23,11 @@ export class SeriesService {
     .pipe(catchError(errorHandler));
   }
 
+  getResultSeries(title: string): Observable<Series[]> {
+    return this.http.get<Series[]>(this.seriesUrl + "/search/" + title)
+    .pipe(catchError(errorHandler));
+  }
+
   addSeries(series: Series): Observable<Series> {
     return this.http.post<Series>(this.seriesUrl, series)
     .pipe(catchError(errorHandler));

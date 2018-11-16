@@ -29,7 +29,7 @@ export class EditArticleComponent implements OnInit {
     let id = +this.route.snapshot.paramMap.get("id");
     if (id) {
       this.articleService.getArticle(id).subscribe(r => { this.article = r; this.modify = true; });
-    }    
+    }
   }
 
   saveArticle(): void {

@@ -2,7 +2,8 @@
   <div *ngIf=true>
     <label>ID:</label>
     <label>{{movie.id}}</label>
-  </div><br/>
+    <button [routerLink]="['/admin/edit-movie', { id: movie.id }]">Szerkesztés</button>
+  </div>
   <label>Cím:</label>
   <label>{{movie.title}}</label><br/>
   kép
@@ -12,13 +13,14 @@
   <label>Megjelenés éve:</label>
   <label>{{movie.releaseYear}}</label><br/>
   <label>Műfaj:</label>
-  <label>{{movie.genre}}</label><br/>
+  <label>{{movie.genre.name}}</label><br/>
   <label>Hossz:</label>
-  <label>{{movie.length}}</label><br/>
+  <label>{{movie.mLength}}</label><br/>
   <label>Korbesorolás:</label>
-  <label>{{movie.ageClassification}}</label><br/>
+  <label>{{movie.ageClassification.name}}</label><br/>
   <label>Költségvetés:</label>
-  <label>{{movie.budget}}</label><br/>
+  <label>{{movie.budget}} $</label><br/>
   <label>Színészek:</label>
   <label>lista</label>
 </div>
+<button type="button" (click)="goBack()">Vissza</button>

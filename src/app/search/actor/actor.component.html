@@ -2,19 +2,21 @@
   <div *ngIf=true>
     <label>ID:</label>
     <label>{{actor.id}}</label>
-  </div><br/>
+    <button [routerLink]="['/admin/edit-actor', { id: actor.id }]">Szerkesztés</button>
+  </div>
   <label>Név:</label>
   <label>{{actor.name}}</label><br/>
   <label>Nem:</label>
-  <label>{{actor.gender}}</label><br/>
+  <label>{{actor.gender.name}}</label><br/>
   <label>Születés helye:</label>
   <label>{{actor.birthPlace}}</label><br/>
   <label>Születés ideje:</label>
   <label>{{actor.birthDate}}</label><br/>
   <label>Élettörténet:</label><br/>
-  <div class="multiline">{{actor.bio}}</div><br/>
+  <div class="multiline">{{actor.bio}}</div>
   <label>Filmek, melyekben szerepel:</label>
   <label>lista</label><br/>
   <label>Sorozatok, melyekben szerepel:</label>
   <label>lista</label>
 </div>
+<button type="button" (click)="goBack()">Vissza</button>

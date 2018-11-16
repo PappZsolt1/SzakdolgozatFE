@@ -1,10 +1,16 @@
-<h2>Színész létrehozása</h2>
+<div *ngIf="!modify">
+    <h2>Színész létrehozása</h2>
+</div>
+<div *ngIf="modify">
+    <h2>Színész módosítása</h2><br/>
+    <label>ID: {{actor.id}}</label>
+</div>
 <div *ngIf="!saved">
-    <form (ngSubmit)="addActor()" #editActorForm="ngForm">
+    <form #editActorForm="ngForm">
         <label for="name">Név:</label>
         <input type="text" id="name" name="name" required maxlength="200" appCustomText [(ngModel)]="actor.name" #name="ngModel"><br/>
         <label for="gender">Nem:</label>
-        <select name="gender" id="gender" required [(ngModel)]="actor.gender" #gender="ngModel">
+        <select name="gender" id="gender" [compareWith]="compareGenders" required [(ngModel)]="actor.gender" #gender="ngModel">
             <option *ngFor="let g of genders" [ngValue]="g">{{g.name}}</option>
         </select><br/>
         <label for="birthPlace">Születési hely:</label>
@@ -13,7 +19,12 @@
         <input type="date" id="birthDate" name="birthDate" required appCustomDate="1750,2100" [(ngModel)]="bDate" #birthDate="ngModel"><br/>
         <label for="bio">Élettörténet:</label><br/>
         <textarea rows="10" cols="70" id="bio" name="bio" required maxlength="60000" appCustomText [(ngModel)]="actor.bio" #bio="ngModel"></textarea><br/>
-        <button type="submit" [disabled]="!editActorForm.form.valid">Mentés</button>
+        <div *ngIf="!modify">
+            <button type="button" (click)="addActor()" [disabled]="!editActorForm.form.valid">Mentés</button>
+        </div>
+        <div *ngIf="modify">
+            <button type="button" (click)="modifyActor()" [disabled]="!editActorForm.form.valid">Módosítás</button>
+        </div>
         filmek, epizódok megadása.....
     </form>
 </div>

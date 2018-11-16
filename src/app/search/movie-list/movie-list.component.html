@@ -1,0 +1,12 @@
+<h2>Talált filmek</h2>
+<div *ngIf="movies && movies.length > 0">
+  <ul>
+      <li *ngFor="let m of movies">
+          <a [routerLink]="['../movie', m.id]"><span>{{m.title}}</span></a>
+      </li>
+  </ul>
+</div>
+<div *ngIf="movies && movies.length == 0">
+    <label>Nincs találat.</label>
+  </div>
+<button type="button" (click)="goBack()">Vissza</button>

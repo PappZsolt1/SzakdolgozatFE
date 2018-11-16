@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 import { SeriesService } from '../../shared/services/series.service';
 import { Series } from '../../shared/models/series.model';
@@ -19,21 +20,34 @@ export class EditSeriesComponent implements OnInit {
   ageClassifications: AgeClassification[];
   genres: Genre[];
   saved = false;
+  modify = false;
 
   constructor(
     private location: Location,
+    private route: ActivatedRoute,
     private seriesService: SeriesService,
     private ageClassificationService: AgeClassificationService,
     private genreService: GenreService
     ) { }
 
   ngOnInit() {
-    this.getAllAgeClassifications();
-    this.getAllGenres();
+    let id = +this.route.snapshot.paramMap.get("id");
+    if (id) {
+      this.seriesService.getSeries(id).subscribe(r => { this.series = r;
+      this.modify = true; this.getAllGenres(); this.getAllAgeClassifications();
+      });
+    } else {
+      this.getAllAgeClassifications();
+      this.getAllGenres();
+    }
   }
 
   addSeries(): void {
     this.seriesService.addSeries(this.series).subscribe(() => this.saved = true);
+  }
+
+  modifySeries(): void {
+    this.seriesService.modifySeries(this.series).subscribe(() => this.saved = true);
   }
 
   getAllAgeClassifications(): void {
@@ -42,6 +56,14 @@ export class EditSeriesComponent implements OnInit {
 
   getAllGenres(): void {
     this.genreService.getAllGenres().subscribe(r => this.genres = r);
+  }
+
+  compareGenres(g1: Genre, g2: Genre): boolean {
+    return g1 && g2 ? g1.id === g2.id : g1 === g2;
+  }
+
+  compareAgeClassifications(a1: AgeClassification, a2: AgeClassification): boolean {
+    return a1 && a2 ? a1.id === a2.id : a1 === a2;
   }
 
   goBack() {

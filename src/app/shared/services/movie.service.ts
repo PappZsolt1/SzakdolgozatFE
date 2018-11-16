@@ -28,6 +28,11 @@ export class MovieService {
     .pipe(catchError(errorHandler));
   }
 
+  getResultMovies(title: string): Observable<Movie[]> {
+    return this.http.get<Movie[]>(this.movieUrl + "/search/" + title)
+    .pipe(catchError(errorHandler));
+  }
+
   modifyMovie(movie: Movie): Observable<Movie> {
     return this.http.put<Movie>(this.movieUrl, movie)
     .pipe(catchError(errorHandler));

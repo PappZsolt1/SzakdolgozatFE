@@ -1,8 +1,9 @@
-<div *ngIf=true>
+<div *ngIf="series">
   <div *ngIf=true>
     <label>ID:</label>
     <label>{{series.id}}</label>
-  </div><br />
+    <button [routerLink]="['/admin/edit-series', { id: series.id }]">Szerkesztés</button>
+  </div>
   <label>Cím:</label>
   <label>{{series.title}}</label><br />
   kép
@@ -12,9 +13,10 @@
   <label>Megjelenés éve:</label>
   <label>{{series.releaseYear}}</label><br />
   <label>Műfaj:</label>
-  <label>{{series.genre}}</label><br />
+  <label>{{series.genre.name}}</label><br />
   <label>Korbesorolás:</label>
-  <label>{{series.ageClassification}}</label><br/>
+  <label>{{series.ageClassification.name}}</label><br/>
   <label>Évadok:</label>
   <label>lista</label>
 </div>
+<button type="button" (click)="goBack()">Vissza</button>

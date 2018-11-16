@@ -11,19 +11,27 @@ import { ActorService } from '../shared/services/actor.service';
 import { MovieService } from '../shared/services/movie.service';
 import { SeriesService } from '../shared/services/series.service';
 import { SharedCommentModule } from '../shared/shared-comment.module';
+import { ActorListComponent } from './actor-list/actor-list.component';
+import { MovieListComponent } from './movie-list/movie-list.component';
+import { SeriesListComponent } from './series-list/series-list.component';
+import { SharedDirectiveModule } from '../shared/shared-directive.module';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedCommentModule,
-    SearchRoutingModule
+    SearchRoutingModule,
+    SharedDirectiveModule
   ],
   declarations: [
     SearchCriteriaComponent,
     SearchShellComponent,
     ActorComponent,
     MovieComponent,
-    SeriesComponent
+    SeriesComponent,
+    ActorListComponent,
+    MovieListComponent,
+    SeriesListComponent
   ],
   providers: [
     ActorService,

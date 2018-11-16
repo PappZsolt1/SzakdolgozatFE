@@ -1,0 +1,12 @@
+<h2>Talált színészek</h2>
+<div *ngIf="actors && actors.length > 0">
+  <ul>
+      <li *ngFor="let a of actors">
+          <a [routerLink]="['../actor', a.id]"><span>{{a.name}}</span></a>
+      </li>
+  </ul>
+</div>
+<div *ngIf="actors && actors.length == 0">
+  <label>Nincs találat.</label>
+</div>
+<button type="button" (click)="goBack()">Vissza</button>

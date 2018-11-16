@@ -1,0 +1,12 @@
+<h2>Talált sorozatok</h2>
+<div  *ngIf="series && series.length > 0">
+  <ul>
+      <li *ngFor="let s of series">
+          <a [routerLink]="['../series', s.id]"><span>{{s.title}}</span></a>
+      </li>
+  </ul>
+</div>
+<div *ngIf="series && series.length == 0">
+    <label>Nincs találat.</label>
+  </div>
+<button type="button" (click)="goBack()">Vissza</button>

@@ -37,5 +37,8 @@ export class ActorService {
     .pipe(catchError(errorHandler));
   }
 
-  //...
+  getResultActors(name: string): Observable<Actor[]> {
+    return this.http.get<Actor[]>(this.actorUrl + "/search/" + name)
+    .pipe(catchError(errorHandler));
+  }
 }
