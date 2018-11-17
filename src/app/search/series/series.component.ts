@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import  {Location } from '@angular/common';
+import { Location } from '@angular/common';
 
 import { Series } from '../../shared/models/series.model';
 import { SeriesService } from '../../shared/services/series.service';
+import { Season } from '../../shared/models/season.model';
 
 @Component({
   selector: 'app-series',
@@ -13,6 +14,8 @@ import { SeriesService } from '../../shared/services/series.service';
 export class SeriesComponent implements OnInit {
 
   series: Series;
+  show = false;
+  season: Season;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,6 +26,11 @@ export class SeriesComponent implements OnInit {
   ngOnInit() {
     let id = this.route.snapshot.paramMap.get('id');
     this.seriesService.getSeries(+id).subscribe(r => this.series = r);
+  }
+
+  showEpisodes(season: Season) {
+    this.season = season;
+    this.show = true;
   }
 
   goBack() {

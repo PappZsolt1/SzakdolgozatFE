@@ -1,5 +1,5 @@
 <h2>Szabályzat módosítása</h2>
-<div  *ngIf="!saved && rules">
+<div *ngIf="!saved && rules">
   <form (ngSubmit)="modifyRules()" #editRulesForm="ngForm">
     <label for="content">Szabályzat:</label><br/>
       <textarea rows="10" cols="70" id="content" name="content" required maxlength="60000" appCustomText [(ngModel)]="rules.content" #content="ngModel"></textarea><br/>

@@ -22,8 +22,8 @@ export class EpisodeService {
     .pipe(catchError(errorHandler));
   }
 
-  addEpisode(episode: Episode): Observable<Episode> {
-    return this.http.post<Episode>(this.episodeUrl, episode, httpOptions)
+  addEpisode(seasonId: number, episode: Episode): Observable<Episode> {
+    return this.http.post<Episode>(this.episodeUrl + "/" + seasonId, episode, httpOptions)
     .pipe(catchError(errorHandler));
   }
 
@@ -32,8 +32,8 @@ export class EpisodeService {
     .pipe(catchError(errorHandler));
   }
 
-  deleteEpisode(id: number): Observable<Episode> {
-    return this.http.delete<Episode>(this.episodeUrl + "/" + id)
+  deleteEpisode(seasonId: number, id: number): Observable<Episode> {
+    return this.http.delete<Episode>(this.episodeUrl + "/" + seasonId + "/" + id)
     .pipe(catchError(errorHandler));
   }
   
@@ -44,6 +44,11 @@ export class EpisodeService {
 
   changeRating(id: number, rating: number): Observable<Episode> {
     return this.http.put<Episode>(this.episodeUrl + "/rating/" + id, rating)
+    .pipe(catchError(errorHandler));
+  }
+
+  canBeDeleted(id: number): Observable<boolean> {
+    return this.http.get<boolean>(this.episodeUrl + "/delete/" + id)
     .pipe(catchError(errorHandler));
   }
 }

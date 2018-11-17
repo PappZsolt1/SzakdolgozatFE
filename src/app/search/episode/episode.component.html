@@ -1,0 +1,17 @@
+<h2>Epizód</h2>
+<div *ngIf="episode">
+  <div *ngIf=true>
+    <label>ID:</label>
+    <label>{{episode.id}}</label>
+    <button [routerLink]="['/admin/edit-episode', { id: episode.id, seasonId: seasonId }]">Szerkesztés</button>
+  </div>
+  <label>Cím:</label>
+  <label>{{episode.title}}</label><br />
+  <label>Értékelés</label>
+  <label>{{episode.rating}}</label><br />
+  <label>Megjelenés dátuma:</label>
+  <label>{{episode.releaseDate}}</label><br />
+  <label>Hossz:</label>
+  <label>{{episode.eLength}}</label><br />
+</div>
+<button type="button" (click)="goBack()">Vissza</button>

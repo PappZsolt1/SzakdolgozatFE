@@ -1,6 +1,14 @@
-<h2>Epizód létrehozása</h2>
-<div *ngIf="!saved">
-    <form (ngSubmit)="addEpisode()" #editEpisodeForm="ngForm">
+<div *ngIf="!modify">
+    <h2>Epizód létrehozása</h2>
+</div>
+<div *ngIf="modify">
+    <h2>Epizód módosítása</h2><br/>
+</div>
+<div *ngIf="!saved && !deleted">
+    <form #editEpisodeForm="ngForm">
+        <div *ngIf="modify">
+            <label>ID: {{episode.id}}</label>
+        </div>
         <label for="title">Cím:</label>
         <input type="text" id="title" name="title" required maxlength="200" appCustomText [(ngModel)]="episode.title" #title="ngModel"/><br/>
         <label for="releaseDate">Megjelenés dátuma:</label>
@@ -8,9 +16,27 @@
         <label for="length">Hossz:</label>
         <input type="number" id="hour" name="hour" required appCustomMin="0" appCustomMax="100" [(ngModel)]="hours" #hour="ngModel"/><span>óra</span>
         <input type="number" id="minute" name="minute" required appCustomMin="0" appCustomMax="60" [(ngModel)]="minutes" #minute="ngModel"/><span>perc</span>
-        <button type="submit" [disabled]="!editEpisodeForm.form.valid">Mentés</button>
+        <div *ngIf="!modify">
+            <label for="seasonID">Évad ID:</label>
+            <input type="number" id="seasonID" name="seasonID" required [(ngModel)]="seasonId" #seasonID="ngModel"/><br/>
+            <button type="button" (click)="addEpisode()" [disabled]="!editEpisodeForm.form.valid">Mentés</button>
+        </div>
+        <div *ngIf="modify">
+            <label>Évad ID: {{seasonId}}</label>
+            <button type="button" (click)="modifyEpisode()" [disabled]="!editEpisodeForm.form.valid">Módosítás</button>
+            <button type="button" (click)="deleteEpisode()">Törlés</button>
+        </div>
+        <div *ngIf="error1">
+            <label>A megadott évad ID nem létezik!</label>
+        </div>
+        <div *ngIf="error2">
+            <label>Az epizód nem törölhető, mert színészekkel rendelkezik!</label>
+        </div>
         színészek...
     </form>
+</div>
+<div *ngIf="deleted">
+    <label>Törölve!</label>
 </div>
 <div *ngIf="saved">
     <label>Elmentve!</label>

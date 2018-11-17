@@ -21,6 +21,8 @@ export class EditSeriesComponent implements OnInit {
   genres: Genre[];
   saved = false;
   modify = false;
+  error = false;
+  deleted = false;
 
   constructor(
     private location: Location,
@@ -66,7 +68,27 @@ export class EditSeriesComponent implements OnInit {
     return a1 && a2 ? a1.id === a2.id : a1 === a2;
   }
 
+  deleteSeries(): void {
+    let removable = false;
+    this.seriesService.canBeDeleted(this.series.id).subscribe(r => {
+      removable = r;
+      if (removable) {
+        let answer = confirm("Biztosan törli?");
+        if (answer) {
+          this.seriesService.deleteSeries(this.series.id).subscribe(() => this.deleted = true);
+        }
+      } else {
+        this.error = true;
+        setTimeout(() => { this.error = false; }, 5000);
+      }
+    });
+  }
+
   goBack() {
-    this.location.back();
+    if (!this.deleted) {
+      this.location.back();
+    } else {
+      window.history.go(-2);
+    }
   }
 }

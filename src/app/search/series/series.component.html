@@ -1,3 +1,4 @@
+<h2>Sorozat</h2>
 <div *ngIf="series">
   <div *ngIf=true>
     <label>ID:</label>
@@ -17,6 +18,25 @@
   <label>Korbesorolás:</label>
   <label>{{series.ageClassification.name}}</label><br/>
   <label>Évadok:</label>
-  <label>lista</label>
+  <div *ngIf="series.seasons.length == 0">
+    <label>Még nincsenek évadok hozzáadva.</label>
+  </div>
+  <ul>
+    <li *ngFor="let s of series.seasons">
+      <label (click)="showEpisodes(s)"><span *ngIf="true">ID: {{s.id}} </span>{{s.number}}. évad ({{s.episodes.length}} epizód)</label>
+      <button [routerLink]="['/admin/edit-season', { id: s.id, seriesId: series.id }]" *ngIf="true">Szerkesztés</button>
+    </li>
+  </ul>
+  <div *ngIf="show">
+    <label>{{season.number}}. évad epizódjai:</label>
+    <div *ngIf="season.episodes.length == 0">
+      <label>Még nincsenek epizódok hozzáadva.</label>
+    </div>
+    <ul>
+      <li *ngFor="let e of season.episodes">
+          <a [routerLink]="['../../episode', e.id, { seasonId: season.id }]"><span>{{e.title}}</span></a>
+      </li>
+    </ul>
+  </div>
 </div>
 <button type="button" (click)="goBack()">Vissza</button>

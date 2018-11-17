@@ -10,11 +10,13 @@ import { SeriesComponent } from './series/series.component';
 import { ActorService } from '../shared/services/actor.service';
 import { MovieService } from '../shared/services/movie.service';
 import { SeriesService } from '../shared/services/series.service';
+import { EpisodeService } from '../shared/services/episode.service';
 import { SharedCommentModule } from '../shared/shared-comment.module';
 import { ActorListComponent } from './actor-list/actor-list.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { SeriesListComponent } from './series-list/series-list.component';
 import { SharedDirectiveModule } from '../shared/shared-directive.module';
+import { EpisodeComponent } from './episode/episode.component';
 
 @NgModule({
   imports: [
@@ -31,12 +33,14 @@ import { SharedDirectiveModule } from '../shared/shared-directive.module';
     SeriesComponent,
     ActorListComponent,
     MovieListComponent,
-    SeriesListComponent
+    SeriesListComponent,
+    EpisodeComponent
   ],
   providers: [
     ActorService,
     MovieService,
-    SeriesService
+    SeriesService,
+    EpisodeService
   ]
 })
 export class SearchModule { }

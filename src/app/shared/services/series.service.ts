@@ -18,6 +18,11 @@ export class SeriesService {
     .pipe(catchError(errorHandler));
   }
 
+  checkIfExists(id: number): Observable<boolean> {
+    return this.http.get<boolean>(this.seriesUrl + '/check/' + id)
+    .pipe(catchError(errorHandler));
+  }
+
   getAllSeries(): Observable<Series[]> {
     return this.http.get<Series[]>(this.seriesUrl)
     .pipe(catchError(errorHandler));
@@ -40,6 +45,11 @@ export class SeriesService {
 
   deleteSeries(id: number): Observable<Series> {
     return this.http.delete<Series>(this.seriesUrl + "/" + id)
+    .pipe(catchError(errorHandler));
+  }
+
+  canBeDeleted(id: number): Observable<boolean> {
+    return this.http.get<boolean>(this.seriesUrl + "/delete/" + id)
     .pipe(catchError(errorHandler));
   }
 }

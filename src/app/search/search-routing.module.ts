@@ -9,6 +9,7 @@ import { SeriesComponent } from './series/series.component';
 import { ActorListComponent } from './actor-list/actor-list.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { SeriesListComponent } from './series-list/series-list.component';
+import { EpisodeComponent } from './episode/episode.component';
 
 const searchRoutes: Routes = [
   {
@@ -20,7 +21,8 @@ const searchRoutes: Routes = [
       { path: 'series-list', component: SeriesListComponent },
       { path: 'actor/:id', component: ActorComponent },
       { path: 'movie/:id', component: MovieComponent },
-      { path: 'series/:id', component: SeriesComponent }
+      { path: 'series/:id', component: SeriesComponent },
+      { path: 'episode/:id', component: EpisodeComponent }
     ]
   }
 ];

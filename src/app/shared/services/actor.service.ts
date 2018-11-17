@@ -27,6 +27,11 @@ export class ActorService {
     .pipe(catchError(errorHandler));
   }
 
+  checkIfExists(id: number): Observable<boolean> {
+    return this.http.get<boolean>(this.actorUrl + '/check/' + id)
+    .pipe(catchError(errorHandler));
+  }
+
   modifyActor( actor: Actor): Observable<Actor> {
     return this.http.put<Actor>(this.actorUrl, actor)
     .pipe(catchError(errorHandler));
@@ -39,6 +44,11 @@ export class ActorService {
 
   getResultActors(name: string): Observable<Actor[]> {
     return this.http.get<Actor[]>(this.actorUrl + "/search/" + name)
+    .pipe(catchError(errorHandler));
+  }
+
+  canBeDeleted(id: number): Observable<boolean> {
+    return this.http.get<boolean>(this.actorUrl + "/delete/" + id)
     .pipe(catchError(errorHandler));
   }
 }

@@ -22,13 +22,18 @@ export class SeasonService {
     .pipe(catchError(errorHandler));
   }
 
+  checkIfExists(id: number): Observable<boolean> {
+    return this.http.get<boolean>(this.seasonUrl + '/check/' + id)
+    .pipe(catchError(errorHandler));
+  }
+
   getSeriesSeasons(seriesId: number): Observable<Season[]> {
     return this.http.get<Season[]>(this.seasonUrl + '/season' + seriesId)
     .pipe(catchError(errorHandler));
   }
 
-  addSeason(season: Season): Observable<Season> {
-    return this.http.post<Season>(this.seasonUrl, season, httpOptions)
+  addSeason(seriesId: number, season: Season): Observable<Season> {
+    return this.http.post<Season>(this.seasonUrl + "/" + seriesId, season, httpOptions)
     .pipe(catchError(errorHandler));
   }
 
@@ -37,8 +42,13 @@ export class SeasonService {
     .pipe(catchError(errorHandler));
   }
 
-  deleteSeason(id: number): Observable<Season> {
-    return this.http.delete<Season>(this.seasonUrl + "/" + id)
+  deleteSeason(seriesId: number, id: number): Observable<Season> {
+    return this.http.delete<Season>(this.seasonUrl + "/" + seriesId + "/" + id)
+    .pipe(catchError(errorHandler));
+  }
+
+  canBeDeleted(id: number): Observable<boolean> {
+    return this.http.get<boolean>(this.seasonUrl + "/delete/" + id)
     .pipe(catchError(errorHandler));
   }
 }
