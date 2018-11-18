@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 
 import { AgeClassificationService } from '../../shared/services/age-classification.service';
 import { AgeClassification } from '../../shared/models/age-classification.model';
+import * as globals from '../../shared/globals';
 
 @Component({
   selector: 'app-age-classification',
@@ -16,6 +17,8 @@ export class EditAgeClassificationComponent implements OnInit {
   create = false;
   edit = false;
   error = false;
+
+  inputTextMessage = globals.inputTextMessage;
 
   constructor(private location: Location, private ageClassificationService: AgeClassificationService) { }
 

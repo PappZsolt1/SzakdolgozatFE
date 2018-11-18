@@ -34,7 +34,7 @@
     </div>
     <ul>
       <li *ngFor="let e of season.episodes">
-          <a [routerLink]="['../../episode', e.id, { seasonId: season.id }]"><span>{{e.title}}</span></a>
+          <a [routerLink]="['../../episode', e.id]"><span>{{e.title}}</span></a>
       </li>
     </ul>
   </div>

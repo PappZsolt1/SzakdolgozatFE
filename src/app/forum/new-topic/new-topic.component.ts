@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 
 import { TopicService } from '../shared/topic.service';
 import { Topic } from '../shared/topic.model';
+import * as globals from '../../shared/globals';
 
 @Component({
   selector: 'app-new-topic',
@@ -14,6 +15,9 @@ export class NewTopicComponent implements OnInit {
   topic: Topic = { id: null, title: null, description: null, createDate: null, comments: null };
 
   created = false;
+
+  inputTextMessage = globals.inputTextMessage;
+  textareaMessage = globals.textareaMessage;
 
   constructor(private location: Location, private topicService: TopicService) { }
 

@@ -8,6 +8,7 @@ import { AgeClassificationService } from '../../shared/services/age-classificati
 import { AgeClassification } from '../../shared/models/age-classification.model';
 import { GenreService } from '../../shared/services/genre.service';
 import { Genre } from '../../shared/models/genre.model';
+import * as globals from '../../shared/globals';
 
 @Component({
   selector: 'app-series',
@@ -23,6 +24,10 @@ export class EditSeriesComponent implements OnInit {
   modify = false;
   error = false;
   deleted = false;
+
+  inputTextMessage = globals.inputTextMessage;
+  releaseYearMessage = globals.releaseYearMessage;
+  selecetMessage = globals.selectMessage;
 
   constructor(
     private location: Location,

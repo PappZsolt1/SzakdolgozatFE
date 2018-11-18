@@ -8,6 +8,7 @@ import { GenderService } from '../../shared/services/gender.service';
 import { Gender } from '../../shared/models/gender.model';
 import { dateFormatter } from '../shared/date-formatter';
 import { reverseDateFormatter } from '../shared/reverse-date-formatter';
+import * as globals from '../../shared/globals';
 
 @Component({
   selector: 'app-actor',
@@ -21,6 +22,11 @@ export class EditActorComponent implements OnInit {
   bDate: string;
   saved = false;
   modify = false;
+
+  inputTextMessage = globals.inputTextMessage;
+  selectMessage = globals.selectMessage;
+  birthDateMessage = globals.birthDateMessage;
+  textareaMessage = globals.textareaMessage;
 
   constructor(
     private location: Location,

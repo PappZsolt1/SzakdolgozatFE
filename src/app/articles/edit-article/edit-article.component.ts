@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 
 import { ArticleService } from '../shared/article.service';
 import { Article } from '../shared/article.model';
+import * as globals from '../../shared/globals';
 
 @Component({
   selector: 'app-edit-article',
@@ -18,6 +19,9 @@ export class EditArticleComponent implements OnInit {
   published = false;
   deleted = false;
   modify = false;
+
+  inputTextMessage = globals.inputTextMessage;
+  textareaMessage = globals.textareaMessage;
 
   constructor(
     private articleService: ArticleService,

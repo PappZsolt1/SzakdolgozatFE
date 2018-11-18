@@ -9,6 +9,7 @@ import { lengthFormatter } from '../shared/length-formatter';
 import { reverseLengthFormatter } from '../shared/reverse-length-formatter';
 import { reverseDateFormatter } from '../shared/reverse-date-formatter';
 import { SeasonService } from '../../shared/services/season.service';
+import * as globals from '../../shared/globals';
 
 @Component({
   selector: 'app-episode',
@@ -29,6 +30,11 @@ export class EditEpisodeComponent implements OnInit {
   hours: number;
   minutes: number;
 
+  inputTextMessage = globals.inputTextMessage;
+  releaseDateMessage = globals.releaseDateMessage;
+  lengthMessage = globals.lengthMessage;
+  idMessage = globals.idMessage;
+
   constructor(
     private location: Location,
     private route: ActivatedRoute,
@@ -43,7 +49,8 @@ export class EditEpisodeComponent implements OnInit {
         this.hours = reverseLengthFormatter(this.episode.eLength)[0];
         this.minutes = reverseLengthFormatter(this.episode.eLength)[1];
         this.rDate = reverseDateFormatter(this.episode.releaseDate);
-        this.modify = true; this.seasonId = +this.route.snapshot.paramMap.get("seasonId");
+        this.modify = true;
+        this.episodeService.getEpisodeSeasonId(id).subscribe(r => this.seasonId = r);
       });
     }
   }
@@ -64,9 +71,18 @@ export class EditEpisodeComponent implements OnInit {
   }
 
   modifyEpisode(): void {
-    this.episode.releaseDate = dateFormatter(this.rDate);
-    this.episode.eLength = lengthFormatter(this.hours, this.minutes);
-    this.episodeService.modifyEpisode(this.episode).subscribe(() => this.saved = true);
+    let exists = false;
+    this.seasonService.checkIfExists(this.seasonId).subscribe(r => {
+      exists = r;
+      if (exists) {
+        this.episode.releaseDate = dateFormatter(this.rDate);
+        this.episode.eLength = lengthFormatter(this.hours, this.minutes);
+        this.episodeService.modifyEpisode(this.seasonId, this.episode).subscribe(() => this.saved = true);
+      } else {
+        this.error1 = true;
+        setTimeout(() => { this.error1 = false; }, 5000);
+      }
+    });
   }
 
   deleteEpisode(): void {

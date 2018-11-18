@@ -37,8 +37,8 @@ export class SeasonService {
     .pipe(catchError(errorHandler));
   }
 
-  modifySeason(season: Season): Observable<Season> {
-    return this.http.put<Season>(this.seasonUrl, season)
+  modifySeason(seriesId: number, season: Season): Observable<Season> {
+    return this.http.put<Season>(this.seasonUrl + "/" + seriesId, season)
     .pipe(catchError(errorHandler));
   }
 

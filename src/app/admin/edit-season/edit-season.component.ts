@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { SeasonService } from '../../shared/services/season.service';
 import { Season } from '../../shared/models/season.model';
 import { SeriesService } from '../../shared/services/series.service';
+import * as globals from '../../shared/globals';
 
 @Component({
   selector: 'app-season',
@@ -20,6 +21,9 @@ export class EditSeasonComponent implements OnInit {
   error1 = false;
   error2 = false;
   deleted = false;
+
+  numberMessage = globals.numberMessage;
+  idMessage = globals.idMessage;
 
   constructor(
     private location: Location,
@@ -51,7 +55,16 @@ export class EditSeasonComponent implements OnInit {
   }
 
   modifySeason(): void {
-    this.seasonService.modifySeason(this.season).subscribe(() => this.saved = true);
+    let exists = false;
+    this.seriesService.checkIfExists(this.seriesId).subscribe(r => {
+      exists = r;
+      if (exists) {
+        this.seasonService.modifySeason(this.seriesId, this.season).subscribe(() => this.saved = true);
+      } else {
+        this.error1 = true;
+        setTimeout(() => { this.error1 = false; }, 5000);
+      }
+    });
   }
 
   deleteSeason(): void {

@@ -17,7 +17,7 @@
 <div *ngIf="create">
     <form (ngSubmit)="addGender(name.value)" #newGenderForm="ngForm">
         <label for="name">Megnevezés:</label>
-        <input type="text" id="name" name="name" required maxlength="200" appCustomText #name ngModel><br/>
+        <input type="text" id="name" name="name" required maxlength="200" appCustomText #name ngModel><label title="{{inputTextMessage}}"> ?</label><br/>
         <button type="button" (click)="cancelCreate()">Mégse</button>
         <button type="submit" [disabled]="!newGenderForm.form.valid">Hozzáadás</button>
     </form>
@@ -27,7 +27,7 @@
         <label>ID:</label>
         <label>{{gender.id}}</label>
         <label for="name">Megnevezés:</label>
-        <input type="text" id="name" name="name" required maxlength="200" appCustomText #name [(ngModel)]="gender.name"><br/>
+        <input type="text" id="name" name="name" required maxlength="200" appCustomText #name [(ngModel)]="gender.name"><label title="{{inputTextMessage}}"> ?</label><br/>
         <button type="button" (click)="cancelEdit()">Mégse</button>
         <button type="submit" [disabled]="!modifyGenderForm.form.valid">Mentés</button>
     </form>

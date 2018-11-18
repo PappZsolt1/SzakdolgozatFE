@@ -22,13 +22,18 @@ export class EpisodeService {
     .pipe(catchError(errorHandler));
   }
 
+  getEpisodeSeasonId(id: number): Observable<number> {
+    return this.http.get<number>(this.episodeUrl + "/season/" + id)
+    .pipe(catchError(errorHandler));
+  }
+
   addEpisode(seasonId: number, episode: Episode): Observable<Episode> {
     return this.http.post<Episode>(this.episodeUrl + "/" + seasonId, episode, httpOptions)
     .pipe(catchError(errorHandler));
   }
 
-  modifyEpisode(episode: Episode): Observable<Episode> {
-    return this.http.put<Episode>(this.episodeUrl, episode)
+  modifyEpisode(seasonId: number, episode: Episode): Observable<Episode> {
+    return this.http.put<Episode>(this.episodeUrl + "/" + seasonId, episode)
     .pipe(catchError(errorHandler));
   }
 

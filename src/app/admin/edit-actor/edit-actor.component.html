@@ -8,17 +8,17 @@
 <div *ngIf="!saved">
     <form #editActorForm="ngForm">
         <label for="name">Név:</label>
-        <input type="text" id="name" name="name" required maxlength="200" appCustomText [(ngModel)]="actor.name" #name="ngModel"><br/>
+        <input type="text" id="name" name="name" required maxlength="200" appCustomText [(ngModel)]="actor.name" #name="ngModel"><label title="{{inputTextMessage}}"> ?</label><br/>
         <label for="gender">Nem:</label>
         <select name="gender" id="gender" [compareWith]="compareGenders" required [(ngModel)]="actor.gender" #gender="ngModel">
             <option *ngFor="let g of genders" [ngValue]="g">{{g.name}}</option>
-        </select><br/>
+        </select><label title="{{selectMessage}}"> ?</label><br/>
         <label for="birthPlace">Születési hely:</label>
-        <input type="text" id="birthPlace" name="birthPlace" maxlength="200" required appCustomText [(ngModel)]="actor.birthPlace" #birthPlace="ngModel"><br/>
+        <input type="text" id="birthPlace" name="birthPlace" maxlength="200" required appCustomText [(ngModel)]="actor.birthPlace" #birthPlace="ngModel"><label title="{{inputTextMessage}}"> ?</label><br/>
         <label for="birthDate">Születési idő:</label>
-        <input type="date" id="birthDate" name="birthDate" required appCustomDate="1750,2100" [(ngModel)]="bDate" #birthDate="ngModel"><br/>
+        <input type="date" id="birthDate" name="birthDate" required appCustomDate="1750,2100" [(ngModel)]="bDate" #birthDate="ngModel"><label title="{{birthDateMessage}}"> ?</label><br/>
         <label for="bio">Élettörténet:</label><br/>
-        <textarea rows="10" cols="70" id="bio" name="bio" required maxlength="60000" appCustomText [(ngModel)]="actor.bio" #bio="ngModel"></textarea><br/>
+        <textarea rows="10" cols="70" id="bio" name="bio" required maxlength="60000" appCustomText [(ngModel)]="actor.bio" #bio="ngModel"></textarea><label title="{{textareaMessage}}"> ?</label><br/>
         <div *ngIf="!modify">
             <button type="button" (click)="addActor()" [disabled]="!editActorForm.form.valid">Mentés</button>
         </div>

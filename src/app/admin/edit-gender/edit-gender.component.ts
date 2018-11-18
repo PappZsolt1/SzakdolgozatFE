@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { GenderService } from '../../shared/services/gender.service';
 import { Gender } from '../../shared/models/gender.model';
+import * as globals from '../../shared/globals';
 
 @Component({
   selector: 'app-gender',
@@ -17,6 +18,8 @@ export class EditGenderComponent implements OnInit {
   create = false;
   edit = false;
   error = false;
+
+  inputTextMessage = globals.inputTextMessage;
 
   constructor(
     private router: Router,

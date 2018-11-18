@@ -10,6 +10,7 @@ import { GenreService } from '../../shared/services/genre.service';
 import { Genre } from '../../shared/models/genre.model';
 import { lengthFormatter } from '../shared/length-formatter';
 import { reverseLengthFormatter } from '../shared/reverse-length-formatter';
+import * as globals from '../../shared/globals';
 
 @Component({
   selector: 'app-movie',
@@ -26,6 +27,12 @@ export class EditMovieComponent implements OnInit {
 
   hours: number;
   minutes: number;
+
+  inputTextMessage = globals.inputTextMessage;
+  releaseYearMessage = globals.releaseYearMessage;
+  selectMessage = globals.selectMessage;
+  lengthMessage = globals.lengthMessage;
+  budgetMessage = globals.budgetMessage;
   
   constructor(
     private location: Location,

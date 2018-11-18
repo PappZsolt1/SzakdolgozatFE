@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { GenreService } from '../../shared/services/genre.service';
 import { Genre } from '../../shared/models/genre.model';
+import * as globals from '../../shared/globals';
 
 @Component({
   selector: 'app-genre',
@@ -17,6 +18,8 @@ export class EditGenreComponent implements OnInit {
   create = false;
   edit = false;
   error = false;
+
+  inputTextMessage = globals.inputTextMessage;
 
   constructor(
     private router: Router,

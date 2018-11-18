@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ErrorReportService } from '../shared/error-report.service';
+import * as globals from '../../shared/globals';
 
 @Component({
   selector: 'app-new-error-report',
@@ -10,6 +11,8 @@ import { ErrorReportService } from '../shared/error-report.service';
 export class NewErrorReportComponent implements OnInit {
 
   sent = false;
+
+  textareaMessage = globals.textareaMessage;
 
   constructor(private errorReportService: ErrorReportService) { }
 

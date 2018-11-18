@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import * as globals from '../../shared/globals';
 
 @Component({
   selector: 'app-search',
@@ -11,6 +12,9 @@ export class SearchCriteriaComponent implements OnInit {
   categories: String[] = [ "Színész", "Film", "Sorozat" ];
   selectedCategory: string;
   searchText: string;
+
+  inputTextMessage = globals.inputTextMessage;
+  selectMessage = globals.selectMessage;
 
   constructor(private router: Router) { }
 

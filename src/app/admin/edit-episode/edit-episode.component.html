@@ -10,19 +10,18 @@
             <label>ID: {{episode.id}}</label>
         </div>
         <label for="title">Cím:</label>
-        <input type="text" id="title" name="title" required maxlength="200" appCustomText [(ngModel)]="episode.title" #title="ngModel"/><br/>
+        <input type="text" id="title" name="title" required maxlength="200" appCustomText [(ngModel)]="episode.title" #title="ngModel"/><label title="{{inputTextMessage}}"> ?</label><br/>
         <label for="releaseDate">Megjelenés dátuma:</label>
-        <input type="date" id="releaseDate" name="releaseDate" required appCustomDate="1850,2100" [(ngModel)]="rDate" #releaseDate="ngModel"><br/>
+        <input type="date" id="releaseDate" name="releaseDate" required appCustomDate="1850,2100" [(ngModel)]="rDate" #releaseDate="ngModel"><label title="{{releaseDateMessage}}"> ?</label><br/>
         <label for="length">Hossz:</label>
         <input type="number" id="hour" name="hour" required appCustomMin="0" appCustomMax="100" [(ngModel)]="hours" #hour="ngModel"/><span>óra</span>
-        <input type="number" id="minute" name="minute" required appCustomMin="0" appCustomMax="60" [(ngModel)]="minutes" #minute="ngModel"/><span>perc</span>
+        <input type="number" id="minute" name="minute" required appCustomMin="0" appCustomMax="60" [(ngModel)]="minutes" #minute="ngModel"/><span>perc</span><label title="{{lengthMessage}}"> ?</label><br/>
+        <label for="seasonID">Évad ID:</label>
+        <input type="number" id="seasonID" name="seasonID" required appCustomMin="1" appCustomMax="1000000000" [(ngModel)]="seasonId" #seasonID="ngModel"/><label title="{{idMessage}}"> ?</label><br/>
         <div *ngIf="!modify">
-            <label for="seasonID">Évad ID:</label>
-            <input type="number" id="seasonID" name="seasonID" required [(ngModel)]="seasonId" #seasonID="ngModel"/><br/>
             <button type="button" (click)="addEpisode()" [disabled]="!editEpisodeForm.form.valid">Mentés</button>
         </div>
         <div *ngIf="modify">
-            <label>Évad ID: {{seasonId}}</label>
             <button type="button" (click)="modifyEpisode()" [disabled]="!editEpisodeForm.form.valid">Módosítás</button>
             <button type="button" (click)="deleteEpisode()">Törlés</button>
         </div>

@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 
 import { RulesService } from '../../shared/services/rules.service';
 import { Rules } from '../../shared/models/rules.model';
+import * as globals from '../../shared/globals';
 
 @Component({
   selector: 'app-edit-rules',
@@ -13,6 +14,8 @@ export class EditRulesComponent implements OnInit {
 
   rules: Rules;
   saved = false;
+
+  textareaMessage = globals.textareaMessage;
 
   constructor(private location: Location, private rulesService: RulesService) { }
 

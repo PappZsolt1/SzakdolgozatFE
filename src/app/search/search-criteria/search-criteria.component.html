@@ -1,9 +1,9 @@
 <form (ngSubmit)="search()" #SearchForm="ngForm">
     <label for="searchfield">Keresett név vagy cím:</label>
-    <input type="text" id="search" name="searchfield" required maxlength="200" appCustomText [(ngModel)]="searchText" #searchfield="ngModel">
+    <input type="text" id="search" name="searchfield" required maxlength="200" appCustomText [(ngModel)]="searchText" #searchfield="ngModel"><label title="{{inputTextMessage}}"> ?</label>
     <label for="category">Kategória:</label>
     <select name="category" id="category" required [(ngModel)]="selectedCategory" #category="ngModel">
         <option *ngFor="let c of categories" [ngValue]="c">{{c}}</option>
-    </select>
+    </select><label title="{{selectMessage}}"> ?</label>
     <button type="submit" [disabled]="!SearchForm.form.valid">Keresés</button>
 </form>

@@ -13,7 +13,6 @@ import { Episode } from '../../shared/models/episode.model';
 export class EpisodeComponent implements OnInit {
 
   episode: Episode;
-  seasonId: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,7 +22,6 @@ export class EpisodeComponent implements OnInit {
 
   ngOnInit() {
     let id = this.route.snapshot.paramMap.get('id');
-    this.seasonId = +this.route.snapshot.paramMap.get('seasonId');
     this.episodeService.getEpisode(+id).subscribe(r => this.episode = r);
   }
 
