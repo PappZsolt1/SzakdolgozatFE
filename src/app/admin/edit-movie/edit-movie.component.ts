@@ -24,6 +24,8 @@ export class EditMovieComponent implements OnInit {
   genres: Genre[];
   saved = false;
   modify = false;
+  error = false;
+  deleted = false;
 
   hours: number;
   minutes: number;
@@ -33,7 +35,10 @@ export class EditMovieComponent implements OnInit {
   selectMessage = globals.selectMessage;
   lengthMessage = globals.lengthMessage;
   budgetMessage = globals.budgetMessage;
+  idMessage = globals.idMessage;
   
+  actorIds: number[] = [];
+
   constructor(
     private location: Location,
     private route: ActivatedRoute,
@@ -61,7 +66,7 @@ export class EditMovieComponent implements OnInit {
     this.movieService.addMovie(this.movie).subscribe(() => this.saved = true);
   }
 
-  modifyMovie():void {
+  modifyMovie(): void {
     this.movie.mLength = lengthFormatter(this.hours, this.minutes);
     this.movieService.modifyMovie(this.movie).subscribe(() => this.saved = true);
   }
@@ -82,7 +87,27 @@ export class EditMovieComponent implements OnInit {
     return a1 && a2 ? a1.id === a2.id : a1 === a2;
   }
 
+  deleteMovie(): void {
+    let removable = false;
+    this.movieService.canBeDeleted(this.movie.id).subscribe(r => {
+      removable = r;
+      if (removable) {
+        let answer = confirm("Biztosan törli?");
+        if (answer) {
+          this.movieService.deleteMovie(this.movie.id).subscribe(() => this.deleted = true);
+        }
+      } else {
+        this.error = true;
+        setTimeout(() => { this.error = false; }, 5000);
+      }
+    });
+  }
+
   goBack() {
-    this.location.back();
+    if (!this.deleted) {
+      this.location.back();
+    } else {
+      window.history.go(-2);
+    }
   }
 }

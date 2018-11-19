@@ -22,7 +22,7 @@ export class MovieService {
     return this.http.post<Movie>(this.movieUrl, movie)
     .pipe(catchError(errorHandler));
   }
-
+  
   getAllMovies(): Observable<Movie[]> {
     return this.http.get<Movie[]>(this.movieUrl)
     .pipe(catchError(errorHandler));
@@ -45,6 +45,11 @@ export class MovieService {
 
   changeRating(id: number, rating: number): Observable<Movie> {
     return this.http.put<Movie>(this.movieUrl + "/rating/" + id, rating)
+    .pipe(catchError(errorHandler));
+  }
+
+  canBeDeleted(id: number): Observable<boolean> {
+    return this.http.get<boolean>(this.movieUrl + "/delete/" + id)
     .pipe(catchError(errorHandler));
   }
 }

@@ -3,10 +3,12 @@
 </div>
 <div *ngIf="modify">
     <h2>Színész módosítása</h2><br/>
-    <label>ID: {{actor.id}}</label>
 </div>
-<div *ngIf="!saved">
+<div *ngIf="!saved && !deleted">
     <form #editActorForm="ngForm">
+        <div *ngIf="modify">
+            <label>ID: {{actor.id}}</label>
+        </div>
         <label for="name">Név:</label>
         <input type="text" id="name" name="name" required maxlength="200" appCustomText [(ngModel)]="actor.name" #name="ngModel"><label title="{{inputTextMessage}}"> ?</label><br/>
         <label for="gender">Nem:</label>
@@ -24,8 +26,15 @@
         </div>
         <div *ngIf="modify">
             <button type="button" (click)="modifyActor()" [disabled]="!editActorForm.form.valid">Módosítás</button>
+            <button type="button" (click)="deleteActor()">Törlés</button>
+        </div>
+        <div *ngIf="error">
+            <label>A színész nem törölhető, mert filmekben vagy sorozatokban szerepel!</label>
         </div>
     </form>
+</div>
+<div *ngIf="deleted">
+    <label>Törölve!</label>
 </div>
 <div *ngIf="saved">
     <label>Elmentve!</label>

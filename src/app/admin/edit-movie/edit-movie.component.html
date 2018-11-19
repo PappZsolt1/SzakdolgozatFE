@@ -3,10 +3,12 @@
 </div>
 <div *ngIf="modify">
     <h2>Film módosítása</h2><br/>
-    <label>ID: {{movie.id}}</label>
 </div>
-<div *ngIf="!saved">
+<div *ngIf="!saved && !deleted">
     <form #editMovieForm="ngForm">
+        <div *ngIf="modify">
+            <label>ID: {{movie.id}}</label>
+        </div>
         <label for="title">Cím:</label>
         <input type="text" id="title" name="title" required maxlength="200" appCustomText [(ngModel)]="movie.title" #title="ngModel"/><label title="{{inputTextMessage}}"> ?</label><br/>
         kép
@@ -30,9 +32,15 @@
         </div>
         <div *ngIf="modify">
             <button type="button" (click)="modifyMovie()" [disabled]="!editMovieForm.form.valid">Módosítás</button>
+            <button type="button" (click)="deleteMovie()">Törlés</button>
         </div>
-        színészek hozzáadása
-      </form>
+        <div *ngIf="error">
+            <label>A film nem törölhető, mert színészekkel rendelkezik!</label>
+        </div>
+    </form>
+</div>
+<div *ngIf="deleted">
+    <label>Törölve!</label>
 </div>
 <div *ngIf="saved">
     <label>Elmentve!</label>

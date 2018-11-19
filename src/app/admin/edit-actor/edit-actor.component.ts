@@ -22,6 +22,8 @@ export class EditActorComponent implements OnInit {
   bDate: string;
   saved = false;
   modify = false;
+  error = false;
+  deleted = false;
 
   inputTextMessage = globals.inputTextMessage;
   selectMessage = globals.selectMessage;
@@ -64,7 +66,27 @@ export class EditActorComponent implements OnInit {
     return g1 && g2 ? g1.id === g2.id : g1 === g2;
   }
 
+  deleteActor(): void {
+    let removable = false;
+    this.actorService.canBeDeleted(this.actor.id).subscribe(r => {
+      removable = r;
+      if (removable) {
+        let answer = confirm("Biztosan törli?");
+        if (answer) {
+          this.actorService.deleteActor(this.actor.id).subscribe(() => this.deleted = true);
+        }
+      } else {
+        this.error = true;
+        setTimeout(() => { this.error = false; }, 5000);
+      }
+    });
+  }
+
   goBack() {
-    this.location.back();
+    if (!this.deleted) {
+      this.location.back();
+    } else {
+      window.history.go(-2);
+    }
   }
 }

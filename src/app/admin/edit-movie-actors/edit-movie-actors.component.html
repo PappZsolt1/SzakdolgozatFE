@@ -1,0 +1,27 @@
+<h2>Film színészeinek kezelése</h2>
+<form>
+  <label for="movieID">Film ID:</label>
+  <input type="number" id="movieID" name="movieID" required appCustomMin="1" appCustomMax="1000000000" [(ngModel)]="movieId" #movieID="ngModel"><label title="{{idMessage}}"> ?</label><br/>
+  <button>Film lekérése</button>
+</form>
+<div *ngIf="showActors">
+  <label>Film ID: {{movieId}}</label>
+  <label>Színész ID-k:</label>
+  <div *ngIf="!actorIds || actorIds.length == 0">
+    <label>A filmnek még nincsenek színészei.</label>
+  </div>
+  <div *ngIf="actorIds && actorIds.length > 0">
+    <ul>
+      <li *ngFor="let a of actorIds">
+        <label>ID: {{a}}</label><button>Törlés</button>
+      </li>
+    </ul>
+  </div>
+  <form>
+    <label>Új színész hozzáadása:</label><br/>
+    <label for="actorID">Színész ID:</label>
+    <input type="number" id="actorID" name="actorID" required appCustomMin="1" appCustomMax="1000000000" ngModel #actorID><label title="{{idMessage}}"> ?</label><br/>
+    <button>Hozzáadás</button>
+  </form>
+</div>
+<button type="button" (click)="goBack()">Vissza</button>

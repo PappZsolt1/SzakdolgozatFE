@@ -27,6 +27,8 @@ import { CustomDateDirective } from './shared/custom-date.directive';
 import { EditRulesComponent } from './edit-rules/edit-rules.component';
 import { RulesService } from '../shared/services/rules.service';
 import { SharedDirectiveModule } from '../shared/shared-directive.module';
+import { EditMovieActorsComponent } from './edit-movie-actors/edit-movie-actors.component';
+import { EditEpisodeActorsComponent } from './edit-episode-actors/edit-episode-actors.component';
 
 @NgModule({
   imports: [
@@ -49,7 +51,9 @@ import { SharedDirectiveModule } from '../shared/shared-directive.module';
     CustomMinDirective,
     CustomMaxDirective,
     CustomDateDirective,
-    EditRulesComponent
+    EditRulesComponent,
+    EditMovieActorsComponent,
+    EditEpisodeActorsComponent
   ],
   providers: [
     ActorService,
