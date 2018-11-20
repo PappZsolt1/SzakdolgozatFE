@@ -9,8 +9,10 @@
   <label>{{series.title}}</label><br />
   kép
   <br />
-  <label>Értékelés</label>
-  <label>{{series.rating}}</label><br />
+  <label>Értékelés:</label>
+  <span *ngIf="series.rating == 0">Még nincs értékelve.</span>
+  <span *ngIf="series.rating > 0">{{series.rating.toPrecision(3)}}</span>
+  <br/>
   <label>Megjelenés éve:</label>
   <label>{{series.releaseYear}}</label><br />
   <label>Műfaj:</label>

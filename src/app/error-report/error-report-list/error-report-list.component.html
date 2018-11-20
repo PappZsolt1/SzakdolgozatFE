@@ -2,7 +2,10 @@
     <button type="button" (click)="getAllErrorReports()">Összes hibabejelentés lekérése</button>
     <button type="button" (click)="getResolvedErrorReports()">Megoldott hibabejelentések lekérése</button>
     <button type="button" (click)="getNotResolvedErrorReports()">Megoldatlan hibabejelentések lekérése</button>
-    <div>
+    <div *ngIf="!errorReports || errorReports.length == 0">
+        <label>Nincsenek bejelentett hibák.</label>
+    </div>
+    <div *ngIf="errorReports && errorReports.length > 0">
         <ul>
             <li *ngFor="let e of errorReports">
                 <span>{{e.id}} </span><span>{{e.sendingDate}}</span>

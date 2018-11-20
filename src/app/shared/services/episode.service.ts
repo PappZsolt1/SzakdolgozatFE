@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 
 import { Episode } from '../models/episode.model';
 import { errorHandler } from '../http-error-handler';
+import { Actor } from '../models/actor.model';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -19,6 +20,26 @@ export class EpisodeService {
 
   getEpisode(id: number): Observable<Episode> {
     return this.http.get<Episode>(this.episodeUrl + "/" + id)
+    .pipe(catchError(errorHandler));
+  }
+
+  checkIfExists(id: number): Observable<boolean> {
+    return this.http.get<boolean>(this.episodeUrl + '/check/' + id)
+    .pipe(catchError(errorHandler));
+  }
+
+  getEpisodeActors(id: number): Observable<Actor[]> {
+    return this.http.get<Actor[]>(this.episodeUrl + '/actors/' + id)
+    .pipe(catchError(errorHandler));
+  }
+
+  addActorToEpisode(id: number, actorId: number): Observable<Actor> {
+    return this.http.post<Actor>(this.episodeUrl + '/add/' + id, actorId)
+    .pipe(catchError(errorHandler));
+  }
+
+  removeActorFromEpisode(id: number, actorId: number): Observable<Actor> {
+    return this.http.post<Actor>(this.episodeUrl + '/remove/' + id, actorId)
     .pipe(catchError(errorHandler));
   }
 

@@ -4,14 +4,36 @@
     <label>ID:</label>
     <label>{{episode.id}}</label>
     <button [routerLink]="['/admin/edit-episode', { id: episode.id }]">Szerkesztés</button>
+    <button [routerLink]="['/admin/edit-episode-actors', { id: episode.id }]">Színészek kezelése</button>
   </div>
   <label>Cím:</label>
   <label>{{episode.title}}</label><br />
-  <label>Értékelés</label>
-  <label>{{episode.rating}}</label><br />
+  <label>Értékelés:</label>
+  <span *ngIf="episode.rating == 0">Még nincs értékelve.</span>
+  <span *ngIf="episode.rating > 0">{{episode.rating.toPrecision(3)}}</span>
+  <button (click)="createRating()" *ngIf="true">Epizód értékelése</button>
+  <br/>
+  <div *ngIf="showRating">
+    <form (ngSubmit)="addRating(userRating.value)" #ratingForm="ngForm">
+      <label for="userRating">Az ön értékelése:</label>
+      <input type="number" id="userRating" name="userRating" required appCustomMin="1" appCustomMax="10" ngModel #userRating/><label title="{{ratingMessage}}"> ?</label><br/>
+      <button type="submit" [disabled]="!ratingForm.form.valid">Értékelés küldése</button>
+      <button type="button" (click)="cancelRating()">Mégse</button>
+    </form>
+  </div>
   <label>Megjelenés dátuma:</label>
   <label>{{episode.releaseDate}}</label><br />
   <label>Hossz:</label>
   <label>{{episode.eLength}}</label><br />
+  <div *ngIf="!actors || actors.length == 0">
+    <label>Az epizódnak még nincsenek színészei.</label>
+  </div>
+  <div *ngIf="actors && actors.length > 0">
+    <ul>
+      <li *ngFor="let a of actors">
+        <a [routerLink]="['../../actor', a.id]"><span *ngIf="true">ID: {{a.id}} </span>{{a.name}}</a>
+      </li>
+    </ul>
+  </div>
 </div>
 <button type="button" (click)="goBack()">Vissza</button>

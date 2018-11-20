@@ -7,7 +7,10 @@
         <button (click)="toggleRules()">Szabályzat elrejtése</button>
     </div>    
 </div>
-<div>
+<div *ngIf="!topics || topics.length == 0">
+    <label>Még nincsenek létrehozott témák.</label>
+</div>
+<div *ngIf="topics && topics.length > 0">
     <ul>
         <li *ngFor="let t of topics">
             <a [routerLink]="[t.id]"><span>{{t.title}}</span></a>

@@ -25,3 +25,6 @@ export const lengthMessage =
 egész számnak kell lennie!`;
 export const numberMessage =
 `A számnak 1 és 100 közötti egész számnak kell lennie!`;
+export const ratingMessage =
+`A számnak 1 és 10 közötti egész számnak kell lennie,
+a magasabb szám jelenti a jobb értékelést!`;

@@ -4,6 +4,8 @@ import { Location } from '@angular/common';
 
 import { Movie } from '../../shared/models/movie.model';
 import { MovieService } from '../../shared/services/movie.service';
+import { Actor } from '../../shared/models/actor.model';
+import * as globals from '../../shared/globals';
 
 @Component({
   selector: 'app-movie',
@@ -13,6 +15,10 @@ import { MovieService } from '../../shared/services/movie.service';
 export class MovieComponent implements OnInit {
 
   movie: Movie;
+  actors: Actor[];
+  showRating = false;
+
+  ratingMessage = globals.ratingMessage;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,8 +27,24 @@ export class MovieComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    let id = this.route.snapshot.paramMap.get('id');
-    this.movieService.getMovie(+id).subscribe(r => this.movie = r);
+    let id = +this.route.snapshot.paramMap.get('id');
+    this.movieService.getMovie(id).subscribe(r => { this.movie = r;
+      this.movieService.getMovieActors(this.movie.id).subscribe(r => this.actors = r);
+    });
+  }
+
+  createRating(): void {
+    this.showRating = true;
+  }
+
+  addRating(rating: number): void {
+    this.movieService.changeRating(this.movie.id, rating).subscribe(() => { this.showRating = false;
+      this.movieService.getMovie(this.movie.id).subscribe(r => this.movie = r);
+    });
+  }
+
+  cancelRating(): void {
+    this.showRating = false;
   }
 
   goBack() {

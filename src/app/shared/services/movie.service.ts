@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 
 import { Movie } from '../models/movie.model';
 import { errorHandler } from '../http-error-handler';
+import { Actor } from '../models/actor.model';
 
 @Injectable()
 export class MovieService {
@@ -15,6 +16,26 @@ export class MovieService {
 
   getMovie(id: number): Observable<Movie> {
     return this.http.get<Movie>(this.movieUrl + '/' + id)
+    .pipe(catchError(errorHandler));
+  }
+
+  checkIfExists(id: number): Observable<boolean> {
+    return this.http.get<boolean>(this.movieUrl + '/check/' + id)
+    .pipe(catchError(errorHandler));
+  }
+
+  getMovieActors(id: number): Observable<Actor[]> {
+    return this.http.get<Actor[]>(this.movieUrl + '/actors/' + id)
+    .pipe(catchError(errorHandler));
+  }
+
+  addActorToMovie(id: number, actorId: number): Observable<Actor> {
+    return this.http.post<Actor>(this.movieUrl + '/add/' + id, actorId)
+    .pipe(catchError(errorHandler));
+  }
+
+  removeActorFromMovie(id: number, actorId: number): Observable<Actor> {
+    return this.http.post<Actor>(this.movieUrl + '/remove/' + id, actorId)
     .pipe(catchError(errorHandler));
   }
 

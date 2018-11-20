@@ -17,7 +17,7 @@ import * as globals from '../../shared/globals';
 })
 export class EditActorComponent implements OnInit {
 
-  actor: Actor = { id: null, name: null, photo: null, birthDate: null, birthPlace: null, bio: null, gender: null, comments: null };
+  actor: Actor = { id: null, name: null, photo: null, birthDate: null, birthPlace: null, bio: null, gender: null, comments: null, movies: null, episodes: null };
   genders: Gender[];
   bDate: string;
   saved = false;
