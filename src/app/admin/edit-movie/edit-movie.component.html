@@ -26,7 +26,7 @@
           <option *ngFor="let a of ageClassifications" [ngValue]="a">{{a.name}}</option>
         </select><label title="{{selectMessage}}"> ?</label><br/>
         <label for="budget">Költségvetés:</label>
-        <input type="number" id="budget" name="budget" required appCustomMin="0" appCustomMax="1000000000" [(ngModel)]="movie.budget" #budget="ngModel"/><span>$</span><label title="{{budgetMessage}}"> ?</label><br/>
+        <input type="number" id="budget" name="budget" required appCustomMin="0" appCustomMax="2000000000" [(ngModel)]="movie.budget" #budget="ngModel"/><span>$</span><label title="{{budgetMessage}}"> ?</label><br/>
         <div *ngIf="!modify">
             <button type="button" (click)="addMovie()" [disabled]="!editMovieForm.form.valid">Mentés</button>
         </div>

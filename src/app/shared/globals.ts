@@ -13,7 +13,7 @@ export const releaseDateMessage =
 export const releaseYearMessage =
 `Az évszámnak 1850 és 2100 között kell lennie!`;
 export const budgetMessage =
-`Az értéknek 0 és 1.000.000.000 közötti
+`Az értéknek 0 és 2.000.000.000 közötti
 egész számnak kell lennie!`;
 export const idMessage =
 `Az értéknek 1 és 1.000.000.000 közötti
