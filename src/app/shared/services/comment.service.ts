@@ -17,8 +17,28 @@ export class CommentService {
 
   constructor(private http: HttpClient) { }
 
-  addComment(comment: Comment): Observable<Comment> {
-    return this.http.post<Comment>(this.commentUrl, comment, httpOptions)
+  addMovieComment(movieId: number, comment: Comment): Observable<Comment> {
+    return this.http.post<Comment>(this.commentUrl + "/movie/" + movieId, comment)
+    .pipe(catchError(errorHandler));
+  }
+
+  addActorComment(actorId: number, comment: Comment): Observable<Comment> {
+    return this.http.post<Comment>(this.commentUrl + "/actor/" + actorId, comment)
+    .pipe(catchError(errorHandler));
+  }
+
+  addArticleComment(articleId: number, comment: Comment): Observable<Comment> {
+    return this.http.post<Comment>(this.commentUrl + "/article/" + articleId, comment)
+    .pipe(catchError(errorHandler));
+  }
+
+  addEpisodeComment(episodeId: number, comment: Comment): Observable<Comment> {
+    return this.http.post<Comment>(this.commentUrl + "/episode/" + episodeId, comment)
+    .pipe(catchError(errorHandler));
+  }
+
+  addTopicComment(topicId: number, comment: Comment): Observable<Comment> {
+    return this.http.post<Comment>(this.commentUrl + "/topic/" + topicId, comment)
     .pipe(catchError(errorHandler));
   }
 
@@ -27,7 +47,7 @@ export class CommentService {
     .pipe(catchError(errorHandler));
   }
 
-  geEpisodeComments(episodeId: number): Observable<Comment[]> {
+  getEpisodeComments(episodeId: number): Observable<Comment[]> {
     return this.http.get<Comment[]>(this.commentUrl + "/episode/" + episodeId)
     .pipe(catchError(errorHandler));
   }

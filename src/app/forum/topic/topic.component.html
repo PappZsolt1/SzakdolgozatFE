@@ -6,9 +6,9 @@
     <div *ngIf=true>
         <button (click)="deleteTopic()">Téma törlése</button>
     </div>
-    <button type="button" (click)="goBack()">Vissza</button>
+    <app-comment-list [type]="type" [id]="topic.id"></app-comment-list>
 </div>
 <div *ngIf="deleted">
     <label>Törölve!</label><br />
-    <button type="button" (click)="goBack()">Vissza</button>
 </div>
+<button type="button" (click)="goBack()">Vissza</button>

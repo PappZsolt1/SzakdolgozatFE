@@ -13,7 +13,7 @@ import { Topic } from '../shared/topic.model';
 export class TopicComponent implements OnInit {
 
   topic: Topic;
-
+  type = "topic";
   deleted = false;
 
   constructor(
@@ -23,8 +23,8 @@ export class TopicComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    let id = this.route.snapshot.paramMap.get('id');
-    this.topicService.getTopic(+id).subscribe(r => this.topic = r);
+    let id = +this.route.snapshot.paramMap.get('id');
+    this.topicService.getTopic(id).subscribe(r => this.topic = r);
   }
 
   deleteTopic(): void {

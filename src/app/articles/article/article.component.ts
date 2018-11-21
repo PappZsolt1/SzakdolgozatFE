@@ -13,6 +13,7 @@ import { ArticleService } from '../shared/article.service';
 export class ArticleComponent implements OnInit {
 
   article: Article;
+  type = "article";
 
   constructor(
     private route: ActivatedRoute,

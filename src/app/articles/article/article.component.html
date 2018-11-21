@@ -7,5 +7,6 @@
     <div>
         <span>{{article.publishDate}}</span>
     </div>
+    <app-comment-list [type]="type" [id]="article.id"></app-comment-list>
 </div>
 <button type="button" (click)="goBack()">Vissza</button>

@@ -17,6 +17,7 @@ export class MovieComponent implements OnInit {
   movie: Movie;
   actors: Actor[];
   showRating = false;
+  type = "movie";
 
   ratingMessage = globals.ratingMessage;
 

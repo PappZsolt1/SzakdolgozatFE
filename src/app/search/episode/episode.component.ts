@@ -17,6 +17,7 @@ export class EpisodeComponent implements OnInit {
   episode: Episode;
   actors: Actor[];
   showRating = false;
+  type = "episode";
 
   ratingMessage = globals.ratingMessage;
 

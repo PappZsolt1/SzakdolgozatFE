@@ -13,6 +13,7 @@ import { ActorService } from '../../shared/services/actor.service';
 export class ActorComponent implements OnInit {
 
   actor: Actor;
+  type = "actor";
 
   constructor(
     private route: ActivatedRoute,

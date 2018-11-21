@@ -4,11 +4,13 @@ import { FormsModule } from '@angular/forms';
 
 import { CommentListComponent } from './comment-list/comment-list.component';
 import { NewCommentComponent } from './new-comment/new-comment.component';
+import { SharedDirectiveModule } from '../shared/shared-directive.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    SharedDirectiveModule
   ],
   declarations: [
     CommentListComponent,

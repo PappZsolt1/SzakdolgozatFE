@@ -1,2 +1,14 @@
-for lista hozzászólásokkal
-<div *ngIf=true>Hozzászólás írása</div>
+<div *ngIf="!comments || comments.length == 0">
+    <label>Még nincsenek hozzászólások.</label>
+</div>
+<div *ngIf="comments && comments.length > 0">
+    <ul>
+        <li *ngFor="let c of comments">
+            <div>
+                <label>{{c.postDate}}</label>
+                <div class="multiline">{{c.content}}</div>
+            </div>
+        </li>
+    </ul>
+</div>
+<app-new-comment [type]="type" [id]="id" (refresh)="onRefresh()" *ngIf="true"></app-new-comment>

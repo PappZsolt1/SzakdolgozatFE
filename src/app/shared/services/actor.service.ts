@@ -32,7 +32,7 @@ export class ActorService {
     .pipe(catchError(errorHandler));
   }
 
-  modifyActor( actor: Actor): Observable<Actor> {
+  modifyActor(actor: Actor): Observable<Actor> {
     return this.http.put<Actor>(this.actorUrl, actor)
     .pipe(catchError(errorHandler));
   }
