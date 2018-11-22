@@ -7,6 +7,9 @@
             <div>
                 <label>{{c.postDate}}</label>
                 <div class="multiline">{{c.content}}</div>
+                <div *ngIf="!c.moderated">
+                    <button type="button" (click)="moderateComment(c.id)">Moderálás</button>
+                </div>
             </div>
         </li>
     </ul>

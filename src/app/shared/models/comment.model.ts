@@ -14,4 +14,5 @@ export interface Comment {
     actor: Actor;
     article: Article;
     topic: Topic;
+    moderated: boolean;
 }

@@ -35,7 +35,6 @@ export class EditMovieComponent implements OnInit {
   selectMessage = globals.selectMessage;
   lengthMessage = globals.lengthMessage;
   budgetMessage = globals.budgetMessage;
-  idMessage = globals.idMessage;
   
   actorIds: number[] = [];
 

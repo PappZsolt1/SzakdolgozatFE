@@ -28,7 +28,7 @@ export class TopicComponent implements OnInit {
   }
 
   deleteTopic(): void {
-    let answer = confirm("Biztosan törli?");
+    let answer = confirm("Biztosan törli? A téma összes hozzászólása is törölve lesz!");
     if (answer) {
       this.topicService.deleteTopic(this.topic.id).subscribe(() => this.deleted = true);
     }

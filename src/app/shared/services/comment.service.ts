@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 
 import { Comment } from '../models/comment.model';
 import { errorHandler } from '../http-error-handler';
+import { Wrapper } from '../models/wrapper.model';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -42,8 +43,8 @@ export class CommentService {
     .pipe(catchError(errorHandler));
   }
 
-  getMovieComments(movieId: number): Observable<Comment[]> {
-    return this.http.get<Comment[]>(this.commentUrl + "/movie/" + movieId)
+  getMovieComments(movieId: number): Observable<Wrapper> {
+    return this.http.get<Wrapper>(this.commentUrl + "/movie/" + movieId)
     .pipe(catchError(errorHandler));
   }
 

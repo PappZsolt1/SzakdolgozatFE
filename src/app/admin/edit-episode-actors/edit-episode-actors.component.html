@@ -1,7 +1,7 @@
 <h2>Film színészeinek kezelése</h2>
 <form (ngSubmit)="getEpisodeActors()" #getEpisodeForm="ngForm">
   <label for="episodeID">Epizód ID:</label>
-  <input type="number" id="episodeID" name="episodeID" required appCustomMin="1" appCustomMax="1000000000" [(ngModel)]="episodeId" #episodeID="ngModel"><label title="{{idMessage}}"> ?</label><br/>
+  <input type="number" id="episodeID" name="episodeID" required appCustomMin="1" appCustomMax="9000000000000000000" [(ngModel)]="episodeId" #episodeID="ngModel"><label title="{{idMessage}}"> ?</label><br/>
   <button type="submit" [disabled]="!getEpisodeForm.form.valid">Epizód lekérése</button>
 </form>
 <div *ngIf="error1">
@@ -22,7 +22,7 @@
   <form (ngSubmit)="addActorToEpisode(actorID.value)" #addActorForm="ngForm">
     <label>Új színész hozzáadása:</label><br/>
     <label for="actorID">Színész ID:</label>
-    <input type="number" id="actorID" name="actorID" required appCustomMin="1" appCustomMax="1000000000" ngModel #actorID><label title="{{idMessage}}"> ?</label><br/>
+    <input type="number" id="actorID" name="actorID" required appCustomMin="1" appCustomMax="9000000000000000000" ngModel #actorID><label title="{{idMessage}}"> ?</label><br/>
     <button type="submit" [disabled]="!addActorForm.form.valid">Hozzáadás</button>
   </form>
 </div>

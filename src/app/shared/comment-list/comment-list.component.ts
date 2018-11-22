@@ -14,6 +14,7 @@ export class CommentListComponent implements OnInit {
   @Input() id: number;
 
   comments: Comment[];
+  total: number;
 
   constructor(private commentService: CommentService) { }
 
@@ -34,7 +35,8 @@ export class CommentListComponent implements OnInit {
         this.commentService.getActorComments(this.id).subscribe(r => this.comments = r);
         break;
       case "movie":
-        this.commentService.getMovieComments(this.id).subscribe(r => this.comments = r);
+        this.commentService.getMovieComments(this.id).subscribe(r => {
+          this.comments = r.results; this.total = r.total; });
         break;
       case "episode":
         this.commentService.getEpisodeComments(this.id).subscribe(r => this.comments = r);
@@ -45,5 +47,9 @@ export class CommentListComponent implements OnInit {
       default:
         break;
     }
+  }
+
+  moderateComment(id: number): void {
+    this.commentService.moderateComment(id).subscribe(() => this.loadComments());
   }
 }

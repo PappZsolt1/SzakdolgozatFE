@@ -12,7 +12,7 @@
         <label for="number">Szám:</label>
         <input type="number" id="number" name="number" required appCustomMin="1" appCustomMax="100" [(ngModel)]="season.number" #number="ngModel"/><label title="{{numberMessage}}"> ?</label><br/>
         <label for="seriesID">Sorozat ID:</label>
-        <input type="number" id="seriesID" name="seriesID" required appCustomMin="1" appCustomMax="1000000000" [(ngModel)]="seriesId" #seriesID="ngModel"/><label title="{{idMessage}}"> ?</label><br/>
+        <input type="number" id="seriesID" name="seriesID" required appCustomMin="1" appCustomMax="9000000000000000000" [(ngModel)]="seriesId" #seriesID="ngModel"/><label title="{{idMessage}}"> ?</label><br/>
         <div *ngIf="!modify">
             <button type="button" (click)="addSeason()" [disabled]="!editSeasonForm.form.valid">Mentés</button>
         </div>
