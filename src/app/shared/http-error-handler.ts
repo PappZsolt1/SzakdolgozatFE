@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from "@angular/common/http";
-import { Observable } from 'rxjs'
+import { throwError } from 'rxjs';
 
 export function errorHandler(error: HttpErrorResponse) {
-    return Observable.throw(error || "Server error.");
+    return throwError(error || "Server error.");
 }
