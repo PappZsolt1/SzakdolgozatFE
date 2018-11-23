@@ -4,11 +4,11 @@
     </div>
     <div class="multiline">{{topic.description}}</div>
     <div *ngIf=true>
-        <button (click)="deleteTopic()">Téma törlése</button>
+        <button type="button" class="btn btn-danger" (click)="deleteTopic()">Téma törlése</button>
     </div>
     <app-comment-list [type]="type" [id]="topic.id"></app-comment-list>
 </div>
 <div *ngIf="deleted">
     <label>Törölve!</label><br />
 </div>
-<button type="button" (click)="goBack()">Vissza</button>
+<button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>

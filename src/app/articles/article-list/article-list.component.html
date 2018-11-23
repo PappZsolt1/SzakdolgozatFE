@@ -8,9 +8,14 @@
         </li>
     </ul>
 </div>
-<div *ngIf=true>
-    <button routerLink="edit-article">Új cikk írása</button>
+<div class="row">
+    <div class="col-xs-12 col-12">
+        <pagination [boundaryLinks]="true" [directionLinks]="true" [maxSize]="5" [rotate]="true" [itemsPerPage]="size" [totalItems]="total" (pageChanged)="onPageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+    </div>
 </div>
-<div *ngIf=true>
-    <button routerLink="saved-article-list">Mentett cikkek</button>
+<div *ngIf="true">
+    <button class="btn btn-primary" routerLink="edit-article">Új cikk írása</button>
+</div>
+<div *ngIf="true">
+    <button class="btn btn-primary" routerLink="saved-article-list">Mentett cikkek</button>
 </div>

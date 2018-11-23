@@ -9,4 +9,9 @@
 <div *ngIf="actors && actors.length == 0">
   <label>Nincs találat.</label>
 </div>
-<button type="button" (click)="goBack()">Vissza</button>
+<div class="row">
+  <div class="col-xs-12 col-12">
+      <pagination [boundaryLinks]="true" [directionLinks]="true" [maxSize]="5" [rotate]="true" [itemsPerPage]="size" [totalItems]="total" (pageChanged)="onPageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+  </div>
+</div>
+<button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>

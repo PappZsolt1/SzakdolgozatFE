@@ -10,23 +10,18 @@
         <input type="text" id="title" name="title" required maxlength="200" appCustomText [(ngModel)]="article.title" #title="ngModel"><label title="{{inputTextMessage}}"> ?</label><br />
         <label for="content">Tartalom:</label><br />
         <textarea rows="20" cols="70" id="content" name="content" required maxlength="60000" appCustomText [(ngModel)]="article.content" #content="ngModel"><label title="{{textareaMessage}}"> ?</label></textarea><br/>
-        <button type="button" [disabled]="!editArticleForm.form.valid" (click)="saveArticle()">Mentés</button>
-        <button type="submit" [disabled]="!editArticleForm.form.valid">Publikálás</button>
-        <div *ngIf="modify">
-            <button type="button" (click)="deleteArticle()">Törlés</button>
-        </div>
-        <button type="button" (click)="goBack()">Vissza</button>
+        <button type="button" class="btn btn-primary" [disabled]="!editArticleForm.form.valid" (click)="saveArticle()">Mentés</button>
+        <button type="submit" class="btn btn-success" [disabled]="!editArticleForm.form.valid">Publikálás</button>
+        <button *ngIf="modify" type="button" class="btn btn-danger" (click)="deleteArticle()">Törlés</button>
     </form>
 </div>
 <div *ngIf="saved">
     <label>Elmentve!</label><br />
-    <button type="button" (click)="goBack()">Vissza</button>
 </div>
 <div *ngIf="published">
     <label>Publikálva!</label><br />
-    <button type="button" (click)="goBack()">Vissza</button>
 </div>
 <div *ngIf="deleted">
     <label>Törölve!</label><br />
-    <button type="button" (click)="goBack()">Vissza</button>
 </div>    
+<button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>

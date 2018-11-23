@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+
 import { CommentListComponent } from './comment-list/comment-list.component';
 import { NewCommentComponent } from './new-comment/new-comment.component';
 import { SharedDirectiveModule } from '../shared/shared-directive.module';
@@ -10,7 +12,8 @@ import { SharedDirectiveModule } from '../shared/shared-directive.module';
   imports: [
     CommonModule,
     FormsModule,
-    SharedDirectiveModule
+    SharedDirectiveModule,
+    PaginationModule.forRoot()
   ],
   declarations: [
     CommentListComponent,

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+
 import { TopicListComponent } from './topic-list/topic-list.component';
 import { TopicComponent } from './topic/topic.component';
 import { NewTopicComponent } from './new-topic/new-topic.component';
@@ -17,7 +19,8 @@ import { SharedDirectiveModule } from '../shared/shared-directive.module';
     CommonModule,
     SharedCommentModule,
     ForumRoutingModule,
-    SharedDirectiveModule
+    SharedDirectiveModule,
+    PaginationModule.forRoot()
   ],
   declarations: [
     TopicListComponent,

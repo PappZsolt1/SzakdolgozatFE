@@ -7,7 +7,6 @@ import { throwIfAlreadyLoaded } from './module-import-guard';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   imports: [
@@ -18,14 +17,12 @@ import { ErrorPageComponent } from './error-page/error-page.component';
   declarations: [
     LoginComponent,
     RegistrationComponent,
-    PageNotFoundComponent,
-    ErrorPageComponent
+    PageNotFoundComponent
   ],
   exports: [
     LoginComponent,
     RegistrationComponent,
-    PageNotFoundComponent,
-    ErrorPageComponent
+    PageNotFoundComponent
   ]
 })
 export class CoreModule {

@@ -50,7 +50,7 @@ export class EditGenderComponent implements OnInit {
   }
 
   getAllGenders(): void {
-    this.genderService.getAllGenders().subscribe(r => this.genders = r, e => this.router.navigate([{ outlets: { error: ['error-page', e] } }]));
+    this.genderService.getAllGenders().subscribe(r => this.genders = r);
   }
 
   addGender(name: string): void {

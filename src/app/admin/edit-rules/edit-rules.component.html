@@ -3,10 +3,10 @@
   <form (ngSubmit)="modifyRules()" #editRulesForm="ngForm">
     <label for="content">Szabályzat:</label><br/>
       <textarea rows="10" cols="70" id="content" name="content" required maxlength="60000" appCustomText [(ngModel)]="rules.content" #content="ngModel"></textarea><label title="{{textareaMessage}}"> ?</label><br/>
-      <button type="submit" [disabled]="!editRulesForm.form.valid">Mentés</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!editRulesForm.form.valid">Mentés</button>
   </form>
 </div>
 <div *ngIf="saved">
   <label>Elmentve!</label>
 </div>
-<button type="button" (click)="goBack()">Vissza</button>
+<button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>

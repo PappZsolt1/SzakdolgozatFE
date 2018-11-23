@@ -1,7 +1,7 @@
 <div *ngIf=true>
-    <button type="button" (click)="getAllErrorReports()">Összes hibabejelentés lekérése</button>
-    <button type="button" (click)="getResolvedErrorReports()">Megoldott hibabejelentések lekérése</button>
-    <button type="button" (click)="getNotResolvedErrorReports()">Megoldatlan hibabejelentések lekérése</button>
+    <button type="button" class="btn btn-primary" (click)="getAllErrorReports()">Összes hibabejelentés lekérése</button>
+    <button type="button" class="btn btn-primary" (click)="getResolvedErrorReports()">Megoldott hibabejelentések lekérése</button>
+    <button type="button" class="btn btn-primary" (click)="getNotResolvedErrorReports()">Megoldatlan hibabejelentések lekérése</button>
     <div *ngIf="!errorReports || errorReports.length == 0">
         <label>Nincsenek bejelentett hibák.</label>
     </div>
@@ -12,12 +12,17 @@
                 <div class="multiline">{{e.content}}</div>
                 <div *ngIf="e.resolved == false">
                     <label>Hiba nincs megoldva</label>
-                    <button (click)="makeResolved(e.id)">Megoldva</button>
+                    <button type="button" class="btn btn-success" (click)="makeResolved(e.id)">Megoldva</button>
                 </div>
                 <div *ngIf="e.resolved == true">
                     <label>Hiba megoldva</label>
                 </div>                
             </li>
         </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-12">
+        <pagination [boundaryLinks]="true" [directionLinks]="true" [maxSize]="5" [rotate]="true" [itemsPerPage]="size" [totalItems]="total" (pageChanged)="onPageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
     </div>
 </div>

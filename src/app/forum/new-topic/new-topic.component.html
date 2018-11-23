@@ -5,11 +5,10 @@
         <input type="text" id="title" name="title" required maxlength="200" appCustomText [(ngModel)]="topic.title" #title="ngModel"><label title="{{inputTextMessage}}"> ?</label><br />
         <label for="description">Leírás:</label><br />
         <textarea rows="5" cols="70" id="description" name="description" required maxlength="60000" appCustomText [(ngModel)]="topic.description" #description="ngModel"></textarea><label title="{{textareaMessage}}"> ?</label><br />
-        <button type="submit" [disabled]="!newTopicForm.form.valid">Létrehozás</button>
-        <button type="button" (click)="goBack()">Vissza</button>
+        <button type="submit" class="btn btn-success" [disabled]="!newTopicForm.form.valid">Létrehozás</button>
     </form>
 </div>
 <div *ngIf="created">
     <label>Létrehozva!</label><br />
-    <button type="button" (click)="goBack()">Vissza</button>
 </div>
+<button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>

@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 
 import { ErrorReport } from './error-report.model';
 import { errorHandler } from '../../shared/http-error-handler';
+import { Wrapper } from '../../shared/models/wrapper.model';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -22,18 +23,18 @@ export class ErrorReportService {
     .pipe(catchError(errorHandler));
   }
 
-  getAllErrorReports(): Observable<ErrorReport[]> {
-    return this.http.get<ErrorReport[]>(this.errorReportUrl + '/all')
+  getAllErrorReports(page: number, size: number): Observable<Wrapper> {
+    return this.http.get<Wrapper>(this.errorReportUrl + "/all/" + page + "/" + size)
     .pipe(catchError(errorHandler));
   }
 
-  getResolvedErrorReports(): Observable<ErrorReport[]> {
-    return this.http.get<ErrorReport[]>(this.errorReportUrl + '/resolved')
+  getResolvedErrorReports(page: number, size: number): Observable<Wrapper> {
+    return this.http.get<Wrapper>(this.errorReportUrl + "/resolved/" + page + "/" + size)
     .pipe(catchError(errorHandler));
   }
   
-  getNotResolvedErrorReports(): Observable<ErrorReport[]> {
-    return this.http.get<ErrorReport[]>(this.errorReportUrl + '/notresolved')
+  getNotResolvedErrorReports(page: number, size: number): Observable<Wrapper> {
+    return this.http.get<Wrapper>(this.errorReportUrl + "/notresolved/" + page + "/" + size)
     .pipe(catchError(errorHandler));
   }
 

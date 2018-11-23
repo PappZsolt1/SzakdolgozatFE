@@ -10,6 +10,9 @@ import { Article } from '../shared/article.model';
 export class ArticleListComponent implements OnInit {
 
   articles: Article[];
+  total: number;
+  page = 1;
+  size = 10;
 
   constructor(private articleService: ArticleService) { }
 
@@ -17,7 +20,14 @@ export class ArticleListComponent implements OnInit {
     this.getPublishedArticles();
   }
 
+  onPageChanged(event: any): void {
+    this.page = event.page;
+    this.size = event.itemsPerPage;
+    this.getPublishedArticles();
+  }
+
   getPublishedArticles(): void {
-    this.articleService.getPublishedArticles().subscribe(r => this.articles = r);
+    this.articleService.getPublishedArticles(this.page, this.size).subscribe(r => {
+      this.articles = r.results; this.total = r.total; });
   }
 }

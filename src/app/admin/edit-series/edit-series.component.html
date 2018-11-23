@@ -23,11 +23,11 @@
           <option *ngFor="let a of ageClassifications" [ngValue]="a">{{a.name}}</option>
         </select><label title="{{selecetMessage}}"> ?</label><br/>
         <div *ngIf="!modify">
-            <button type="button" (click)="addSeries()" [disabled]="!editSeriesForm.form.valid">Mentés</button>
+            <button type="button" class="btn btn-success" (click)="addSeries()" [disabled]="!editSeriesForm.form.valid">Mentés</button>
         </div>
         <div *ngIf="modify">
-            <button type="button" (click)="modifySeries()" [disabled]="!editSeriesForm.form.valid">Módosítás</button>
-            <button type="button" (click)="deleteSeries()">Törlés</button>
+            <button type="button" class="btn btn-success" (click)="modifySeries()" [disabled]="!editSeriesForm.form.valid">Módosítás</button>
+            <button type="button" class="btn btn-danger" (click)="deleteSeries()">Törlés</button>
         </div>
         <div *ngIf="error">
             <label>A sorozat nem törölhető, mert évadokkal rendelkezik!</label>
@@ -40,4 +40,4 @@
 <div *ngIf="saved">
     <label>Elmentve!</label>
 </div>
-<button type="button" (click)="goBack()">Vissza</button>
+<button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>

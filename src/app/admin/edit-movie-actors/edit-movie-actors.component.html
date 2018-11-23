@@ -15,7 +15,7 @@
   <div *ngIf="actors && actors.length > 0">
     <ul>
       <li *ngFor="let a of actors">
-        <label>ID: {{a.id}}</label><button (click)="removeActorFromMovie(a.id)">Törlés</button>
+        <label>ID: {{a.id}}</label><button class="btn btn-danger" (click)="removeActorFromMovie(a.id)">Törlés</button>
       </li>
     </ul>
   </div>
@@ -23,7 +23,7 @@
     <label>Új színész hozzáadása:</label><br/>
     <label for="actorID">Színész ID:</label>
     <input type="number" id="actorID" name="actorID" required appCustomMin="1" appCustomMax="9000000000000000000" ngModel #actorID><label title="{{idMessage}}"> ?</label><br/>
-    <button type="submit" [disabled]="!addActorForm.form.valid">Hozzáadás</button>
+    <button type="submit" class="btn btn-success" [disabled]="!addActorForm.form.valid">Hozzáadás</button>
   </form>
 </div>
 <div *ngIf="error2">
@@ -32,4 +32,4 @@
 <div *ngIf="error3">
   <label>A színész már a filmhez van rendelve!</label>
 </div>
-<button type="button" (click)="goBack()">Vissza</button>
+<button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>

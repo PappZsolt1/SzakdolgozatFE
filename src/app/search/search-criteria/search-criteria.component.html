@@ -5,5 +5,5 @@
     <select name="category" id="category" required [(ngModel)]="selectedCategory" #category="ngModel">
         <option *ngFor="let c of categories" [ngValue]="c">{{c}}</option>
     </select><label title="{{selectMessage}}"> ?</label>
-    <button type="submit" [disabled]="!SearchForm.form.valid">Keresés</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!SearchForm.form.valid">Keresés</button>
 </form>

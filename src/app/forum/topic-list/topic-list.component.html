@@ -1,10 +1,10 @@
 <div *ngIf="rules">
     <div *ngIf="!showRules">
-        <button (click)="toggleRules()">Szabályzat mutatása</button>
+        <button type="button" class="btn btn-primary" (click)="toggleRules()">Szabályzat mutatása</button>
     </div>
     <div *ngIf="showRules">
         <div class="multiline">{{rules.content}}</div>
-        <button (click)="toggleRules()">Szabályzat elrejtése</button>
+        <button type="button" class="btn btn-primary" (click)="toggleRules()">Szabályzat elrejtése</button>
     </div>    
 </div>
 <div *ngIf="!topics || topics.length == 0">
@@ -17,6 +17,11 @@
         </li>
     </ul>
 </div>
+<div class="row">
+    <div class="col-xs-12 col-12">
+        <pagination [boundaryLinks]="true" [directionLinks]="true" [maxSize]="5" [rotate]="true" [itemsPerPage]="size" [totalItems]="total" (pageChanged)="onPageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+    </div>
+</div>
 <div *ngIf=true>
-    <button routerLink="new-topic">Új téma létrehozása</button>    
+    <button class="btn btn-primary" routerLink="new-topic">Új téma létrehozása</button>    
 </div>

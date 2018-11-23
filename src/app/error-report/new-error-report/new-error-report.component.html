@@ -3,11 +3,11 @@
     <form (ngSubmit)="addErrorReport(content.value)" #newErrorForm="ngForm">
       <label for="content">Hiba leírása:</label><br/>
       <textarea rows="8" cols="70" id="content" name="content" required maxlength="60000" appCustomText ngModel #content></textarea><label title="{{textareaMessage}}"> ?</label><br/>
-      <button type="submit" [disabled]="!newErrorForm.form.valid">Elküld</button>
+      <button type="submit" class="btn btn-success" [disabled]="!newErrorForm.form.valid">Elküld</button>
     </form>
   </div>
   <div *ngIf="sent">
     <label>Elküldve!</label><br/>
-    <button (click)="startNew()">Új hibabejelentés írása</button>
+    <button type="button" class="btn btn-primary" (click)="startNew()">Új hibabejelentés írása</button>
   </div>
 </div>

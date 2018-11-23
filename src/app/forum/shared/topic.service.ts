@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 
 import { Topic } from './topic.model';
 import { errorHandler } from '../../shared/http-error-handler';
+import { Wrapper } from '../../shared/models/wrapper.model';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -22,8 +23,8 @@ export class TopicService {
     .pipe(catchError(errorHandler));
   }
 
-  getAllTopics(): Observable<Topic[]> {
-    return this.http.get<Topic[]>(this.topicUrl)
+  getTopics(page: number, size: number): Observable<Wrapper> {
+    return this.http.get<Wrapper>(this.topicUrl + "/" + page + "/" + size)
     .pipe(catchError(errorHandler));
   }
 

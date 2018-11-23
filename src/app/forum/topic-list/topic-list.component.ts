@@ -14,18 +14,27 @@ export class TopicListComponent implements OnInit {
 
   topics: Topic[];
   rules: Rules;
-
+  total: number;
+  page = 1;
+  size = 10;
   showRules = false;
 
   constructor(private topicService: TopicService, private rulesService: RulesService) { }
 
   ngOnInit() {
-    this.getAllTopics();
+    this.getTopics();
     this.getRules();
   }
 
-  getAllTopics(): void {
-    this.topicService.getAllTopics().subscribe(r => this.topics = r);      
+  onPageChanged(event: any): void {
+    this.page = event.page;
+    this.size = event.itemsPerPage;
+    this.getTopics();
+  }
+
+  getTopics(): void {
+    this.topicService.getTopics(this.page, this.size).subscribe(r => {
+      this.topics = r.results; this.total = r.total; });
   }
 
   getRules(): void {

@@ -14,11 +14,11 @@
         <label for="seriesID">Sorozat ID:</label>
         <input type="number" id="seriesID" name="seriesID" required appCustomMin="1" appCustomMax="9000000000000000000" [(ngModel)]="seriesId" #seriesID="ngModel"/><label title="{{idMessage}}"> ?</label><br/>
         <div *ngIf="!modify">
-            <button type="button" (click)="addSeason()" [disabled]="!editSeasonForm.form.valid">Mentés</button>
+            <button type="button" class="btn btn-success" (click)="addSeason()" [disabled]="!editSeasonForm.form.valid">Mentés</button>
         </div>
         <div *ngIf="modify">
-            <button type="button" (click)="modifySeason()" [disabled]="!editSeasonForm.form.valid">Módosítás</button>
-            <button type="button" (click)="deleteSeason()">Törlés</button>
+            <button type="button" class="btn btn-success" (click)="modifySeason()" [disabled]="!editSeasonForm.form.valid">Módosítás</button>
+            <button type="button" class="btn btn-danger" (click)="deleteSeason()">Törlés</button>
         </div>
         <div *ngIf="error1">
             <label>A megadott sorozat ID nem létezik!</label>
@@ -34,4 +34,4 @@
 <div *ngIf="saved">
     <label>Elmentve!</label>
 </div>
-<button type="button" (click)="goBack()">Vissza</button>
+<button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>

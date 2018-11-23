@@ -13,6 +13,10 @@ import { Movie } from '../../shared/models/movie.model';
 export class MovieListComponent implements OnInit {
 
   movies: Movie[];
+  text: string;
+  total: number;
+  page = 1;
+  size = 10;
 
   constructor(
     private location: Location,
@@ -21,8 +25,16 @@ export class MovieListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    let text = this.route.snapshot.paramMap.get("text");
-    this.movieService.getResultMovies(text).subscribe(r => this.movies = r);
+    this.text = this.route.snapshot.paramMap.get("text");
+    this.movieService.getResultMovies(this.page, this.size, this.text).subscribe(r => {
+      this.movies = r.results; this.total = r.total; });
+  }
+
+  onPageChanged(event: any): void {
+    this.page = event.page;
+    this.size = event.itemsPerPage;
+    this.movieService.getResultMovies(this.page, this.size, this.text).subscribe(r => {
+      this.movies = r.results; this.total = r.total; });
   }
 
   goBack() {

@@ -3,8 +3,8 @@
   <div *ngIf=true>
     <label>ID:</label>
     <label>{{episode.id}}</label>
-    <button [routerLink]="['/admin/edit-episode', { id: episode.id }]">Szerkesztés</button>
-    <button [routerLink]="['/admin/edit-episode-actors', { id: episode.id }]">Színészek kezelése</button>
+    <button class="btn btn-primary" [routerLink]="['/admin/edit-episode', { id: episode.id }]">Szerkesztés</button>
+    <button class="btn btn-primary" [routerLink]="['/admin/edit-episode-actors', { id: episode.id }]">Színészek kezelése</button>
   </div>
   <label>Cím:</label>
   <label>{{episode.title}}</label><br />
@@ -37,4 +37,4 @@
   </div>
   <app-comment-list [type]="type" [id]="episode.id"></app-comment-list>
 </div>
-<button type="button" (click)="goBack()">Vissza</button>
+<button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>

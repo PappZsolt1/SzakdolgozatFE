@@ -13,6 +13,10 @@ import { Series } from '../../shared/models/series.model';
 export class SeriesListComponent implements OnInit {
 
   series: Series[];
+  text: string;
+  total: number;
+  page = 1;
+  size = 10;
 
   constructor(
     private location: Location,
@@ -21,8 +25,16 @@ export class SeriesListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    let text = this.route.snapshot.paramMap.get("text");
-    this.seriesService.getResultSeries(text).subscribe(r => this.series = r);
+    this.text = this.route.snapshot.paramMap.get("text");
+    this.seriesService.getResultSeries(this.page, this.size, this.text).subscribe(r => {
+      this.series = r.results; this.total = r.total; });
+  }
+
+  onPageChanged(event: any): void {
+    this.page = event.page;
+    this.size = event.itemsPerPage;
+    this.seriesService.getResultSeries(this.page, this.size, this.text).subscribe(r => {
+      this.series = r.results; this.total = r.total; });
   }
 
   goBack() {

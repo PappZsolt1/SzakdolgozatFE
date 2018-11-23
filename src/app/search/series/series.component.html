@@ -3,7 +3,7 @@
   <div *ngIf=true>
     <label>ID:</label>
     <label>{{series.id}}</label>
-    <button [routerLink]="['/admin/edit-series', { id: series.id }]">Szerkesztés</button>
+    <button class="btn btn-primary" [routerLink]="['/admin/edit-series', { id: series.id }]">Szerkesztés</button>
   </div>
   <label>Cím:</label>
   <label>{{series.title}}</label><br />
@@ -26,7 +26,7 @@
   <ul>
     <li *ngFor="let s of series.seasons">
       <label (click)="showEpisodes(s)"><span *ngIf="true">ID: {{s.id}} </span>{{s.number}}. évad ({{s.episodes.length}} epizód)</label>
-      <button [routerLink]="['/admin/edit-season', { id: s.id, seriesId: series.id }]" *ngIf="true">Szerkesztés</button>
+      <button class="btn btn-primary" [routerLink]="['/admin/edit-season', { id: s.id, seriesId: series.id }]" *ngIf="true">Szerkesztés</button>
     </li>
   </ul>
   <div *ngIf="show">
@@ -41,4 +41,4 @@
     </ul>
   </div>
 </div>
-<button type="button" (click)="goBack()">Vissza</button>
+<button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>

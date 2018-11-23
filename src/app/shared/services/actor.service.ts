@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 
 import { Actor } from '../models/actor.model';
 import { errorHandler } from '../http-error-handler';
+import { Wrapper } from '../../shared/models/wrapper.model';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -42,8 +43,8 @@ export class ActorService {
     .pipe(catchError(errorHandler));
   }
 
-  getResultActors(name: string): Observable<Actor[]> {
-    return this.http.get<Actor[]>(this.actorUrl + "/search/" + name)
+  getResultActors(page: number, size: number, name: string): Observable<Wrapper> {
+    return this.http.get<Wrapper>(this.actorUrl + "/search/" + page + "/" + size + "/" + name)
     .pipe(catchError(errorHandler));
   }
 

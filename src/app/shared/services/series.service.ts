@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 
 import { Series } from '../models/series.model';
 import { errorHandler } from '../http-error-handler';
+import { Wrapper } from '../../shared/models/wrapper.model';
 
 @Injectable()
 export class SeriesService {
@@ -28,8 +29,8 @@ export class SeriesService {
     .pipe(catchError(errorHandler));
   }
 
-  getResultSeries(title: string): Observable<Series[]> {
-    return this.http.get<Series[]>(this.seriesUrl + "/search/" + title)
+  getResultSeries(page: number, size: number, title: string): Observable<Wrapper> {
+    return this.http.get<Wrapper>(this.seriesUrl + "/search/" + page + "/" + size + "/" + title)
     .pipe(catchError(errorHandler));
   }
 

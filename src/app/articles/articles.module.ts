@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+
 import { ArticlesRoutingModule } from './articles-routing.module';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { ArticleComponent } from './article/article.component';
@@ -19,7 +21,8 @@ import { SharedDirectiveModule } from '../shared/shared-directive.module';
     FormsModule,
     SharedCommentModule,
     ArticlesRoutingModule,
-    SharedDirectiveModule
+    SharedDirectiveModule,
+    PaginationModule.forRoot()
   ],
   declarations: [
     ArticleListComponent,

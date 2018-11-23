@@ -13,6 +13,10 @@ import { Actor } from '../../shared/models/actor.model';
 export class ActorListComponent implements OnInit {
 
   actors: Actor[];
+  text: string;
+  total: number;
+  page = 1;
+  size = 10;
 
   constructor(
     private location: Location,
@@ -21,8 +25,16 @@ export class ActorListComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    let text = this.route.snapshot.paramMap.get("text");
-    this.actorService.getResultActors(text).subscribe(r => this.actors = r);
+    this.text = this.route.snapshot.paramMap.get("text");
+    this.actorService.getResultActors(this.page, this.size, this.text).subscribe(r => {
+      this.actors = r.results; this.total = r.total; });
+  }
+
+  onPageChanged(event: any): void {
+    this.page = event.page;
+    this.size = event.itemsPerPage;
+    this.actorService.getResultActors(this.page, this.size, this.text).subscribe(r => {
+      this.actors = r.results; this.total = r.total; });
   }
 
   goBack() {

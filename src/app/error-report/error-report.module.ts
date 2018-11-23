@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+
 import { ErrorReportRoutingModule } from './error-report-routing.module';
 import { NewErrorReportComponent } from './new-error-report/new-error-report.component';
 import { ErrorReportListComponent } from './error-report-list/error-report-list.component';
@@ -14,7 +16,8 @@ import { SharedDirectiveModule } from '../shared/shared-directive.module';
     CommonModule,
     FormsModule,
     ErrorReportRoutingModule,
-    SharedDirectiveModule
+    SharedDirectiveModule,
+    PaginationModule.forRoot()
   ],
   declarations: [
     NewErrorReportComponent,

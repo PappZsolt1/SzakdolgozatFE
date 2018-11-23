@@ -6,6 +6,7 @@ import { catchError } from 'rxjs/operators';
 import { Movie } from '../models/movie.model';
 import { errorHandler } from '../http-error-handler';
 import { Actor } from '../models/actor.model';
+import { Wrapper } from '../../shared/models/wrapper.model';
 
 @Injectable()
 export class MovieService {
@@ -49,8 +50,8 @@ export class MovieService {
     .pipe(catchError(errorHandler));
   }
 
-  getResultMovies(title: string): Observable<Movie[]> {
-    return this.http.get<Movie[]>(this.movieUrl + "/search/" + title)
+  getResultMovies(page: number, size: number, title: string): Observable<Wrapper> {
+    return this.http.get<Wrapper>(this.movieUrl + "/search/" + page + "/" + size + "/" + title)
     .pipe(catchError(errorHandler));
   }
 

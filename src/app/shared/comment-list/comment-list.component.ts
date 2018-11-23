@@ -15,6 +15,8 @@ export class CommentListComponent implements OnInit {
 
   comments: Comment[];
   total: number;
+  page = 1;
+  size = 10;
 
   constructor(private commentService: CommentService) { }
 
@@ -26,23 +28,33 @@ export class CommentListComponent implements OnInit {
     this.loadComments();
   }
 
+  onPageChanged(event: any): void {
+    this.page = event.page;
+    this.size = event.itemsPerPage;
+    this.loadComments();
+  }
+
   loadComments(): void {
     switch (this.type) {
       case "article":
-        this.commentService.getArticleComments(this.id).subscribe(r => this.comments = r);
+        this.commentService.getArticleComments(this.page, this.size, this.id).subscribe(r => {
+          this.comments = r.results; this.total = r.total; });
       break;
       case "actor":
-        this.commentService.getActorComments(this.id).subscribe(r => this.comments = r);
+        this.commentService.getActorComments(this.page, this.size, this.id).subscribe(r => {
+          this.comments = r.results; this.total = r.total; });
         break;
       case "movie":
-        this.commentService.getMovieComments(this.id).subscribe(r => {
+        this.commentService.getMovieComments(this.page, this.size, this.id).subscribe(r => {
           this.comments = r.results; this.total = r.total; });
         break;
       case "episode":
-        this.commentService.getEpisodeComments(this.id).subscribe(r => this.comments = r);
+        this.commentService.getEpisodeComments(this.page, this.size, this.id).subscribe(r => {
+          this.comments = r.results; this.total = r.total; });
         break;
       case "topic":
-        this.commentService.getTopicComments(this.id).subscribe(r => this.comments = r);
+        this.commentService.getTopicComments(this.page, this.size, this.id).subscribe(r => {
+          this.comments = r.results; this.total = r.total; });
         break;
       default:
         break;

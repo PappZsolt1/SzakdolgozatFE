@@ -3,8 +3,8 @@
     <ul>
         <li *ngFor="let g of genders">
             <label>ID: </label><label>{{g.id}} </label><label>Megnevezés: </label><label>{{g.name}}</label>
-            <button type="button" (click)="editExisting(g.id, g.name)">Szerkesztés</button>
-            <button type="button" (click)="deleteGender(g.id)">Törlés</button>
+            <button type="button" class="btn btn-primary" (click)="editExisting(g.id, g.name)">Szerkesztés</button>
+            <button type="button" class="btn btn-danger" (click)="deleteGender(g.id)">Törlés</button>
         </li>
     </ul>
 </div>
@@ -12,14 +12,14 @@
     <label>A kiválasztott nem nem törölhető, mert hivatkoznak rá!</label>
 </div>
 <div *ngIf="!create">
-    <button type="button" (click)="createNew()">Létrehozás</button>
+    <button type="button" class="btn btn-primary" (click)="createNew()">Létrehozás</button>
 </div>
 <div *ngIf="create">
     <form (ngSubmit)="addGender(name.value)" #newGenderForm="ngForm">
         <label for="name">Megnevezés:</label>
         <input type="text" id="name" name="name" required maxlength="200" appCustomText #name ngModel><label title="{{inputTextMessage}}"> ?</label><br/>
-        <button type="button" (click)="cancelCreate()">Mégse</button>
-        <button type="submit" [disabled]="!newGenderForm.form.valid">Hozzáadás</button>
+        <button type="button" class="btn btn-secondary" (click)="cancelCreate()">Mégse</button>
+        <button type="submit" class="btn btn-success" [disabled]="!newGenderForm.form.valid">Hozzáadás</button>
     </form>
 </div>
 <div *ngIf="edit">
@@ -28,8 +28,8 @@
         <label>{{gender.id}}</label>
         <label for="name">Megnevezés:</label>
         <input type="text" id="name" name="name" required maxlength="200" appCustomText #name [(ngModel)]="gender.name"><label title="{{inputTextMessage}}"> ?</label><br/>
-        <button type="button" (click)="cancelEdit()">Mégse</button>
-        <button type="submit" [disabled]="!modifyGenderForm.form.valid">Mentés</button>
+        <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Mégse</button>
+        <button type="submit" class="btn btn-success" [disabled]="!modifyGenderForm.form.valid">Mentés</button>
     </form>
 </div>
-<button type="button" (click)="goBack()">Vissza</button>
+<button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>

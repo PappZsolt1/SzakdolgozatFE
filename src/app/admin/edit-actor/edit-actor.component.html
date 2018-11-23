@@ -22,11 +22,11 @@
         <label for="bio">Élettörténet:</label><br/>
         <textarea rows="10" cols="70" id="bio" name="bio" required maxlength="60000" appCustomText [(ngModel)]="actor.bio" #bio="ngModel"></textarea><label title="{{textareaMessage}}"> ?</label><br/>
         <div *ngIf="!modify">
-            <button type="button" (click)="addActor()" [disabled]="!editActorForm.form.valid">Mentés</button>
+            <button type="button" class="btn btn-success" (click)="addActor()" [disabled]="!editActorForm.form.valid">Mentés</button>
         </div>
         <div *ngIf="modify">
-            <button type="button" (click)="modifyActor()" [disabled]="!editActorForm.form.valid">Módosítás</button>
-            <button type="button" (click)="deleteActor()">Törlés</button>
+            <button type="button" class="btn btn-success" (click)="modifyActor()" [disabled]="!editActorForm.form.valid">Módosítás</button>
+            <button type="button" class="btn btn-danger" (click)="deleteActor()">Törlés</button>
         </div>
         <div *ngIf="error">
             <label>A színész nem törölhető, mert filmekben vagy sorozatokban szerepel!</label>
@@ -39,4 +39,4 @@
 <div *ngIf="saved">
     <label>Elmentve!</label>
 </div>
-<button type="button" (click)="goBack()">Vissza</button>
+<button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>

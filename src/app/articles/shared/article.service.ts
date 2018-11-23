@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 
 import { Article } from './article.model';
 import { errorHandler } from '../../shared/http-error-handler';
+import { Wrapper } from '../../shared/models/wrapper.model';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -37,8 +38,8 @@ export class ArticleService {
     .pipe(catchError(errorHandler));
   }
 
-  getPublishedArticles(): Observable<Article[]> {
-    return this.http.get<Article[]>(this.articleUrl)
+  getPublishedArticles(page: number, size: number): Observable<Wrapper> {
+    return this.http.get<Wrapper>(this.articleUrl + "/" + page + "/" + size)
     .pipe(catchError(errorHandler));
   }
 

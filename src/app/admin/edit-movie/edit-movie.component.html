@@ -28,11 +28,11 @@
         <label for="budget">Költségvetés:</label>
         <input type="number" id="budget" name="budget" required appCustomMin="0" appCustomMax="2000000000" [(ngModel)]="movie.budget" #budget="ngModel"/><span>$</span><label title="{{budgetMessage}}"> ?</label><br/>
         <div *ngIf="!modify">
-            <button type="button" (click)="addMovie()" [disabled]="!editMovieForm.form.valid">Mentés</button>
+            <button type="button" class="btn btn-success" (click)="addMovie()" [disabled]="!editMovieForm.form.valid">Mentés</button>
         </div>
         <div *ngIf="modify">
-            <button type="button" (click)="modifyMovie()" [disabled]="!editMovieForm.form.valid">Módosítás</button>
-            <button type="button" (click)="deleteMovie()">Törlés</button>
+            <button type="button" class="btn btn-success" (click)="modifyMovie()" [disabled]="!editMovieForm.form.valid">Módosítás</button>
+            <button type="button" class="btn btn-danger" (click)="deleteMovie()">Törlés</button>
         </div>
         <div *ngIf="error">
             <label>A film nem törölhető, mert színészekkel rendelkezik!</label>
@@ -45,4 +45,4 @@
 <div *ngIf="saved">
     <label>Elmentve!</label>
 </div>
-<button type="button" (click)="goBack()">Vissza</button>
+<button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+
 import { SearchCriteriaComponent } from './search-criteria/search-criteria.component';
 import { SearchRoutingModule } from './search-routing.module';
 import { SearchShellComponent } from './search-shell/search-shell.component';
@@ -23,7 +25,8 @@ import { EpisodeComponent } from './episode/episode.component';
     CommonModule,
     SharedCommentModule,
     SearchRoutingModule,
-    SharedDirectiveModule
+    SharedDirectiveModule,
+    PaginationModule.forRoot()
   ],
   declarations: [
     SearchCriteriaComponent,

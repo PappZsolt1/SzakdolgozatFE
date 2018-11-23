@@ -6,3 +6,7 @@ textarea {
     white-space: pre-wrap;
     max-width: 700px;
 }
+
+button {
+    margin: 1px;
+}

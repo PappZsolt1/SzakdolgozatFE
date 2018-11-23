@@ -50,7 +50,7 @@ export class EditGenreComponent implements OnInit {
   }
 
   getAllGenres(): void {
-    this.genreService.getAllGenres().subscribe(r => this.genres = r, e => this.router.navigate([{ outlets: { error: ['error-page', e] } }]));
+    this.genreService.getAllGenres().subscribe(r => this.genres = r);
   }
 
   addGenre(name: string): void {

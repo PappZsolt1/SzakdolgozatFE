@@ -19,11 +19,11 @@
         <label for="seasonID">Évad ID:</label>
         <input type="number" id="seasonID" name="seasonID" required appCustomMin="1" appCustomMax="9000000000000000000" [(ngModel)]="seasonId" #seasonID="ngModel"/><label title="{{idMessage}}"> ?</label><br/>
         <div *ngIf="!modify">
-            <button type="button" (click)="addEpisode()" [disabled]="!editEpisodeForm.form.valid">Mentés</button>
+            <button type="button" class="btn btn-success" (click)="addEpisode()" [disabled]="!editEpisodeForm.form.valid">Mentés</button>
         </div>
         <div *ngIf="modify">
-            <button type="button" (click)="modifyEpisode()" [disabled]="!editEpisodeForm.form.valid">Módosítás</button>
-            <button type="button" (click)="deleteEpisode()">Törlés</button>
+            <button type="button" class="btn btn-success" (click)="modifyEpisode()" [disabled]="!editEpisodeForm.form.valid">Módosítás</button>
+            <button type="button" class="btn btn-danger" (click)="deleteEpisode()">Törlés</button>
         </div>
         <div *ngIf="error1">
             <label>A megadott évad ID nem létezik!</label>
@@ -31,7 +31,6 @@
         <div *ngIf="error2">
             <label>Az epizód nem törölhető, mert színészekkel rendelkezik!</label>
         </div>
-        színészek...
     </form>
 </div>
 <div *ngIf="deleted">
@@ -40,4 +39,4 @@
 <div *ngIf="saved">
     <label>Elmentve!</label>
 </div>
-<button type="button" (click)="goBack()">Vissza</button>
+<button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>
