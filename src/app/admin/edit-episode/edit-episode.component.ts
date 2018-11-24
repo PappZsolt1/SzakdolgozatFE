@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 import { EpisodeService } from '../../shared/services/episode.service';
 import { Episode } from '../../shared/models/episode.model';
@@ -26,6 +29,7 @@ export class EditEpisodeComponent implements OnInit {
   error1 = false;
   error2 = false;
   deleted = false;
+  modalRef: BsModalRef;
 
   hours: number;
   minutes: number;
@@ -36,6 +40,7 @@ export class EditEpisodeComponent implements OnInit {
   idMessage = globals.idMessage;
 
   constructor(
+    private modalService: BsModalService,
     private location: Location,
     private route: ActivatedRoute,
     private episodeService: EpisodeService,
@@ -85,20 +90,26 @@ export class EditEpisodeComponent implements OnInit {
     });
   }
 
-  deleteEpisode(): void {
+  deleteEpisode(template: TemplateRef<any>): void {
     let removable = false;
     this.episodeService.canBeDeleted(this.episode.id).subscribe(r => {
       removable = r;
       if (removable) {
-        let answer = confirm("Biztosan törli?");
-        if (answer) {
-          this.episodeService.deleteEpisode(this.seasonId, this.episode.id).subscribe(() => this.deleted = true);
-        }
+        this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
       } else {
         this.error2 = true;
         setTimeout(() => { this.error2 = false; }, 5000);
       }
     });
+  }
+
+  confirm(): void {
+    this.episodeService.deleteEpisode(this.seasonId, this.episode.id).subscribe(() => this.deleted = true);
+    this.modalRef.hide();
+  }
+ 
+  decline(): void {
+    this.modalRef.hide();
   }
 
   goBack() {

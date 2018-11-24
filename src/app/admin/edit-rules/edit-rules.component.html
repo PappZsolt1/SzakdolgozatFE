@@ -2,11 +2,12 @@
 <div *ngIf="!saved && rules">
   <form (ngSubmit)="modifyRules()" #editRulesForm="ngForm">
     <label for="content">Szabályzat:</label><br/>
-      <textarea rows="10" cols="70" id="content" name="content" required maxlength="60000" appCustomText [(ngModel)]="rules.content" #content="ngModel"></textarea><label title="{{textareaMessage}}"> ?</label><br/>
+      <textarea rows="10" cols="100" id="content" name="content" required maxlength="60000" appCustomText [(ngModel)]="rules.content" #content="ngModel"></textarea>
+      <label tooltip="{{textareaMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
       <button type="submit" class="btn btn-primary" [disabled]="!editRulesForm.form.valid">Mentés</button>
   </form>
 </div>
 <div *ngIf="saved">
-  <label>Elmentve!</label>
+  <alert type="success" class="alert">Elmentve!</alert>
 </div>
 <button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>

@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { AlertModule } from 'ngx-bootstrap/alert';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { RatingModule } from 'ngx-bootstrap/rating';
 
 import { SearchCriteriaComponent } from './search-criteria/search-criteria.component';
 import { SearchRoutingModule } from './search-routing.module';
@@ -26,7 +29,10 @@ import { EpisodeComponent } from './episode/episode.component';
     SharedCommentModule,
     SearchRoutingModule,
     SharedDirectiveModule,
-    PaginationModule.forRoot()
+    PaginationModule.forRoot(),
+    AlertModule.forRoot(),
+    TooltipModule.forRoot(),
+    RatingModule.forRoot()
   ],
   declarations: [
     SearchCriteriaComponent,

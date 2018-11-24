@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { AlertModule } from 'ngx-bootstrap/alert';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 import { ErrorReportRoutingModule } from './error-report-routing.module';
 import { NewErrorReportComponent } from './new-error-report/new-error-report.component';
@@ -17,7 +19,9 @@ import { SharedDirectiveModule } from '../shared/shared-directive.module';
     FormsModule,
     ErrorReportRoutingModule,
     SharedDirectiveModule,
-    PaginationModule.forRoot()
+    PaginationModule.forRoot(),
+    AlertModule.forRoot(),
+    TooltipModule.forRoot()
   ],
   declarations: [
     NewErrorReportComponent,

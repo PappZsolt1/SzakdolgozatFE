@@ -1,14 +1,16 @@
 <h2>Új téma létrehozása</h2>
 <div *ngIf="!created">
     <form (ngSubmit)="addTopic()" #newTopicForm="ngForm">
-        <label for="title">Cím:</label><br />
-        <input type="text" id="title" name="title" required maxlength="200" appCustomText [(ngModel)]="topic.title" #title="ngModel"><label title="{{inputTextMessage}}"> ?</label><br />
+        <label for="title">Cím:&nbsp;</label><br />
+        <input type="text" id="title" name="title" required maxlength="200" appCustomText [(ngModel)]="topic.title" #title="ngModel">
+        <label tooltip="{{inputTextMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br />
         <label for="description">Leírás:</label><br />
-        <textarea rows="5" cols="70" id="description" name="description" required maxlength="60000" appCustomText [(ngModel)]="topic.description" #description="ngModel"></textarea><label title="{{textareaMessage}}"> ?</label><br />
+        <textarea rows="5" cols="100" id="description" name="description" required maxlength="60000" appCustomText [(ngModel)]="topic.description" #description="ngModel"></textarea>
+        <label tooltip="{{textareaMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br />
         <button type="submit" class="btn btn-success" [disabled]="!newTopicForm.form.valid">Létrehozás</button>
     </form>
 </div>
 <div *ngIf="created">
-    <label>Létrehozva!</label><br />
+    <alert type="success" class="alert">Létrehozva!</alert>
 </div>
 <button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>

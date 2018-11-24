@@ -18,6 +18,7 @@ export class MovieComponent implements OnInit {
   actors: Actor[];
   showRating = false;
   type = "movie";
+  rating = 1;
 
   ratingMessage = globals.ratingMessage;
 
@@ -38,8 +39,8 @@ export class MovieComponent implements OnInit {
     this.showRating = true;
   }
 
-  addRating(rating: number): void {
-    this.movieService.changeRating(this.movie.id, rating).subscribe(() => { this.showRating = false;
+  addRating(): void {
+    this.movieService.changeRating(this.movie.id, this.rating).subscribe(() => { this.showRating = false;
       this.movieService.getMovie(this.movie.id).subscribe(r => this.movie = r);
     });
   }

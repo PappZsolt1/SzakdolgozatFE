@@ -1,6 +1,6 @@
 <label>Hozzászólások:</label>
 <div *ngIf="!comments || comments.length == 0">
-    <label>Még nincsenek hozzászólások.</label>
+    <alert type="info" class="alert">Még nincsenek hozzászólások.</alert>
 </div>
 <div *ngIf="comments && comments.length > 0">
     <ul>
@@ -9,15 +9,23 @@
                 <label>{{c.postDate}}</label>
                 <div class="multiline">{{c.content}}</div>
                 <div *ngIf="!c.moderated">
-                    <button type="button" class="btn btn-danger" (click)="moderateComment(c.id)">Moderálás</button>
+                    <button type="button" class="btn btn-danger" (click)="moderateComment(c.id, template)">Moderálás</button>
                 </div>
             </div>
         </li>
     </ul>
-</div>
-<div class="row">
-    <div class="col-xs-12 col-12">
-        <pagination [boundaryLinks]="true" [directionLinks]="true" [maxSize]="5" [rotate]="true" [itemsPerPage]="size" [totalItems]="total" (pageChanged)="onPageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+    <div class="row">
+        <div class="col-xs-12 col-12">
+            <pagination [boundaryLinks]="true" [directionLinks]="true" [maxSize]="5" [rotate]="true" [itemsPerPage]="size" [totalItems]="total" (pageChanged)="onPageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+        </div>
     </div>
 </div>
 <app-new-comment [type]="type" [id]="id" (refresh)="onRefresh()" *ngIf="true"></app-new-comment>
+
+<ng-template #template>
+    <div class="modal-body text-center">
+        <p>Biztosan moderálja?</p>
+        <button type="button" class="btn btn-danger" (click)="confirm()">Igen</button>
+        <button type="button" class="btn btn-secondary" (click)="decline()">Mégse</button>
+    </div>
+</ng-template>

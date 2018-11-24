@@ -10,3 +10,32 @@ textarea {
 button {
     margin: 1px;
 }
+
+.alert {
+    display: inline-block;
+}
+
+.help {
+    width: 20px;
+    height: 20px;
+    margin-left: 3px;
+    margin-bottom: 5px;
+}
+
+.ng-valid:not(form) {
+    border: 1px solid green;
+    border-radius: 3px;
+}
+
+.ng-invalid:not(form) {
+    border: 1px solid red;
+    border-radius: 3px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+body {
+    margin-left: 10px;
+}

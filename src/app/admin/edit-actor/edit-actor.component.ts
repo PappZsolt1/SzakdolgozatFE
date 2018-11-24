@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 import { ActorService } from '../../shared/services/actor.service';
 import { Actor } from '../../shared/models/actor.model';
@@ -24,6 +27,7 @@ export class EditActorComponent implements OnInit {
   modify = false;
   error = false;
   deleted = false;
+  modalRef: BsModalRef;
 
   inputTextMessage = globals.inputTextMessage;
   selectMessage = globals.selectMessage;
@@ -31,6 +35,7 @@ export class EditActorComponent implements OnInit {
   textareaMessage = globals.textareaMessage;
 
   constructor(
+    private modalService: BsModalService,
     private location: Location,
     private route: ActivatedRoute,
     private actorService: ActorService,
@@ -66,20 +71,26 @@ export class EditActorComponent implements OnInit {
     return g1 && g2 ? g1.id === g2.id : g1 === g2;
   }
 
-  deleteActor(): void {
+  deleteActor(template: TemplateRef<any>): void {
     let removable = false;
     this.actorService.canBeDeleted(this.actor.id).subscribe(r => {
       removable = r;
       if (removable) {
-        let answer = confirm("Biztosan törli?");
-        if (answer) {
-          this.actorService.deleteActor(this.actor.id).subscribe(() => this.deleted = true);
-        }
+        this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
       } else {
         this.error = true;
         setTimeout(() => { this.error = false; }, 5000);
       }
     });
+  }
+
+  confirm(): void {
+    this.actorService.deleteActor(this.actor.id).subscribe(() => this.deleted = true);
+    this.modalRef.hide();
+  }
+ 
+  decline(): void {
+    this.modalRef.hide();
   }
 
   goBack() {

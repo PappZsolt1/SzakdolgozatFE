@@ -1,9 +1,9 @@
 <div *ngIf=true>
-    <button type="button" class="btn btn-primary" (click)="getAllErrorReports()">Összes hibabejelentés lekérése</button>
-    <button type="button" class="btn btn-primary" (click)="getResolvedErrorReports()">Megoldott hibabejelentések lekérése</button>
+    <button type="button" class="btn btn-primary" (click)="getAllErrorReports()">Összes hibabejelentés lekérése</button><br/>
+    <button type="button" class="btn btn-primary" (click)="getResolvedErrorReports()">Megoldott hibabejelentések lekérése</button><br/>
     <button type="button" class="btn btn-primary" (click)="getNotResolvedErrorReports()">Megoldatlan hibabejelentések lekérése</button>
     <div *ngIf="!errorReports || errorReports.length == 0">
-        <label>Nincsenek bejelentett hibák.</label>
+        <alert type="info" class="alert">Nincsenek bejelentett hibák.</alert>
     </div>
     <div *ngIf="errorReports && errorReports.length > 0">
         <ul>
@@ -11,18 +11,18 @@
                 <span>{{e.id}} </span><span>{{e.sendingDate}}</span>
                 <div class="multiline">{{e.content}}</div>
                 <div *ngIf="e.resolved == false">
-                    <label>Hiba nincs megoldva</label>
+                    <alert type="warning" class="alert">Hiba nincs megoldva</alert>
                     <button type="button" class="btn btn-success" (click)="makeResolved(e.id)">Megoldva</button>
                 </div>
                 <div *ngIf="e.resolved == true">
-                    <label>Hiba megoldva</label>
+                    <alert type="success" class="alert">Hiba megoldva</alert>
                 </div>                
             </li>
         </ul>
-    </div>
-</div>
-<div class="row">
-    <div class="col-xs-12 col-12">
-        <pagination [boundaryLinks]="true" [directionLinks]="true" [maxSize]="5" [rotate]="true" [itemsPerPage]="size" [totalItems]="total" (pageChanged)="onPageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+        <div class="row">
+            <div class="col-xs-12 col-12">
+                <pagination [boundaryLinks]="true" [directionLinks]="true" [maxSize]="5" [rotate]="true" [itemsPerPage]="size" [totalItems]="total" (pageChanged)="onPageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+            </div>
+        </div>
     </div>
 </div>

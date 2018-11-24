@@ -2,34 +2,44 @@
 <div>
     <ul>
         <li *ngFor="let a of ageClassifications">
-            <label>ID: </label><label>{{a.id}} </label><label>Megnevezés: </label><label>{{a.name}}</label>
+            <label>ID:&nbsp;</label><label>{{a.id}}&nbsp;</label><label>Megnevezés:&nbsp;</label><label>{{a.name}}</label>
             <button type="button" class="btn btn-primary" (click)="editExisting(a.id, a.name)">Szerkesztés</button>
-            <button type="button" class="btn btn-danger" (click)="deleteAgeClassification(a.id)">Törlés</button>
+            <button type="button" class="btn btn-danger" (click)="deleteAgeClassification(a.id, template)">Törlés</button>
         </li>
     </ul>
 </div>
 <div *ngIf="error">
-    <label>A kiválasztott korbesorolás nem törölhető, mert hivatkoznak rá!</label>
+    <alert type="danger" class="alert">A kiválasztott korbesorolás nem törölhető, mert hivatkoznak rá!</alert>
 </div>
 <div *ngIf="!create">
     <button type="button" class="btn btn-primary" (click)="createNew()">Létrehozás</button>
 </div>
 <div *ngIf="create">
     <form (ngSubmit)="addAgeClassification(name.value)" #newAgeClassificationForm="ngForm">
-        <label for="name">Megnevezés:</label>
-        <input type="text" id="name" name="name" required maxlength="200" appCustomText #name ngModel><label title="{{inputTextMessage}}"> ?</label><br/>
+        <label for="name">Megnevezés:&nbsp;</label>
+        <input type="text" id="name" name="name" required maxlength="200" appCustomText #name ngModel>
+        <label tooltip="{{inputTextMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
         <button type="button" class="btn btn-secondary" (click)="cancelCreate()">Mégse</button>
         <button type="submit" class="btn btn-success" [disabled]="!newAgeClassificationForm.form.valid">Hozzáadás</button>
     </form>
 </div>
 <div *ngIf="edit">
     <form (ngSubmit)="modifyAgeClassification()" #modifyAgeClassificationForm="ngForm">
-        <label>ID:</label>
-        <label>{{ageClassification.id}}</label>
-        <label for="name">Megnevezés:</label>
-        <input type="text" id="name" name="name" required maxlength="200" appCustomText #name [(ngModel)]="ageClassification.name"><label title="{{inputTextMessage}}"> ?</label><br/>
+        <label>ID:&nbsp;</label>
+        <label>{{ageClassification.id}}&nbsp;</label>
+        <label for="name">Megnevezés:&nbsp;</label>
+        <input type="text" id="name" name="name" required maxlength="200" appCustomText #name [(ngModel)]="ageClassification.name">
+        <label tooltip="{{inputTextMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
         <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Mégse</button>
         <button type="submit" class="btn btn-success" [disabled]="!modifyAgeClassificationForm.form.valid">Mentés</button>
     </form>
 </div>
 <button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>
+
+<ng-template #template>
+    <div class="modal-body text-center">
+        <p>Biztosan törli?</p>
+        <button type="button" class="btn btn-danger" (click)="confirm()">Igen</button>
+        <button type="button" class="btn btn-secondary" (click)="decline()">Mégse</button>
+    </div>
+</ng-template>

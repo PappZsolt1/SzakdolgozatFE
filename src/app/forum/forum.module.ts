@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { AlertModule } from 'ngx-bootstrap/alert';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 import { TopicListComponent } from './topic-list/topic-list.component';
 import { TopicComponent } from './topic/topic.component';
@@ -20,7 +23,10 @@ import { SharedDirectiveModule } from '../shared/shared-directive.module';
     SharedCommentModule,
     ForumRoutingModule,
     SharedDirectiveModule,
-    PaginationModule.forRoot()
+    PaginationModule.forRoot(),
+    AlertModule.forRoot(),
+    ModalModule.forRoot(),
+    TooltipModule.forRoot()
   ],
   declarations: [
     TopicListComponent,

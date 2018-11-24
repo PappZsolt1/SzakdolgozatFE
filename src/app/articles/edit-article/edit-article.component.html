@@ -6,22 +6,32 @@
 </div>
 <div *ngIf="!saved && !published && !deleted">
     <form (ngSubmit)="publishArticle()" #editArticleForm="ngForm">
-        <label for="title">Cím:</label><br />
-        <input type="text" id="title" name="title" required maxlength="200" appCustomText [(ngModel)]="article.title" #title="ngModel"><label title="{{inputTextMessage}}"> ?</label><br />
+        <label for="title">Cím:&nbsp;</label><br />
+        <input type="text" id="title" name="title" required maxlength="200" appCustomText [(ngModel)]="article.title" #title="ngModel">
+        <label tooltip="{{inputTextMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br />
         <label for="content">Tartalom:</label><br />
-        <textarea rows="20" cols="70" id="content" name="content" required maxlength="60000" appCustomText [(ngModel)]="article.content" #content="ngModel"><label title="{{textareaMessage}}"> ?</label></textarea><br/>
+        <textarea rows="10" cols="100" id="content" name="content" required maxlength="60000" appCustomText [(ngModel)]="article.content" #content="ngModel"></textarea>
+        <label tooltip="{{textareaMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
         <button type="button" class="btn btn-primary" [disabled]="!editArticleForm.form.valid" (click)="saveArticle()">Mentés</button>
         <button type="submit" class="btn btn-success" [disabled]="!editArticleForm.form.valid">Publikálás</button>
-        <button *ngIf="modify" type="button" class="btn btn-danger" (click)="deleteArticle()">Törlés</button>
+        <button *ngIf="modify" type="button" class="btn btn-danger" (click)="deleteArticle(template)">Törlés</button>
     </form>
 </div>
 <div *ngIf="saved">
-    <label>Elmentve!</label><br />
+    <alert type="success" class="alert">Elmentve!</alert>
 </div>
 <div *ngIf="published">
-    <label>Publikálva!</label><br />
+    <alert type="success" class="alert">Publikálva!</alert>
 </div>
 <div *ngIf="deleted">
-    <label>Törölve!</label><br />
+    <alert type="success" class="alert">Törölve!</alert>
 </div>    
 <button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>
+
+<ng-template #template>
+    <div class="modal-body text-center">
+        <p>Biztosan törli?</p>
+        <button type="button" class="btn btn-danger" (click)="confirm()">Igen</button>
+        <button type="button" class="btn btn-secondary" (click)="decline()">Mégse</button>
+    </div>
+</ng-template>

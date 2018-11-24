@@ -2,12 +2,13 @@
   <div *ngIf="!sent">
     <form (ngSubmit)="addErrorReport(content.value)" #newErrorForm="ngForm">
       <label for="content">Hiba leírása:</label><br/>
-      <textarea rows="8" cols="70" id="content" name="content" required maxlength="60000" appCustomText ngModel #content></textarea><label title="{{textareaMessage}}"> ?</label><br/>
+      <textarea rows="8" cols="100" id="content" name="content" required maxlength="60000" appCustomText ngModel #content></textarea>
+      <label tooltip="{{textareaMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
       <button type="submit" class="btn btn-success" [disabled]="!newErrorForm.form.valid">Elküld</button>
     </form>
   </div>
   <div *ngIf="sent">
-    <label>Elküldve!</label><br/>
+    <alert type="success" class="alert">Elküldve!</alert><br/>
     <button type="button" class="btn btn-primary" (click)="startNew()">Új hibabejelentés írása</button>
   </div>
 </div>

@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Location } from '@angular/common';
+
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 import { AgeClassificationService } from '../../shared/services/age-classification.service';
 import { AgeClassification } from '../../shared/models/age-classification.model';
@@ -17,10 +20,16 @@ export class EditAgeClassificationComponent implements OnInit {
   create = false;
   edit = false;
   error = false;
+  modalRef: BsModalRef;
+  selectedId: number;
 
   inputTextMessage = globals.inputTextMessage;
 
-  constructor(private location: Location, private ageClassificationService: AgeClassificationService) { }
+  constructor(
+    private modalService: BsModalService,
+    private location: Location,
+    private ageClassificationService: AgeClassificationService
+    ) { }
 
   ngOnInit() {
     this.getAllAgeClassifications();
@@ -57,21 +66,28 @@ export class EditAgeClassificationComponent implements OnInit {
       .subscribe(() => { this.edit = false; this.getAllAgeClassifications(); });
   }
 
-  deleteAgeClassification(id: number): void {
+  deleteAgeClassification(id: number, template: TemplateRef<any>): void {
+    this.selectedId = id;
     let removable = false;
-    this.ageClassificationService.canBeDeleted(id).subscribe(r => {
+    this.ageClassificationService.canBeDeleted(this.selectedId).subscribe(r => {
       removable = r;
       if (removable) {
-        let answer = confirm("Biztosan törli?");
-        if (answer) {
-          this.ageClassificationService.deleteAgeClassification(id)
-            .subscribe(() => { this.getAllAgeClassifications(); if (this.ageClassification.id == id) this.edit = false; });
-        }
+        this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
       } else {
         this.error = true;
         setTimeout(() => { this.error = false; }, 5000);
       }
     });
+  }
+
+  confirm(): void {
+    this.ageClassificationService.deleteAgeClassification(this.selectedId).subscribe(() => {
+      this.getAllAgeClassifications(); if (this.ageClassification.id == this.selectedId) this.edit = false; });
+    this.modalRef.hide();
+  }
+ 
+  decline(): void {
+    this.modalRef.hide();
   }
 
   goBack() {

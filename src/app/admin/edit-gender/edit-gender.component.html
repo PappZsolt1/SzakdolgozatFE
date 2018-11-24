@@ -2,34 +2,44 @@
 <div>
     <ul>
         <li *ngFor="let g of genders">
-            <label>ID: </label><label>{{g.id}} </label><label>Megnevezés: </label><label>{{g.name}}</label>
+            <label>ID:&nbsp;</label><label>{{g.id}}&nbsp;</label><label>Megnevezés:&nbsp;</label><label>{{g.name}}</label>
             <button type="button" class="btn btn-primary" (click)="editExisting(g.id, g.name)">Szerkesztés</button>
-            <button type="button" class="btn btn-danger" (click)="deleteGender(g.id)">Törlés</button>
+            <button type="button" class="btn btn-danger" (click)="deleteGender(g.id, template)">Törlés</button>
         </li>
     </ul>
 </div>
 <div *ngIf="error">
-    <label>A kiválasztott nem nem törölhető, mert hivatkoznak rá!</label>
+    <alert type="danger" class="alert">A kiválasztott nem nem törölhető, mert hivatkoznak rá!</alert>
 </div>
 <div *ngIf="!create">
     <button type="button" class="btn btn-primary" (click)="createNew()">Létrehozás</button>
 </div>
 <div *ngIf="create">
     <form (ngSubmit)="addGender(name.value)" #newGenderForm="ngForm">
-        <label for="name">Megnevezés:</label>
-        <input type="text" id="name" name="name" required maxlength="200" appCustomText #name ngModel><label title="{{inputTextMessage}}"> ?</label><br/>
+        <label for="name">Megnevezés:&nbsp;</label>
+        <input type="text" id="name" name="name" required maxlength="200" appCustomText #name ngModel>
+        <label tooltip="{{inputTextMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
         <button type="button" class="btn btn-secondary" (click)="cancelCreate()">Mégse</button>
         <button type="submit" class="btn btn-success" [disabled]="!newGenderForm.form.valid">Hozzáadás</button>
     </form>
 </div>
 <div *ngIf="edit">
     <form (ngSubmit)="modifyGender()" #modifyGenderForm="ngForm">
-        <label>ID:</label>
-        <label>{{gender.id}}</label>
-        <label for="name">Megnevezés:</label>
-        <input type="text" id="name" name="name" required maxlength="200" appCustomText #name [(ngModel)]="gender.name"><label title="{{inputTextMessage}}"> ?</label><br/>
+        <label>ID:&nbsp;</label>
+        <label>{{gender.id}}&nbsp;</label>
+        <label for="name">Megnevezés:&nbsp;</label>
+        <input type="text" id="name" name="name" required maxlength="200" appCustomText #name [(ngModel)]="gender.name">
+        <label tooltip="{{inputTextMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
         <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Mégse</button>
         <button type="submit" class="btn btn-success" [disabled]="!modifyGenderForm.form.valid">Mentés</button>
     </form>
 </div>
 <button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>
+
+<ng-template #template>
+    <div class="modal-body text-center">
+        <p>Biztosan törli?</p>
+        <button type="button" class="btn btn-danger" (click)="confirm()">Igen</button>
+        <button type="button" class="btn btn-secondary" (click)="decline()">Mégse</button>
+    </div>
+</ng-template>

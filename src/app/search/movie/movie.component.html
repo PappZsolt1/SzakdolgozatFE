@@ -1,46 +1,47 @@
 <h2>Film</h2>
 <div *ngIf="movie">
   <div *ngIf=true>
-    <label>ID:</label>
+    <label>ID:&nbsp;</label>
     <label>{{movie.id}}</label>
     <button class="btn btn-primary" [routerLink]="['/admin/edit-movie', { id: movie.id }]">Szerkesztés</button>
     <button class="btn btn-primary" [routerLink]="['/admin/edit-movie-actors', { id: movie.id }]">Színészek kezelése</button>
   </div>
-  <label>Cím:</label>
+  <label>Cím:&nbsp;</label>
   <label>{{movie.title}}</label><br/>
   kép
   <br/>
-  <label>Értékelés:</label>
+  <label>Értékelés:&nbsp;</label>
   <span *ngIf="movie.rating == 0">Még nincs értékelve.</span>
   <span *ngIf="movie.rating > 0">{{movie.rating.toPrecision(3)}}</span>
-  <button (click)="createRating()" *ngIf="true">Film értékelése</button>
+  <button class="btn btn-primary" (click)="createRating()" *ngIf="true">Film értékelése</button>
   <br/>
   <div *ngIf="showRating">
-    <form (ngSubmit)="addRating(userRating.value)" #ratingForm="ngForm">
-      <label for="userRating">Az ön értékelése:</label>
-      <input type="number" id="userRating" name="userRating" required appCustomMin="1" appCustomMax="10" ngModel #userRating/><label title="{{ratingMessage}}"> ?</label><br/>
-      <button type="submit" [disabled]="!ratingForm.form.valid">Értékelés küldése</button>
-      <button type="button" (click)="cancelRating()">Mégse</button>
+    <form (ngSubmit)="addRating()" #ratingForm="ngForm">
+      <label for="stars">Az ön értékelése:&nbsp;</label>
+      <rating [max]="10" name="stars" [(ngModel)]="rating"></rating>
+      <label>&nbsp;{{rating}}</label><br/>
+      <button type="submit" class="btn btn-success" [disabled]="!ratingForm.form.valid">Értékelés küldése</button>
+      <button type="button" class="btn btn-secondary" (click)="cancelRating()">Mégse</button>
     </form>
   </div>
-  <label>Megjelenés éve:</label>
+  <label>Megjelenés éve:&nbsp;</label>
   <label>{{movie.releaseYear}}</label><br/>
-  <label>Műfaj:</label>
+  <label>Műfaj:&nbsp;</label>
   <label>{{movie.genre.name}}</label><br/>
-  <label>Hossz:</label>
+  <label>Hossz:&nbsp;</label>
   <label>{{movie.mLength}}</label><br/>
-  <label>Korbesorolás:</label>
+  <label>Korbesorolás:&nbsp;</label>
   <label>{{movie.ageClassification.name}}</label><br/>
-  <label>Költségvetés:</label>
+  <label>Költségvetés:&nbsp;</label>
   <label>{{movie.budget}} $</label><br/>
   <label>Színészek:</label>
   <div *ngIf="!actors || actors.length == 0">
-    <label>A filmnek még nincsenek színészei.</label>
+    <alert type="info" class="alert">A filmnek még nincsenek színészei.</alert>
   </div>
   <div *ngIf="actors && actors.length > 0">
     <ul>
       <li *ngFor="let a of actors">
-        <a [routerLink]="['../../actor', a.id]"><span *ngIf="true">ID: {{a.id}} </span>{{a.name}}</a>
+        <a [routerLink]="['../../actor', a.id]"><span *ngIf="true">ID:&nbsp;{{a.id}}&nbsp;</span>{{a.name}}</a>
       </li>
     </ul>
   </div>

@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 import { ArticleService } from '../shared/article.service';
 import { Article } from '../shared/article.model';
@@ -19,11 +22,13 @@ export class EditArticleComponent implements OnInit {
   published = false;
   deleted = false;
   modify = false;
+  modalRef: BsModalRef;
 
   inputTextMessage = globals.inputTextMessage;
   textareaMessage = globals.textareaMessage;
 
   constructor(
+    private modalService: BsModalService,
     private articleService: ArticleService,
     private location: Location,
     private route: ActivatedRoute
@@ -44,11 +49,17 @@ export class EditArticleComponent implements OnInit {
     this.articleService.publishArticle(this.article).subscribe(() => this.published = true);
   }
 
-  deleteArticle(): void {
-    let answer = confirm("Biztosan törli?");
-    if (answer) {
-      this.articleService.deleteArticle(this.article.id).subscribe(() => this.deleted = true);
-    }
+  deleteArticle(template: TemplateRef<any>): void {
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+  }
+
+  confirm(): void {
+    this.articleService.deleteArticle(this.article.id).subscribe(() => this.deleted = true);
+    this.modalRef.hide();
+  }
+ 
+  decline(): void {
+    this.modalRef.hide();
   }
 
   goBack() {

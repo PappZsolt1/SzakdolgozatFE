@@ -18,6 +18,7 @@ export class EpisodeComponent implements OnInit {
   actors: Actor[];
   showRating = false;
   type = "episode";
+  rating = 1;
 
   ratingMessage = globals.ratingMessage;
 
@@ -38,8 +39,8 @@ export class EpisodeComponent implements OnInit {
     this.showRating = true;
   }
 
-  addRating(rating: number): void {
-    this.episodeService.changeRating(this.episode.id, rating).subscribe(() => { this.showRating = false;
+  addRating(): void {
+    this.episodeService.changeRating(this.episode.id, this.rating).subscribe(() => { this.showRating = false;
       this.episodeService.getEpisode(this.episode.id).subscribe(r => this.episode = r);
     });
   }

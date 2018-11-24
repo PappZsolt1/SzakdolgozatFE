@@ -9,34 +9,46 @@
         <div *ngIf="modify">
             <label>ID: {{actor.id}}</label>
         </div>
-        <label for="name">Név:</label>
-        <input type="text" id="name" name="name" required maxlength="200" appCustomText [(ngModel)]="actor.name" #name="ngModel"><label title="{{inputTextMessage}}"> ?</label><br/>
-        <label for="gender">Nem:</label>
+        <label for="name">Név:&nbsp;</label>
+        <input type="text" id="name" name="name" required maxlength="200" appCustomText [(ngModel)]="actor.name" #name="ngModel">
+        <label tooltip="{{inputTextMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
+        <label for="gender">Nem:&nbsp;</label>
         <select name="gender" id="gender" [compareWith]="compareGenders" required [(ngModel)]="actor.gender" #gender="ngModel">
             <option *ngFor="let g of genders" [ngValue]="g">{{g.name}}</option>
-        </select><label title="{{selectMessage}}"> ?</label><br/>
-        <label for="birthPlace">Születési hely:</label>
-        <input type="text" id="birthPlace" name="birthPlace" maxlength="200" required appCustomText [(ngModel)]="actor.birthPlace" #birthPlace="ngModel"><label title="{{inputTextMessage}}"> ?</label><br/>
-        <label for="birthDate">Születési idő:</label>
-        <input type="date" id="birthDate" name="birthDate" required appCustomDate="1750,2100" [(ngModel)]="bDate" #birthDate="ngModel"><label title="{{birthDateMessage}}"> ?</label><br/>
-        <label for="bio">Élettörténet:</label><br/>
-        <textarea rows="10" cols="70" id="bio" name="bio" required maxlength="60000" appCustomText [(ngModel)]="actor.bio" #bio="ngModel"></textarea><label title="{{textareaMessage}}"> ?</label><br/>
+        </select><label tooltip="{{selectMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
+        <label for="birthPlace">Születési hely:&nbsp;</label>
+        <input type="text" id="birthPlace" name="birthPlace" maxlength="200" required appCustomText [(ngModel)]="actor.birthPlace" #birthPlace="ngModel">
+        <label tooltip="{{inputTextMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
+        <label for="birthDate">Születési idő:&nbsp;</label>
+        <input type="date" id="birthDate" name="birthDate" required appCustomDate="1750,2100" [(ngModel)]="bDate" #birthDate="ngModel">
+        <label tooltip="{{birthDateMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
+        <label for="bio">Élettörténet:&nbsp;</label><br/>
+        <textarea rows="5" cols="100" id="bio" name="bio" required maxlength="60000" appCustomText [(ngModel)]="actor.bio" #bio="ngModel"></textarea>
+        <label tooltip="{{textareaMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
         <div *ngIf="!modify">
             <button type="button" class="btn btn-success" (click)="addActor()" [disabled]="!editActorForm.form.valid">Mentés</button>
         </div>
         <div *ngIf="modify">
             <button type="button" class="btn btn-success" (click)="modifyActor()" [disabled]="!editActorForm.form.valid">Módosítás</button>
-            <button type="button" class="btn btn-danger" (click)="deleteActor()">Törlés</button>
+            <button type="button" class="btn btn-danger" (click)="deleteActor(template)">Törlés</button>
         </div>
         <div *ngIf="error">
-            <label>A színész nem törölhető, mert filmekben vagy sorozatokban szerepel!</label>
+            <alert type="danger" class="alert">A színész nem törölhető, mert filmekben vagy sorozatokban szerepel!</alert>
         </div>
     </form>
 </div>
 <div *ngIf="deleted">
-    <label>Törölve!</label>
+    <alert type="success" class="alert">Törölve!</alert>
 </div>
 <div *ngIf="saved">
-    <label>Elmentve!</label>
+    <alert type="success" class="alert">Elmentve!</alert>
 </div>
 <button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>
+
+<ng-template #template>
+    <div class="modal-body text-center">
+        <p>Biztosan törli? A színészhez írt összes hozzászólás is törölve lesz!</p>
+        <button type="button" class="btn btn-danger" (click)="confirm()">Igen</button>
+        <button type="button" class="btn btn-secondary" (click)="decline()">Mégse</button>
+    </div>
+</ng-template>

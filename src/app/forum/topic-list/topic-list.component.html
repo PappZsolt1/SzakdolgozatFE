@@ -8,7 +8,7 @@
     </div>    
 </div>
 <div *ngIf="!topics || topics.length == 0">
-    <label>Még nincsenek létrehozott témák.</label>
+    <alert type="info" class="alert">Még nincsenek létrehozott témák.</alert>
 </div>
 <div *ngIf="topics && topics.length > 0">
     <ul>

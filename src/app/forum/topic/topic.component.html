@@ -4,11 +4,19 @@
     </div>
     <div class="multiline">{{topic.description}}</div>
     <div *ngIf=true>
-        <button type="button" class="btn btn-danger" (click)="deleteTopic()">Téma törlése</button>
+        <button type="button" class="btn btn-danger" (click)="deleteTopic(template)">Téma törlése</button>
     </div>
     <app-comment-list [type]="type" [id]="topic.id"></app-comment-list>
 </div>
 <div *ngIf="deleted">
-    <label>Törölve!</label><br />
+    <alert type="success" class="alert">Törölve!</alert>
 </div>
 <button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>
+
+<ng-template #template>
+    <div class="modal-body text-center">
+        <p>Biztosan törli? A témához írt összes hozzászólás is törölve lesz!</p>
+        <button type="button" class="btn btn-danger" (click)="confirm()">Igen</button>
+        <button type="button" class="btn btn-secondary" (click)="decline()">Mégse</button>
+    </div>
+</ng-template>

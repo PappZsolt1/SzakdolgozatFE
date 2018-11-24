@@ -2,6 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+import { AlertModule } from 'ngx-bootstrap/alert';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminShellComponent } from './admin-shell/admin-shell.component';
 import { EditActorComponent } from './edit-actor/edit-actor.component';
@@ -33,7 +37,10 @@ import { EditEpisodeActorsComponent } from './edit-episode-actors/edit-episode-a
     CommonModule,
     FormsModule,
     AdminRoutingModule,
-    SharedDirectiveModule
+    SharedDirectiveModule,
+    AlertModule.forRoot(),
+    ModalModule.forRoot(),
+    TooltipModule.forRoot()
   ],
   declarations: [
     AdminShellComponent,

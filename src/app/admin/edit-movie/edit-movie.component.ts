@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 import { MovieService } from '../../shared/services/movie.service';
 import { Movie } from '../../shared/models/movie.model';
@@ -26,6 +29,7 @@ export class EditMovieComponent implements OnInit {
   modify = false;
   error = false;
   deleted = false;
+  modalRef: BsModalRef;
 
   hours: number;
   minutes: number;
@@ -39,6 +43,7 @@ export class EditMovieComponent implements OnInit {
   actorIds: number[] = [];
 
   constructor(
+    private modalService: BsModalService,
     private location: Location,
     private route: ActivatedRoute,
     private movieService: MovieService,
@@ -86,20 +91,26 @@ export class EditMovieComponent implements OnInit {
     return a1 && a2 ? a1.id === a2.id : a1 === a2;
   }
 
-  deleteMovie(): void {
+  deleteMovie(template: TemplateRef<any>): void {
     let removable = false;
     this.movieService.canBeDeleted(this.movie.id).subscribe(r => {
       removable = r;
       if (removable) {
-        let answer = confirm("Biztosan törli?");
-        if (answer) {
-          this.movieService.deleteMovie(this.movie.id).subscribe(() => this.deleted = true);
-        }
+        this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
       } else {
         this.error = true;
         setTimeout(() => { this.error = false; }, 5000);
       }
     });
+  }
+
+  confirm(): void {
+    this.movieService.deleteMovie(this.movie.id).subscribe(() => this.deleted = true);
+    this.modalRef.hide();
+  }
+ 
+  decline(): void {
+    this.modalRef.hide();
   }
 
   goBack() {

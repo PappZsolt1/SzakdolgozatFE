@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Location } from '@angular/common';
-import { Router } from '@angular/router';
+
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 import { GenderService } from '../../shared/services/gender.service';
 import { Gender } from '../../shared/models/gender.model';
@@ -18,11 +20,13 @@ export class EditGenderComponent implements OnInit {
   create = false;
   edit = false;
   error = false;
+  modalRef: BsModalRef;
+  selectedId: number;
 
   inputTextMessage = globals.inputTextMessage;
 
   constructor(
-    private router: Router,
+    private modalService: BsModalService,
     private location: Location,
     private genderService: GenderService
     ) { }
@@ -62,21 +66,28 @@ export class EditGenderComponent implements OnInit {
     .subscribe(() => { this.edit = false; this.getAllGenders(); });
   }
 
-  deleteGender(id: number): void {
+  deleteGender(id: number, template: TemplateRef<any>): void {
+    this.selectedId = id;
     let removable = false;
-    this.genderService.canBeDeleted(id).subscribe(r => {
+    this.genderService.canBeDeleted(this.selectedId).subscribe(r => {
       removable = r;
       if (removable) {
-        let answer = confirm("Biztosan törli?");
-        if (answer) {
-          this.genderService.deleteGender(id)
-            .subscribe(() => { this.getAllGenders(); if (this.gender.id == id) this.edit = false; });
-        }
+        this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
       } else {
         this.error = true;
         setTimeout(() => { this.error = false; }, 5000);
       }
     });
+  }
+
+  confirm(): void {
+    this.genderService.deleteGender(this.selectedId).subscribe(() => {
+      this.getAllGenders(); if (this.gender.id == this.selectedId) this.edit = false; });
+    this.modalRef.hide();
+  }
+ 
+  decline(): void {
+    this.modalRef.hide();
   }
 
   goBack() {

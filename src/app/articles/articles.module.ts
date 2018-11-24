@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { AlertModule } from 'ngx-bootstrap/alert';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 import { ArticlesRoutingModule } from './articles-routing.module';
 import { ArticleListComponent } from './article-list/article-list.component';
@@ -22,7 +25,10 @@ import { SharedDirectiveModule } from '../shared/shared-directive.module';
     SharedCommentModule,
     ArticlesRoutingModule,
     SharedDirectiveModule,
-    PaginationModule.forRoot()
+    PaginationModule.forRoot(),
+    AlertModule.forRoot(),
+    ModalModule.forRoot(),
+    TooltipModule.forRoot()
   ],
   declarations: [
     ArticleListComponent,

@@ -5,13 +5,13 @@
           <a [routerLink]="['../movie', m.id]"><span>{{m.title}}</span></a>
       </li>
   </ul>
+  <div class="row">
+      <div class="col-xs-12 col-12">
+          <pagination [boundaryLinks]="true" [directionLinks]="true" [maxSize]="5" [rotate]="true" [itemsPerPage]="size" [totalItems]="total" (pageChanged)="onPageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+      </div>
+  </div>
 </div>
 <div *ngIf="movies && movies.length == 0">
-    <label>Nincs találat.</label>
-</div>
-<div class="row">
-    <div class="col-xs-12 col-12">
-        <pagination [boundaryLinks]="true" [directionLinks]="true" [maxSize]="5" [rotate]="true" [itemsPerPage]="size" [totalItems]="total" (pageChanged)="onPageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
-    </div>
+    <alert type="info" class="alert">Nincs találat.</alert>
 </div>
 <button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>

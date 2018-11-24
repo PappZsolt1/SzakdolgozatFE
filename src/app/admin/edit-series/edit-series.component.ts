@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 import { SeriesService } from '../../shared/services/series.service';
 import { Series } from '../../shared/models/series.model';
@@ -24,12 +27,14 @@ export class EditSeriesComponent implements OnInit {
   modify = false;
   error = false;
   deleted = false;
+  modalRef: BsModalRef;
 
   inputTextMessage = globals.inputTextMessage;
   releaseYearMessage = globals.releaseYearMessage;
   selecetMessage = globals.selectMessage;
 
   constructor(
+    private modalService: BsModalService,
     private location: Location,
     private route: ActivatedRoute,
     private seriesService: SeriesService,
@@ -73,20 +78,26 @@ export class EditSeriesComponent implements OnInit {
     return a1 && a2 ? a1.id === a2.id : a1 === a2;
   }
 
-  deleteSeries(): void {
+  deleteSeries(template: TemplateRef<any>): void {
     let removable = false;
     this.seriesService.canBeDeleted(this.series.id).subscribe(r => {
       removable = r;
       if (removable) {
-        let answer = confirm("Biztosan törli?");
-        if (answer) {
-          this.seriesService.deleteSeries(this.series.id).subscribe(() => this.deleted = true);
-        }
+        this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
       } else {
         this.error = true;
         setTimeout(() => { this.error = false; }, 5000);
       }
     });
+  }
+
+  confirm(): void {
+    this.seriesService.deleteSeries(this.series.id).subscribe(() => this.deleted = true);
+    this.modalRef.hide();
+  }
+ 
+  decline(): void {
+    this.modalRef.hide();
   }
 
   goBack() {

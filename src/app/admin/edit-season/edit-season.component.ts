@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 import { SeasonService } from '../../shared/services/season.service';
 import { Season } from '../../shared/models/season.model';
@@ -21,11 +24,13 @@ export class EditSeasonComponent implements OnInit {
   error1 = false;
   error2 = false;
   deleted = false;
+  modalRef: BsModalRef;
 
   numberMessage = globals.numberMessage;
   idMessage = globals.idMessage;
 
   constructor(
+    private modalService: BsModalService,
     private location: Location,
     private route: ActivatedRoute,
     private seasonService: SeasonService,
@@ -67,20 +72,26 @@ export class EditSeasonComponent implements OnInit {
     });
   }
 
-  deleteSeason(): void {
+  deleteSeason(template: TemplateRef<any>): void {
     let removable = false;
     this.seasonService.canBeDeleted(this.season.id).subscribe(r => {
       removable = r;
       if (removable) {
-        let answer = confirm("Biztosan törli?");
-        if (answer) {
-          this.seasonService.deleteSeason(this.seriesId, this.season.id).subscribe(() => this.deleted = true);
-        }
+        this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
       } else {
         this.error2 = true;
         setTimeout(() => { this.error2 = false; }, 5000);
       }
     });
+  }
+
+  confirm(): void {
+    this.seasonService.deleteSeason(this.seriesId, this.season.id).subscribe(() => this.deleted = true);
+    this.modalRef.hide();
+  }
+ 
+  decline(): void {
+    this.modalRef.hide();
   }
 
   goBack() {

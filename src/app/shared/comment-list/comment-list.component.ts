@@ -1,4 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, TemplateRef } from '@angular/core';
+
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 import { CommentService } from '../services/comment.service';
 import { Comment } from '../models/comment.model';
@@ -17,8 +20,10 @@ export class CommentListComponent implements OnInit {
   total: number;
   page = 1;
   size = 10;
+  modalRef: BsModalRef;
+  selectedId: number;
 
-  constructor(private commentService: CommentService) { }
+  constructor(private modalService: BsModalService, private commentService: CommentService) { }
 
   ngOnInit() {
     this.loadComments();
@@ -61,7 +66,17 @@ export class CommentListComponent implements OnInit {
     }
   }
 
-  moderateComment(id: number): void {
-    this.commentService.moderateComment(id).subscribe(() => this.loadComments());
+  moderateComment(id: number, template: TemplateRef<any>): void {
+    this.selectedId = id;
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+  }
+
+  confirm(): void {
+    this.commentService.moderateComment(this.selectedId).subscribe(() => this.loadComments());
+    this.modalRef.hide();
+  }
+ 
+  decline(): void {
+    this.modalRef.hide();
   }
 }

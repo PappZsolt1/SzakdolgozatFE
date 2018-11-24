@@ -9,34 +9,46 @@
         <div *ngIf="modify">
             <label>ID: {{episode.id}}</label>
         </div>
-        <label for="title">Cím:</label>
-        <input type="text" id="title" name="title" required maxlength="200" appCustomText [(ngModel)]="episode.title" #title="ngModel"/><label title="{{inputTextMessage}}"> ?</label><br/>
-        <label for="releaseDate">Megjelenés dátuma:</label>
-        <input type="date" id="releaseDate" name="releaseDate" required appCustomDate="1850,2100" [(ngModel)]="rDate" #releaseDate="ngModel"><label title="{{releaseDateMessage}}"> ?</label><br/>
-        <label for="length">Hossz:</label>
-        <input type="number" id="hour" name="hour" required appCustomMin="0" appCustomMax="100" [(ngModel)]="hours" #hour="ngModel"/><span>óra</span>
-        <input type="number" id="minute" name="minute" required appCustomMin="0" appCustomMax="60" [(ngModel)]="minutes" #minute="ngModel"/><span>perc</span><label title="{{lengthMessage}}"> ?</label><br/>
-        <label for="seasonID">Évad ID:</label>
-        <input type="number" id="seasonID" name="seasonID" required appCustomMin="1" appCustomMax="9000000000000000000" [(ngModel)]="seasonId" #seasonID="ngModel"/><label title="{{idMessage}}"> ?</label><br/>
+        <label for="title">Cím:&nbsp;</label>
+        <input type="text" id="title" name="title" required maxlength="200" appCustomText [(ngModel)]="episode.title" #title="ngModel"/>
+        <label tooltip="{{inputTextMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
+        <label for="releaseDate">Megjelenés dátuma:&nbsp;</label>
+        <input type="date" id="releaseDate" name="releaseDate" required appCustomDate="1850,2100" [(ngModel)]="rDate" #releaseDate="ngModel">
+        <label tooltip="{{releaseDateMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
+        <label for="length">Hossz:&nbsp;</label>
+        <input type="number" id="hour" name="hour" required appCustomMin="0" appCustomMax="100" [(ngModel)]="hours" #hour="ngModel"/><span>&nbsp;óra&nbsp;</span>
+        <input type="number" id="minute" name="minute" required appCustomMin="0" appCustomMax="60" [(ngModel)]="minutes" #minute="ngModel"/><span>&nbsp;perc</span>
+        <label tooltip="{{lengthMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
+        <label for="seasonID">Évad ID:&nbsp;</label>
+        <input type="number" id="seasonID" name="seasonID" required appCustomMin="1" appCustomMax="9000000000000000000" [(ngModel)]="seasonId" #seasonID="ngModel"/>
+        <label tooltip="{{idMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
         <div *ngIf="!modify">
             <button type="button" class="btn btn-success" (click)="addEpisode()" [disabled]="!editEpisodeForm.form.valid">Mentés</button>
         </div>
         <div *ngIf="modify">
             <button type="button" class="btn btn-success" (click)="modifyEpisode()" [disabled]="!editEpisodeForm.form.valid">Módosítás</button>
-            <button type="button" class="btn btn-danger" (click)="deleteEpisode()">Törlés</button>
+            <button type="button" class="btn btn-danger" (click)="deleteEpisode(template)">Törlés</button>
         </div>
         <div *ngIf="error1">
-            <label>A megadott évad ID nem létezik!</label>
+            <alert type="danger" class="alert">A megadott évad ID nem létezik!</alert>
         </div>
-        <div *ngIf="error2">
-            <label>Az epizód nem törölhető, mert színészekkel rendelkezik!</label>
+        <div *ngIf="error2"> 
+            <alert type="danger" class="alert">Az epizód nem törölhető, mert színészekkel rendelkezik!</alert>
         </div>
     </form>
 </div>
 <div *ngIf="deleted">
-    <label>Törölve!</label>
+    <alert type="success" class="alert">Törölve!</alert>
 </div>
 <div *ngIf="saved">
-    <label>Elmentve!</label>
+    <alert type="success" class="alert">Elmentve!</alert>
 </div>
 <button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>
+
+<ng-template #template>
+    <div class="modal-body text-center">
+        <p>Biztosan törli? Az epizódhoz írt összes hozzászólás is törölve lesz!</p>
+        <button type="button" class="btn btn-danger" (click)="confirm()">Igen</button>
+        <button type="button" class="btn btn-secondary" (click)="decline()">Mégse</button>
+    </div>
+</ng-template>
