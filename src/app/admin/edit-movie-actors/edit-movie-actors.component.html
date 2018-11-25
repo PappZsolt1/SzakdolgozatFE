@@ -3,7 +3,7 @@
   <label for="movieID">Film ID:&nbsp;</label>
   <input type="number" id="movieID" name="movieID" required appCustomMin="1" appCustomMax="9000000000000000000" [(ngModel)]="movieId" #movieID="ngModel">
   <label tooltip="{{idMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
-  <button type="submit" [disabled]="!getMovieForm.form.valid">Film lekérése</button>
+  <button type="submit" class="btn btn-primary" [disabled]="!getMovieForm.form.valid">Film lekérése</button>
 </form>
 <div *ngIf="error1">
   <alert type="danger" class="alert">A megadott film ID nem létezik!</alert>
@@ -16,7 +16,10 @@
   <div *ngIf="actors && actors.length > 0">
     <ul>
       <li *ngFor="let a of actors">
-        <label>ID:&nbsp;{{a.id}}&nbsp;</label><button class="btn btn-danger" (click)="removeActorFromMovie(a.id)">Törlés</button>
+        <div class="my-container-small">
+          <label>ID: {{a.id}} Név: {{a.name}}&nbsp;</label>
+          <button class="btn btn-danger" (click)="removeActorFromMovie(a.id, template)">Törlés</button>
+        </div>
       </li>
     </ul>
   </div>
@@ -35,3 +38,11 @@
   <alert type="danger" class="alert">A színész már a filmhez van rendelve!</alert>
 </div>
 <button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>
+
+<ng-template #template>
+  <div class="modal-body text-center">
+      <p>Biztosan törli?</p>
+      <button type="button" class="btn btn-danger" (click)="confirm()">Igen</button>
+      <button type="button" class="btn btn-secondary" (click)="decline()">Mégse</button>
+  </div>
+</ng-template>

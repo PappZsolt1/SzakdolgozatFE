@@ -2,7 +2,9 @@
 <div *ngIf="actors && actors.length > 0">
   <ul>
       <li *ngFor="let a of actors">
-          <a [routerLink]="['../actor', a.id]"><span>{{a.name}}</span></a>
+        <div class="my-container-small">
+          <a class="li-link" [routerLink]="['../actor', a.id]"><span>{{a.name}}</span></a>
+        </div>
       </li>
   </ul>
   <div class="row">

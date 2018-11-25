@@ -1,10 +1,15 @@
+<h2>Téma</h2>
 <div *ngIf="topic && !deleted">
-    <div>
-        <span>{{topic.title}} </span><span>{{topic.createDate}}</span>
-    </div>
-    <div class="multiline">{{topic.description}}</div>
-    <div *ngIf=true>
-        <button type="button" class="btn btn-danger" (click)="deleteTopic(template)">Téma törlése</button>
+    <div class="my-container">
+        <div class="my-container-header">
+            <span style="float: left">{{topic.title}}&nbsp;</span><span>{{topic.createDate}}</span>
+        </div>
+        <div class="my-container-main">
+            <div class="multiline">{{topic.description}}</div>
+        </div>
+        <div class="my-container-footer" *ngIf=true>
+            <button type="button" class="btn btn-danger" (click)="deleteTopic(template)">Téma törlése</button>
+        </div>
     </div>
     <app-comment-list [type]="type" [id]="topic.id"></app-comment-list>
 </div>

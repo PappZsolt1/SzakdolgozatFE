@@ -2,9 +2,11 @@
 <div>
     <ul>
         <li *ngFor="let a of ageClassifications">
-            <label>ID:&nbsp;</label><label>{{a.id}}&nbsp;</label><label>Megnevezés:&nbsp;</label><label>{{a.name}}</label>
-            <button type="button" class="btn btn-primary" (click)="editExisting(a.id, a.name)">Szerkesztés</button>
-            <button type="button" class="btn btn-danger" (click)="deleteAgeClassification(a.id, template)">Törlés</button>
+            <div class="my-container-small">
+                <label>ID:&nbsp;</label><label>{{a.id}}&nbsp;</label><label>Megnevezés:&nbsp;</label><label>{{a.name}}&nbsp;</label>
+                <button type="button" class="btn btn-primary" (click)="editExisting(a.id, a.name)">Szerkesztés</button>
+                <button type="button" class="btn btn-danger" (click)="deleteAgeClassification(a.id, template)">Törlés</button>
+            </div>
         </li>
     </ul>
 </div>

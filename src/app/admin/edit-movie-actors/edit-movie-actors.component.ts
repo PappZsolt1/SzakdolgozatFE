@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 import { MovieService } from '../../shared/services/movie.service';
 import { ActorService } from '../../shared/services/actor.service';
@@ -14,17 +17,20 @@ import * as globals from '../../shared/globals';
 })
 export class EditMovieActorsComponent implements OnInit {
 
-  actors: Actor[] = [];
+  actors: Actor[];
   actor: Actor;
   movieId: number;
   showActors = false;
   error1 = false;
   error2 = false;
   error3 = false;
+  modalRef: BsModalRef;
+  selectedId: number;
 
   idMessage = globals.idMessage;
 
   constructor(
+    private modalService: BsModalService,
     private location: Location,
     private route: ActivatedRoute,
     private movieService: MovieService,
@@ -74,10 +80,20 @@ export class EditMovieActorsComponent implements OnInit {
     });
   }
 
-  removeActorFromMovie(actorId: number): void {
-    this.movieService.removeActorFromMovie(this.movieId, actorId).subscribe(r => {
+  removeActorFromMovie(actorId: number, template: TemplateRef<any>): void {
+    this.selectedId = actorId;
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+  }
+
+  confirm(): void {
+    this.movieService.removeActorFromMovie(this.movieId, this.selectedId).subscribe(() => {
       this.movieService.getMovieActors(this.movieId).subscribe(r => this.actors = r);
     });
+    this.modalRef.hide();
+  }
+ 
+  decline(): void {
+    this.modalRef.hide();
   }
 
   goBack() {

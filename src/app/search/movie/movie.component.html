@@ -12,14 +12,14 @@
   <br/>
   <label>Értékelés:&nbsp;</label>
   <span *ngIf="movie.rating == 0">Még nincs értékelve.</span>
-  <span *ngIf="movie.rating > 0">{{movie.rating.toPrecision(3)}}</span>
+  <span *ngIf="movie.rating > 0">{{movie.rating.toPrecision(3)}} ({{movie.numberOfRatings}} szavazat)</span>
   <button class="btn btn-primary" (click)="createRating()" *ngIf="true">Film értékelése</button>
   <br/>
   <div *ngIf="showRating">
     <form (ngSubmit)="addRating()" #ratingForm="ngForm">
       <label for="stars">Az ön értékelése:&nbsp;</label>
       <rating [max]="10" name="stars" [(ngModel)]="rating"></rating>
-      <label>&nbsp;{{rating}}</label><br/>
+      <label>&nbsp;{{rating}}/10</label><br/>
       <button type="submit" class="btn btn-success" [disabled]="!ratingForm.form.valid">Értékelés küldése</button>
       <button type="button" class="btn btn-secondary" (click)="cancelRating()">Mégse</button>
     </form>
@@ -41,7 +41,9 @@
   <div *ngIf="actors && actors.length > 0">
     <ul>
       <li *ngFor="let a of actors">
-        <a [routerLink]="['../../actor', a.id]"><span *ngIf="true">ID:&nbsp;{{a.id}}&nbsp;</span>{{a.name}}</a>
+        <div class="my-container-small">
+          <a class="li-link" [routerLink]="['../../actor', a.id]"><span *ngIf="true">ID: {{a.id}}&nbsp;</span>{{a.name}}</a>
+        </div>
       </li>
     </ul>
   </div>

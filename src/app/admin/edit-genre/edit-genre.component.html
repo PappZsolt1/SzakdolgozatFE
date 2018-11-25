@@ -2,9 +2,11 @@
 <div>
     <ul>
         <li *ngFor="let g of genres">
-            <label>ID:&nbsp;</label><label>{{g.id}}&nbsp;</label><label>Megnevezés:&nbsp;</label><label>{{g.name}}</label>
-            <button type="button" class="btn btn-primary" (click)="editExisting(g.id, g.name)">Szerkesztés</button>
-            <button type="button" class="btn btn-danger" (click)="deleteGenre(g.id, template)">Törlés</button>
+            <div class="my-container-small">
+                <label>ID:&nbsp;</label><label>{{g.id}}&nbsp;</label><label>Megnevezés:&nbsp;</label><label>{{g.name}}&nbsp;</label>
+                <button type="button" class="btn btn-primary" (click)="editExisting(g.id, g.name)">Szerkesztés</button>
+                <button type="button" class="btn btn-danger" (click)="deleteGenre(g.id, template)">Törlés</button>
+            </div>
         </li>
     </ul>
 </div>

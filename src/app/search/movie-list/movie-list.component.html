@@ -2,7 +2,9 @@
 <div *ngIf="movies && movies.length > 0">
   <ul>
       <li *ngFor="let m of movies">
-          <a [routerLink]="['../movie', m.id]"><span>{{m.title}}</span></a>
+          <div class="my-container-small">
+              <a class="li-link" [routerLink]="['../movie', m.id]"><span>{{m.title}}</span></a>
+          </div>
       </li>
   </ul>
   <div class="row">

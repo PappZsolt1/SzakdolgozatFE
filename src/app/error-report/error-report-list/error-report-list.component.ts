@@ -15,6 +15,7 @@ export class ErrorReportListComponent implements OnInit {
   total: number;
   page = 1;
   size = 10;
+  show = false;
 
   constructor(private errorReportService: ErrorReportService) { }
 
@@ -42,19 +43,19 @@ export class ErrorReportListComponent implements OnInit {
   getAllErrorReports(): void {
     this.listType = "all";
     this.errorReportService.getAllErrorReports(this.page, this.size).subscribe(r => {
-      this.errorReports = r.results; this.total = r.total; });
+      this.errorReports = r.results; this.total = r.total; this.show = true; });
   }
 
   getResolvedErrorReports(): void {
     this.listType = "resolved";
     this.errorReportService.getResolvedErrorReports(this.page, this.size).subscribe(r => {
-      this.errorReports = r.results; this.total = r.total; });
+      this.errorReports = r.results; this.total = r.total; this.show = true; });
   }
 
   getNotResolvedErrorReports(): void {
     this.listType = "notResolved";
     this.errorReportService.getNotResolvedErrorReports(this.page, this.size).subscribe(r => {
-      this.errorReports = r.results; this.total = r.total; });
+      this.errorReports = r.results; this.total = r.total; this.show = true; });
   }
 
   makeResolved(id: number): void {

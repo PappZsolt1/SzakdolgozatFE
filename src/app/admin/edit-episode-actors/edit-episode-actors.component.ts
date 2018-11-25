@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 import { EpisodeService } from '../../shared/services/episode.service';
 import { ActorService } from '../../shared/services/actor.service';
@@ -14,17 +17,20 @@ import * as globals from '../../shared/globals';
 })
 export class EditEpisodeActorsComponent implements OnInit {
 
-  actors: Actor[] = [];
+  actors: Actor[];
   actor: Actor;
   episodeId: number;
   showActors = false;
   error1 = false;
   error2 = false;
   error3 = false;
+  modalRef: BsModalRef;
+  selectedId: number;
 
   idMessage = globals.idMessage;
 
   constructor(
+    private modalService: BsModalService,
     private location: Location,
     private route: ActivatedRoute,
     private episodeService: EpisodeService,
@@ -74,10 +80,20 @@ export class EditEpisodeActorsComponent implements OnInit {
     });
   }
 
-  removeActorFromEpisode(actorId: number): void {
-    this.episodeService.removeActorFromEpisode(this.episodeId, actorId).subscribe(r => {
+  removeActorFromEpisode(actorId: number, template: TemplateRef<any>): void {
+    this.selectedId = actorId;
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+  }
+
+  confirm(): void {
+    this.episodeService.removeActorFromEpisode(this.episodeId, this.selectedId).subscribe(() => {
       this.episodeService.getEpisodeActors(this.episodeId).subscribe(r => this.actors = r);
     });
+    this.modalRef.hide();
+  }
+ 
+  decline(): void {
+    this.modalRef.hide();
   }
 
   goBack() {

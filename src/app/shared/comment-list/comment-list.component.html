@@ -5,10 +5,14 @@
 <div *ngIf="comments && comments.length > 0">
     <ul>
         <li *ngFor="let c of comments">
-            <div>
-                <label>{{c.postDate}}</label>
-                <div class="multiline">{{c.content}}</div>
-                <div *ngIf="!c.moderated">
+            <div class="my-container">
+                <div class="my-container-header">
+                    <span>{{c.postDate}}</span>
+                </div>
+                <div class="my-container-main">
+                    <div class="multiline">{{c.content}}</div>
+                </div>
+                <div class="my-container-footer" *ngIf="!c.moderated">
                     <button type="button" class="btn btn-danger" (click)="moderateComment(c.id, template)">Moderálás</button>
                 </div>
             </div>
@@ -16,7 +20,7 @@
     </ul>
     <div class="row">
         <div class="col-xs-12 col-12">
-            <pagination [boundaryLinks]="true" [directionLinks]="true" [maxSize]="5" [rotate]="true" [itemsPerPage]="size" [totalItems]="total" (pageChanged)="onPageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+            <pagination class="pagination" [boundaryLinks]="true" [directionLinks]="true" [maxSize]="5" [rotate]="true" [itemsPerPage]="size" [totalItems]="total" (pageChanged)="onPageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
         </div>
     </div>
 </div>

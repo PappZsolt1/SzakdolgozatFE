@@ -1,11 +1,16 @@
 <h2>Cikk</h2>
 <div *ngIf="article">
-    <div>
-        <span>{{article.title}}</span>
-    </div>
-    <div class="multiline">{{article.content}}</div>
-    <div>
-        <span>{{article.publishDate}}</span>
+    <div class="my-container">
+        <div class="my-container-header">
+            <span>{{article.publishDate}}</span>
+            <span style="float: left">{{article.title}}</span>
+        </div>
+        <div class="my-container-main">
+            <div class="multiline">{{article.content}}</div>
+        </div>
+        <div class="my-container-footer">
+            <span>Írta:</span>
+        </div>
     </div>
     <app-comment-list [type]="type" [id]="article.id"></app-comment-list>
 </div>

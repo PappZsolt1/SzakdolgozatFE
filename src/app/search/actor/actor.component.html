@@ -22,7 +22,9 @@
   <div *ngIf="actor.movies && actor.movies.length > 0">
     <ul>
       <li *ngFor="let m of actor.movies">
-        <a [routerLink]="['../../movie', m.id]"><span *ngIf="true">ID: {{m.id}} </span>{{m.title}}</a>
+        <div class="my-container-small">
+          <a class="li-link" [routerLink]="['../../movie', m.id]"><span *ngIf="true">ID: {{m.id}}&nbsp;</span>{{m.title}}</a>
+        </div>
       </li>
     </ul>
   </div>
@@ -33,7 +35,9 @@
   <div *ngIf="actor.episodes && actor.episodes.length > 0">
     <ul>
       <li *ngFor="let e of actor.episodes">
-        <a [routerLink]="['../../episode', e.id]"><span *ngIf="true">ID: {{e.id}} </span>{{e.title}}</a>
+        <div class="my-container-small">
+          <a class="li-link" [routerLink]="['../../episode', e.id]"><span *ngIf="true">ID: {{e.id}}&nbsp;</span>{{e.title}}</a>
+        </div>
       </li>
     </ul>
   </div>

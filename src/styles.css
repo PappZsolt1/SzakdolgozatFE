@@ -13,6 +13,7 @@ button {
 
 .alert {
     display: inline-block;
+    margin: 0;
 }
 
 .help {
@@ -34,8 +35,56 @@ button {
 
 ul {
     list-style-type: none;
+    padding: 0;
 }
 
-body {
+.routes-body {
     margin-left: 10px;
 }
+
+.my-container-small {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 5px;
+    background-color: #eeeeee;
+    padding: 10px;
+    display: inline-block;
+}
+
+.my-container {
+    border: 1px solid black;
+    border-radius: 5px;
+    max-width: 720px;
+    margin: 10px;
+    background-color: #eeeeee;
+}
+
+.my-container-header {
+    text-align: right;
+    border-bottom: 1px solid black;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.my-container-footer {
+    text-align: right;
+    border-top: 1px solid black;
+}
+
+.my-container-main {
+    padding: 10px;
+}
+
+.li-link {
+    color: black;
+}
+
+.li-link:hover {
+    color: black;
+}
+/*.nav {
+    border: 1px solid blue;
+    border-radius: 8px;
+    margin: 5px;
+    max-width: 850px;
+}*/

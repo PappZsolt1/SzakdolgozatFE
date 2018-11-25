@@ -2,21 +2,29 @@
     <button type="button" class="btn btn-primary" (click)="getAllErrorReports()">Összes hibabejelentés lekérése</button><br/>
     <button type="button" class="btn btn-primary" (click)="getResolvedErrorReports()">Megoldott hibabejelentések lekérése</button><br/>
     <button type="button" class="btn btn-primary" (click)="getNotResolvedErrorReports()">Megoldatlan hibabejelentések lekérése</button>
-    <div *ngIf="!errorReports || errorReports.length == 0">
-        <alert type="info" class="alert">Nincsenek bejelentett hibák.</alert>
+    <div *ngIf="show && (!errorReports || errorReports.length == 0)">
+        <alert type="info" class="alert">Nincsenek megjeleníthető hibák.</alert>
     </div>
-    <div *ngIf="errorReports && errorReports.length > 0">
+    <div *ngIf="show && errorReports && errorReports.length > 0">
         <ul>
             <li *ngFor="let e of errorReports">
-                <span>{{e.id}} </span><span>{{e.sendingDate}}</span>
-                <div class="multiline">{{e.content}}</div>
-                <div *ngIf="e.resolved == false">
-                    <alert type="warning" class="alert">Hiba nincs megoldva</alert>
-                    <button type="button" class="btn btn-success" (click)="makeResolved(e.id)">Megoldva</button>
+                <div class="my-container">
+                    <div class="my-container-header">
+                        <span style="float: left">ID: {{e.id}}&nbsp;</span><span>{{e.sendingDate}}</span>
+                    </div>
+                    <div class="my-container-main">
+                        <div class="multiline">{{e.content}}</div>
+                    </div>
+                    <div class="my-container-footer">
+                        <div *ngIf="e.resolved == false">
+                            <alert type="warning" class="alert">Hiba nincs megoldva</alert>
+                            <button type="button" class="btn btn-success" (click)="makeResolved(e.id)">Megoldva</button>
+                        </div>
+                        <div *ngIf="e.resolved == true">
+                            <alert type="success" class="alert">Hiba megoldva</alert>
+                        </div>                
+                    </div>
                 </div>
-                <div *ngIf="e.resolved == true">
-                    <alert type="success" class="alert">Hiba megoldva</alert>
-                </div>                
             </li>
         </ul>
         <div class="row">
