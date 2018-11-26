@@ -1,13 +1,32 @@
-<nav class="nav">
-    <a class="nav-link" routerLink="/articles" routerLinkActive="active">Cikkek</a>
-    <a class="nav-link" routerLink="/forum" routerLinkActive="active">Fórum</a>
-    <a class="nav-link" routerLink="/search" routerLinkActive="active">Keresés</a>
-    <a class="nav-link" routerLink="/error-report" routerLinkActive="active">Hibabejelentés</a>
-    <a class="nav-link" routerLink="/login" routerLinkActive="active">Bejelentkezés</a>
-    <a class="nav-link" routerLink="/registration" routerLinkActive="active">Regisztráció</a>
-    <a class="nav-link" routerLink="/admin" routerLinkActive="active">Admin</a>
-    <a class="nav-link" routerLink="/private-messages" routerLinkActive="active">Privát üzenetek</a>
+<nav class="navbar navbar-expand-sm bg-primary justify-content-center navbar-dark">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/articles" routerLinkActive="active">Cikkek</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/forum" routerLinkActive="active">Fórum</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/search" routerLinkActive="active">Keresés</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/error-report" routerLinkActive="active">Hibabejelentés</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/login" routerLinkActive="active">Bejelentkezés</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/registration" routerLinkActive="active">Regisztráció</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/admin" routerLinkActive="active">Admin</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/private-messages" routerLinkActive="active">Privát üzenetek</a>
+        </li>
+    </ul>
 </nav>
-<div class="routes-body">
+<div class="container">
     <router-outlet></router-outlet>
 </div>
+

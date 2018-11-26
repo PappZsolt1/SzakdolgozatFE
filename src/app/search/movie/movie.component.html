@@ -1,8 +1,7 @@
 <h2>Film</h2>
 <div *ngIf="movie">
   <div *ngIf=true>
-    <label>ID:&nbsp;</label>
-    <label>{{movie.id}}</label>
+    <label>ID: {{movie.id}}</label>
     <button class="btn btn-primary" [routerLink]="['/admin/edit-movie', { id: movie.id }]">Szerkesztés</button>
     <button class="btn btn-primary" [routerLink]="['/admin/edit-movie-actors', { id: movie.id }]">Színészek kezelése</button>
   </div>
@@ -16,13 +15,11 @@
   <button class="btn btn-primary" (click)="createRating()" *ngIf="true">Film értékelése</button>
   <br/>
   <div *ngIf="showRating">
-    <form (ngSubmit)="addRating()" #ratingForm="ngForm">
-      <label for="stars">Az ön értékelése:&nbsp;</label>
-      <rating [max]="10" name="stars" [(ngModel)]="rating"></rating>
-      <label>&nbsp;{{rating}}/10</label><br/>
-      <button type="submit" class="btn btn-success" [disabled]="!ratingForm.form.valid">Értékelés küldése</button>
-      <button type="button" class="btn btn-secondary" (click)="cancelRating()">Mégse</button>
-    </form>
+    <label for="stars">Az ön értékelése:&nbsp;</label>
+    <rating [max]="10" name="stars" [(ngModel)]="rating"></rating>
+    <label>&nbsp;{{rating}}/10</label><br/>
+    <button type="submit" class="btn btn-success" (click)="addRating()">Értékelés küldése</button>
+    <button type="button" class="btn btn-secondary" (click)="cancelRating()">Mégse</button>
   </div>
   <label>Megjelenés éve:&nbsp;</label>
   <label>{{movie.releaseYear}}</label><br/>
@@ -41,9 +38,7 @@
   <div *ngIf="actors && actors.length > 0">
     <ul>
       <li *ngFor="let a of actors">
-        <div class="my-container-small">
-          <a class="li-link" [routerLink]="['../../actor', a.id]"><span *ngIf="true">ID: {{a.id}}&nbsp;</span>{{a.name}}</a>
-        </div>
+        <a class="li-link" [routerLink]="['../../actor', a.id]"><span *ngIf="true">ID: {{a.id}}&nbsp;</span>{{a.name}}</a>
       </li>
     </ul>
   </div>

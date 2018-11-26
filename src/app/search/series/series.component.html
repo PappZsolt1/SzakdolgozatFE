@@ -1,48 +1,45 @@
 <h2>Sorozat</h2>
-<div *ngIf="series">
-  <div *ngIf=true>
-    <label>ID:&nbsp;</label>
-    <label>{{series.id}}</label>
-    <button class="btn btn-primary" [routerLink]="['/admin/edit-series', { id: series.id }]">Szerkesztés</button>
-  </div>
-  <label>Cím:&nbsp;</label>
-  <label>{{series.title}}</label><br />
-  kép
-  <br />
-  <label>Értékelés:&nbsp;</label>
-  <span *ngIf="series.rating == 0">Még nincs értékelve.</span>
-  <span *ngIf="series.rating > 0">{{series.rating.toPrecision(3)}}</span>
-  <br/>
-  <label>Megjelenés éve:&nbsp;</label>
-  <label>{{series.releaseYear}}</label><br />
-  <label>Műfaj:&nbsp;</label>
-  <label>{{series.genre.name}}</label><br />
-  <label>Korbesorolás:&nbsp;</label>
-  <label>{{series.ageClassification.name}}</label><br/>
-  <label>Évadok:&nbsp;</label>
-  <div *ngIf="series.seasons.length == 0">
-    <alert type="info" class="alert">Még nincsenek évadok hozzáadva.</alert>
-  </div>
-  <ul>
-    <li *ngFor="let s of series.seasons">
-      <div class="my-container-small">
-        <label (click)="showEpisodes(s)"><span *ngIf="true">ID: {{s.id}}&nbsp;</span>{{s.number}}. évad ({{s.episodes.length}} epizód)</label>
-        <button class="btn btn-primary" [routerLink]="['/admin/edit-season', { id: s.id, seriesId: series.id }]" *ngIf="true">Szerkesztés</button>
-      </div>
-    </li>
-  </ul>
-  <div *ngIf="show">
-    <label>{{season.number}}. évad epizódjai:</label>
-    <div *ngIf="season.episodes.length == 0">
-      <alert type="info" class="alert">Még nincsenek epizódok hozzáadva.</alert>
+<div class="card">
+  <div *ngIf="series">
+    <div *ngIf=true>
+      <label>ID: {{series.id}}</label>
+      <button class="btn btn-primary" [routerLink]="['/admin/edit-series', { id: series.id }]">Szerkesztés</button>
+    </div>
+    <label>Cím:&nbsp;</label>
+    <label>{{series.title}}</label><br />
+    kép
+    <br />
+    <label>Értékelés:&nbsp;</label>
+    <span *ngIf="series.rating == 0">Még nincs értékelve.</span>
+    <span *ngIf="series.rating > 0">{{series.rating.toPrecision(3)}}</span>
+    <br/>
+    <label>Megjelenés éve:&nbsp;</label>
+    <label>{{series.releaseYear}}</label><br />
+    <label>Műfaj:&nbsp;</label>
+    <label>{{series.genre.name}}</label><br />
+    <label>Korbesorolás:&nbsp;</label>
+    <label>{{series.ageClassification.name}}</label><br/>
+    <label>Évadok:&nbsp;</label>
+    <div *ngIf="series.seasons.length == 0">
+      <alert type="info" class="alert">Még nincsenek évadok hozzáadva.</alert>
     </div>
     <ul>
-      <li *ngFor="let e of season.episodes">
-        <div class="my-container-small">
-          <a class="li-link" [routerLink]="['../../episode', e.id]"><span>{{e.title}}</span></a>
-        </div>
+      <li *ngFor="let s of series.seasons">
+        <label class="clickable" (click)="showEpisodes(s)"><span *ngIf="true">ID: {{s.id}}&nbsp;</span>{{s.number}}. évad ({{s.episodes.length}} epizód)</label>
+        <button class="btn btn-primary" [routerLink]="['/admin/edit-season', { id: s.id, seriesId: series.id }]" *ngIf="true">Szerkesztés</button>
       </li>
     </ul>
+    <div *ngIf="show">
+      <label>{{season.number}}. évad epizódjai:</label>
+      <div *ngIf="season.episodes.length == 0">
+        <alert type="info" class="alert">Még nincsenek epizódok hozzáadva.</alert>
+      </div>
+      <ul>
+        <li *ngFor="let e of season.episodes">
+          <a class="li-link" [routerLink]="['../../episode', e.id]"><span>{{e.title}}</span></a>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
 <button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>

@@ -8,14 +8,14 @@
     <div *ngIf="show && errorReports && errorReports.length > 0">
         <ul>
             <li *ngFor="let e of errorReports">
-                <div class="my-container">
-                    <div class="my-container-header">
-                        <span style="float: left">ID: {{e.id}}&nbsp;</span><span>{{e.sendingDate}}</span>
+                <div class="card">
+                    <div class="card-header">
+                        <span>ID: {{e.id}}</span><span class="right">{{e.sendingDate}}</span>
                     </div>
-                    <div class="my-container-main">
+                    <div class="card-body">
                         <div class="multiline">{{e.content}}</div>
                     </div>
-                    <div class="my-container-footer">
+                    <div class="card-footer">
                         <div *ngIf="e.resolved == false">
                             <alert type="warning" class="alert">Hiba nincs megoldva</alert>
                             <button type="button" class="btn btn-success" (click)="makeResolved(e.id)">Megoldva</button>

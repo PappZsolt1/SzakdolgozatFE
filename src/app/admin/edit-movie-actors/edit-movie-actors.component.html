@@ -1,43 +1,45 @@
 <h2>Film színészeinek kezelése</h2>
-<form (ngSubmit)="getMovieActors()" #getMovieForm="ngForm">
-  <label for="movieID">Film ID:&nbsp;</label>
-  <input type="number" id="movieID" name="movieID" required appCustomMin="1" appCustomMax="9000000000000000000" [(ngModel)]="movieId" #movieID="ngModel">
-  <label tooltip="{{idMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
-  <button type="submit" class="btn btn-primary" [disabled]="!getMovieForm.form.valid">Film lekérése</button>
-</form>
-<div *ngIf="error1">
-  <alert type="danger" class="alert">A megadott film ID nem létezik!</alert>
-</div>
-<div *ngIf="showActors">
-  <label>Színész ID-k:</label>
-  <div *ngIf="!actors || actors.length == 0">
-    <alert type="info" class="alert">A filmnek még nincsenek színészei.</alert>
+<div class="card">
+  <form (ngSubmit)="getMovieActors()" #getMovieForm="ngForm">
+    <label for="movieID">Film ID:&nbsp;</label>
+    <input type="number" id="movieID" name="movieID" required appCustomMin="1" appCustomMax="9000000000000000000" [(ngModel)]="movieId" #movieID="ngModel">
+    <label tooltip="{{idMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
+    <button type="submit" class="btn btn-primary" [disabled]="!getMovieForm.form.valid">Film lekérése</button>
+  </form>
+  <div *ngIf="error1">
+    <alert type="danger" class="alert">A megadott film ID nem létezik!</alert>
   </div>
-  <div *ngIf="actors && actors.length > 0">
-    <ul>
-      <li *ngFor="let a of actors">
-        <div class="my-container-small">
+  <div *ngIf="showActors">
+    <label>Színész ID-k:</label>
+    <div *ngIf="!actors || actors.length == 0">
+      <alert type="info" class="alert">A filmnek még nincsenek színészei.</alert>
+    </div>
+    <div *ngIf="actors && actors.length > 0">
+      <ul>
+        <li *ngFor="let a of actors">
           <label>ID: {{a.id}} Név: {{a.name}}&nbsp;</label>
           <button class="btn btn-danger" (click)="removeActorFromMovie(a.id, template)">Törlés</button>
-        </div>
-      </li>
-    </ul>
+        </li>
+      </ul>
+    </div>
+    <form (ngSubmit)="addActorToMovie(actorID.value)" #addActorForm="ngForm">
+      <label>Új színész hozzáadása:</label><br/>
+      <label for="actorID">Színész ID:&nbsp;</label>
+      <input type="number" id="actorID" name="actorID" required appCustomMin="1" appCustomMax="9000000000000000000" ngModel #actorID>
+      <label tooltip="{{idMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
+      <button type="submit" class="btn btn-success" [disabled]="!addActorForm.form.valid">Hozzáadás</button>
+    </form>
   </div>
-  <form (ngSubmit)="addActorToMovie(actorID.value)" #addActorForm="ngForm">
-    <label>Új színész hozzáadása:</label><br/>
-    <label for="actorID">Színész ID:&nbsp;</label>
-    <input type="number" id="actorID" name="actorID" required appCustomMin="1" appCustomMax="9000000000000000000" ngModel #actorID>
-    <label tooltip="{{idMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
-    <button type="submit" class="btn btn-success" [disabled]="!addActorForm.form.valid">Hozzáadás</button>
-  </form>
+  <div *ngIf="error2">
+    <alert type="danger" class="alert">A megadott színész ID nem létezik!</alert>
+  </div>
+  <div *ngIf="error3">
+    <alert type="danger" class="alert">A színész már a filmhez van rendelve!</alert>
+  </div>
+  <div>
+      <button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>
+  </div>
 </div>
-<div *ngIf="error2">
-  <alert type="danger" class="alert">A megadott színész ID nem létezik!</alert>
-</div>
-<div *ngIf="error3">
-  <alert type="danger" class="alert">A színész már a filmhez van rendelve!</alert>
-</div>
-<button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>
 
 <ng-template #template>
   <div class="modal-body text-center">

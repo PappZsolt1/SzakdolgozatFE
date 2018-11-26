@@ -1,46 +1,45 @@
 <h2>Színész</h2>
-<div *ngIf="actor">
-  <div *ngIf=true>
-    <label>ID:&nbsp;</label>
-    <label>{{actor.id}}</label>
-    <button class="btn btn-primary" [routerLink]="['/admin/edit-actor', { id: actor.id }]">Szerkesztés</button>
-  </div>
-  <label>Név:&nbsp;</label>
-  <label>{{actor.name}}</label><br/>
-  <label>Nem:&nbsp;</label>
-  <label>{{actor.gender.name}}</label><br/>
-  <label>Születés helye:&nbsp;</label>
-  <label>{{actor.birthPlace}}</label><br/>
-  <label>Születés ideje:&nbsp;</label>
-  <label>{{actor.birthDate}}</label><br/>
-  <label>Élettörténet:</label><br/>
-  <div class="multiline">{{actor.bio}}</div>
-  <label>Filmek, melyekben szerepel:</label>
-  <div *ngIf="!actor.movies || actor.movies.length == 0">
-    <alert type="info" class="alert">A színésznek még nem szerepel filmekben.</alert>
-  </div>
-  <div *ngIf="actor.movies && actor.movies.length > 0">
-    <ul>
-      <li *ngFor="let m of actor.movies">
-        <div class="my-container-small">
+<div class="card">
+  <div *ngIf="actor">
+    <div *ngIf=true>
+      <label>ID: {{actor.id}}</label>
+      <button class="btn btn-primary" [routerLink]="['/admin/edit-actor', { id: actor.id }]">Szerkesztés</button>
+    </div>
+    <label>Név:&nbsp;</label>
+    <label>{{actor.name}}</label><br/>
+    <label>Nem:&nbsp;</label>
+    <label>{{actor.gender.name}}</label><br/>
+    <label>Születés helye:&nbsp;</label>
+    <label>{{actor.birthPlace}}</label><br/>
+    <label>Születés ideje:&nbsp;</label>
+    <label>{{actor.birthDate}}</label><br/>
+    <label>Élettörténet:</label><br/>
+    <div class="multiline">{{actor.bio}}</div>
+    <label>Filmek, melyekben szerepel:</label>
+    <div *ngIf="!actor.movies || actor.movies.length == 0">
+      <alert type="info" class="alert">A színésznek még nem szerepel filmekben.</alert>
+    </div>
+    <div *ngIf="actor.movies && actor.movies.length > 0">
+      <ul>
+        <li *ngFor="let m of actor.movies">
           <a class="li-link" [routerLink]="['../../movie', m.id]"><span *ngIf="true">ID: {{m.id}}&nbsp;</span>{{m.title}}</a>
-        </div>
-      </li>
-    </ul>
-  </div>
-  <label>Sorozatok, melyekben szerepel:</label>
-  <div *ngIf="!actor.episodes || actor.episodes.length == 0">
-    <alert type="info" class="alert">A színésznek még nem szerepel epizódokban.</alert>
-  </div>
-  <div *ngIf="actor.episodes && actor.episodes.length > 0">
-    <ul>
-      <li *ngFor="let e of actor.episodes">
-        <div class="my-container-small">
+        </li>
+      </ul>
+    </div>
+    <label>Sorozatok, melyekben szerepel:</label>
+    <div *ngIf="!actor.episodes || actor.episodes.length == 0">
+      <alert type="info" class="alert">A színésznek még nem szerepel epizódokban.</alert>
+    </div>
+    <div *ngIf="actor.episodes && actor.episodes.length > 0">
+      <ul>
+        <li *ngFor="let e of actor.episodes">
           <a class="li-link" [routerLink]="['../../episode', e.id]"><span *ngIf="true">ID: {{e.id}}&nbsp;</span>{{e.title}}</a>
-        </div>
-      </li>
-    </ul>
+        </li>
+      </ul>
+    </div>
   </div>
-  <app-comment-list [type]="type" [id]="actor.id"></app-comment-list>
 </div>
 <button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>
+<div *ngIf="actor">
+  <app-comment-list [type]="type" [id]="actor.id"></app-comment-list>
+</div>

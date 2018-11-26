@@ -1,43 +1,44 @@
 <h2>Epizód</h2>
-<div *ngIf="episode">
-  <div *ngIf=true>
-    <label>ID:&nbsp;</label>
-    <label>{{episode.id}}</label>
-    <button class="btn btn-primary" [routerLink]="['/admin/edit-episode', { id: episode.id }]">Szerkesztés</button>
-    <button class="btn btn-primary" [routerLink]="['/admin/edit-episode-actors', { id: episode.id }]">Színészek kezelése</button>
-  </div>
-  <label>Cím:&nbsp;</label>
-  <label>{{episode.title}}</label><br />
-  <label>Értékelés:&nbsp;</label>
-  <span *ngIf="episode.rating == 0">Még nincs értékelve.</span>
-  <span *ngIf="episode.rating > 0">{{episode.rating.toPrecision(3)}} ({{episode.numberOfRatings}} szavazat)</span>
-  <button class="btn btn-primary" (click)="createRating()" *ngIf="true">Epizód értékelése</button>
-  <br/>
-  <div *ngIf="showRating">
-    <form (ngSubmit)="addRating()" #ratingForm="ngForm">
-      <label for="stars">Az ön értékelése:&nbsp;</label>
-      <rating [max]="10" name="stars" [(ngModel)]="rating"></rating>
-      <label>&nbsp;{{rating}}/10</label><br/>
-      <button type="submit" class="btn btn-success" [disabled]="!ratingForm.form.valid">Értékelés küldése</button>
-      <button type="button" class="btn btn-secondary" (click)="cancelRating()">Mégse</button>
-    </form>
-  </div>
-  <label>Megjelenés dátuma:&nbsp;</label>
-  <label>{{episode.releaseDate}}</label><br />
-  <label>Hossz:&nbsp;</label>
-  <label>{{episode.eLength}}</label><br />
-  <div *ngIf="!actors || actors.length == 0">
-    <alert type="info" class="alert">Az epizódnak még nincsenek színészei.</alert>
-  </div>
-  <div *ngIf="actors && actors.length > 0">
-    <ul>
-      <li *ngFor="let a of actors">
-        <div class="my-container-small">
+<div class="card">
+  <div *ngIf="episode">
+    <div *ngIf=true>
+      <label>ID: {{episode.id}}</label>
+      <button class="btn btn-primary" [routerLink]="['/admin/edit-episode', { id: episode.id }]">Szerkesztés</button>
+      <button class="btn btn-primary" [routerLink]="['/admin/edit-episode-actors', { id: episode.id }]">Színészek kezelése</button>
+    </div>
+    <label>Cím:&nbsp;</label>
+    <label>{{episode.title}}</label><br />
+    <label>Értékelés:&nbsp;</label>
+    <span *ngIf="episode.rating == 0">Még nincs értékelve.</span>
+    <span *ngIf="episode.rating > 0">{{episode.rating.toPrecision(3)}} ({{episode.numberOfRatings}} szavazat)</span>
+    <button class="btn btn-primary" (click)="createRating()" *ngIf="true">Epizód értékelése</button>
+    <br/>
+    <div *ngIf="showRating">
+      <form (ngSubmit)="addRating()" #ratingForm="ngForm">
+        <label for="stars">Az ön értékelése:&nbsp;</label>
+        <rating [max]="10" name="stars" [(ngModel)]="rating"></rating>
+        <label>&nbsp;{{rating}}/10</label><br/>
+        <button type="submit" class="btn btn-success" [disabled]="!ratingForm.form.valid">Értékelés küldése</button>
+        <button type="button" class="btn btn-secondary" (click)="cancelRating()">Mégse</button>
+      </form>
+    </div>
+    <label>Megjelenés dátuma:&nbsp;</label>
+    <label>{{episode.releaseDate}}</label><br />
+    <label>Hossz:&nbsp;</label>
+    <label>{{episode.eLength}}</label><br />
+    <div *ngIf="!actors || actors.length == 0">
+      <alert type="info" class="alert">Az epizódnak még nincsenek színészei.</alert>
+    </div>
+    <div *ngIf="actors && actors.length > 0">
+      <ul>
+        <li *ngFor="let a of actors">
           <a class="li-link" [routerLink]="['../../actor', a.id]"><span *ngIf="true">ID: {{a.id}}&nbsp;</span>{{a.name}}</a>
-        </div>
-      </li>
-    </ul>
+        </li>
+      </ul>
+    </div>
   </div>
-  <app-comment-list [type]="type" [id]="episode.id"></app-comment-list>
 </div>
 <button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>
+<div *ngIf="episode">
+  <app-comment-list [type]="type" [id]="episode.id"></app-comment-list>
+</div>

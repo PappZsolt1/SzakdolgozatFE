@@ -4,9 +4,7 @@
 <div *ngIf="articles && articles.length > 0">
     <ul>
         <li *ngFor="let a of articles">
-            <div class="my-container-small">
-                <a class="li-link" [routerLink]="[a.id]"><span>{{a.title}}</span></a>
-            </div>
+            <a class="li-link" [routerLink]="[a.id]"><span>{{a.title}}</span></a>
         </li>
     </ul>
     <div class="row">
@@ -21,3 +19,4 @@
 <div *ngIf="true">
     <button class="btn btn-primary" routerLink="saved-article-list">Mentett cikkek</button>
 </div>
+<img src="https://m.media-amazon.com/images/M/MV5BMjA1MjE2MTQ2MV5BMl5BanBnXkFtZTcwMjE5" alt="aaa" width="100px">

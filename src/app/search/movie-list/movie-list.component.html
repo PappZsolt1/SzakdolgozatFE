@@ -2,14 +2,12 @@
 <div *ngIf="movies && movies.length > 0">
   <ul>
       <li *ngFor="let m of movies">
-          <div class="my-container-small">
-              <a class="li-link" [routerLink]="['../movie', m.id]"><span>{{m.title}}</span></a>
-          </div>
+        <a class="li-link" [routerLink]="['../movie', m.id]"><span>{{m.title}}</span></a>
       </li>
   </ul>
   <div class="row">
       <div class="col-xs-12 col-12">
-          <pagination [boundaryLinks]="true" [directionLinks]="true" [maxSize]="5" [rotate]="true" [itemsPerPage]="size" [totalItems]="total" (pageChanged)="onPageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+        <pagination [boundaryLinks]="true" [directionLinks]="true" [maxSize]="5" [rotate]="true" [itemsPerPage]="size" [totalItems]="total" (pageChanged)="onPageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
       </div>
   </div>
 </div>

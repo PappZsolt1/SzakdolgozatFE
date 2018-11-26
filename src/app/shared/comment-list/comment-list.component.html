@@ -1,18 +1,18 @@
-<label>Hozzászólások:</label>
+<h3>Hozzászólások:</h3>
 <div *ngIf="!comments || comments.length == 0">
     <alert type="info" class="alert">Még nincsenek hozzászólások.</alert>
 </div>
 <div *ngIf="comments && comments.length > 0">
     <ul>
         <li *ngFor="let c of comments">
-            <div class="my-container">
-                <div class="my-container-header">
+            <div class="card">
+                <div class="card-header">
                     <span>{{c.postDate}}</span>
                 </div>
-                <div class="my-container-main">
+                <div class="card-body">
                     <div class="multiline">{{c.content}}</div>
                 </div>
-                <div class="my-container-footer" *ngIf="!c.moderated">
+                <div class="card-footer" *ngIf="!c.moderated">
                     <button type="button" class="btn btn-danger" (click)="moderateComment(c.id, template)">Moderálás</button>
                 </div>
             </div>

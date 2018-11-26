@@ -1,42 +1,44 @@
 <h2>Műfajok kezelése</h2>
-<div>
-    <ul>
-        <li *ngFor="let g of genres">
-            <div class="my-container-small">
-                <label>ID:&nbsp;</label><label>{{g.id}}&nbsp;</label><label>Megnevezés:&nbsp;</label><label>{{g.name}}&nbsp;</label>
+<div class="card">
+    <div>
+        <ul>
+            <li *ngFor="let g of genres">
+                <label>ID: {{g.id}} Megnevezés: {{g.name}}&nbsp;</label>
                 <button type="button" class="btn btn-primary" (click)="editExisting(g.id, g.name)">Szerkesztés</button>
                 <button type="button" class="btn btn-danger" (click)="deleteGenre(g.id, template)">Törlés</button>
-            </div>
-        </li>
-    </ul>
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="error">
+        <alert type="danger" class="alert">A kiválasztott műfaj nem törölhető, mert hivatkoznak rá!</alert>
+    </div>
+    <div *ngIf="!create">
+        <button type="button" class="btn btn-primary" (click)="createNew()">Létrehozás</button>
+    </div>
+    <div *ngIf="create">
+        <form (ngSubmit)="addGenre(name.value)" #newGenreForm="ngForm">
+            <label for="name">Megnevezés:&nbsp;</label>
+            <input type="text" id="name" name="name" required maxlength="200" appCustomText #name ngModel>
+            <label tooltip="{{inputTextMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
+            <button type="button" class="btn btn-secondary" (click)="cancelCreate()">Mégse</button>
+            <button type="submit" class="btn btn-success" [disabled]="!newGenreForm.form.valid">Hozzáadás</button>
+        </form>
+    </div>
+    <div *ngIf="edit">
+        <form (ngSubmit)="modifyGenre()" #modifyGenreForm="ngForm">
+            <label>ID:&nbsp;</label>
+            <label>{{genre.id}}&nbsp;</label>
+            <label for="name">Megnevezés:&nbsp;</label>
+            <input type="text" id="name" name="name" required maxlength="200" appCustomText #name [(ngModel)]="genre.name">
+            <label tooltip="{{inputTextMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
+            <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Mégse</button>
+            <button type="submit" class="btn btn-success" [disabled]="!modifyGenreForm.form.valid">Mentés</button>
+        </form>
+    </div>
+    <div>
+        <button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>
+    </div>
 </div>
-<div *ngIf="error">
-    <alert type="danger" class="alert">A kiválasztott műfaj nem törölhető, mert hivatkoznak rá!</alert>
-</div>
-<div *ngIf="!create">
-    <button type="button" class="btn btn-primary" (click)="createNew()">Létrehozás</button>
-</div>
-<div *ngIf="create">
-    <form (ngSubmit)="addGenre(name.value)" #newGenreForm="ngForm">
-        <label for="name">Megnevezés:&nbsp;</label>
-        <input type="text" id="name" name="name" required maxlength="200" appCustomText #name ngModel>
-        <label tooltip="{{inputTextMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
-        <button type="button" class="btn btn-secondary" (click)="cancelCreate()">Mégse</button>
-        <button type="submit" class="btn btn-success" [disabled]="!newGenreForm.form.valid">Hozzáadás</button>
-    </form>
-</div>
-<div *ngIf="edit">
-    <form (ngSubmit)="modifyGenre()" #modifyGenreForm="ngForm">
-        <label>ID:&nbsp;</label>
-        <label>{{genre.id}}&nbsp;</label>
-        <label for="name">Megnevezés:&nbsp;</label>
-        <input type="text" id="name" name="name" required maxlength="200" appCustomText #name [(ngModel)]="genre.name">
-        <label tooltip="{{inputTextMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
-        <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Mégse</button>
-        <button type="submit" class="btn btn-success" [disabled]="!modifyGenreForm.form.valid">Mentés</button>
-    </form>
-</div>
-<button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>
 
 <ng-template #template>
     <div class="modal-body text-center">

@@ -1,22 +1,25 @@
 <h2>Téma</h2>
 <div *ngIf="topic && !deleted">
-    <div class="my-container">
-        <div class="my-container-header">
-            <span style="float: left">{{topic.title}}&nbsp;</span><span>{{topic.createDate}}</span>
+    <div class="card">
+        <div class="card-header">
+            <span>{{topic.title}}</span><span class="right">{{topic.createDate}}</span>
         </div>
-        <div class="my-container-main">
+        <div class="card-body">
             <div class="multiline">{{topic.description}}</div>
         </div>
-        <div class="my-container-footer" *ngIf=true>
+        <div class="card-footer" *ngIf=true>
             <button type="button" class="btn btn-danger" (click)="deleteTopic(template)">Téma törlése</button>
         </div>
     </div>
-    <app-comment-list [type]="type" [id]="topic.id"></app-comment-list>
+    <button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>
+    <div *ngIf="topic">
+        <app-comment-list [type]="type" [id]="topic.id"></app-comment-list>
+    </div>
 </div>
 <div *ngIf="deleted">
     <alert type="success" class="alert">Törölve!</alert>
+    <button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>
 </div>
-<button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>
 
 <ng-template #template>
     <div class="modal-body text-center">

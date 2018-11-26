@@ -1,5 +1,6 @@
 textarea {
     resize: none;
+    width: 90%;
 }
 
 .multiline {
@@ -14,6 +15,7 @@ button {
 .alert {
     display: inline-block;
     margin: 0;
+    padding: 12px;
 }
 
 .help {
@@ -33,46 +35,29 @@ button {
     border-radius: 3px;
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.routes-body {
-    margin-left: 10px;
-}
-
-.my-container-small {
+.container {
     border: 1px solid black;
-    border-radius: 5px;
-    margin: 5px;
-    background-color: #eeeeee;
+    border-radius: 10px;
+    margin: 10px auto;
     padding: 10px;
-    display: inline-block;
+}
+@media (min-width: 992px) {
+    .container {
+      max-width: 800px;
+    }
 }
 
-.my-container {
-    border: 1px solid black;
-    border-radius: 5px;
-    max-width: 720px;
-    margin: 10px;
-    background-color: #eeeeee;
-}
-
-.my-container-header {
-    text-align: right;
-    border-bottom: 1px solid black;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.my-container-footer {
-    text-align: right;
-    border-top: 1px solid black;
-}
-
-.my-container-main {
+.card {
     padding: 10px;
+    margin: 2px;
+}
+
+.right {
+    float: right;
+}
+
+.clickable:hover {
+    cursor: pointer;
 }
 
 .li-link {
@@ -82,9 +67,3 @@ ul {
 .li-link:hover {
     color: black;
 }
-/*.nav {
-    border: 1px solid blue;
-    border-radius: 8px;
-    margin: 5px;
-    max-width: 850px;
-}*/

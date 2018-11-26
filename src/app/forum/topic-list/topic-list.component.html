@@ -13,9 +13,7 @@
 <div *ngIf="topics && topics.length > 0">
     <ul>
         <li *ngFor="let t of topics">
-            <div class="my-container-small">
-                <a class="li-link" [routerLink]="[t.id]"><span>{{t.title}}</span></a>
-            </div>
+            <a class="li-link" [routerLink]="[t.id]"><span>{{t.title}}</span></a>
         </li>
     </ul>
 </div>
