@@ -1,6 +1,6 @@
 textarea {
     resize: none;
-    width: 90%;
+    width: 70%;
 }
 
 .multiline {
@@ -66,4 +66,9 @@ button {
 
 .li-link:hover {
     color: black;
+}
+
+.image {
+    width: 100px;
+    margin: 10px;
 }

@@ -5,6 +5,7 @@
       <label>ID: {{actor.id}}</label>
       <button class="btn btn-primary" [routerLink]="['/admin/edit-actor', { id: actor.id }]">Szerkesztés</button>
     </div>
+    <img class="image" src="{{actor.imageUrl}}" alt=""><br>
     <label>Név:&nbsp;</label>
     <label>{{actor.name}}</label><br/>
     <label>Nem:&nbsp;</label>

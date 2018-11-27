@@ -12,7 +12,7 @@ import * as globals from '../../shared/globals';
 })
 export class NewTopicComponent implements OnInit {
 
-  topic: Topic = { id: null, title: null, description: null, createDate: null, comments: null };
+  topic: Topic = { id: null, title: null, description: null, createDate: null, username: null, comments: null };
 
   created = false;
 

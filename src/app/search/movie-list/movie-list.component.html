@@ -1,5 +1,11 @@
 <h2>Talált filmek</h2>
 <div *ngIf="movies && movies.length > 0">
+  <div>
+    <select name="pageSize" id="pageSize" (change)="onSizeChaged()" [(ngModel)]="size" #pageSize="ngModel">
+      <option *ngFor="let s of sizes" [value]="s">{{s}}</option>
+    </select>
+    <label>&nbsp;{{pageFirst}}-{{pageLast}}/{{total}}</label>
+  </div>
   <ul>
       <li *ngFor="let m of movies">
         <a class="li-link" [routerLink]="['../movie', m.id]"><span>{{m.title}}</span></a>

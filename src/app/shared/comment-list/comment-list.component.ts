@@ -5,6 +5,9 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 import { CommentService } from '../services/comment.service';
 import { Comment } from '../models/comment.model';
+import { calculatePageFirst } from '../calculate-page-first';
+import { calculatePageLast } from '../calculate-page-last';
+import { calculatePage } from '../calculate-page';
 
 @Component({
   selector: 'app-comment-list',
@@ -20,6 +23,9 @@ export class CommentListComponent implements OnInit {
   total: number;
   page = 1;
   size = 10;
+  sizes = [10, 20, 30];
+  pageFirst = 0;
+  pageLast = 0;
   modalRef: BsModalRef;
   selectedId: number;
 
@@ -33,6 +39,11 @@ export class CommentListComponent implements OnInit {
     this.loadComments();
   }
 
+  onSizeChaged(): void {
+    this.page = calculatePage(this.page, this.size, this.total);
+    this.loadComments();
+  }
+
   onPageChanged(event: any): void {
     this.page = event.page;
     this.size = event.itemsPerPage;
@@ -43,23 +54,38 @@ export class CommentListComponent implements OnInit {
     switch (this.type) {
       case "article":
         this.commentService.getArticleComments(this.page, this.size, this.id).subscribe(r => {
-          this.comments = r.results; this.total = r.total; });
+          this.comments = r.results; this.total = r.total;
+          this.pageFirst = calculatePageFirst(this.page, this.size, this.total);
+          this.pageLast = calculatePageLast(this.page, this.size, this.total);
+        });
       break;
       case "actor":
         this.commentService.getActorComments(this.page, this.size, this.id).subscribe(r => {
-          this.comments = r.results; this.total = r.total; });
+          this.comments = r.results; this.total = r.total;
+          this.pageFirst = calculatePageFirst(this.page, this.size, this.total);
+          this.pageLast = calculatePageLast(this.page, this.size, this.total);
+        });
         break;
       case "movie":
         this.commentService.getMovieComments(this.page, this.size, this.id).subscribe(r => {
-          this.comments = r.results; this.total = r.total; });
+          this.comments = r.results; this.total = r.total;
+          this.pageFirst = calculatePageFirst(this.page, this.size, this.total);
+          this.pageLast = calculatePageLast(this.page, this.size, this.total);
+        });
         break;
       case "episode":
         this.commentService.getEpisodeComments(this.page, this.size, this.id).subscribe(r => {
-          this.comments = r.results; this.total = r.total; });
+          this.comments = r.results; this.total = r.total;
+          this.pageFirst = calculatePageFirst(this.page, this.size, this.total);
+          this.pageLast = calculatePageLast(this.page, this.size, this.total);
+        });
         break;
       case "topic":
         this.commentService.getTopicComments(this.page, this.size, this.id).subscribe(r => {
-          this.comments = r.results; this.total = r.total; });
+          this.comments = r.results; this.total = r.total;
+          this.pageFirst = calculatePageFirst(this.page, this.size, this.total);
+          this.pageLast = calculatePageLast(this.page, this.size, this.total);
+        });
         break;
       default:
         break;

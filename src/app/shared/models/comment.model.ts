@@ -7,7 +7,7 @@ import { Topic } from "../../forum/shared/topic.model";
 export interface Comment {
     id: number;
     content: string;
-    //username: string;
+    username: string;
     postDate: string;
     movie: Movie;
     episode: Episode;

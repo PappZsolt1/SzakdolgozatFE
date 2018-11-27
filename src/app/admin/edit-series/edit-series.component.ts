@@ -20,7 +20,7 @@ import * as globals from '../../shared/globals';
 })
 export class EditSeriesComponent implements OnInit {
 
-  series: Series = { id: null, rating: null, title: null, releaseYear: null, coverPicture: null, ageClassification: null, genre: null, seasons: null }
+  series: Series = { id: null, rating: null, title: null, releaseYear: null, imageUrl: null, ageClassification: null, genre: null, seasons: null }
   ageClassifications: AgeClassification[];
   genres: Genre[];
   saved = false;
@@ -32,6 +32,7 @@ export class EditSeriesComponent implements OnInit {
   inputTextMessage = globals.inputTextMessage;
   releaseYearMessage = globals.releaseYearMessage;
   selecetMessage = globals.selectMessage;
+  imageMessage = globals.imageMessage;
 
   constructor(
     private modalService: BsModalService,

@@ -5,10 +5,9 @@
     <button class="btn btn-primary" [routerLink]="['/admin/edit-movie', { id: movie.id }]">Szerkesztés</button>
     <button class="btn btn-primary" [routerLink]="['/admin/edit-movie-actors', { id: movie.id }]">Színészek kezelése</button>
   </div>
+  <img class="image" src="{{movie.imageUrl}}" alt=""><br>
   <label>Cím:&nbsp;</label>
   <label>{{movie.title}}</label><br/>
-  kép
-  <br/>
   <label>Értékelés:&nbsp;</label>
   <span *ngIf="movie.rating == 0">Még nincs értékelve.</span>
   <span *ngIf="movie.rating > 0">{{movie.rating.toPrecision(3)}} ({{movie.numberOfRatings}} szavazat)</span>

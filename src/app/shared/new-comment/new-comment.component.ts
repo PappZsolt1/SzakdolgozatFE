@@ -15,7 +15,7 @@ export class NewCommentComponent implements OnInit {
   @Input() id: number;
   @Output() refresh = new EventEmitter();
 
-  comment: Comment = { id: null, content: null, postDate: null, topic: null, actor: null, article: null, episode: null, movie: null, moderated: null };
+  comment: Comment = { id: null, content: null, postDate: null, username: null, topic: null, actor: null, article: null, episode: null, movie: null, moderated: null };
   show = false;
 
   textareaMessage = globals.textareaMessage;

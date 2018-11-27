@@ -20,7 +20,7 @@ import * as globals from '../../shared/globals';
 })
 export class EditActorComponent implements OnInit {
 
-  actor: Actor = { id: null, name: null, photo: null, birthDate: null, birthPlace: null, bio: null, gender: null, comments: null, movies: null, episodes: null };
+  actor: Actor = { id: null, name: null, imageUrl: null, birthDate: null, birthPlace: null, bio: null, gender: null, comments: null, movies: null, episodes: null };
   genders: Gender[];
   bDate: string;
   saved = false;
@@ -33,6 +33,7 @@ export class EditActorComponent implements OnInit {
   selectMessage = globals.selectMessage;
   birthDateMessage = globals.birthDateMessage;
   textareaMessage = globals.textareaMessage;
+  imageMessage = globals.imageMessage;
 
   constructor(
     private modalService: BsModalService,

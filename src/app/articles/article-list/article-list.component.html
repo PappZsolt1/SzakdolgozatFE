@@ -2,6 +2,12 @@
     <alert type="info" class="alert">Még nincsenek publikált cikkek.</alert>
 </div>
 <div *ngIf="articles && articles.length > 0">
+    <div>
+        <select name="pageSize" id="pageSize" (change)="onSizeChaged()" [(ngModel)]="size" #pageSize="ngModel">
+            <option *ngFor="let s of sizes" [value]="s">{{s}}</option>
+        </select>
+        <label>&nbsp;{{pageFirst}}-{{pageLast}}/{{total}}</label>
+    </div>
     <ul>
         <li *ngFor="let a of articles">
             <a class="li-link" [routerLink]="[a.id]"><span>{{a.title}}</span></a>
@@ -19,4 +25,3 @@
 <div *ngIf="true">
     <button class="btn btn-primary" routerLink="saved-article-list">Mentett cikkek</button>
 </div>
-<img src="https://m.media-amazon.com/images/M/MV5BMjA1MjE2MTQ2MV5BMl5BanBnXkFtZTcwMjE5" alt="aaa" width="100px">

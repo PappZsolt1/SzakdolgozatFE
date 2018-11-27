@@ -11,6 +11,11 @@
             <div *ngIf="modify">
                 <label>ID: {{actor.id}}</label>
             </div>
+            <label for="url">Kép URL-je:&nbsp;</label>
+            <input type="text" id="url" name="url" required maxlength="1000" appCustomText [(ngModel)]="actor.imageUrl" #url="ngModel">
+            <label tooltip="{{imageMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
+            <label>Kép:</label>
+            <img class="image" src="{{actor.imageUrl}}" alt=""><br>
             <label for="name">Név:&nbsp;</label>
             <input type="text" id="name" name="name" required maxlength="200" appCustomText [(ngModel)]="actor.name" #name="ngModel">
             <label tooltip="{{inputTextMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>

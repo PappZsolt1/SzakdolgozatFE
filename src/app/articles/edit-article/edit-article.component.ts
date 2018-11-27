@@ -16,7 +16,7 @@ import * as globals from '../../shared/globals';
 })
 export class EditArticleComponent implements OnInit {
 
-  article: Article = { id: null, title: null, content: null, saved: null, published: null, publishDate: null, /*username: null,*/ comments: null };
+  article: Article = { id: null, title: null, content: null, saved: null, published: null, publishDate: null, username: null, comments: null };
 
   saved = false;
   published = false;

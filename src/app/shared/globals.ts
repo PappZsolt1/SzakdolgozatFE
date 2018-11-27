@@ -28,3 +28,7 @@ export const numberMessage =
 export const ratingMessage =
 `A számnak 1 és 10 közötti egész számnak kell lennie,
 a magasabb szám jelenti a jobb értékelést!`;
+export const imageMessage =
+`Az URL nem kezdődhet és végződhet szóközzel vagy tabbal,
+maximum 1000 karakterből állhat, valamint
+akkor érvényes, ha a kép lent megjelenik!`;

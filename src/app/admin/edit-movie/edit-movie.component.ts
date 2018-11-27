@@ -22,7 +22,7 @@ import * as globals from '../../shared/globals';
 })
 export class EditMovieComponent implements OnInit {
 
-  movie: Movie = { id: null, title: null, ageClassification: null, budget: null, genre: null, coverPicture: null, mLength: null, releaseYear: null, numberOfRatings: null, sumOfRatings: null, rating: null, actors: null, comments: null }
+  movie: Movie = { id: null, title: null, ageClassification: null, budget: null, genre: null, imageUrl: null, mLength: null, releaseYear: null, numberOfRatings: null, sumOfRatings: null, rating: null, actors: null, comments: null }
   ageClassifications: AgeClassification[];
   genres: Genre[];
   saved = false;
@@ -39,7 +39,8 @@ export class EditMovieComponent implements OnInit {
   selectMessage = globals.selectMessage;
   lengthMessage = globals.lengthMessage;
   budgetMessage = globals.budgetMessage;
-  
+  imageMessage = globals.imageMessage;
+
   actorIds: number[] = [];
 
   constructor(
