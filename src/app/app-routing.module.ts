@@ -5,11 +5,14 @@ import { PageNotFoundComponent } from './core/page-not-found/page-not-found.comp
 import { LoginComponent } from './core/login/login.component';
 import { RegistrationComponent } from './core/registration/registration.component';
 
+import { AppAuthGuard } from './shared/app-auth.guard';
+
 const appRoutes: Routes = [
   { path: 'forum', loadChildren: 'app/forum/forum.module#ForumModule' },
   { path: 'search', loadChildren: 'app/search/search.module#SearchModule' },
   { path: 'error-report', loadChildren: 'app/error-report/error-report.module#ErrorReportModule' },
-  { path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule' },
+  { path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule',
+  canActivate: [AppAuthGuard], data: { roles: ['Admin'] } },
   { path: 'private-messages', loadChildren: 'app/private-messages/private-messages.module#PrivateMessagesModule' },
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
@@ -23,6 +26,7 @@ const appRoutes: Routes = [
   ],
   exports: [
     RouterModule
-  ]
+  ],
+  providers: [AppAuthGuard]
 })
 export class AppRoutingModule { }
