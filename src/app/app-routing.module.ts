@@ -15,7 +15,7 @@ const appRoutes: Routes = [
   canActivate: [AppAuthGuard], data: { roles: ['Admin'] } },
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
-  { path: '', redirectTo: '/articles', pathMatch: 'full' },
+  { path: '', redirectTo: '/search', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ]
 

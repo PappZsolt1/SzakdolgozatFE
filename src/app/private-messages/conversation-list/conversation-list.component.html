@@ -1,7 +1,0 @@
-<div>
-    <ul>
-        <li *ngFor="let c of conversations">
-            <a [routerLink]="[c.id]"><span>{{c.usernameB}}</span><span *ngIf="c.unreadMessages > 0">{{c.unreadMessages}}</span></a>
-        </li>
-    </ul>
-</div>
