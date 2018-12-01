@@ -1,7 +1,7 @@
 <h2>Sorozat</h2>
 <div class="card">
   <div *ngIf="series">
-    <div *ngIf=true>
+    <div *ngIf="canDo">
       <label>ID: {{series.id}}</label>
       <button class="btn btn-primary" [routerLink]="['/admin/edit-series', { id: series.id }]">Szerkesztés</button>
     </div>
@@ -24,8 +24,8 @@
     </div>
     <ul>
       <li *ngFor="let s of series.seasons">
-        <label class="clickable" (click)="showEpisodes(s)"><span *ngIf="true">ID: {{s.id}}&nbsp;</span>{{s.number}}. évad ({{s.episodes.length}} epizód)</label>
-        <button class="btn btn-primary" [routerLink]="['/admin/edit-season', { id: s.id, seriesId: series.id }]" *ngIf="true">Szerkesztés</button>
+        <label class="clickable" (click)="showEpisodes(s)"><span *ngIf="canDo">ID: {{s.id}}&nbsp;</span>{{s.number}}. évad ({{s.episodes.length}} epizód)</label>
+        <button class="btn btn-primary" [routerLink]="['/admin/edit-season', { id: s.id, seriesId: series.id }]" *ngIf="canDo">Szerkesztés</button>
       </li>
     </ul>
     <div *ngIf="show">

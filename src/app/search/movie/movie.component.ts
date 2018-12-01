@@ -7,6 +7,8 @@ import { MovieService } from '../../shared/services/movie.service';
 import { Actor } from '../../shared/models/actor.model';
 import * as globals from '../../shared/globals';
 
+import { KeycloakService } from 'keycloak-angular';
+
 @Component({
   selector: 'app-movie',
   templateUrl: './movie.component.html',
@@ -22,7 +24,11 @@ export class MovieComponent implements OnInit {
 
   ratingMessage = globals.ratingMessage;
 
+  canDo1 = this.keycloak.isUserInRole("Admin");
+  canDo2 = this.keycloak.isUserInRole("RegisteredUser") || this.keycloak.isUserInRole("Moderator");
+
   constructor(
+    private keycloak: KeycloakService,
     private route: ActivatedRoute,
     private location: Location,
     private movieService: MovieService

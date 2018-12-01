@@ -11,8 +11,8 @@ export function initializer(keycloak: KeycloakService): () => Promise<any> {
           initOptions: {
             checkLoginIframe: false            
           },
-          loadUserProfileAtStartUp: false,
-          bearerExcludedUrls: ["assets"]
+          //enableBearerInterceptor: false,
+          bearerExcludedUrls: []
         });
         resolve();
       } catch (error) {

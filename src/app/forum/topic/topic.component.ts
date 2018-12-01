@@ -8,6 +8,8 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { TopicService } from '../shared/topic.service';
 import { Topic } from '../shared/topic.model';
 
+import { KeycloakService } from 'keycloak-angular';
+
 @Component({
   selector: 'app-topic',
   templateUrl: './topic.component.html',
@@ -20,7 +22,10 @@ export class TopicComponent implements OnInit {
   deleted = false;
   modalRef: BsModalRef;
 
+  canDo = this.keycloak.isUserInRole("Moderator");
+
   constructor(
+    private keycloak: KeycloakService,
     private modalService: BsModalService,
     private route: ActivatedRoute,
     private topicService: TopicService,

@@ -13,10 +13,9 @@ const appRoutes: Routes = [
   { path: 'error-report', loadChildren: 'app/error-report/error-report.module#ErrorReportModule' },
   { path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule',
   canActivate: [AppAuthGuard], data: { roles: ['Admin'] } },
-  { path: 'private-messages', loadChildren: 'app/private-messages/private-messages.module#PrivateMessagesModule' },
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
-  { path: '',   redirectTo: '/articles', pathMatch: 'full' },
+  { path: '', redirectTo: '/articles', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ]
 

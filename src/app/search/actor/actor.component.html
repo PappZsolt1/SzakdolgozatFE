@@ -1,7 +1,7 @@
 <h2>Színész</h2>
 <div class="card">
   <div *ngIf="actor">
-    <div *ngIf=true>
+    <div *ngIf="canDo">
       <label>ID: {{actor.id}}</label>
       <button class="btn btn-primary" [routerLink]="['/admin/edit-actor', { id: actor.id }]">Szerkesztés</button>
     </div>
@@ -23,18 +23,18 @@
     <div *ngIf="actor.movies && actor.movies.length > 0">
       <ul>
         <li *ngFor="let m of actor.movies">
-          <a class="li-link" [routerLink]="['../../movie', m.id]"><span *ngIf="true">ID: {{m.id}}&nbsp;</span>{{m.title}}</a>
+          <a class="li-link" [routerLink]="['../../movie', m.id]"><span *ngIf="canDo">ID: {{m.id}}&nbsp;</span>{{m.title}}</a>
         </li>
       </ul>
     </div>
-    <label>Sorozatok, melyekben szerepel:</label>
+    <label>Epizódok, melyekben szerepel:</label>
     <div *ngIf="!actor.episodes || actor.episodes.length == 0">
-      <alert type="info" class="alert">A színésznek még nem szerepel epizódokban.</alert>
+      <alert type="info" class="alert">A színész még nem szerepel epizódokban.</alert>
     </div>
     <div *ngIf="actor.episodes && actor.episodes.length > 0">
       <ul>
         <li *ngFor="let e of actor.episodes">
-          <a class="li-link" [routerLink]="['../../episode', e.id]"><span *ngIf="true">ID: {{e.id}}&nbsp;</span>{{e.title}}</a>
+          <a class="li-link" [routerLink]="['../../episode', e.id]"><span *ngIf="canDo">ID: {{e.id}}&nbsp;</span>{{e.title}}</a>
         </li>
       </ul>
     </div>

@@ -18,7 +18,7 @@
                 <div class="card-body">
                     <div class="multiline">{{c.content}}</div>
                 </div>
-                <div class="card-footer" *ngIf="!c.moderated">
+                <div class="card-footer" *ngIf="canDo && !c.moderated">
                     <button type="button" class="btn btn-danger" (click)="moderateComment(c.id, template)">Moderálás</button>
                 </div>
             </div>

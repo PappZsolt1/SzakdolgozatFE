@@ -5,6 +5,8 @@ import { Location } from '@angular/common';
 import { Actor } from '../../shared/models/actor.model';
 import { ActorService } from '../../shared/services/actor.service';
 
+import { KeycloakService } from 'keycloak-angular';
+
 @Component({
   selector: 'app-actor',
   templateUrl: './actor.component.html',
@@ -15,7 +17,10 @@ export class ActorComponent implements OnInit {
   actor: Actor;
   type = "actor";
 
+  canDo = this.keycloak.isUserInRole("Admin");
+
   constructor(
+    private keycloak: KeycloakService,
     private route: ActivatedRoute,
     private location: Location,
     private actorService: ActorService

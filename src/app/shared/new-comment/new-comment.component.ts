@@ -4,6 +4,8 @@ import { CommentService } from '../services/comment.service';
 import { Comment } from '../models/comment.model';
 import * as globals from '../../shared/globals';
 
+import { KeycloakService } from 'keycloak-angular';
+
 @Component({
   selector: 'app-new-comment',
   templateUrl: './new-comment.component.html',
@@ -20,7 +22,9 @@ export class NewCommentComponent implements OnInit {
 
   textareaMessage = globals.textareaMessage;
 
-  constructor(private commentService: CommentService) { }
+  canDo = this.keycloak.isUserInRole("RegisteredUser") || this.keycloak.isUserInRole("Moderator");
+
+  constructor(private keycloak: KeycloakService, private commentService: CommentService) { }
 
   ngOnInit() {
   }

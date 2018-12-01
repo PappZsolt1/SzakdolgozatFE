@@ -8,6 +8,8 @@ import { calculatePageFirst } from '../../shared/calculate-page-first';
 import { calculatePageLast } from '../../shared/calculate-page-last';
 import { calculatePage } from '../../shared/calculate-page';
 
+import { KeycloakService } from 'keycloak-angular';
+
 @Component({
   selector: 'app-topic-list',
   templateUrl: './topic-list.component.html',
@@ -25,7 +27,13 @@ export class TopicListComponent implements OnInit {
   pageLast = 0;
   showRules = false;
 
-  constructor(private topicService: TopicService, private rulesService: RulesService) { }
+  canDo = this.keycloak.isUserInRole("Moderator") || this.keycloak.isUserInRole("RegisteredUser");
+
+  constructor(
+    private keycloak: KeycloakService,
+    private topicService: TopicService,
+    private rulesService: RulesService
+    ) { }
 
   ngOnInit() {
     this.getTopics();

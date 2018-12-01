@@ -9,6 +9,8 @@ import { calculatePageFirst } from '../calculate-page-first';
 import { calculatePageLast } from '../calculate-page-last';
 import { calculatePage } from '../calculate-page';
 
+import { KeycloakService } from 'keycloak-angular';
+
 @Component({
   selector: 'app-comment-list',
   templateUrl: './comment-list.component.html',
@@ -29,7 +31,13 @@ export class CommentListComponent implements OnInit {
   modalRef: BsModalRef;
   selectedId: number;
 
-  constructor(private modalService: BsModalService, private commentService: CommentService) { }
+  canDo = this.keycloak.isUserInRole("Moderator");
+
+  constructor(
+    private keycloak: KeycloakService,
+    private modalService: BsModalService,
+    private commentService: CommentService
+    ) { }
 
   ngOnInit() {
     this.loadComments();

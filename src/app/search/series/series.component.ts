@@ -6,6 +6,8 @@ import { Series } from '../../shared/models/series.model';
 import { SeriesService } from '../../shared/services/series.service';
 import { Season } from '../../shared/models/season.model';
 
+import { KeycloakService } from 'keycloak-angular';
+
 @Component({
   selector: 'app-series',
   templateUrl: './series.component.html',
@@ -17,7 +19,10 @@ export class SeriesComponent implements OnInit {
   show = false;
   season: Season;
 
+  canDo = this.keycloak.isUserInRole("Admin");
+
   constructor(
+    private keycloak: KeycloakService,
     private route: ActivatedRoute,
     private location: Location,
     private seriesService: SeriesService

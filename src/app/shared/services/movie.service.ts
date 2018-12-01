@@ -44,11 +44,6 @@ export class MovieService {
     return this.http.post<Movie>(this.movieUrl, movie)
     .pipe(catchError(errorHandler));
   }
-  
-  getAllMovies(): Observable<Movie[]> {
-    return this.http.get<Movie[]>(this.movieUrl)
-    .pipe(catchError(errorHandler));
-  }
 
   getResultMovies(page: number, size: number, title: string): Observable<Wrapper> {
     return this.http.get<Wrapper>(this.movieUrl + "/search/" + page + "/" + size + "/" + title)

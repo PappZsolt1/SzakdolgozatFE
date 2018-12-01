@@ -6,6 +6,8 @@ import { calculatePageFirst } from '../../shared/calculate-page-first';
 import { calculatePageLast } from '../../shared/calculate-page-last';
 import { calculatePage } from '../../shared/calculate-page';
 
+import { KeycloakService } from 'keycloak-angular';
+
 @Component({
   templateUrl: './article-list.component.html',
   styleUrls: ['./article-list.component.css']
@@ -20,7 +22,9 @@ export class ArticleListComponent implements OnInit {
   pageFirst = 0;
   pageLast = 0;
   
-  constructor(private articleService: ArticleService) { }
+  canDo = this.keycloak.isUserInRole("ArticleWriter");
+
+  constructor(private keycloak: KeycloakService, private articleService: ArticleService) { }
 
   ngOnInit() {
     this.getPublishedArticles();

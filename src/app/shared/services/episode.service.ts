@@ -62,11 +62,6 @@ export class EpisodeService {
     return this.http.delete<Episode>(this.episodeUrl + "/" + seasonId + "/" + id)
     .pipe(catchError(errorHandler));
   }
-  
-  getSeasonEpisodes(seasonId: number): Observable<Episode[]> {
-    return this.http.get<Episode[]>(this.episodeUrl + '/season' + seasonId)
-    .pipe(catchError(errorHandler));
-  }
 
   changeRating(id: number, rating: number): Observable<Episode> {
     return this.http.put<Episode>(this.episodeUrl + "/rating/" + id, rating)

@@ -27,11 +27,6 @@ export class SeasonService {
     .pipe(catchError(errorHandler));
   }
 
-  getSeriesSeasons(seriesId: number): Observable<Season[]> {
-    return this.http.get<Season[]>(this.seasonUrl + '/season' + seriesId)
-    .pipe(catchError(errorHandler));
-  }
-
   addSeason(seriesId: number, season: Season): Observable<Season> {
     return this.http.post<Season>(this.seasonUrl + "/" + seriesId, season, httpOptions)
     .pipe(catchError(errorHandler));

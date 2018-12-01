@@ -1,6 +1,6 @@
 <h2>Film</h2>
 <div *ngIf="movie">
-  <div *ngIf=true>
+  <div *ngIf="canDo1">
     <label>ID: {{movie.id}}</label>
     <button class="btn btn-primary" [routerLink]="['/admin/edit-movie', { id: movie.id }]">Szerkesztés</button>
     <button class="btn btn-primary" [routerLink]="['/admin/edit-movie-actors', { id: movie.id }]">Színészek kezelése</button>
@@ -11,7 +11,7 @@
   <label>Értékelés:&nbsp;</label>
   <span *ngIf="movie.rating == 0">Még nincs értékelve.</span>
   <span *ngIf="movie.rating > 0">{{movie.rating.toPrecision(3)}} ({{movie.numberOfRatings}} szavazat)</span>
-  <button class="btn btn-primary" (click)="createRating()" *ngIf="true">Film értékelése</button>
+  <button class="btn btn-primary" (click)="createRating()" *ngIf="canDo2">Film értékelése</button>
   <br/>
   <div *ngIf="showRating">
     <label for="stars">Az ön értékelése:&nbsp;</label>
@@ -37,7 +37,7 @@
   <div *ngIf="actors && actors.length > 0">
     <ul>
       <li *ngFor="let a of actors">
-        <a class="li-link" [routerLink]="['../../actor', a.id]"><span *ngIf="true">ID: {{a.id}}&nbsp;</span>{{a.name}}</a>
+        <a class="li-link" [routerLink]="['../../actor', a.id]"><span *ngIf="canDo1">ID: {{a.id}}&nbsp;</span>{{a.name}}</a>
       </li>
     </ul>
   </div>

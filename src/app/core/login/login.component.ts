@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { KeycloakService } from 'keycloak-angular';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -7,11 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private k: KeycloakService) { }
 
   ngOnInit() {
   }
 
   onSubmit() {}
+
+  login() {
+    this.k.login();
+  }
+
+  logout() {
+    this.k.logout();
+  }
 
 }

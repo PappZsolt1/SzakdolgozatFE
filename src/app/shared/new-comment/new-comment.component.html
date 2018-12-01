@@ -1,4 +1,4 @@
-<button class="btn btn-primary" *ngIf="!show" (click)="writeNewComment()">Új hozzászólás írása</button>
+<button class="btn btn-primary" *ngIf="canDo && !show" (click)="writeNewComment()">Új hozzászólás írása</button>
 <div *ngIf="show">
     <form (ngSubmit)="addComment()" #newCommentForm="ngForm">
         <label for="content">Hozzászólás:</label><br/>

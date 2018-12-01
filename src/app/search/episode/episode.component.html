@@ -1,7 +1,7 @@
 <h2>Epizód</h2>
 <div class="card">
   <div *ngIf="episode">
-    <div *ngIf=true>
+    <div *ngIf="canDo1">
       <label>ID: {{episode.id}}</label>
       <button class="btn btn-primary" [routerLink]="['/admin/edit-episode', { id: episode.id }]">Szerkesztés</button>
       <button class="btn btn-primary" [routerLink]="['/admin/edit-episode-actors', { id: episode.id }]">Színészek kezelése</button>
@@ -11,7 +11,7 @@
     <label>Értékelés:&nbsp;</label>
     <span *ngIf="episode.rating == 0">Még nincs értékelve.</span>
     <span *ngIf="episode.rating > 0">{{episode.rating.toPrecision(3)}} ({{episode.numberOfRatings}} szavazat)</span>
-    <button class="btn btn-primary" (click)="createRating()" *ngIf="true">Epizód értékelése</button>
+    <button class="btn btn-primary" (click)="createRating()" *ngIf="canDo2">Epizód értékelése</button>
     <br/>
     <div *ngIf="showRating">
       <form (ngSubmit)="addRating()" #ratingForm="ngForm">
@@ -32,7 +32,7 @@
     <div *ngIf="actors && actors.length > 0">
       <ul>
         <li *ngFor="let a of actors">
-          <a class="li-link" [routerLink]="['../../actor', a.id]"><span *ngIf="true">ID: {{a.id}}&nbsp;</span>{{a.name}}</a>
+          <a class="li-link" [routerLink]="['../../actor', a.id]"><span *ngIf="canDo1">ID: {{a.id}}&nbsp;</span>{{a.name}}</a>
         </li>
       </ul>
     </div>

@@ -7,13 +7,17 @@ import { EditArticleComponent } from './edit-article/edit-article.component';
 import { ArticlesShellComponent } from './articles-shell/articles-shell.component';
 import { SavedArticleListComponent } from './saved-article-list/saved-article-list.component';
 
+import { AppAuthGuard } from '../shared/app-auth.guard';
+
 const articlesRoutes: Routes = [
   {
     path: 'articles', component: ArticlesShellComponent,
     children: [
       { path: '', component: ArticleListComponent },
-      { path: 'edit-article', component: EditArticleComponent },
-      { path: 'saved-article-list', component: SavedArticleListComponent },
+      { path: 'edit-article', component: EditArticleComponent,
+      canActivate: [AppAuthGuard], data: { roles: ['ArticleWriter'] } },
+      { path: 'saved-article-list', component: SavedArticleListComponent,
+      canActivate: [AppAuthGuard], data: { roles: ['ArticleWriter'] } },
       { path: ':id', component: ArticleComponent }
     ]
   }

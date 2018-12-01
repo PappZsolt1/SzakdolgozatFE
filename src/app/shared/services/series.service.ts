@@ -24,11 +24,6 @@ export class SeriesService {
     .pipe(catchError(errorHandler));
   }
 
-  getAllSeries(): Observable<Series[]> {
-    return this.http.get<Series[]>(this.seriesUrl)
-    .pipe(catchError(errorHandler));
-  }
-
   getResultSeries(page: number, size: number, title: string): Observable<Wrapper> {
     return this.http.get<Wrapper>(this.seriesUrl + "/search/" + page + "/" + size + "/" + title)
     .pipe(catchError(errorHandler));

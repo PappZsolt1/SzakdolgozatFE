@@ -9,21 +9,23 @@
         <li class="nav-item">
             <a class="nav-link" routerLink="/search" routerLinkActive="active">Keresés</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" routerLink="/error-report" routerLinkActive="active">Hibabejelentés</a>
+        <li class="nav-item" *ngIf="roles && roles.length > 0">
+            <a *ngIf="roles && roles.includes('Admin')" class="nav-link" routerLink="/error-report/admin" routerLinkActive="active">Hibabejelentés</a>
+            <a *ngIf="roles && roles.includes('ArticleWriter') || roles.includes('Moderator') || roles.includes('RegisteredUser')" class="nav-link" routerLink="/error-report/new" routerLinkActive="active">Hibabejelentés</a>
         </li>
-        <li class="nav-item">
+<!--         <li class="nav-item">
             <a class="nav-link" routerLink="/login" routerLinkActive="active">Bejelentkezés</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" routerLink="/registration" routerLinkActive="active">Regisztráció</a>
         </li>
-        <li class="nav-item">
+ -->
+        <li class="nav-item" *ngIf="roles && roles.includes('Admin')">
             <a class="nav-link" routerLink="/admin" routerLinkActive="active">Admin</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" routerLink="/private-messages" routerLinkActive="active">Privát üzenetek</a>
-        </li>
+        <label *ngIf="loggedIn && username">Belépve mint: {{username}}</label>
+        <button *ngIf="!loggedIn" (click)="login()">Bejelentkezés / Regisztráció</button>
+        <button *ngIf="loggedIn" (click)="logout()">Kijelentkezés</button>
     </ul>
 </nav>
 <div class="container">
