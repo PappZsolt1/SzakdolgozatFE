@@ -14,7 +14,7 @@ const forumRoutes: Routes = [
     children: [
       { path: '', component: TopicListComponent },
       { path: 'new-topic', component: NewTopicComponent,
-      canActivate: [AppAuthGuard], data: { roles: ['RegisteredUser'] } },
+      canActivate: [AppAuthGuard], data: { roles: ['RegisteredUser', 'Moderator'] } },
       { path: ':id', component: TopicComponent }
     ]
   }

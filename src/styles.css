@@ -72,3 +72,16 @@ button {
     width: 100px;
     margin: 10px;
 }
+
+.info {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    display: block;
+    padding: 0.5rem 1rem;
+    color: white;
+    text-decoration: underline;
+}
+
+.username {
+    font-style: italic;
+}

@@ -19,12 +19,12 @@ export class TopicService {
   constructor(private http: HttpClient) { }
 
   getTopic(id: number): Observable<Topic> {
-    return this.http.get<Topic>(this.topicUrl + "/" + id)
+    return this.http.get<Topic>(this.topicUrl + "/public/" + id)
     .pipe(catchError(errorHandler));
   }
 
-  getTopics(page: number, size: number): Observable<Wrapper> {
-    return this.http.get<Wrapper>(this.topicUrl + "/" + page + "/" + size)
+  getAllTopics(page: number, size: number): Observable<Wrapper> {
+    return this.http.get<Wrapper>(this.topicUrl + "/public/" + page + "/" + size)
     .pipe(catchError(errorHandler));
   }
 

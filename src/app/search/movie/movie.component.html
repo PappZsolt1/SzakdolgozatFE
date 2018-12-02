@@ -13,6 +13,9 @@
   <span *ngIf="movie.rating > 0">{{movie.rating.toPrecision(3)}} ({{movie.numberOfRatings}} szavazat)</span>
   <button class="btn btn-primary" (click)="createRating()" *ngIf="canDo2">Film értékelése</button>
   <br/>
+  <div *ngIf="error">
+    <alert type="danger" class="alert">Ön már értékelte ezt a filmet!</alert>
+  </div>
   <div *ngIf="showRating">
     <label for="stars">Az ön értékelése:&nbsp;</label>
     <rating [max]="10" name="stars" [(ngModel)]="rating"></rating>

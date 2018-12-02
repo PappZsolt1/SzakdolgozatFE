@@ -24,7 +24,7 @@ export class ActorService {
   }
 
   getActor(id: number): Observable<Actor> {
-    return this.http.get<Actor>(this.actorUrl + "/" + id)
+    return this.http.get<Actor>(this.actorUrl + "/public/" + id)
     .pipe(catchError(errorHandler));
   }
 
@@ -44,7 +44,7 @@ export class ActorService {
   }
 
   getResultActors(page: number, size: number, name: string): Observable<Wrapper> {
-    return this.http.get<Wrapper>(this.actorUrl + "/search/" + page + "/" + size + "/" + name)
+    return this.http.get<Wrapper>(this.actorUrl + "/public/search/" + page + "/" + size + "/" + name)
     .pipe(catchError(errorHandler));
   }
 

@@ -18,7 +18,7 @@ export class RulesService {
   constructor(private http: HttpClient) { }
 
   getRules(): Observable<Rules> {
-    return this.http.get<Rules>(this.rulesUrl)
+    return this.http.get<Rules>(this.rulesUrl + "/public")
     .pipe(catchError(errorHandler));
   }
 

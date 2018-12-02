@@ -5,6 +5,8 @@ import { TopicService } from '../shared/topic.service';
 import { Topic } from '../shared/topic.model';
 import * as globals from '../../shared/globals';
 
+import { KeycloakService } from 'keycloak-angular';
+
 @Component({
   selector: 'app-new-topic',
   templateUrl: './new-topic.component.html',
@@ -19,12 +21,17 @@ export class NewTopicComponent implements OnInit {
   inputTextMessage = globals.inputTextMessage;
   textareaMessage = globals.textareaMessage;
 
-  constructor(private location: Location, private topicService: TopicService) { }
+  constructor(
+    private keycloak: KeycloakService,
+    private location: Location,
+    private topicService: TopicService
+    ) { }
 
   ngOnInit() {
   }
 
   addTopic(): void {
+    this.topic.username = this.keycloak.getUsername();
     this.topicService.addTopic(this.topic).subscribe(() => this.created = true);
   }
 

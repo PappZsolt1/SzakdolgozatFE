@@ -13,6 +13,9 @@
     <span *ngIf="episode.rating > 0">{{episode.rating.toPrecision(3)}} ({{episode.numberOfRatings}} szavazat)</span>
     <button class="btn btn-primary" (click)="createRating()" *ngIf="canDo2">Epizód értékelése</button>
     <br/>
+    <div *ngIf="error">
+      <alert type="danger" class="alert">Ön már értékelte ezt az epizódot!</alert>
+    </div>
     <div *ngIf="showRating">
       <form (ngSubmit)="addRating()" #ratingForm="ngForm">
         <label for="stars">Az ön értékelése:&nbsp;</label>

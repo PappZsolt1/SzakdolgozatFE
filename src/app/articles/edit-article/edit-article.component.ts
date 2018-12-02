@@ -9,6 +9,8 @@ import { ArticleService } from '../shared/article.service';
 import { Article } from '../shared/article.model';
 import * as globals from '../../shared/globals';
 
+import { KeycloakService } from 'keycloak-angular';
+
 @Component({
   selector: 'app-edit-article',
   templateUrl: './edit-article.component.html',
@@ -28,6 +30,7 @@ export class EditArticleComponent implements OnInit {
   textareaMessage = globals.textareaMessage;
 
   constructor(
+    private keycloak: KeycloakService,
     private modalService: BsModalService,
     private articleService: ArticleService,
     private location: Location,
@@ -46,6 +49,7 @@ export class EditArticleComponent implements OnInit {
   }
 
   publishArticle(): void {
+    this.article.username = this.keycloak.getUsername();
     this.articleService.publishArticle(this.article).subscribe(() => this.published = true);
   }
 

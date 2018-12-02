@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 import { Movie } from '../../shared/models/movie.model';
 import { MovieService } from '../../shared/services/movie.service';
 import { Actor } from '../../shared/models/actor.model';
+import { RatingService } from '../shared/rating.service';
 import * as globals from '../../shared/globals';
 
 import { KeycloakService } from 'keycloak-angular';
@@ -21,6 +22,7 @@ export class MovieComponent implements OnInit {
   showRating = false;
   type = "movie";
   rating = 1;
+  error = false;
 
   ratingMessage = globals.ratingMessage;
 
@@ -31,7 +33,8 @@ export class MovieComponent implements OnInit {
     private keycloak: KeycloakService,
     private route: ActivatedRoute,
     private location: Location,
-    private movieService: MovieService
+    private movieService: MovieService,
+    private ratingService: RatingService
   ) { }
 
   ngOnInit() {
@@ -42,11 +45,20 @@ export class MovieComponent implements OnInit {
   }
 
   createRating(): void {
-    this.showRating = true;
+    let username = this.keycloak.getUsername();
+    this.ratingService.canRateThisMovie(this.movie.id, username).subscribe(r => {
+      if (r) {
+        this.showRating = true;
+      } else {
+        this.error = true;
+        setTimeout(() => { this.error = false; }, 5000);
+      }
+    });
   }
 
   addRating(): void {
-    this.movieService.changeRating(this.movie.id, this.rating).subscribe(() => { this.showRating = false;
+    let username = this.keycloak.getUsername();
+    this.movieService.changeRating(this.movie.id, this.rating, username).subscribe(() => { this.showRating = false;
       this.movieService.getMovie(this.movie.id).subscribe(r => this.movie = r);
     });
   }

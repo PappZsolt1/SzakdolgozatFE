@@ -15,7 +15,7 @@ export class SeriesService {
   constructor(private http: HttpClient) { }
 
   getSeries(id: number): Observable<Series> {
-    return this.http.get<Series>(this.seriesUrl + '/' + id)
+    return this.http.get<Series>(this.seriesUrl + '/public/' + id)
     .pipe(catchError(errorHandler));
   }
 
@@ -25,7 +25,7 @@ export class SeriesService {
   }
 
   getResultSeries(page: number, size: number, title: string): Observable<Wrapper> {
-    return this.http.get<Wrapper>(this.seriesUrl + "/search/" + page + "/" + size + "/" + title)
+    return this.http.get<Wrapper>(this.seriesUrl + "/public/search/" + page + "/" + size + "/" + title)
     .pipe(catchError(errorHandler));
   }
 

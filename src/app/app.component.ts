@@ -23,8 +23,8 @@ export class AppComponent implements OnInit {
     if (this.keycloak.getKeycloakInstance) {
       this.loggedIn = await this.keycloak.isLoggedIn();
       if (this.loggedIn) {
-        this.username = await this.keycloak.getUsername();
-        this.roles = await this.keycloak.getUserRoles();
+        this.username = this.keycloak.getUsername();
+        this.roles = this.keycloak.getUserRoles();
       }
     }
   }

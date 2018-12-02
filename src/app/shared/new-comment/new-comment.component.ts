@@ -30,6 +30,7 @@ export class NewCommentComponent implements OnInit {
   }
 
   addComment(): void {
+    this.comment.username = this.keycloak.getUsername();
     switch (this.type) {
       case "article":
         this.commentService.addArticleComment(this.id, this.comment).subscribe(() => {

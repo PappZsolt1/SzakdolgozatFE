@@ -22,6 +22,7 @@ import { MovieListComponent } from './movie-list/movie-list.component';
 import { SeriesListComponent } from './series-list/series-list.component';
 import { SharedDirectiveModule } from '../shared/shared-directive.module';
 import { EpisodeComponent } from './episode/episode.component';
+import { RatingService } from './shared/rating.service';
 
 @NgModule({
   imports: [
@@ -49,7 +50,8 @@ import { EpisodeComponent } from './episode/episode.component';
     ActorService,
     MovieService,
     SeriesService,
-    EpisodeService
+    EpisodeService,
+    RatingService
   ]
 })
 export class SearchModule { }

@@ -9,10 +9,12 @@ export function initializer(keycloak: KeycloakService): () => Promise<any> {
         await keycloak.init({
           config: environment.keycloak,
           initOptions: {
-            checkLoginIframe: false            
+            onLoad: "check-sso",
+            checkLoginIframe: false
           },
-          //enableBearerInterceptor: false,
-          bearerExcludedUrls: []
+          bearerExcludedUrls: [
+            "public"
+          ]
         });
         resolve();
       } catch (error) {

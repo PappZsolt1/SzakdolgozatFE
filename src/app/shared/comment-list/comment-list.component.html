@@ -13,7 +13,8 @@
         <li *ngFor="let c of comments">
             <div class="card">
                 <div class="card-header">
-                    <span>{{c.postDate}}</span>
+                    <span class="username">{{c.username}}</span>
+                    <span class="right">{{c.postDate}}</span>
                 </div>
                 <div class="card-body">
                     <div class="multiline">{{c.content}}</div>

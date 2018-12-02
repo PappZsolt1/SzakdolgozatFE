@@ -44,27 +44,27 @@ export class CommentService {
   }
 
   getMovieComments(page: number, size: number, movieId: number): Observable<Wrapper> {
-    return this.http.get<Wrapper>(this.commentUrl + "/movie/" + page + "/" + size + "/" + movieId)
+    return this.http.get<Wrapper>(this.commentUrl + "/public/movie/" + page + "/" + size + "/" + movieId)
     .pipe(catchError(errorHandler));
   }
 
   getEpisodeComments(page: number, size: number, episodeId: number): Observable<Wrapper> {
-    return this.http.get<Wrapper>(this.commentUrl + "/episode/" + page + "/" + size + "/" + episodeId)
+    return this.http.get<Wrapper>(this.commentUrl + "/public/episode/" + page + "/" + size + "/" + episodeId)
     .pipe(catchError(errorHandler));
   }
 
   getActorComments(page: number, size: number, actorId: number): Observable<Wrapper> {
-    return this.http.get<Wrapper>(this.commentUrl + "/actor/" + page + "/" + size + "/" + actorId)
+    return this.http.get<Wrapper>(this.commentUrl + "/public/actor/" + page + "/" + size + "/" + actorId)
     .pipe(catchError(errorHandler));
   }
 
   getArticleComments(page: number, size: number, articleId: number): Observable<Wrapper> {
-    return this.http.get<Wrapper>(this.commentUrl + "/article/" + page + "/" + size + "/" + articleId)
+    return this.http.get<Wrapper>(this.commentUrl + "/public/article/" + page + "/" + size + "/" + articleId)
     .pipe(catchError(errorHandler));
   }
 
   getTopicComments(page: number, size: number, topicId: number): Observable<Wrapper> {
-    return this.http.get<Wrapper>(this.commentUrl + "/topic/" + page + "/" + size + "/" + topicId)
+    return this.http.get<Wrapper>(this.commentUrl + "/public/topic/" + page + "/" + size + "/" + topicId)
     .pipe(catchError(errorHandler));
   }
 

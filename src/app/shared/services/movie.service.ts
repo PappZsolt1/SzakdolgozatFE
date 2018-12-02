@@ -16,7 +16,7 @@ export class MovieService {
   constructor(private http: HttpClient) { }
 
   getMovie(id: number): Observable<Movie> {
-    return this.http.get<Movie>(this.movieUrl + '/' + id)
+    return this.http.get<Movie>(this.movieUrl + '/public/' + id)
     .pipe(catchError(errorHandler));
   }
 
@@ -26,7 +26,7 @@ export class MovieService {
   }
 
   getMovieActors(id: number): Observable<Actor[]> {
-    return this.http.get<Actor[]>(this.movieUrl + '/actors/' + id)
+    return this.http.get<Actor[]>(this.movieUrl + '/public/actors/' + id)
     .pipe(catchError(errorHandler));
   }
 
@@ -46,7 +46,7 @@ export class MovieService {
   }
 
   getResultMovies(page: number, size: number, title: string): Observable<Wrapper> {
-    return this.http.get<Wrapper>(this.movieUrl + "/search/" + page + "/" + size + "/" + title)
+    return this.http.get<Wrapper>(this.movieUrl + "/public/search/" + page + "/" + size + "/" + title)
     .pipe(catchError(errorHandler));
   }
 
@@ -60,8 +60,8 @@ export class MovieService {
     .pipe(catchError(errorHandler));
   }
 
-  changeRating(id: number, rating: number): Observable<Movie> {
-    return this.http.put<Movie>(this.movieUrl + "/rating/" + id, rating)
+  changeRating(id: number, rating: number, username: string): Observable<Movie> {
+    return this.http.put<Movie>(this.movieUrl + "/rating/" + id + "/" + rating, username)
     .pipe(catchError(errorHandler));
   }
 

@@ -19,7 +19,7 @@ export class ArticleService {
   constructor(private http: HttpClient) { }
 
   getArticle(id: number): Observable<Article> {
-    return this.http.get<Article>(this.articleUrl + "/" + id)
+    return this.http.get<Article>(this.articleUrl + "/public/" + id)
     .pipe(catchError(errorHandler));
   }
 
@@ -39,7 +39,7 @@ export class ArticleService {
   }
 
   getPublishedArticles(page: number, size: number): Observable<Wrapper> {
-    return this.http.get<Wrapper>(this.articleUrl + "/" + page + "/" + size)
+    return this.http.get<Wrapper>(this.articleUrl + "/public/" + page + "/" + size)
     .pipe(catchError(errorHandler));
   }
 

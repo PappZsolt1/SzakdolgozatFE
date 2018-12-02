@@ -36,23 +36,23 @@ export class TopicListComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.getTopics();
+    this.getAllTopics();
     this.getRules();
   }
 
   onSizeChaged(): void {
     this.page = calculatePage(this.page, this.size, this.total);
-    this.getTopics();
+    this.getAllTopics();
   }
 
   onPageChanged(event: any): void {
     this.page = event.page;
     this.size = event.itemsPerPage;
-    this.getTopics();
+    this.getAllTopics();
   }
 
-  getTopics(): void {
-    this.topicService.getTopics(this.page, this.size).subscribe(r => {
+  getAllTopics(): void {
+    this.topicService.getAllTopics(this.page, this.size).subscribe(r => {
       this.topics = r.results; this.total = r.total;
       this.pageFirst = calculatePageFirst(this.page, this.size, this.total);
       this.pageLast = calculatePageLast(this.page, this.size, this.total);

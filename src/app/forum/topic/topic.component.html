@@ -7,8 +7,9 @@
         <div class="card-body">
             <div class="multiline">{{topic.description}}</div>
         </div>
-        <div class="card-footer" *ngIf="canDo">
-            <button type="button" class="btn btn-danger" (click)="deleteTopic(template)">Téma törlése</button>
+        <div class="card-footer">
+            <span class="username">{{topic.username}}</span>
+            <button type="button" *ngIf="canDo" class="btn btn-danger" (click)="deleteTopic(template)">Téma törlése</button>
         </div>
     </div>
     <button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>

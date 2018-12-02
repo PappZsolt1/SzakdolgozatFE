@@ -19,7 +19,7 @@ export class EpisodeService {
   constructor(private http: HttpClient) { }
 
   getEpisode(id: number): Observable<Episode> {
-    return this.http.get<Episode>(this.episodeUrl + "/" + id)
+    return this.http.get<Episode>(this.episodeUrl + "/public/" + id)
     .pipe(catchError(errorHandler));
   }
 
@@ -29,7 +29,7 @@ export class EpisodeService {
   }
 
   getEpisodeActors(id: number): Observable<Actor[]> {
-    return this.http.get<Actor[]>(this.episodeUrl + '/actors/' + id)
+    return this.http.get<Actor[]>(this.episodeUrl + '/public/actors/' + id)
     .pipe(catchError(errorHandler));
   }
 
@@ -63,8 +63,8 @@ export class EpisodeService {
     .pipe(catchError(errorHandler));
   }
 
-  changeRating(id: number, rating: number): Observable<Episode> {
-    return this.http.put<Episode>(this.episodeUrl + "/rating/" + id, rating)
+  changeRating(id: number, rating: number, username: string): Observable<Episode> {
+    return this.http.put<Episode>(this.episodeUrl + "/rating/" + id + "/" + rating, username)
     .pipe(catchError(errorHandler));
   }
 

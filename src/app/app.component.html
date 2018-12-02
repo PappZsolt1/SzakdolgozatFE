@@ -23,9 +23,15 @@
         <li class="nav-item" *ngIf="roles && roles.includes('Admin')">
             <a class="nav-link" routerLink="/admin" routerLinkActive="active">Admin</a>
         </li>
-        <label *ngIf="loggedIn && username">Belépve mint: {{username}}</label>
-        <button *ngIf="!loggedIn" (click)="login()">Bejelentkezés / Regisztráció</button>
-        <button *ngIf="loggedIn" (click)="logout()">Kijelentkezés</button>
+        <li class="nav-item">
+            <label class="nav-link clickable" *ngIf="!loggedIn" (click)="login()">Bejelentkezés / Regisztráció</label>
+        </li>
+        <li class="nav-item">
+            <label class="nav-link clickable" *ngIf="loggedIn" (click)="logout()">Kijelentkezés</label>
+        </li>
+        <li class="nav-item">
+            <label class="info" *ngIf="loggedIn && username">Belépve mint: {{username}}</label>
+        </li>
     </ul>
 </nav>
 <div class="container">
