@@ -4,8 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { throwIfAlreadyLoaded } from './module-import-guard';
-import { LoginComponent } from './login/login.component';
-import { RegistrationComponent } from './registration/registration.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
@@ -15,13 +13,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     HttpClientModule
   ],
   declarations: [
-    LoginComponent,
-    RegistrationComponent,
     PageNotFoundComponent
   ],
   exports: [
-    LoginComponent,
-    RegistrationComponent,
     PageNotFoundComponent
   ]
 })
