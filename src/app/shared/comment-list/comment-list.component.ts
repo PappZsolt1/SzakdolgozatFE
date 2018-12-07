@@ -47,7 +47,7 @@ export class CommentListComponent implements OnInit {
     this.loadComments();
   }
 
-  onSizeChaged(): void {
+  onSizeChanged(): void {
     this.page = calculatePage(this.page, this.size, this.total);
     this.loadComments();
   }

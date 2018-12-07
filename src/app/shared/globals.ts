@@ -21,7 +21,7 @@ egész számnak kell lennie!`;
 export const selectMessage =
 `Válasszon egyet!`;
 export const lengthMessage =
-`Az órának és a percnek 0 és 60 közötti
+`Az órának 0 és 100, a percnek 0 és 60 közötti
 egész számnak kell lennie!`;
 export const numberMessage =
 `A számnak 1 és 100 közötti egész számnak kell lennie!`;

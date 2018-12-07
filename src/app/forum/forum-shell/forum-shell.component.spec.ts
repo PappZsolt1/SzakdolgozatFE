@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ForumShellComponent } from './forum-shell.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('ForumShellComponent', () => {
   let component: ForumShellComponent;
@@ -8,7 +9,8 @@ describe('ForumShellComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ForumShellComponent ]
+      declarations: [ ForumShellComponent ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));

@@ -35,7 +35,7 @@ export class SeriesListComponent implements OnInit {
     this.getResultSeries();
   }
 
-  onSizeChaged(): void {
+  onSizeChanged(): void {
     this.page = calculatePage(this.page, this.size, this.total);
     this.getResultSeries();
   }

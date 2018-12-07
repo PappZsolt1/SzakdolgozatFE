@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ErrorReportShellComponent } from './error-report-shell.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('ErrorReportComponent', () => {
   let component: ErrorReportShellComponent;
@@ -8,7 +9,8 @@ describe('ErrorReportComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ErrorReportShellComponent ]
+      declarations: [ ErrorReportShellComponent ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));

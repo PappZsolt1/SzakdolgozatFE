@@ -28,7 +28,7 @@ export class ErrorReportListComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSizeChaged(): void {
+  onSizeChanged(): void {
     this.page = calculatePage(this.page, this.size, this.total);
     this.getErrorReports();
   }

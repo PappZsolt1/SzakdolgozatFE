@@ -40,7 +40,7 @@ export class TopicListComponent implements OnInit {
     this.getRules();
   }
 
-  onSizeChaged(): void {
+  onSizeChanged(): void {
     this.page = calculatePage(this.page, this.size, this.total);
     this.getAllTopics();
   }

@@ -30,7 +30,7 @@ export class ArticleListComponent implements OnInit {
     this.getPublishedArticles();
   }
 
-  onSizeChaged(): void {
+  onSizeChanged(): void {
     this.page = calculatePage(this.page, this.size, this.total);
     this.getPublishedArticles();
   }

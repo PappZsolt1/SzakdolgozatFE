@@ -35,7 +35,7 @@ export class MovieListComponent implements OnInit {
     this.getResultMovies();
   }
 
-  onSizeChaged(): void {
+  onSizeChanged(): void {
     this.page = calculatePage(this.page, this.size, this.total);
     this.getResultMovies();
   }

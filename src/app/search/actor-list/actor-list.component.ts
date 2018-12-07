@@ -35,7 +35,7 @@ export class ActorListComponent implements OnInit {
     this.getResultActors();
   }
 
-  onSizeChaged(): void {
+  onSizeChanged(): void {
     this.page = calculatePage(this.page, this.size, this.total);
     this.getResultActors();
   }
