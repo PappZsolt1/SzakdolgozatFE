@@ -22,4 +22,9 @@ describe('PageNotFoundComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should show message', () => {
+    let p = fixture.nativeElement.querySelector("p");
+    expect(p.textContent).toBe("A kért oldal nem található.");
+  });
 });
