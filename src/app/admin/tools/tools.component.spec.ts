@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ToolsComponent } from './tools.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('ToolsComponent', () => {
   let component: ToolsComponent;
@@ -8,7 +8,8 @@ describe('ToolsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ToolsComponent ]
+      declarations: [ ToolsComponent ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));
