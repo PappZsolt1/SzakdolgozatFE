@@ -1,0 +1,64 @@
+<div *ngIf="!modify">
+    <h2>Színész létrehozása</h2>
+</div>
+<div *ngIf="modify">
+    <h2>Színész módosítása</h2><br/>
+</div>
+<div class="card">
+    <div *ngIf="!saved && !deleted">
+        <form #editActorForm="ngForm">
+            <div *ngIf="modify">
+                <label>ID: {{actor.id}}</label>
+            </div>
+            <label for="url">Kép URL-je:&nbsp;</label>
+            <input type="text" id="url" name="url" required maxlength="1000" appCustomText [(ngModel)]="actor.imageUrl" #url="ngModel">
+            <label tooltip="{{imageMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
+            <label>Kép:</label>
+            <img class="image" src="{{actor.imageUrl}}" alt=""><br>
+            <label for="name">Név:&nbsp;</label>
+            <input type="text" id="name" name="name" required maxlength="200" appCustomText [(ngModel)]="actor.name" #name="ngModel">
+            <label tooltip="{{inputTextMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
+            <label for="gender">Nem:&nbsp;</label>
+            <select name="gender" id="gender" [compareWith]="compareGenders" required [(ngModel)]="actor.gender" #gender="ngModel">
+                <option *ngFor="let g of genders" [ngValue]="g">{{g.name}}</option>
+            </select><label tooltip="{{selectMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
+            <label for="birthPlace">Születési hely:&nbsp;</label>
+            <input type="text" id="birthPlace" name="birthPlace" maxlength="200" required appCustomText [(ngModel)]="actor.birthPlace" #birthPlace="ngModel">
+            <label tooltip="{{inputTextMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
+            <label for="birthDate">Születési idő:&nbsp;</label>
+            <input type="date" id="birthDate" name="birthDate" required appCustomDate="1750,2100" [(ngModel)]="bDate" #birthDate="ngModel">
+            <label tooltip="{{birthDateMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
+            <label for="bio">Élettörténet:&nbsp;</label><br/>
+            <textarea rows="5" cols="100" id="bio" name="bio" required maxlength="60000" appCustomText [(ngModel)]="actor.bio" #bio="ngModel"></textarea>
+            <label tooltip="{{textareaMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
+            <div *ngIf="!modify">
+                <button type="button" class="btn btn-success" (click)="addActor()" [disabled]="!editActorForm.form.valid">Mentés</button>
+                <button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>
+            </div>
+            <div *ngIf="modify">
+                <button type="button" class="btn btn-success" (click)="modifyActor()" [disabled]="!editActorForm.form.valid">Módosítás</button>
+                <button type="button" class="btn btn-danger" (click)="deleteActor(template)">Törlés</button>
+                <button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>
+            </div>
+            <div *ngIf="error">
+                <alert type="danger" class="alert">A színész nem törölhető, mert filmekben vagy sorozatokban szerepel!</alert>
+            </div>       
+        </form>
+    </div>
+    <div *ngIf="deleted">
+        <alert type="success" class="alert">Törölve!</alert>
+        <button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>
+    </div>
+    <div *ngIf="saved">
+        <alert type="success" class="alert">Elmentve!</alert>
+        <button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>
+    </div>
+</div>
+
+<ng-template #template>
+    <div class="modal-body text-center">
+        <p>Biztosan törli? A színészhez írt összes hozzászólás is törölve lesz!</p>
+        <button type="button" class="btn btn-danger" (click)="confirm()">Igen</button>
+        <button type="button" class="btn btn-secondary" (click)="decline()">Mégse</button>
+    </div>
+</ng-template>

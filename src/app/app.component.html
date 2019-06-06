@@ -1,1 +1,33 @@
-{{title}}
+<nav class="navbar navbar-expand-sm bg-primary justify-content-center navbar-dark">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/articles" routerLinkActive="active">Cikkek</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/forum" routerLinkActive="active">Fórum</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/search" routerLinkActive="active">Keresés</a>
+        </li>
+        <li class="nav-item" *ngIf="roles && roles.length > 0">
+            <a *ngIf="roles && roles.includes('Admin')" class="nav-link" routerLink="/error-report/admin" routerLinkActive="active">Hibabejelentés</a>
+            <a *ngIf="roles && roles.includes('ArticleWriter') || roles.includes('Moderator') || roles.includes('RegisteredUser')" class="nav-link" routerLink="/error-report/new" routerLinkActive="active">Hibabejelentés</a>
+        </li>
+        <li class="nav-item" *ngIf="roles && roles.includes('Admin')">
+            <a class="nav-link" routerLink="/admin" routerLinkActive="active">Admin</a>
+        </li>
+        <li class="nav-item">
+            <label class="nav-link clickable" *ngIf="!loggedIn" (click)="login()">Bejelentkezés / Regisztráció</label>
+        </li>
+        <li class="nav-item">
+            <label class="nav-link clickable" *ngIf="loggedIn" (click)="logout()">Kijelentkezés</label>
+        </li>
+        <li class="nav-item">
+            <label class="info" *ngIf="loggedIn && username">Belépve mint: {{username}}</label>
+        </li>
+    </ul>
+</nav>
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
+

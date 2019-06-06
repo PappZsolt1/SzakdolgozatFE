@@ -1,0 +1,69 @@
+<div *ngIf="!modify">
+    <h2>Film létrehozása</h2>
+</div>
+<div *ngIf="modify">
+    <h2>Film módosítása</h2><br/>
+</div>
+<div class="card">
+    <div *ngIf="!saved && !deleted">
+        <form #editMovieForm="ngForm">
+            <div *ngIf="modify">
+                <label>ID: {{movie.id}}</label>
+            </div>
+            <label for="url">Kép URL-je:&nbsp;</label>
+            <input type="text" id="url" name="url" required maxlength="1000" appCustomText [(ngModel)]="movie.imageUrl" #url="ngModel">
+            <label tooltip="{{imageMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
+            <label>Kép:</label>
+            <img class="image" src="{{movie.imageUrl}}" alt=""><br>
+            <label for="title">Cím:&nbsp;</label>
+            <input type="text" id="title" name="title" required maxlength="200" appCustomText [(ngModel)]="movie.title" #title="ngModel"/>
+            <label tooltip="{{inputTextMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
+            <label for="releaseYear">Megjelenés éve:&nbsp;</label>
+            <input type="number" id="releaseYear" name="releaseYear" required appCustomMin="1850" appCustomMax="2100" [(ngModel)]="movie.releaseYear" #releaseYear="ngModel"/>
+            <label tooltip="{{releaseYearMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
+            <label for="genre">Műfaj:&nbsp;</label>
+            <select name="genre" id="genre" [compareWith]="compareGenres" required [(ngModel)]="movie.genre" #genre="ngModel">
+              <option *ngFor="let g of genres" [ngValue]="g">{{g.name}}</option>
+            </select><label tooltip="{{selectMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
+            <label>Hossz:&nbsp;</label>
+            <input type="number" id="hour" name="hour" required appCustomMin="0" appCustomMax="100" [(ngModel)]="hours" #hour="ngModel"/><span>&nbsp;óra&nbsp;</span>
+            <input type="number" id="minute" name="minute" required appCustomMin="0" appCustomMax="60" [(ngModel)]="minutes" #minute="ngModel"/><span>&nbsp;perc</span>
+            <label tooltip="{{lengthMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
+            <label for="ageClassification">Korbesorolás:&nbsp;</label>
+            <select name="ageClassification" id="ageClassification" [compareWith]="compareAgeClassifications" required [(ngModel)]="movie.ageClassification" #ageClassification="ngModel">
+              <option *ngFor="let a of ageClassifications" [ngValue]="a">{{a.name}}</option>
+            </select><label tooltip="{{selectMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
+            <label for="budget">Költségvetés:&nbsp;</label>
+            <input type="number" id="budget" name="budget" required appCustomMin="0" appCustomMax="2000000000" [(ngModel)]="movie.budget" #budget="ngModel"/><span>&nbsp;$</span>
+            <label tooltip="{{budgetMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
+            <div *ngIf="!modify">
+                <button type="button" class="btn btn-success" (click)="addMovie()" [disabled]="!editMovieForm.form.valid">Mentés</button>
+                <button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>
+            </div>
+            <div *ngIf="modify">
+                <button type="button" class="btn btn-success" (click)="modifyMovie()" [disabled]="!editMovieForm.form.valid">Módosítás</button>
+                <button type="button" class="btn btn-danger" (click)="deleteMovie(template)">Törlés</button>
+                <button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>
+            </div>
+            <div *ngIf="error">
+                <alert type="danger" class="alert">A film nem törölhető, mert színészekkel rendelkezik!</alert>
+            </div>
+        </form>
+    </div>
+    <div *ngIf="deleted">
+        <alert type="success" class="alert">Törölve!</alert>
+        <button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>
+    </div>
+    <div *ngIf="saved">
+        <alert type="success" class="alert">Elmentve!</alert>
+        <button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>
+    </div>
+</div>
+
+<ng-template #template>
+    <div class="modal-body text-center">
+        <p>Biztosan törli? A filmhez írt összes hozzászólás is törölve lesz!</p>
+        <button type="button" class="btn btn-danger" (click)="confirm()">Igen</button>
+        <button type="button" class="btn btn-secondary" (click)="decline()">Mégse</button>
+    </div>
+</ng-template>

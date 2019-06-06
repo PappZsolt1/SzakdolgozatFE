@@ -1,0 +1,10 @@
+<form (ngSubmit)="search()" #SearchForm="ngForm">
+    <label for="searchfield">Keresett név vagy cím:&nbsp;</label>
+    <input type="text" id="search" name="searchfield" required maxlength="200" appCustomText [(ngModel)]="searchText" #searchfield="ngModel">
+    <label tooltip="{{inputTextMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label>
+    <label for="category">&nbsp;Kategória:&nbsp;</label>
+    <select name="category" id="category" required [(ngModel)]="selectedCategory" #category="ngModel">
+        <option *ngFor="let c of categories" [ngValue]="c">{{c}}</option>
+    </select><label tooltip="{{selectMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label>
+    <button type="submit" class="btn btn-primary" [disabled]="!SearchForm.form.valid">Keresés</button>
+</form>

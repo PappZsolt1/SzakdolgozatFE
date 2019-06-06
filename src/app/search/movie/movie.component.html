@@ -1,0 +1,49 @@
+<h2>Film</h2>
+<div *ngIf="movie">
+  <div *ngIf="canDo1">
+    <label>ID: {{movie.id}}</label>
+    <button class="btn btn-primary" [routerLink]="['/admin/edit-movie', { id: movie.id }]">Szerkesztés</button>
+    <button class="btn btn-primary" [routerLink]="['/admin/edit-movie-actors', { id: movie.id }]">Színészek kezelése</button>
+  </div>
+  <img class="image" src="{{movie.imageUrl}}" alt=""><br>
+  <label>Cím:&nbsp;</label>
+  <label>{{movie.title}}</label><br/>
+  <label>Értékelés:&nbsp;</label>
+  <span *ngIf="movie.rating == 0">Még nincs értékelve.</span>
+  <span *ngIf="movie.rating > 0">{{movie.rating.toPrecision(3)}} ({{movie.numberOfRatings}} szavazat)</span>
+  <button class="btn btn-primary" (click)="createRating()" *ngIf="canDo2">Film értékelése</button>
+  <br/>
+  <div *ngIf="error">
+    <alert type="danger" class="alert">Ön már értékelte ezt a filmet!</alert>
+  </div>
+  <div *ngIf="showRating">
+    <label for="stars">Az ön értékelése:&nbsp;</label>
+    <rating [max]="10" name="stars" [(ngModel)]="rating"></rating>
+    <label>&nbsp;{{rating}}/10</label><br/>
+    <button type="submit" class="btn btn-success" (click)="addRating()">Értékelés küldése</button>
+    <button type="button" class="btn btn-secondary" (click)="cancelRating()">Mégse</button>
+  </div>
+  <label>Megjelenés éve:&nbsp;</label>
+  <label>{{movie.releaseYear}}</label><br/>
+  <label>Műfaj:&nbsp;</label>
+  <label>{{movie.genre.name}}</label><br/>
+  <label>Hossz:&nbsp;</label>
+  <label>{{movie.mLength}}</label><br/>
+  <label>Korbesorolás:&nbsp;</label>
+  <label>{{movie.ageClassification.name}}</label><br/>
+  <label>Költségvetés:&nbsp;</label>
+  <label>{{movie.budget}} $</label><br/>
+  <label>Színészek:</label>
+  <div *ngIf="!actors || actors.length == 0">
+    <alert type="info" class="alert">A filmnek még nincsenek színészei.</alert>
+  </div>
+  <div *ngIf="actors && actors.length > 0">
+    <ul>
+      <li *ngFor="let a of actors">
+        <a class="li-link" [routerLink]="['../../actor', a.id]"><span *ngIf="canDo1">ID: {{a.id}}&nbsp;</span>{{a.name}}</a>
+      </li>
+    </ul>
+  </div>
+  <app-comment-list [type]="type" [id]="movie.id"></app-comment-list>
+</div>
+<button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>

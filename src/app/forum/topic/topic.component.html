@@ -1,0 +1,31 @@
+<h2>Téma</h2>
+<div *ngIf="topic && !deleted">
+    <div class="card">
+        <div class="card-header">
+            <span>{{topic.title}}</span><span class="right">{{topic.createDate}}</span>
+        </div>
+        <div class="card-body">
+            <div class="multiline">{{topic.description}}</div>
+        </div>
+        <div class="card-footer">
+            <span class="username">{{topic.username}}</span>
+            <button type="button" *ngIf="canDo" class="btn btn-danger" (click)="deleteTopic(template)">Téma törlése</button>
+        </div>
+    </div>
+    <button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>
+    <div *ngIf="topic">
+        <app-comment-list [type]="type" [id]="topic.id"></app-comment-list>
+    </div>
+</div>
+<div *ngIf="deleted">
+    <alert type="success" class="alert">Törölve!</alert>
+    <button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>
+</div>
+
+<ng-template #template>
+    <div class="modal-body text-center">
+        <p>Biztosan törli? A témához írt összes hozzászólás is törölve lesz!</p>
+        <button type="button" class="btn btn-danger" (click)="confirm()">Igen</button>
+        <button type="button" class="btn btn-secondary" (click)="decline()">Mégse</button>
+    </div>
+</ng-template>

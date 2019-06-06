@@ -1,0 +1,21 @@
+<h2>Cikk</h2>
+<div class="card">
+    <div *ngIf="article">
+        <div class="card-header">
+            <span class="right">{{article.publishDate}}</span>
+            <span>{{article.title}}</span>
+        </div>
+        <div class="card-body">
+            <div class="multiline">{{article.content}}</div>
+        </div>
+        <div class="card-footer">
+            <span class="username">{{article.username}}</span>
+        </div>
+    </div>
+</div>
+<div>
+    <button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>
+</div>
+<div *ngIf="article">
+    <app-comment-list [type]="type" [id]="article.id"></app-comment-list>
+</div>

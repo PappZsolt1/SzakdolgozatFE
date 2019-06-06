@@ -1,1 +1,87 @@
-/* You can add global styles to this file, and also import other style files */
+textarea {
+    resize: none;
+    width: 70%;
+}
+
+.multiline {
+    white-space: pre-wrap;
+    max-width: 700px;
+}
+
+button {
+    margin: 1px;
+}
+
+.alert {
+    display: inline-block;
+    margin: 0;
+    padding: 12px;
+}
+
+.help {
+    width: 20px;
+    height: 20px;
+    margin-left: 3px;
+    margin-bottom: 5px;
+}
+
+.ng-valid:not(form) {
+    border: 1px solid green;
+    border-radius: 3px;
+}
+
+.ng-invalid:not(form) {
+    border: 1px solid red;
+    border-radius: 3px;
+}
+
+.container {
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 10px auto;
+    padding: 10px;
+}
+@media (min-width: 992px) {
+    .container {
+      max-width: 800px;
+    }
+}
+
+.card {
+    padding: 10px;
+    margin: 2px;
+}
+
+.right {
+    float: right;
+}
+
+.clickable:hover {
+    cursor: pointer;
+}
+
+.li-link {
+    color: black;
+}
+
+.li-link:hover {
+    color: black;
+}
+
+.image {
+    width: 100px;
+    margin: 10px;
+}
+
+.info {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    display: block;
+    padding: 0.5rem 1rem;
+    color: white;
+    text-decoration: underline;
+}
+
+.username {
+    font-style: italic;
+}

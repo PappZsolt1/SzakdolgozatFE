@@ -1,0 +1,49 @@
+<h2>Nemek kezelése</h2>
+<div class="card">
+    <div>
+        <ul>
+            <li *ngFor="let g of genders">
+                <label>ID: {{g.id}} Megnevezés: {{g.name}}&nbsp;</label>
+                <button type="button" class="btn btn-primary" (click)="editExisting(g.id, g.name)">Szerkesztés</button>
+                <button type="button" class="btn btn-danger" (click)="deleteGender(g.id, template)">Törlés</button>
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="error">
+        <alert type="danger" class="alert">A kiválasztott nem nem törölhető, mert hivatkoznak rá!</alert>
+    </div>
+    <div *ngIf="!create">
+        <button type="button" class="btn btn-primary" (click)="createNew()">Létrehozás</button>
+    </div>
+    <div *ngIf="create">
+        <form (ngSubmit)="addGender(name.value)" #newGenderForm="ngForm">
+            <label for="name">Megnevezés:&nbsp;</label>
+            <input type="text" id="name" name="name" required maxlength="200" appCustomText #name ngModel>
+            <label tooltip="{{inputTextMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
+            <button type="button" class="btn btn-secondary" (click)="cancelCreate()">Mégse</button>
+            <button type="submit" class="btn btn-success" [disabled]="!newGenderForm.form.valid">Hozzáadás</button>
+        </form>
+    </div>
+    <div *ngIf="edit">
+        <form (ngSubmit)="modifyGender()" #modifyGenderForm="ngForm">
+            <label>ID:&nbsp;</label>
+            <label>{{gender.id}}&nbsp;</label>
+            <label for="name">Megnevezés:&nbsp;</label>
+            <input type="text" id="name" name="name" required maxlength="200" appCustomText #name [(ngModel)]="gender.name">
+            <label tooltip="{{inputTextMessage}}" placement="right"><img src="assets/help.png" alt="help" class="help"></label><br/>
+            <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Mégse</button>
+            <button type="submit" class="btn btn-success" [disabled]="!modifyGenderForm.form.valid">Mentés</button>
+        </form>
+    </div>
+    <div>
+        <button type="button" class="btn btn-secondary" (click)="goBack()">Vissza</button>
+    </div>
+</div>
+
+<ng-template #template>
+    <div class="modal-body text-center">
+        <p>Biztosan törli?</p>
+        <button type="button" class="btn btn-danger" (click)="confirm()">Igen</button>
+        <button type="button" class="btn btn-secondary" (click)="decline()">Mégse</button>
+    </div>
+</ng-template>
